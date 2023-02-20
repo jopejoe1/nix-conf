@@ -3,8 +3,8 @@
 {
   home = {
     # Basic information for home-manager
-    username = "jopejoe1";
-    homeDirectory = "/home/${config.home.username}";
+    username = config.users.users.jopejoe1.name;
+    homeDirectory = config.users.users.jopejoe1.home;
     
     # Enviroment variables
     sessionVariables = {
