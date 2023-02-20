@@ -41,7 +41,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.jopejoe1 = import ./home.nix;
+            users.jopejoe1 = import ./home/jopejoe1.nix;
             users.root = import ./home/root.nix;
           };
           nixpkgs = {
