@@ -118,6 +118,7 @@
       nixpkgs-review
       nurl
       nix-init
+      partition-manager
     ];
   };
 
