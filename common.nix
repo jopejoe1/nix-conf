@@ -119,6 +119,7 @@
       nurl
       nix-init
       partition-manager
+      gparted
     ];
   };
 
