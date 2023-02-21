@@ -118,10 +118,13 @@
       nixpkgs-review
       nurl
       nix-init
-      partition-manager
-      gparted
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    partition-manager
+    gparted
+  ];
 
   programs = {
     dconf.enable = true;
