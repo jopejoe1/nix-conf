@@ -118,8 +118,6 @@
       nurl
       nix-init
       ark
-      gitkraken
-      prismlauncher
     ];
   };
 
