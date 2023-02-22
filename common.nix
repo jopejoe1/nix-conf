@@ -12,7 +12,7 @@
     platformTheme = lib.mkForce "kde";
   };
 
-  virtualisation.waydroid.enable = true;
+  #virtualisation.waydroid.enable = true;
 
   nix.settings = {
     substituters = [
@@ -42,15 +42,15 @@
       displayManager = {
         sddm = {
           enable = true;
-          enableHidpi = true;
+          #enableHidpi = true;
         };
         lightdm.extraConfig = "user-authority-in-system-dir = true";
       };
       desktopManager = {
         plasma5 = {
           enable = true;
-          supportDDC = true;
-          useQtScaling = true;
+          #supportDDC = true;
+          #useQtScaling = true;
         };
       };
     };
@@ -81,10 +81,6 @@
         enable = true;
         support32Bit = true;
       };
-    };
-    clamav = {
-      daemon.enable = true;
-      updater.enable = true;
     };
   };
 
@@ -135,7 +131,7 @@
     xwayland.enable = true;
   };
 
-  security.rtkit.enable = true;
+  #security.rtkit.enable = true;
 
   # Localization
   i18n = {

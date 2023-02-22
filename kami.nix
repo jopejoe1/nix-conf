@@ -26,7 +26,7 @@
   console.keyMap = "de";
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
+ # hardware.opengl.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
