@@ -80,5 +80,30 @@
         }
       ];
     };
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = attrs;
+      modules = [
+        ./kami.nix
+        ./common.nix
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.jopejoe1 = import ./home/jopejoe1.nix;
+            users.root = import ./home/root.nix;
+          };
+          nixpkgs = {
+            config.allowUnfree = true;
+            overlays = [
+              prismlauncher.overlay
+              nur.overlay
+            ];
+          };
+        }
+      ];
+    };
   };
 }
