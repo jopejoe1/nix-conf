@@ -28,9 +28,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, nixos-hardware, prismlauncher, home-manager, nur, ... }: {
+  outputs = { self, nixpkgs, nixos-hardware, prismlauncher, home-manager, nur, ... }@attrs: {
     nixosConfigurations.yokai = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
+      specialArgs = attrs;
       modules = [
         ./yokai.nix
         ./common.nix
@@ -48,6 +49,31 @@
             config.allowUnfree = true;
             overlays = [
               #prismlauncher.overlay
+              nur.overlay
+            ];
+          };
+        }
+      ];
+    };
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = attrs;
+      modules = [
+        ./oni.nix
+        ./common.nix
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.jopejoe1 = import ./home/jopejoe1.nix;
+            users.root = import ./home/root.nix;
+          };
+          nixpkgs = {
+            config.allowUnfree = true;
+            overlays = [
+              prismlauncher.overlay
               nur.overlay
             ];
           };

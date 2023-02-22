@@ -111,23 +111,31 @@
     extraGroups = [ "wheel" "networkmanger" "scanner" "lp"];
     packages = with pkgs; [
       kate
-      tela-icon-theme
       carla
       xdg-ninja
       prismlauncher
       nixpkgs-review
       nurl
       nix-init
+      discord
+      ark
+      gitkraken
+      prismlauncher
     ];
   };
 
   environment.systemPackages = with pkgs; [
     partition-manager
     gparted
+    tela-icon-theme
+    dracula-theme
   ];
 
   programs = {
     dconf.enable = true;
+    droidcam.enable = true;
+    sysdig.enable = true;
+    xwayland = true;
   };
 
   security.rtkit.enable = true;

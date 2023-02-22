@@ -110,7 +110,15 @@
         rb = "sudo git -C /etc/nixos pull && sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch && sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'Updated flake.lock' && sudo git -C /etc/nixos push";
       };
     };
-    zsh.shellAliases = config.programs.bash.shellAliases;
+    zsh = {
+      enable = true;
+      shellAliases = config.programs.bash.shellAliases;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      enableSyntaxHighlighting = true;
+      enableVteIntegration = true;
+      dotDir = ".config/zsh";
+    };
     fish.shellAbbrs = config.programs.bash.shellAliases;
     thunderbird = {
       enable = false;
