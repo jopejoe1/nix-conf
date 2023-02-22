@@ -135,7 +135,7 @@
     dconf.enable = true;
     droidcam.enable = true;
     sysdig.enable = true;
-    xwayland = true;
+    xwayland.enable = true;
   };
 
   security.rtkit.enable = true;
