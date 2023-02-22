@@ -117,7 +117,6 @@
       nixpkgs-review
       nurl
       nix-init
-      discord
       ark
       gitkraken
       prismlauncher
