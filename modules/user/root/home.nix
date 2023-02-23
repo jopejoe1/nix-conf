@@ -5,7 +5,7 @@
     # Basic information for home-manager
     username = "root";
     homeDirectory = "/${config.home.username}";
-    
+
     # Enviroment variables
     sessionVariables = {
       XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompos";

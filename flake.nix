@@ -1,109 +1,140 @@
 {
   inputs = {
+    # nixpkgs (Packges and modules)
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+
+    # Nix Hardware (Hardware configs)
     nixos-hardware.url = github:NixOS/nixos-hardware;
+
+    # NUR (User Packges)
     nur.url = github:nix-community/NUR;
-    flake-compat = { url = github:edolstra/flake-compat; flake = false; };
-    libnbtplusplus = { url = github:PrismLauncher/libnbtplusplus; flake = false; };
-    flake-utils.url = github:numtide/flake-utils;
+
+    # Home Manger (Dot files)
+    home-manager = {
+      url = github:nix-community/home-manager;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+    };
+
+    # Nix Darwin (Mac OS support)
+    nix-darwin = {
+      url = github:LnL7/nix-darwin;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Image generators
+    nixos-generators = {
+      url = github:nix-community/nixos-generators;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixlib.follows = "nixlib";
+    };
+
+    # PrismLauncher (git version of PrismLauncher)
     prismlauncher = {
       url = github:PrismLauncher/PrismLauncher;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
       inputs.libnbtplusplus.follows = "libnbtplusplus";
     };
-    home-manager = {
-      url = github:nix-community/home-manager;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
+    libnbtplusplus = {
+      url = github:PrismLauncher/libnbtplusplus;
+      flake = false;
     };
-    nix-darwin = {
-      url = github:LnL7/nix-darwin;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    # vscode extensions
     nix-vscode-extensions = {
       url = github:nix-community/nix-vscode-extensions;
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    snowfall-lib = {
+      url = github:snowfallorg/lib;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils-plus.follows = "flake-utils-plus";
+    };
+
+    snowfall-flake = {
+      url = github:snowfallorg/flake;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.unstable.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.snowfall-lib.follows = "snowfall-lib";
+    };
+
+    comma = {
+      url = github:nix-community/comma;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.utils.follows = "flake-utils";
+      inputs.naersk.follows = "naersk";
+    };
+
+    deploy-rs = {
+      url = github:serokell/deploy-rs;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.utils.follows = "flake-utils";
+    };
+
+    # Dependcies
+    flake-compat = {
+      url = github:edolstra/flake-compat;
+      flake = false;
+    };
+    flake-utils.url = github:numtide/flake-utils;
+    nixlib.url = github:nix-community/nixpkgs.lib;
+    naersk.url = github:nix-community/naersk;
+    flake-utils-plus = {
+      url = github:gytis-ivaskevicius/flake-utils-plus;
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
   };
-  outputs = { self, nixpkgs, nixos-hardware, prismlauncher, home-manager, nur, ... }@attrs: {
-    nixosConfigurations.yokai = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = attrs;
-      modules = [
-        ./yokai.nix
-        ./common.nix
+
+  outputs = inputs:
+    let
+      lib = inputs.snowfall-lib.mkLib {
+        inherit inputs;
+        src = ./.;
+      };
+    in
+    lib.mkFlake {
+      package-namespace = "custom";
+
+      channels-config.allowUnfree = true;
+
+      overlays = with inputs; [
+        nur.overlay
+        snowfall-flake.overlay
+        prismlauncher.overlay
+      ];
+
+      systems.modules = with inputs; [
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
+          system.stateVersion = "23.05";
+        }
+
+      ];
+
+      systems.hosts.yokai.modules = with inputs; [
         nixos-hardware.nixosModules.pine64-pinebook-pro
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.jopejoe1 = import ./home/jopejoe1.nix;
-            users.root = import ./home/root.nix;
-          };
-          nixpkgs = {
-            config.allowUnfree = true;
-            overlays = [
-              #prismlauncher.overlay
-              nur.overlay
-            ];
-          };
-        }
       ];
+
+      deploy = lib.mkDeploy { inherit (inputs)  self; };
+
+      checks =
+        builtins.mapAttrs
+          (system: deploy-lib:
+            deploy-lib.deployChecks inputs.self.deploy)
+          inputs.deploy-rs.lib;
     };
-    nixosConfigurations.oni = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = attrs;
-      modules = [
-        ./oni.nix
-        ./common.nix
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.jopejoe1 = import ./home/jopejoe1.nix;
-            users.root = import ./home/root.nix;
-          };
-          nixpkgs = {
-            config.allowUnfree = true;
-            overlays = [
-              prismlauncher.overlay
-              nur.overlay
-            ];
-          };
-        }
-      ];
-    };
-    nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = attrs;
-      modules = [
-        ./kami.nix
-        ./common.nix
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.jopejoe1 = import ./home/jopejoe1.nix;
-            users.root = import ./home/root.nix;
-          };
-          nixpkgs = {
-            config.allowUnfree = true;
-            overlays = [
-              prismlauncher.overlay
-              nur.overlay
-            ];
-          };
-        }
-      ];
-    };
-  };
 }
