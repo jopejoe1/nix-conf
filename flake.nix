@@ -79,6 +79,13 @@
       inputs.utils.follows = "flake-utils";
     };
 
+    peerix = {
+      url = github:cid-chan/peerix;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     # Dependcies
     flake-compat = {
       url = github:edolstra/flake-compat;
@@ -115,12 +122,20 @@
       systems.modules = with inputs; [
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
+        peerix.nixosModules.peerix
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
           };
           system.stateVersion = "23.05";
+          services.peerix = {
+            enable = true;
+            openFirewall = true;
+            privateKeyFile = ./peerix-private;
+            publicKeyFile =  ./peerix-public;
+            publicKey = "peerix-kami:4DwMEXpwqOWq+fj8gF435FbYGzMkKoMQAUk/0OX0Y0g=";
+          };
         }
 
       ];
