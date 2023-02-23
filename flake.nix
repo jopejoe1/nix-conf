@@ -134,7 +134,7 @@
             package = peerix.packages.x86_64-linux.peerix;
             openFirewall = true;
             privateKeyFile = ./peerix-private;
-            publicKeyFile =  ./peerix-public;
+            #publicKeyFile =  ./peerix-public;
             publicKey = "peerix-kami:4DwMEXpwqOWq+fj8gF435FbYGzMkKoMQAUk/0OX0Y0g=";
           };
         }
