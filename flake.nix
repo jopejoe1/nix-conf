@@ -131,6 +131,7 @@
           system.stateVersion = "23.05";
           services.peerix = {
             enable = true;
+            package = peerix.packages.x86_64-linux.peerix;
             openFirewall = true;
             privateKeyFile = ./peerix-private;
             publicKeyFile =  ./peerix-public;
