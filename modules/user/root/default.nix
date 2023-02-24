@@ -12,6 +12,6 @@ in
   config = mkIf cfg.enable {
 
     home-manager.users.root = import ./home.nix;
-    home-manager.users.root.home.stateVersion = config.system.stateVersion;
+    home-manager.users.root.home.stateVersion = mkForce config.system.stateVersion;
   };
 }
