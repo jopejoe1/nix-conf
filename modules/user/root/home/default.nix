@@ -2,8 +2,9 @@
 
 with lib;
 #with lib.internal;
-let cfg = config.custom.user.root.home;
-let hcfg = config.home-manager.users.root;
+let
+  cfg = config.custom.user.root.home;
+  hcfg = config.home-manager.users.root;
 in
 {
   options.custom.user.root.home = with types; {
