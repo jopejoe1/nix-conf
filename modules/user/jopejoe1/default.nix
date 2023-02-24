@@ -14,6 +14,7 @@ in
       isNormalUser = true;
       description = "jopejoe1 🚫";
       initialPassword = "password";
+      openssh.authorizedKeys.keys = [];
       extraGroups = [ "wheel"]
         ++ lib.optionals config.custom.hardware.printing.enable [ "scanner" "lp"]
         ++ lib.optional config.networking.networkmanager.enable "networkmanger";

@@ -12,6 +12,7 @@ with lib;
   custom.system.fonts.enable = true;
   custom.system.locale.enable = true;
   custom.system.locale.layout = "de";
+  custom.system.ssh.enable = true;
   custom.nix.enable = true;
   custom.hardware.audio.enable = true;
   custom.hardware.printing.enable = true;

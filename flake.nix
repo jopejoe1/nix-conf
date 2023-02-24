@@ -86,6 +86,12 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    agenix = {
+      url = github:ryantm/agenix;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "nix-darwin";
+    };
+
     # Dependcies
     flake-compat = {
       url = github:edolstra/flake-compat;
@@ -123,6 +129,7 @@
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
         peerix.nixosModules.peerix
+        agenix.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -130,10 +137,10 @@
           };
           system.stateVersion = "23.05";
           services.peerix = {
-            enable = true;
+            #enable = true;
             package = peerix.packages.x86_64-linux.peerix;
             openFirewall = true;
-            privateKeyFile = ./peerix-private;
+            #privateKeyFile = ./peerix-private;
             #publicKeyFile =  ./peerix-public;
             publicKey = "peerix-kami:4DwMEXpwqOWq+fj8gF435FbYGzMkKoMQAUk/0OX0Y0g=";
           };

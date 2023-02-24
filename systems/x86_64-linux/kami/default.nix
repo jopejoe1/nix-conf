@@ -12,6 +12,7 @@ with lib;
   custom.system.fonts.enable = true;
   custom.system.locale.enable = true;
   custom.system.locale.layout = "de";
+  custom.system.ssh.enable = true;
   custom.nix.enable = true;
   custom.hardware.audio.enable = true;
   custom.hardware.printing.enable = true;
@@ -26,7 +27,7 @@ with lib;
 
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  boot.kernelParams = [ "module_blacklist=i915" ];
+  #boot.kernelParams = [ "module_blacklist=i915" ];
 
   programs = {
     dconf.enable = true;
