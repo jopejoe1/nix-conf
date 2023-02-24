@@ -6,15 +6,15 @@ in
 {
   imports = with nixos-hardware.nixosModules; [
     (modulesPath + "/installer/scan/not-detected.nix")
-    common-cpu-intel
+    #common-cpu-intel
     #common-gpu-nvidia
-    common-pc
-    common-pc-ssd
+    #common-pc
+    #common-pc-ssd
   ];
 
-  hardware.nvidia.prime = {
-    offload.enable = false;
-    sync.enable = false;
+  #hardware.nvidia.prime = {
+   # offload.enable = false;
+    #sync.enable = false;
 
     # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
     #intelBusId = "PCI:0:2:0";
@@ -24,7 +24,7 @@ in
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_5_10;
+    #kernelPackages = pkgs.linuxPackages_5_10;
 
     initrd = {
       # kernelModules = [ "amdgpu" ];
@@ -66,5 +66,5 @@ in
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.bluetooth.enable = false;
+  #hardware.bluetooth.enable = false;
 }
