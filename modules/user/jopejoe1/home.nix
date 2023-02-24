@@ -11,6 +11,8 @@
       XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompos";
       XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
     };
+
+    stateVersion = config.system.stateVersion;
   };
 
   accounts.email.accounts = {
