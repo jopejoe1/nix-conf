@@ -10,21 +10,16 @@ in
   };
 
   config = mkIf cfg.enable {
-    custom.user.jopejoe1.home.enable = true;
+    #custom.user.jopejoe1.home.enable = true;
     users.users.jopejoe1 = {
       isNormalUser = true;
-      description = "jopejoe1 🚫";
-      initialPassword = "password";
-      openssh.authorizedKeys.keys = [];
+      description = "jopejoe1";
+      #initialPassword = "password"; 🚫
+      #openssh.authorizedKeys.keys = [];
       extraGroups = [ "wheel"]
         ++ lib.optionals config.custom.hardware.printing.enable [ "scanner" "lp"]
         ++ lib.optional config.networking.networkmanager.enable "networkmanger";
-      packages = with pkgs; [
-        kate
-        carla
-        xdg-ninja
-        ark
-      ];
+      packages = with pkgs; [ ];
     };
   };
 }
