@@ -134,19 +134,11 @@
         peerix.nixosModules.peerix
         agenix.nixosModules.default
         {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-          };
+          #home-manager = {
+           # useGlobalPkgs = true;
+           # useUserPackages = true;
+          #};
           system.stateVersion = "22.11";
-          services.peerix = {
-            #enable = true;
-            package = peerix.packages.x86_64-linux.peerix;
-            openFirewall = true;
-            #privateKeyFile = ./peerix-private;
-            #publicKeyFile =  ./peerix-public;
-            publicKey = "peerix-kami:4DwMEXpwqOWq+fj8gF435FbYGzMkKoMQAUk/0OX0Y0g=";
-          };
         }
 
       ];
