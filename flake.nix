@@ -99,7 +99,10 @@
     };
     flake-utils.url = github:numtide/flake-utils;
     nixlib.url = github:nix-community/nixpkgs.lib;
-    naersk.url = github:nix-community/naersk;
+    naersk.url = {
+      url = github:nix-community/naersk;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils-plus = {
       url = github:gytis-ivaskevicius/flake-utils-plus;
       inputs.flake-utils.follows = "flake-utils";
@@ -135,7 +138,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
           };
-          system.stateVersion = "23.05";
+          system.stateVersion = "22.11";
           services.peerix = {
             #enable = true;
             package = peerix.packages.x86_64-linux.peerix;

@@ -22,11 +22,11 @@ in
         kate
         carla
         xdg-ninja
-        prismlauncher
         ark
       ];
     };
 
     home-manager.users.jopejoe1 = import ./home.nix;
+    home-manager.users.jopejoe1.home.stateVersion = config.system.stateVersion;
   };
 }

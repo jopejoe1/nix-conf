@@ -27,7 +27,7 @@ with lib;
 
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  #boot.kernelParams = [ "module_blacklist=i915" ];
+  boot.kernelParams = [ "module_blacklist=i915" ];
 
   programs = {
     dconf.enable = true;
