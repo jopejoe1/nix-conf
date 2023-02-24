@@ -32,8 +32,8 @@ with lib;
   programs = {
     dconf.enable = true;
     droidcam.enable = true;
-    sysdig.enable = true;
-    xwayland.enable = true;
+    #sysdig.enable = true;
+    #xwayland.enable = true;
   };
 
 }
