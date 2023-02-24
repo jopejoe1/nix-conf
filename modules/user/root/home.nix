@@ -1,58 +1,62 @@
 { config, pkgs, ... }:
 
+let cfg = config.home-manager.users.root;
+in
 {
-  home = {
-    # Basic information for home-manager
-    username = "root";
-    homeDirectory = "/${config.home.username}";
+  home-manager.users.root = {
+    home = {
+      # Basic information for home-manager
+      username = "root";
+      homeDirectory = "/${cfg.home.username}";
 
-    # Enviroment variables
-    sessionVariables = {
-      XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompos";
-      XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+      # Enviroment variables
+      sessionVariables = {
+        XCOMPOSECACHE = "${cfg.xdg.cacheHome}/X11/xcompos";
+        XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+      };
+
+      stateVersion = config.system.stateVersion;
     };
 
-    stateVersion = config.system.stateVersion;
-  };
-
-  xdg = {
-    enable = true;
-    mime.enable = true;
-    cacheHome = "${config.home.homeDirectory}/.cache";
-    configHome = "${config.home.homeDirectory}/.config";
-    dataHome = "${config.home.homeDirectory}/.local/share";
-    stateHome = "${config.home.homeDirectory}/.local/state";
-    userDirs = {
+    xdg = {
       enable = true;
-      createDirectories = false;
-      desktop = "${config.home.homeDirectory}/Desktop";
-      documents = "${config.home.homeDirectory}/Documents";
-      download = "${config.home.homeDirectory}/Downloads";
-      music = "${config.home.homeDirectory}/Music";
-      pictures = "${config.home.homeDirectory}/Pictures";
-      publicShare = "${config.home.homeDirectory}/Public";
-      templates = "${config.home.homeDirectory}/Templates";
-      videos = "${config.home.homeDirectory}/Videos";
-    };
-  };
-
-  programs = {
-    home-manager.enable = true;
-    git = {
-      enable = true;
-      package = pkgs.gitAndTools.gitFull;
-      userEmail = "johannes@joens.email";
-      userName = "jopejoe1";
-    };
-    bash = {
-      enable = true;
-      historyFile = "${config.xdg.stateHome}/bash/history";
-      shellAliases = {
-        gc = "sudo nix store gc";
-        rb = "sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch";
+      mime.enable = true;
+      cacheHome = "${cfg.home.homeDirectory}/.cache";
+      configHome = "${cfg.home.homeDirectory}/.config";
+      dataHome = "${cfg.home.homeDirectory}/.local/share";
+      stateHome = "${cfg.home.homeDirectory}/.local/state";
+      userDirs = {
+        enable = true;
+        createDirectories = false;
+        desktop = "${cfg.home.homeDirectory}/Desktop";
+        documents = "${cfg.home.homeDirectory}/Documents";
+        download = "${cfg.home.homeDirectory}/Downloads";
+        music = "${cfg.home.homeDirectory}/Music";
+        pictures = "${cfg.home.homeDirectory}/Pictures";
+        publicShare = "${cfg.home.homeDirectory}/Public";
+        templates = "${cfg.home.homeDirectory}/Templates";
+        videos = "${cfg.home.homeDirectory}/Videos";
       };
     };
-    zsh.shellAliases = config.programs.bash.shellAliases;
-    fish.shellAbbrs = config.programs.bash.shellAliases;
+
+    programs = {
+      home-manager.enable = true;
+      git = {
+        enable = true;
+        package = pkgs.gitAndTools.gitFull;
+        userEmail = "johannes@joens.email";
+        userName = "jopejoe1";
+      };
+      bash = {
+        enable = true;
+        historyFile = "${cfg.xdg.stateHome}/bash/history";
+        shellAliases = {
+          gc = "sudo nix store gc";
+          rb = "sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch";
+        };
+      };
+      zsh.shellAliases = cfg.programs.bash.shellAliases;
+      fish.shellAbbrs = cfg.programs.bash.shellAliases;
+    };
   };
 }

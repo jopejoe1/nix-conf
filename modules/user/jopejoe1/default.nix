@@ -10,6 +10,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    imports = [ ./home.nix ];
     users.users.jopejoe1 = {
       isNormalUser = true;
       description = "jopejoe1 🚫";
@@ -25,7 +26,5 @@ in
         ark
       ];
     };
-
-    home-manager.users.jopejoe1 = import ./home.nix;
   };
 }

@@ -10,7 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-
-    home-manager.users.root = import ./home.nix;
+    imports = [ ./home.nix ];
   };
 }
