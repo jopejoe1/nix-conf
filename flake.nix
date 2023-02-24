@@ -99,7 +99,7 @@
     };
     flake-utils.url = github:numtide/flake-utils;
     nixlib.url = github:nix-community/nixpkgs.lib;
-    naersk.url = {
+    naersk = {
       url = github:nix-community/naersk;
       inputs.nixpkgs.follows = "nixpkgs";
     };
