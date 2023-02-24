@@ -10,7 +10,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    imports = [ ./home.nix ];
+    custom.user.jopejoe1.home.enable = true;
     users.users.jopejoe1 = {
       isNormalUser = true;
       description = "jopejoe1 🚫";

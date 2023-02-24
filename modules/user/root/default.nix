@@ -10,6 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    imports = [ ./home.nix ];
+    custom.user.root.home.enable = true;
   };
 }
