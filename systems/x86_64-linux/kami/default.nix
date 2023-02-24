@@ -90,16 +90,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  users.users.jopejoe1 = {
-    isNormalUser = true;
-    description = "jopejoe1";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      kate
-    #  thunderbird
-    ];
-  };
+  custom.user.jopejoe1.enable =true;
+  custom.user.root.enable =true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.alice = {
   #   isNormalUser = true;
