@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "agenix": {
+      "inputs": {
+        "darwin": [
+          "nix-darwin"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1677126346,
+        "narHash": "sha256-4s+PPGC1M07QsPyeye5drc2JLa1lhDnCV3XAsG8+pH4=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "c2a71c83c70844c5e31db69347e86af080bcdad0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
     "comma": {
       "inputs": {
         "flake-compat": [
@@ -196,11 +219,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677137556,
-        "narHash": "sha256-LfgfbQIUpET69m1uOtATFciFriqSHBsxK50cYhyeXJA=",
+        "lastModified": 1677201531,
+        "narHash": "sha256-bu+etla1vZVi9mS8RocD4Ad8hlhkOsjA0U0BfEtOg78=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "510cb7f147822f18d457b41a7228888662f1e241",
+        "rev": "60e1cedd2b5e2b356016813fa751216595fce5ea",
         "type": "github"
       },
       "original": {
@@ -249,11 +272,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1676924492,
-        "narHash": "sha256-78278eyP55JRFe7UCpmFwdkrTY6H2arzTpVeteWo8kM=",
+        "lastModified": 1677232326,
+        "narHash": "sha256-rAk2/80kLvA3yIMmSV86T1B4kNvwCFMSQ1FxXndaUB0=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "d24ea777c57b69c6b143cf11d83184ef71b0dbbf",
+        "rev": "2d44015779cced4eec9df5b8dab238b9f6312cb2",
         "type": "github"
       },
       "original": {
@@ -264,12 +287,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1677080879,
-        "narHash": "sha256-0SjW4/d3Rkw6C7hHZ5lxT4r6Pw9vzQb6Il6zYWwe2Bo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "f5dad40450d272a1ea2413f4a67ac08760649e89",
-        "type": "github"
+        "lastModified": 1677063315,
+        "narHash": "sha256-qiB4ajTeAOVnVSAwCNEEkoybrAlA+cpeiBxLobHndE8=",
+        "path": "/nix/store/369wr4laqdqzh5brq1g7nfc1pbfh23sn-source",
+        "rev": "988cc958c57ce4350ec248d2d53087777f9e1949",
+        "type": "path"
       },
       "original": {
         "id": "nixpkgs",
@@ -294,16 +316,42 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1677176757,
-        "narHash": "sha256-SI8HDetH2sv6vdms9HMRg/yEQJLE37uYgkknIgK72yE=",
+        "lastModified": 1677243766,
+        "narHash": "sha256-a+2V68cLjb951pYBEGbQGEVBcgti40uWtxTVnzvGFhY=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "bd4f702e7c10e2d9c8c5fc839e8f120b54fac07f",
+        "rev": "9bde3171aeb5954b7955fcb09b231f53caf76b54",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "peerix": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1661429880,
+        "narHash": "sha256-7/m468XZW82O7KhDtRdQ7RnPsh83+tA8N4U0FncFo1U=",
+        "owner": "cid-chan",
+        "repo": "peerix",
+        "rev": "32cd1b098b83c90726848bd6726f74e72c557abb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cid-chan",
+        "repo": "peerix",
         "type": "github"
       }
     },
@@ -335,6 +383,7 @@
     },
     "root": {
       "inputs": {
+        "agenix": "agenix",
         "comma": "comma",
         "deploy-rs": "deploy-rs",
         "flake-compat": "flake-compat",
@@ -350,6 +399,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
+        "peerix": "peerix",
         "prismlauncher": "prismlauncher",
         "snowfall-flake": "snowfall-flake",
         "snowfall-lib": "snowfall-lib"
