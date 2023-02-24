@@ -17,10 +17,10 @@ in
     sync.enable = false;
 
     # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
+    #intelBusId = "PCI:0:2:0";
 
     # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:1:0:0";
+    #nvidiaBusId = "PCI:1:0:0";
   };
 
   boot = {
@@ -54,8 +54,8 @@ in
   swapDevices = [ ];
 
   # @NOTE(jakehamilton): NetworkManager will handle DHCP.
-  networking.interfaces.enp6s0.useDHCP = false;
-  networking.interfaces.wlo1.useDHCP = false;
+  networking.interfaces.enp6s0.useDHCP = true;
+  networking.interfaces.wlo1.useDHCP = true;
 
   hardware.enableRedistributableFirmware = true;
 
@@ -66,5 +66,5 @@ in
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = false;
 }
