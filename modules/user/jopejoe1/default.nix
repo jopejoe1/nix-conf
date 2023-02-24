@@ -27,6 +27,5 @@ in
     };
 
     home-manager.users.jopejoe1 = import ./home.nix;
-    home-manager.users.jopejoe1.home.stateVersion = mkForce config.system.stateVersion;
   };
 }
