@@ -59,10 +59,7 @@ in
         bash = {
           enable = true;
           historyFile = "${hcfg.xdg.stateHome}/bash/history";
-          shellAliases = {
-            gc = "sudo nix store gc";
-            rb = "sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch";
-          };
+          rb = "sudo git -C /etc/nixos pull && sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch && sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'Updated flake.lock' && sudo git -C /etc/nixos push";
         };
         zsh.shellAliases = hcfg.programs.bash.shellAliases;
         fish.shellAbbrs = hcfg.programs.bash.shellAliases;
