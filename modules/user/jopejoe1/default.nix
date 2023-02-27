@@ -19,7 +19,7 @@ in
       extraGroups = [ "wheel"]
         ++ lib.optionals config.custom.hardware.printing.enable [ "scanner" "lp"]
         ++ lib.optional config.networking.networkmanager.enable "networkmanger";
-      packages = with pkgs; [ ];
+      packages = with pkgs; [ git kate];
     };
   };
 }
