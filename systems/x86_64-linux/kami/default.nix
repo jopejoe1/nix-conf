@@ -12,7 +12,7 @@
 
   networking.hostName = "kami";
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = [ "ntfs" "zfs" "btrfs" ];
 
   networking.networkmanager.enable = true;
 
