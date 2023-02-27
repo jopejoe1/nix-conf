@@ -12,6 +12,8 @@
 
   networking.hostName = "kami";
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
