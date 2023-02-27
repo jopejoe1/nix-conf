@@ -59,6 +59,13 @@ in
         };
       };
       programs = {
+        home-manager.enable = true;
+        git = {
+          enable = true;
+          package = pkgs.gitAndTools.gitFull;
+          userEmail = "johannes@joens.email";
+          userName = "jopejoe1";
+        };
         firefox = {
           enable = true;
           package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
@@ -173,13 +180,6 @@ in
                 "pdfjs.annotationmode" = 2;
               };
             };
-          };
-        };
-        bash = {
-          enable = true;
-          shellAliases = {
-            gc = "sudo nix store gc";
-            rb = "sudo git -C /etc/nixos pull && sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch && sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'Updated flake.lock' && sudo git -C /etc/nixos push";
           };
         };
       };
