@@ -11,6 +11,7 @@
     ];
 
   networking.hostName = "kami";
+  networking.hostId = "16c22faf";
 
   boot.supportedFilesystems = [ "ntfs" "zfs" "btrfs" ];
 
