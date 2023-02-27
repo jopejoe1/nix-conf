@@ -52,5 +52,6 @@
   programs.dconf.enable = true;
   custom.system.locale.enable = true;
   custom.system.locale.layout = "de";
+  custom.nix.enable = true;
 }
 
