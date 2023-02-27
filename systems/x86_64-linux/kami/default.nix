@@ -20,11 +20,6 @@
 
   time.timeZone = "Europe/Berlin";
 
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -53,5 +48,6 @@
   custom.system.locale.enable = true;
   custom.system.locale.layout = "de";
   custom.nix.enable = true;
+  custom.desktop.plasma.enable = true;
 }
 
