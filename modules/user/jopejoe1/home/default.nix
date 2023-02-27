@@ -59,39 +59,6 @@ in
         };
       };
       programs = {
-        #home-manager.enable = true;
-        git = {
-          enable = true;
-          package = pkgs.gitAndTools.gitFull;
-          userEmail = "johannes@joens.email";
-          userName = "jopejoe1";
-        };
-        bash = {
-          enable = true;
-          historyFile = "${hcfg.xdg.stateHome}/bash/history";
-          shellAliases = {
-            gc = "sudo nix store gc";
-            rb = "sudo git -C /etc/nixos pull && sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch && sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'Updated flake.lock' && sudo git -C /etc/nixos push";
-          };
-        };
-        zsh = {
-          enable = true;
-          shellAliases = hcfg.programs.bash.shellAliases;
-          enableAutosuggestions = true;
-          enableCompletion = true;
-          enableSyntaxHighlighting = true;
-          enableVteIntegration = true;
-          dotDir = ".config/zsh";
-        };
-        fish.shellAbbrs = hcfg.programs.bash.shellAliases;
-        thunderbird = {
-          enable = false;
-          profiles = {
-            default = {
-              isDefault = true;
-            };
-          };
-        };
         firefox = {
           enable = true;
           package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
