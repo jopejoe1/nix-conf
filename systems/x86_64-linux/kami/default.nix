@@ -19,30 +19,11 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_NZ.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-  };
-
-  console = {
-    keyMap = "de";
-  };
 
   services.xserver.enable = true;
 
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-
-  services.xserver.layout = "de";
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -69,5 +50,7 @@
   custom.user.jopejoe1.enable =true;
   custom.user.root.enable =true;
   programs.dconf.enable = true;
+  custom.system.locale.enable = true;
+  custom.system.locale.layout = "de";
 }
 
