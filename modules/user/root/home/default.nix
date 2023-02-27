@@ -60,8 +60,8 @@ in
           enable = true;
           historyFile = "${hcfg.xdg.stateHome}/bash/history";
           shellAliases = {
-            gc = "sudo nix store gc";
-            rb = "sudo git -C /etc/nixos pull && sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch && sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'Updated flake.lock' && sudo git -C /etc/nixos push";
+            gc = "nix store gc";
+            rb = "git -C /etc/nixos pull && nix flake update /etc/nixos/ && nixos-rebuild switch && git -C /etc/nixos add . && git -C /etc/nixos commit -m 'Updated flake.lock' && git -C /etc/nixos push";
           };
         };
         zsh.shellAliases = hcfg.programs.bash.shellAliases;
