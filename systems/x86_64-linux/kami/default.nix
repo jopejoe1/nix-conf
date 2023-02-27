@@ -21,7 +21,7 @@
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  boot.kernelParams = [ "module_blacklist=i915" ];
+  #boot.kernelParams = [ "module_blacklist=i915" ];
 
   environment.systemPackages = with pkgs; [
     git
