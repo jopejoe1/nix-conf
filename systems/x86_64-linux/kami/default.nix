@@ -10,25 +10,11 @@
       ./hardware.nix
     ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   networking.hostName = "kami";
 
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
@@ -49,5 +35,10 @@
   custom.system.locale.layout = "de";
   custom.nix.enable = true;
   custom.desktop.plasma.enable = true;
+  custom.system.boot.uefi.enable = true;
+  custom.system.xdg.enable = true;
+  custom.system.fonts.enable = true;
+  custom.hardware.audio.enable = true;
+  custom.hardware.printing.enable = true;
 }
 
