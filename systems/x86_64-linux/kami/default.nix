@@ -27,10 +27,16 @@
     git
   ];
 
+  programs = {
+    dconf.enable = true;
+    droidcam.enable = true;
+    sysdig.enable = true;
+    xwayland.enable = true;
+  };
+
   # Migrated Stuff
   custom.user.jopejoe1.enable =true;
   custom.user.root.enable =true;
-  programs.dconf.enable = true;
   custom.system.locale.enable = true;
   custom.system.locale.layout = "de";
   custom.nix.enable = true;
