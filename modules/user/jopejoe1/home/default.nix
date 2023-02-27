@@ -58,6 +58,157 @@ in
           videos = "${hcfg.home.homeDirectory}/Videos";
         };
       };
+      programs = {
+        #home-manager.enable = true;
+        git = {
+          enable = true;
+          package = pkgs.gitAndTools.gitFull;
+          userEmail = "johannes@joens.email";
+          userName = "jopejoe1";
+        };
+        bash = {
+          enable = true;
+          historyFile = "${hcfg.xdg.stateHome}/bash/history";
+          shellAliases = {
+            gc = "sudo nix store gc";
+            rb = "sudo git -C /etc/nixos pull && sudo nix flake update /etc/nixos/ && sudo nixos-rebuild switch && sudo git -C /etc/nixos add . && sudo git -C /etc/nixos commit -m 'Updated flake.lock' && sudo git -C /etc/nixos push";
+          };
+        };
+        zsh = {
+          enable = true;
+          shellAliases = hcfg.programs.bash.shellAliases;
+          enableAutosuggestions = true;
+          enableCompletion = true;
+          enableSyntaxHighlighting = true;
+          enableVteIntegration = true;
+          dotDir = ".config/zsh";
+        };
+        fish.shellAbbrs = hcfg.programs.bash.shellAliases;
+        thunderbird = {
+          enable = false;
+          profiles = {
+            default = {
+              isDefault = true;
+            };
+          };
+        };
+        firefox = {
+          enable = true;
+          package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+            extraPolicies = {
+              AppAutoUpdate = false;
+              BackgroundAppUpdate = false;
+              DisableAppUpdate = true;
+              CaptivePortal = false;
+              DisableFirefoxStudies = true;
+              DisablePocket = true;
+              DisableTelemetry = true;
+              DisableFirefoxAccounts = true;
+              DisableFormHistory = true;
+              DefaultDownloadDirectory = "${hcfg.xdg.userDirs.download}";
+              DontCheckDefaultBrowser = true;
+              ExtensionUpdate = false;
+              NoDefaultBookmarks = true;
+              PasswordManagerEnabled = false;
+              OfferToSaveLogins = false;
+              OfferToSaveLoginsDefault = false;
+              EnableTrackingProtection = {
+                Value = true;
+                Cryptomining = true;
+                Fingerprinting = true;
+              };
+              FirefoxHome = {
+                Search = true;
+                Pocket = false;
+                SponsoredPocket = false;
+                Snippets = false;
+                TopSites = true;
+                SponsoredTopSites = false;
+                Highlights = false;
+              };
+              UserMessaging = {
+                ExtensionRecommendations = false;
+                SkipOnboarding = true;
+              };
+            };
+          };
+          profiles = {
+            default = {
+              extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+                ublock-origin
+                privacy-badger
+                bitwarden
+                clearurls
+                decentraleyes
+                duckduckgo-privacy-essentials
+                ghostery
+                libredirect
+                privacy-badger
+                languagetool
+                fastforward
+                return-youtube-dislikes
+                sponsorblock
+                augmented-steam
+                steam-database
+                refined-github
+                plasma-integration
+                #bypass-paywalls-clean
+                lovely-forks
+                search-by-image
+                skip-redirect
+                terms-of-service-didnt-read
+                unpaywall
+                wappalyzer
+                wayback-machine
+                modrinthify
+              ];
+              id = 0;
+              isDefault = true;
+              name = "default";
+              search = {
+                default = "DuckDuckGo";
+                force = true;
+                engines = {
+                  "Nix Packages" = {
+                    urls = [{
+                      template = "https://search.nixos.org/packages";
+                      params = [
+                        { name = "type"; value = "packages"; }
+                        { name = "query"; value = "{searchTerms}"; }
+                      ];
+                    }];
+                    icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                    definedAliases = [ "@np" ];
+                  };
+                  "NixOS Wiki" = {
+                    urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+                    icon = "${hcfg.programs.firefox.profiles.default.search.engines."Nix Packages".icon}";
+                    definedAliases = [ "@nw" ];
+                  };
+                  "Bing".metaData.hidden = true;
+                  "Google".metaData.hidden = true;
+                  "eBay".metaData.hidden = true;
+                  "Amazon.de".metaData.hidden = true;
+                  "Wikipedia (en)".metaData.alias = "@wiki";
+                };
+              };
+              settings = {
+                "privacy.resistFingerprinting" = true;
+                "privacy.trackingprotection.fingerprinting.enabled" = true;
+                "privacy.trackingprotection.cryptomining.enabled" = true;
+                "dom.event.clipboardevents.enabled" = false;
+                "dom.battery.enabled" = false;
+                "browser.safebrowsing.phishing.enabled" = false;
+                "browser.safebrowsing.malware.enabled" = false;
+                "browser.zoom.siteSpecific" = true;
+                "config.trim_on_minimize" = true;
+                "pdfjs.annotationEditorMode" = 0;
+                "pdfjs.annotationmode" = 2;
+              };
+            };
+          };
+        };
+      };
     };
   };
 }
