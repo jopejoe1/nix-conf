@@ -29,6 +29,7 @@
   environment.systemPackages = with pkgs; [
     git
     prismlauncher
+    libsForQt5.discover
   ];
 
   services.hardware.openrgb.enable = true;
