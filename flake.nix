@@ -109,11 +109,128 @@
     };
 
     # Nix registery
-    agda.url = github:agda/agda;
-    arion.url = github:hercules-ci/arion;
-    blender-bin.url = github:edolstra/nix-warez?dir=blender;
-    composable.url = github:ComposableFi/composable;
-    dreampkgs.url = github:nix-community/dreampkgs;
+    agda = {
+      url = github:agda/agda;
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    arion = {
+      url = github:hercules-ci/arion;
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.haskell-flake.follows = "haskell-flake";
+    };
+    haskell-flake.url = github:srid/haskell-flake;
+    blender-bin = {
+      url = github:edolstra/nix-warez?dir=blender;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    composable = {
+      url = github:ComposableFi/composable;
+      inputs.arion-src.follows = "arion";
+      inputs.bundlers.follows = "bundlers";
+      inputs.crane.follows = "crane";
+      inputs.devenv.follows = "devenv";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.helix.follows = "helix";
+      inputs.nix-std.follows = "nix-std";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-working-nixops.follows = "nixpkgs";
+      inputs.npm-buildpackage.follows = "npm-buildpackage";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+    crane = {
+      url = github:ipetkov/crane;
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+    rust-overlay = {
+      url = github:oxalica/rust-overlay;
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    devenv = {
+      url = github:cachix/devenv;
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.nix.follows = "nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+    };
+    pre-commit-hooks = {
+      url = github:cachix/pre-commit-hooks.nix;
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.gitignore.follows = "gitignore";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
+    gitignore = {
+      url = github:hercules-ci/gitignore.nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    npm-buildpackage = {
+      url = github:serokell/nix-npm-buildpackage;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-std.url = github:chessai/nix-std;
+    dreampkgs = {
+      url = github:nix-community/dreampkgs;
+      inputs.dream2nix.follows = "dream2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.src_amber.follows = "amber";
+      inputs.src_eureka.follows = "eureka";
+      inputs.src_httpie.follows = "httpie";
+      inputs.src_labelme.follows = "labelme";
+      inputs.src_mattermost-desktop.follows = "mattermost-desktop";
+      inputs.src_mattermost-webapp.follows = "mattermost-webapp";
+    };
+    amber = {
+      url = github:dalance/amber;
+      flake = false;
+    };
+    eureka = {
+      url = github:simeg/eureka;
+      flake = false;
+    };
+    httpie = {
+      url = github:httpie/httpie;
+      flake = false;
+    };
+    labelme = {
+      url = github:wkentaro/labelme;
+      flake = false;
+    };
+    mattermost-desktop = {
+      url = github:mattermost/desktop;
+      flake = false;
+    };
+    mattermost-webapp = {
+      url = github:mattermost/mattermost-webapp;
+      flake = false;
+    };
+    dream2nix = {
+      url = github:nix-community/dream2nix;
+      inputs.alejandra.follows = "alejandra";
+      inputs.crane.follows = "crane";
+      inputs.devshell.follows = "devshell";
+      inputs.flake-utils-pre-commit.follows = "flake-utils";
+      inputs.gomod2nix.follows = "gomod2nix";
+      inputs.mach-nix.follows = "mach-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.node2nix.follows = "node2nix";
+      inputs.poetry2nix.follows = "poetry2nix";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+    };
+    alejandra = {
+      url = github:kamadorueda/alejandra;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flakeCompat.follows = "flake-compat";
+    };
+    devshell.url = github:numtide/devshell;
+    gomod2nix.url = github:tweag/gomod2nix;
+    node2nix.url = github:svanderburg/node2nix;
     dwarffs.url = github:edolstra/dwarffs;
     emacs-overlay.url = github:nix-community/emacs-overlay;
     fenix.url = github:nix-community/fenix;
@@ -133,7 +250,21 @@
     poetry2nix.url = github:nix-community/poetry2nix;
     nix-serve.url = github:edolstra/nix-serve;
     nickel.url = github:tweag/nickel;
-    bundlers.url = github:NixOS/bundlers;
+    bundlers = {
+      url = github:NixOS/bundlers;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-bundle.follows = "nix-bundle";
+      inputs.nix-utils.follows = "nix-utils";
+    };
+    nix-bundle = {
+      url = github:matthewbauer/nix-bundle;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-utils = {
+      url = github:juliosueiras-nix/nix-utils;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     pridefetch.url = github:SpyHoodle/pridefetch;
     helix.url = github:helix-editor/helix;
     sops-nix.url = github:Mic92/sops-nix;
