@@ -32,9 +32,9 @@
     # PrismLauncher (git version of PrismLauncher)
     prismlauncher = {
       url = github:PrismLauncher/PrismLauncher;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.libnbtplusplus.follows = "libnbtplusplus";
+      #inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.flake-compat.follows = "flake-compat";
+      #inputs.libnbtplusplus.follows = "libnbtplusplus";
     };
     libnbtplusplus = {
       url = github:PrismLauncher/libnbtplusplus;
