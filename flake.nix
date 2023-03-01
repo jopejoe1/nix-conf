@@ -108,6 +108,35 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    # Nix registery
+    agda.url = github:agda/agda;
+    arion.url = github:hercules-ci/arion;
+    blender-bin.url = github:edolstra/nix-warez?dir=blender;
+    composable.url = github:ComposableFi/composable;
+    dreampkgs.url = github:nix-community/dreampkgs;
+    dwarffs.url = github:edolstra/dwarffs;
+    emacs-overlay.url = github:nix-community/emacs-overlay;
+    fenix.url = github:nix-community/fenix;
+    flake-parts.url = github:hercules-ci/flake-parts;
+    gemini.url = github:nix-community/flake-gemini;
+    hercules-ci-effects.url = github:hercules-ci/hercules-ci-effects;
+    hercules-ci-agent.url = github:hercules-ci/hercules-ci-agent;
+    hydra.url = github:NixOS/hydra;
+    mach-nix.url = github:DavHau/mach-nix;
+    nimble.url = github:nix-community/flake-nimble;
+    nix.url = github:NixOS/nix;
+    nixops.url = github:NixOS/nixops;
+    nixos-homepage.url = github:NixOS/nixos-homepage;
+    nixos-search.url = github:NixOS/nixos-search;
+    templates.url = github:NixOS/templates;
+    patchelf.url = github:NixOS/patchelf;
+    poetry2nix.url = github:nix-community/poetry2nix;
+    nix-serve.url = github:edolstra/nix-serve;
+    nickel.url = github:tweag/nickel;
+    bundlers.url = github:NixOS/bundlers;
+    pridefetch.url = github:SpyHoodle/pridefetch;
+    helix.url = github:helix-editor/helix;
+    sops-nix.url = github:Mic92/sops-nix;
   };
 
   outputs = inputs:
@@ -134,11 +163,49 @@
         peerix.nixosModules.peerix
         agenix.nixosModules.default
         {
-          #home-manager = {
-           # useGlobalPkgs = true;
-           # useUserPackages = true;
-          #};
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
           system.stateVersion = "23.05";
+          nix.registry = {
+            agda.flake = agda;
+            arion.flake = arion;
+            blender-bin.flake = blender-bin;
+            composable.flake = composable;
+            dreampkgs.flake = dreampkgs;
+            dwarffs.flake = dwarffs;
+            emacs-overlay.flake = emacs-overlay;
+            fenix.flake = fenix;
+            flake-parts.flake = flake-parts;
+            flake-utils.flake = flake-utils;
+            gemini.flake = gemini;
+            hercules-ci-effects.flake = hercules-ci-effects;
+            hercules-ci-agent.flake = hercules-ci-agent;
+            home-manager.flake = home-manager;
+            hydra.flake = hydra;
+            mach-nix.flake = mach-nix;
+            nimble.flake = nimble;
+            nix.flake = nix;
+            nix-darwin.flake = nix-darwin;
+            nixops.flake = nixops;
+            nixos-hardware.flake = nixos-hardware;
+            nixos-homepage.flake = nixos-homepage;
+            nixos-search.flake = nixos-search;
+            nur.flake = nur;
+            nixpkgs.flake = nixpkgs;
+            templates.flake = templates;
+            patchelf.flake = patchelf;
+            poetry2nix.flake = poetry2nix;
+            nix-serve.flake = nix-serve;
+            nickel.flake = nickel;
+            bundlers.flake = bundlers;
+            pridefetch.flake = pridefetch;
+            helix.flake = helix;
+            sops-nix.flake = sops-nix;
+          };
+          nix.nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
+          environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
         }
 
       ];
