@@ -36,6 +36,8 @@
 
   hardware.nvidia.modesetting.enable = true;
 
+  services.flatpak.enable = true;
+
   programs = {
     dconf.enable = true;
     droidcam.enable = true;
