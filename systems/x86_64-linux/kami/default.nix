@@ -41,6 +41,7 @@
     droidcam.enable = true;
     sysdig.enable = true;
     xwayland.enable = true;
+    kdeconnect.enable = true;
   };
 
   # Migrated Stuff
