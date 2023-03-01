@@ -34,6 +34,8 @@
   services.hardware.openrgb.enable = true;
   services.hardware.openrgb.motherboard = "intel";
 
+  hardware.nvidia.modesetting.enable = true;
+
   programs = {
     dconf.enable = true;
     droidcam.enable = true;
