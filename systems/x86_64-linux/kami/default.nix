@@ -36,6 +36,7 @@
   services.hardware.openrgb.motherboard = "intel";
 
   hardware.nvidia.modesetting.enable = true;
+  hardware.steam-hardware.enable = true;
 
   services.flatpak.enable = true;
 
@@ -45,6 +46,11 @@
     sysdig.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
   };
 
   # Migrated Stuff
