@@ -39,6 +39,9 @@
   hardware.steam-hardware.enable = true;
 
   services.flatpak.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.hsphfpd.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   programs = {
     dconf.enable = true;
