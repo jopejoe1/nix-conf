@@ -13,13 +13,13 @@ in
     custom.user.jopejoe1.home.enable = true;
     users.users.jopejoe1 = {
       isNormalUser = true;
-      description = "jopejoe1";
-      #initialPassword = "password"; 🚫
+      description = "jopejoe1 🚫";
+      #initialPassword = "password";
       #openssh.authorizedKeys.keys = [];
       extraGroups = [ "wheel"]
         ++ lib.optionals config.custom.hardware.printing.enable [ "scanner" "lp"]
         ++ lib.optional config.networking.networkmanager.enable "networkmanger";
-      packages = with pkgs; [ git kate libsForQt5.ark element-desktop];
+      packages = with pkgs; [ git kate libsForQt5.ark element-desktop-wayland ];
     };
   };
 }
