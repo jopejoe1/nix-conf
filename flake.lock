@@ -1503,11 +1503,11 @@
     "mattermost-webapp": {
       "flake": false,
       "locked": {
-        "lastModified": 1677757930,
-        "narHash": "sha256-D2TkMHeuAwOxgbNYHs3PH6K6etu6bU77LUb8RL9MbaY=",
+        "lastModified": 1677761543,
+        "narHash": "sha256-xh8OHmwSyGONzYdEFTdFzm93iKJjIP42DQdLz4yGJj8=",
         "owner": "mattermost",
         "repo": "mattermost-webapp",
-        "rev": "e4b34ae574b87b43cd40e7274b6abddc5f3d72c2",
+        "rev": "9b128af363b58526e29be7b29dcf0c70f0a1b6d3",
         "type": "github"
       },
       "original": {
@@ -2559,11 +2559,11 @@
     },
     "nixpkgs_28": {
       "locked": {
-        "lastModified": 1677761137,
-        "narHash": "sha256-SScLwC+kqYlyijTjWz4C9eczVHZ1/F2J7kvF0YLlVf8=",
+        "lastModified": 1677761560,
+        "narHash": "sha256-wPeUHpdbXueZ1drAW2g69MZswbsyHX47M/1DhZ+tIGQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "91801f8ff60e004dcbabaffbe00e0416131ead9c",
+        "rev": "63576d1c14524eb186c097c733f130d9ec7c71bd",
         "type": "github"
       },
       "original": {
