@@ -6,8 +6,8 @@ buildNpmPackage {
 
   src = fetchFromGitHub {
     owner = "modrinth";
-    repo = "${name}";
-    rev = "v${version}";
+    repo = "knossos";
+    rev = "v2.2";
     sha256 = "sha256-nJDte8rpYq3Ge844qtAOvLp6NcFsl51jFgaZGR97/YI";
   };
 
