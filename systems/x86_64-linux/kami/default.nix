@@ -30,7 +30,7 @@
     git
     prismlauncher
     libsForQt5.discover
-    modrinth.knossos
+    knossos
   ];
 
   services.hardware.openrgb.enable = true;
