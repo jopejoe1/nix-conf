@@ -36,10 +36,6 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.libnbtplusplus.follows = "libnbtplusplus";
     };
-    libnbtplusplus = {
-      url = github:PrismLauncher/libnbtplusplus;
-      flake = false;
-    };
 
     # vscode extensions
     nix-vscode-extensions = {
@@ -64,21 +60,6 @@
       inputs.snowfall-lib.follows = "snowfall-lib";
     };
 
-    comma = {
-      url = github:nix-community/comma;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.utils.follows = "flake-utils";
-      inputs.naersk.follows = "naersk";
-    };
-
-    deploy-rs = {
-      url = github:serokell/deploy-rs;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.utils.follows = "flake-utils";
-    };
-
     peerix = {
       url = github:cid-chan/peerix;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -97,15 +78,37 @@
       url = github:edolstra/flake-compat;
       flake = false;
     };
+
     flake-utils.url = github:numtide/flake-utils;
     nixlib.url = github:nix-community/nixpkgs.lib;
+
     naersk = {
       url = github:nix-community/naersk;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     flake-utils-plus = {
       url = github:gytis-ivaskevicius/flake-utils-plus;
       inputs.flake-utils.follows = "flake-utils";
+    };
+    comma = {
+      url = github:nix-community/comma;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.utils.follows = "flake-utils";
+      inputs.naersk.follows = "naersk";
+    };
+
+    deploy-rs = {
+      url = github:serokell/deploy-rs;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.utils.follows = "flake-utils";
+    };
+
+    libnbtplusplus = {
+      url = github:PrismLauncher/libnbtplusplus;
+      flake = false;
     };
   };
 
