@@ -13,6 +13,8 @@ in
     services.openssh.enable = true;
     services.openssh.settings.X11forwarding = true;
     services.openssh.settings.PermitRootLogin = "yes";
+
+    environment.systemPackages = with pkgs; [ sshfs ];
   };
 }
 
