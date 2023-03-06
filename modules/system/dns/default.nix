@@ -13,11 +13,11 @@ in
     services.bind = {
       enable = true;
       forwarders = [];
-    };
-    zones = {
-      "geek" = {
-        master = false;
-        masters = [ "202.83.95.229" ];
+      zones = {
+        "geek" = {
+          master = false;
+          masters = [ "202.83.95.229" ];
+        };
       };
     };
   };
