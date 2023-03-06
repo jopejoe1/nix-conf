@@ -1,7 +1,7 @@
 { stdenv, lib, dns }:
 
 stdenv.mkDerivation {
-  pname = "openic-dns-root-data";
+  pname = "opennic-dns-root-data";
 
   buildCommand = ''
     mkdir $out
