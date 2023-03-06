@@ -17,6 +17,7 @@ in
         "geek" = {
           master = false;
           masters = [ "202.83.95.229" ];
+          file = "/etc/bind/zones/slaves/geek.zone";
         };
       };
     };
