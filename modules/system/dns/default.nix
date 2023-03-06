@@ -13,12 +13,6 @@ in
     services.bind = {
       enable = true;
       forwarders = [];
-      zones = {
-        "." = {
-          file = "${pkgs.dns-root-data}/root.hints";
-          master = true;
-        };
-      };
     };
   };
 }
