@@ -16,6 +16,7 @@ in
       zones = {
         "." = {
           file = pkgs.dns-root-data.path + "/root.hints";
+          master = true;
         };
       };
     };
