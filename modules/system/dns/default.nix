@@ -19,6 +19,11 @@ in
           masters = [ "202.83.95.229" ];
           file = "/etc/bind/zones/slaves/geek.zone";
         };
+        "glue" = {
+          master = false;
+          masters = [ "195.201.99.61" "168.119.153.26" ];
+          file = "/etc/bind/zones/slaves/glue.zone";
+        };
       };
     };
   };
