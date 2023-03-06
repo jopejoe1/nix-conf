@@ -15,7 +15,7 @@
 
   boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
   networking.networkmanager.enable = true;
 
