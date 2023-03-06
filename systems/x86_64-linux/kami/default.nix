@@ -71,5 +71,6 @@
   custom.system.fonts.enable = true;
   custom.hardware.audio.enable = true;
   custom.hardware.printing.enable = true;
+  custom.system.ssh.enable = true;
 }
 
