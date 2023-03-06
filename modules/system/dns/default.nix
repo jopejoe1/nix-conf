@@ -15,7 +15,7 @@ in
       forwarders = [];
       zones = {
         "." = {
-          file = pkgs.dns-root-data.path + "/root.hints";
+          file = "${pkgs.dns-root-data}/root.hints";
           master = true;
         };
       };
