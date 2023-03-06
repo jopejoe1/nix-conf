@@ -12,7 +12,7 @@ in
   config = mkIf cfg.enable {
     services.bind = {
       enable = true;
-      services.bind.forwarders = [];
+      forwarders = [];
       zones = {
         "." = {
           file = pkgs.dns-root-data.path + "/root.hints";
