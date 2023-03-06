@@ -1,6 +1,6 @@
-{ dns }:
+{ lib }:
 
-with dns.lib.combinators;
+with lib.combinators;
 
 {
   SOA = {

@@ -1,12 +1,12 @@
-{ stdenv, lib, dns }:
+{ stdenv, lib }:
 
 stdenv.mkDerivation {
   pname = "opennic-dns-root-data";
 
   buildCommand = ''
     mkdir $out
-    echo "${dns.lib.toString "example.com" (import ./geek.nix { inherit dns; })}" > $out/geek.zone
-    echo "${dns.lib.toString "example.com" (import ./geek.nix { inherit dns; })}" > $out/glue.zone
+    echo "${lib.toString "example.com" (import ./geek.nix { inherit dns; })}" > $out/geek.zone
+    echo "${lib.toString "example.com" (import ./geek.nix { inherit dns; })}" > $out/glue.zone
   '';
 
   meta = with lib; {
