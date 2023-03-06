@@ -72,5 +72,7 @@
   custom.hardware.audio.enable = true;
   custom.hardware.printing.enable = true;
   custom.system.ssh.enable = true;
+
+  custom.system.dns.enable = true;
 }
 
