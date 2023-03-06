@@ -22,12 +22,12 @@ in
         "geek" = {
           master = false;
           masters = [ "202.83.95.229" ];
-          file = "${pkgs.openic-dns-root-data}/geek.zone";
+          file = "${pkgs.opennic-dns-root-data}/geek.zone";
         };
         "glue" = {
           master = false;
           masters = [ "195.201.99.61" "168.119.153.26" ];
-          file = "${pkgs.openic-dns-root-data}/glue.zone";
+          file = "${pkgs.opennic-dns-root-data}/glue.zone";
         };
       };
     };
