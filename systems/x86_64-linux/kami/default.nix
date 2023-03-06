@@ -13,7 +13,7 @@
   networking.hostName = "kami";
   networking.hostId = "16c22faf";
 
-  boot.supportedFilesystems = [ "ntfs" "btrfs" ];
+  boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
