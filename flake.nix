@@ -73,6 +73,12 @@
       inputs.darwin.follows = "nix-darwin";
     };
 
+    dns = {
+      url = github:kirelagin/dns.nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     # Dependcies
     flake-compat = {
       url = github:edolstra/flake-compat;
