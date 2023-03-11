@@ -35,7 +35,7 @@
     knossos
     skypeforlinux
     discord
-    jetbrains.pycharm-professional
+    jetbrains.pycharm-professional.withPackages([ python312.withPackages(ps: with ps; [ numpy toolz ])])
   ];
 
   services.hardware.openrgb.enable = true;
@@ -76,6 +76,7 @@
   custom.hardware.printing.enable = true;
   custom.system.ssh.enable = true;
 
+  # Currently broken
   #custom.system.dns.enable = true;
 }
 
