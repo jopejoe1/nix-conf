@@ -73,6 +73,6 @@
   custom.hardware.printing.enable = true;
   custom.system.ssh.enable = true;
 
-  custom.system.dns.enable = true;
+  #custom.system.dns.enable = true;
 }
 
