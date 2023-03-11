@@ -35,7 +35,8 @@
     knossos
     skypeforlinux
     discord
-    jetbrains.pycharm-professional.withPackages(p: with p; [ python312.withPackages(ps: with ps; [ numpy toolz ])])
+    jetbrains.pycharm-professional
+    python312.withPackages(ps: with ps; [ numpy toolz ])
   ];
 
   services.hardware.openrgb.enable = true;
