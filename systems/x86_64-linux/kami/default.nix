@@ -46,7 +46,7 @@
 
   services.flatpak.enable = true;
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.hsphfpd.enable = true;
+  hardware.bluetooth.hsphfpd.enable = false; # Conflicts with wireplumber
   hardware.bluetooth.powerOnBoot = true;
 
   programs = {
