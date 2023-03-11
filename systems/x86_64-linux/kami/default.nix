@@ -33,6 +33,9 @@
     prismlauncher
     libsForQt5.discover
     knossos
+    skypeforlinux
+    discord
+    jetbrains.pycharm-professional
   ];
 
   services.hardware.openrgb.enable = true;
