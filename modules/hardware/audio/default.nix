@@ -30,40 +30,39 @@ in
       pulse.enable = true;
       jack.enable = true;
 
-      wireplumber.enable = false;
+      wireplumber.enable = true;
 
-      media-session.enable = true;
-      media-session.config.alsa-monitor =
-        mkAliasDefinitions options.custom.hardware.audio.alsa-monitor;
+      #media-session.enable = true;
+      #media-session.config.alsa-monitor = mkAliasDefinitions options.custom.hardware.audio.alsa-monitor;
 
-      config.pipewire = {
-        "context.objects" = cfg.nodes ++ [ ];
-        "context.modules" = [
-          {
-            name = "libpipewire-module-rtkit";
-            args = { };
-            flags = [ "ifexists" "nofail" ];
-          }
-          { name = "libpipewire-module-protocol-native"; }
-          { name = "libpipewire-module-profiler"; }
-          { name = "libpipewire-module-metadata"; }
-          { name = "libpipewire-module-spa-device-factory"; }
-          { name = "libpipewire-module-spa-node-factory"; }
-          { name = "libpipewire-module-client-node"; }
-          { name = "libpipewire-module-client-device"; }
-          {
-            name = "libpipewire-module-portal";
-            flags = [ "ifexists" "nofail" ];
-          }
-          {
-            name = "libpipewire-module-access";
-            args = { };
-          }
-          { name = "libpipewire-module-adapter"; }
-          { name = "libpipewire-module-link-factory"; }
-          { name = "libpipewire-module-session-manager"; }
-        ] ++ cfg.modules;
-      };
+      #config.pipewire = {
+      #  "context.objects" = cfg.nodes ++ [ ];
+      #  "context.modules" = [
+      #    {
+      #      name = "libpipewire-module-rtkit";
+      #      args = { };
+      #      flags = [ "ifexists" "nofail" ];
+      #    }
+     #     { name = "libpipewire-module-protocol-native"; }
+     #     { name = "libpipewire-module-profiler"; }
+     #     { name = "libpipewire-module-metadata"; }
+    #      { name = "libpipewire-module-spa-device-factory"; }
+    #      { name = "libpipewire-module-spa-node-factory"; }
+     #     { name = "libpipewire-module-client-node"; }
+    #      { name = "libpipewire-module-client-device"; }
+     #     {
+     #       name = "libpipewire-module-portal";
+     #       flags = [ "ifexists" "nofail" ];
+     #     }
+     #     {
+      #      name = "libpipewire-module-access";
+     #       args = { };
+     #     }
+     #     { name = "libpipewire-module-adapter"; }
+    #      { name = "libpipewire-module-link-factory"; }
+   #       { name = "libpipewire-module-session-manager"; }
+    #    ] ++ cfg.modules;
+  #    };
     };
 
     hardware.pulseaudio.enable = mkForce false;
