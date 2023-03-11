@@ -36,7 +36,7 @@
     skypeforlinux
     discord
     jetbrains.pycharm-professional
-    python312.withPackages(ps: with ps; [ numpy toolz ])
+    python12
   ];
 
   services.hardware.openrgb.enable = true;
