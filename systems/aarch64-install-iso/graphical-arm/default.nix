@@ -4,6 +4,7 @@ with lib;
 #with lib.internal;
 {
   networking.networkmanager.enable = true;
+  networking.wireless.enable = mkForce false;
 
   hardware.opengl.enable = true;
 
