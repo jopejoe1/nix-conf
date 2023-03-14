@@ -29,7 +29,6 @@
   #boot.kernelParams = [ "module_blacklist=i915" ];
 
   environment.systemPackages = with pkgs; [
-    git
     prismlauncher
     libsForQt5.discover
     knossos
@@ -40,16 +39,9 @@
     carla
   ];
 
-  services.hardware.openrgb.enable = true;
-  services.hardware.openrgb.motherboard = "intel";
-
   hardware.nvidia.modesetting.enable = true;
-  hardware.steam-hardware.enable = true;
 
   services.flatpak.enable = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.hsphfpd.enable = false; # Conflicts with wireplumber
-  hardware.bluetooth.powerOnBoot = true;
 
   programs = {
     dconf.enable = true;
@@ -57,16 +49,11 @@
     sysdig.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
   };
 
   # Migrated Stuff
-  custom.user.jopejoe1.enable =true;
-  custom.user.root.enable =true;
+  custom.user.jopejoe1.enable = true;
+  custom.user.root.enable = true;
   custom.system.locale.enable = true;
   custom.system.locale.layout = "de";
   custom.nix.enable = true;
@@ -77,6 +64,12 @@
   custom.hardware.audio.enable = true;
   custom.hardware.printing.enable = true;
   custom.system.ssh.enable = true;
+
+  custom.hardware.rgb.enable = true;
+  custom.hardware.rgb.motherboard = "intel";
+  custom.hardware.bluetooth.enable = true;
+  custom.programs.steam.enable = true;
+
 
   # Currently broken
   #custom.system.dns.enable = true;
