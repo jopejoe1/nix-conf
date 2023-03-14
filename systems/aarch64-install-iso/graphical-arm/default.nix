@@ -7,8 +7,6 @@ with lib;
 
   hardware.opengl.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
   environment.systemPackages = with pkgs; [
     gparted
     parted
