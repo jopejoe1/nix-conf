@@ -33,7 +33,6 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     libsForQt5.discover
-    knossos
     skypeforlinux
     discord
     jetbrains.pycharm-professional
