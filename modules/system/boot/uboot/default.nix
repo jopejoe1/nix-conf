@@ -17,6 +17,7 @@ in
         grub.enable = false;
       # Enables the generation of /boot/extlinux/extlinux.conf
         generic-extlinux-compatible.enable = true;
+        systemd-boot.configurationLimit = 10;
       };
     };
   };
