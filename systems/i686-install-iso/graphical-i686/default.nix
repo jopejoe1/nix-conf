@@ -23,7 +23,7 @@ with lib;
   };
 
   # System
-  custom.system.boot.uboot.enable = true;
+  custom.system.boot.grub.enable = true;
   custom.system.ssh.enable = true;
   custom.nix.enable = true;
   custom.hardware.audio.enable = true;
