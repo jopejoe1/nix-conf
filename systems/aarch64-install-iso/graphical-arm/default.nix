@@ -14,7 +14,7 @@ with lib;
     parted
     gnufdisk
     partition-manager
-  ]
+  ];
 
   hardware.enableRedistributableFirmware = true;
 
