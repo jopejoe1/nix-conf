@@ -30,6 +30,8 @@
 
   #boot.kernelParams = [ "module_blacklist=i915" ];
 
+  services.boinc.enable = true;
+
   environment.systemPackages = with pkgs; [
     prismlauncher
     libsForQt5.discover
