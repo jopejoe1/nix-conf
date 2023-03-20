@@ -40,6 +40,7 @@
     jetbrains.pycharm-professional
     python312
     carla
+    tela-icon-theme
   ];
 
   hardware.nvidia.modesetting.enable = true;
