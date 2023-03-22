@@ -1,8 +1,8 @@
 {
   inputs = {
     # nixpkgs (Packges and modules)
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    #nixpkgs.url = github:jopejoe1/nixpkgs/hplip;
+    #nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+    nixpkgs.url = github:jopejoe1/nixpkgs/firefox;
 
     # Nix Hardware (Hardware configs)
     nixos-hardware.url = github:NixOS/nixos-hardware;
