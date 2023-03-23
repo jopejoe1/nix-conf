@@ -26,8 +26,6 @@ in
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  hardware.video.hidpi.enable = lib.mkDefault true;
-
   boot.initrd.availableKernelModules = [ "vmd" "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
