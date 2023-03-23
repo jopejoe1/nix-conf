@@ -126,7 +126,7 @@ in
                 steam-database
                 refined-github
                 plasma-integration
-                #bypass-paywalls-clean
+                bypass-paywalls-clean
                 lovely-forks
                 search-by-image
                 skip-redirect
@@ -179,6 +179,12 @@ in
                 "pdfjs.annotationEditorMode" = 0;
                 "pdfjs.annotationmode" = 2;
               };
+            };
+            dev-edition-default = {
+              id = 1;
+              isDefault = false;
+              name = "dev-edition-default";
+              path = "default";
             };
           };
         };
