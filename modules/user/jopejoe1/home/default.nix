@@ -68,7 +68,7 @@ in
         };
         firefox = {
           enable = true;
-          package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
+          package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
             extraPolicies = {
               AppAutoUpdate = false;
               BackgroundAppUpdate = false;
