@@ -41,6 +41,7 @@
     python312
     carla
     tela-icon-theme
+    devolo-dlan-cockpit
   ];
 
   hardware.nvidia.modesetting.enable = true;
