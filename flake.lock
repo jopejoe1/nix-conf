@@ -215,11 +215,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679480702,
-        "narHash": "sha256-npuRD61YmxUPitI1TqKwlxLrU6iGl5E+BPT196LgUDo=",
+        "lastModified": 1679741227,
+        "narHash": "sha256-9k9oBF5/yU9MfX1VJ1sRali172V4uTylGdNkzqTEouA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "363c46b2480f1b73ec37cf68caac61f5daa82a2e",
+        "rev": "2f8d24b7f57fdd404defe84626b08f3318612f8c",
         "type": "github"
       },
       "original": {
@@ -297,11 +297,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679620434,
-        "narHash": "sha256-37OIO5Q3QiMq2PTpAYIsi3Pimm+N68ZonB6UJAe4Y9w=",
+        "lastModified": 1679706668,
+        "narHash": "sha256-WRV3f5f/8SDIMy9swMfSUnady0kniO4/2hYhp8tztx0=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "0ebb8d74a0b717748ea270694048916bb14ef69a",
+        "rev": "f6a3b6e5e55aae6100b38ee4d5bf6e413c8b86c7",
         "type": "github"
       },
       "original": {
@@ -365,16 +365,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1679674306,
-        "narHash": "sha256-8yCVLRWdiqr0qc9v6U9sZRggOvVIxS0yhUYBuPFZbxk=",
+        "lastModified": 1679746131,
+        "narHash": "sha256-QsZkV6p5Hyrk0VW30OjYAVuNybu5eePgAo+xn0tdo9w=",
         "owner": "jopejoe1",
         "repo": "nixpkgs",
-        "rev": "f81017a9d02a8c6eb5cc1459bb15ef70d0ac01e9",
+        "rev": "b446db4f2a412b65eaee91d1ff4528130164dd13",
         "type": "github"
       },
       "original": {
         "owner": "jopejoe1",
-        "ref": "hplip",
+        "ref": "devolo",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -397,11 +397,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1679661028,
-        "narHash": "sha256-gD8VTVOAEUZBOh+li12zZfWY3gXqSF+/V4DK+mjDYEI=",
+        "lastModified": 1679744081,
+        "narHash": "sha256-EDAKCvm1n1pJFOaPa1+0Xn0PUsrjzQ6O5Va4hytIknw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3b66de868912e73ec592362ede343ed9fff660bd",
+        "rev": "52907d05e9d017092da0cec9ff1100b3aca7edf2",
         "type": "github"
       },
       "original": {
@@ -479,11 +479,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1679244446,
-        "narHash": "sha256-RqP8lIWyWe9PZz08EZfcGRZxEqKubwpCF4hhSgUfJPM=",
+        "lastModified": 1679737022,
+        "narHash": "sha256-rxbiqqHdcMkhO7FTwegd2rm9EChP56andOct04L6KhA=",
         "owner": "PrismLauncher",
         "repo": "PrismLauncher",
-        "rev": "6dcf34acdc8ec3dcbb094e4981ef136cd6a99913",
+        "rev": "09d607f39c47a467de5dde260e90771ad0ac51df",
         "type": "github"
       },
       "original": {
