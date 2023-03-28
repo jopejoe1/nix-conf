@@ -215,11 +215,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679786039,
-        "narHash": "sha256-VNjswu0Q4bZOkWNuc0+dHvRdjUCj+MnDlRfw/Q0R3vI=",
+        "lastModified": 1679992839,
+        "narHash": "sha256-q3mABQYZeIvznM4tjfcgN4pxI2uJ5HkPF47TZODlNdU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "cf662b6c98a0da81e06066fff0ecf9cbd4627727",
+        "rev": "deb2f59b5c1fd11bec00600517ba7f51984c3090",
         "type": "github"
       },
       "original": {
@@ -365,16 +365,15 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1679771810,
-        "narHash": "sha256-Nn2RWOPOuNAMVnuTYegMceZ+cAlpxEWe4zJIfpzStcw=",
-        "owner": "jopejoe1",
+        "lastModified": 1679997129,
+        "narHash": "sha256-byPZ6v+Ss46E2e1f0p20kRJJLHBm0xhFDgtCcamqcxQ=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "97fdf508ccbeddca4c802ecb4fc4dd2438bef4c9",
+        "rev": "5537a813d1b001eb898533060c1226488c4193ff",
         "type": "github"
       },
       "original": {
-        "owner": "jopejoe1",
-        "ref": "devolo",
+        "owner": "NixOS",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -397,11 +396,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1679985779,
-        "narHash": "sha256-0Rj8GurCuUN0QJvwMiAC49xBkJkQKvJAAU8h+xPIXr4=",
+        "lastModified": 1679992994,
+        "narHash": "sha256-lpbx5ME5rgGvkUYt0/zdOV/dY0Z7KskjyaFlUXsWZpA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "63f4e3fdccac4bb905bb0ea8c71ecb0db528c807",
+        "rev": "ff52829daa5bc64a46ee8b580221f2a5b28fc039",
         "type": "github"
       },
       "original": {
