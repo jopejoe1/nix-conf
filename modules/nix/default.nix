@@ -19,6 +19,7 @@ in
       nixpkgs-review
       nurl
       nix-init
+      haskellPackages.nixpkgs-update
     ];
 
     nix = {
