@@ -1,7 +1,7 @@
 {
   inputs = {
     # nixpkgs (Packges and modules)
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+    nixpkgs.url = github:NixOS/nixpkgs;#/nixos-unstable;
     #nixpkgs.url = github:jopejoe1/nixpkgs/devolo;
 
     # Nix Hardware (Hardware configs)
