@@ -119,7 +119,7 @@ in
                 libredirect
                 privacy-badger
                 languagetool
-                fastforward
+                #fastforward
                 return-youtube-dislikes
                 sponsorblock
                 augmented-steam
