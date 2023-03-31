@@ -66,6 +66,10 @@ in
           userEmail = "johannes@joens.email";
           userName = "jopejoe1";
         };
+        direnv = {
+          enable = true;
+          nix-direnv.enable = true;
+        };
         firefox = {
           enable = true;
           package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
