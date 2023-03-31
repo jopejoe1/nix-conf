@@ -76,33 +76,46 @@ in
             extraPolicies = {
               AppAutoUpdate = false;
               BackgroundAppUpdate = false;
-              DisableAppUpdate = true;
               CaptivePortal = false;
-              DisableFirefoxStudies = true;
-              DisablePocket = true;
-              DisableTelemetry = true;
-              DisableFirefoxAccounts = true;
-              DisableFormHistory = true;
               DefaultDownloadDirectory = "${hcfg.xdg.userDirs.download}";
+              DisableAppUpdate = true;
+              DisableFirefoxAccounts = true;
+              DisableFirefoxStudies = true;
+              DisableForgetButton = true;
+              DisableFormHistory = true;
+              DisableMasterPasswordCreation = true;
+              DisablePasswordReveal = true;
+              DisablePocket = true;
+              DisableSetDesktopBackground = true;
+              DisableSystemAddonUpdate = true;
+              DisableTelemetry = true;
               DontCheckDefaultBrowser = true;
               ExtensionUpdate = false;
+              HardwareAcceleration = true;
+              ManualAppUpdateOnly = true;
               NoDefaultBookmarks = true;
-              PasswordManagerEnabled = false;
               OfferToSaveLogins = false;
               OfferToSaveLoginsDefault = false;
+              PasswordManagerEnabled = false;
+              PrimaryPassword = false;
+              SearchBar = "unified";
+              StartDownloadsInTempDirectory = true;
               EnableTrackingProtection = {
                 Value = true;
+                EmailTracking = true;
                 Cryptomining = true;
                 Fingerprinting = true;
+                Locked = true;
               };
               FirefoxHome = {
-                Search = true;
-                Pocket = false;
-                SponsoredPocket = false;
-                Snippets = false;
-                TopSites = true;
-                SponsoredTopSites = false;
                 Highlights = false;
+                Pocket = false;
+                Search = true;
+                Snippets = false;
+                SponsoredPocket = false;
+                SponsoredTopSites = false;
+                TopSites = true;
+                Locked = true;
               };
               UserMessaging = {
                 ExtensionRecommendations = false;
@@ -159,7 +172,12 @@ in
                     definedAliases = [ "@np" ];
                   };
                   "NixOS Wiki" = {
-                    urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+                    urls = [{
+                      template = "https://nixos.wiki/index.php";
+                      params = [
+                        { name = "search"; value = "{searchTerms}"; }
+                      ];
+                    }];
                     icon = "${hcfg.programs.firefox.profiles.default.search.engines."Nix Packages".icon}";
                     definedAliases = [ "@nw" ];
                   };
