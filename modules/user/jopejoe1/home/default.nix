@@ -71,7 +71,7 @@ in
           nix-direnv.enable = true;
         };
         firefox = {
-          enable = true;
+          enable = false;
           package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
             extraPolicies = {
               AppAutoUpdate = false;
