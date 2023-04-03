@@ -35,7 +35,4 @@
   networking.interfaces.wlan0.useDHCP = false;
 
   hardware.enableRedistributableFirmware = true;
-
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }
