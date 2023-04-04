@@ -38,7 +38,13 @@
     skypeforlinux
     discord
     jetbrains.pycharm-professional
-    python3.withPackages(ps: with ps; [ pandas requests json5 pyperclip plotly numpy])
+    python3
+    python3Packages.numpy
+    python3Packages.pandas
+    python3Packages.requests
+    python3Packages.json5
+    python3Packages.pyperclip
+    python3Packages.plotly
     carla
     tela-icon-theme
     #devolo-dlan-cockpit
