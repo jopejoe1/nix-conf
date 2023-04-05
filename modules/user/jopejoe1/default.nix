@@ -14,7 +14,7 @@ in
     users.users.jopejoe1 = {
       isNormalUser = true;
       description = "jopejoe1 🚫";
-      #initialPassword = "password";
+      initialPassword = "password";
       extraGroups = [ "wheel"]
         ++ lib.optionals config.custom.hardware.printing.enable [ "scanner" "lp"]
         ++ lib.optional config.networking.networkmanager.enable "networkmanger";

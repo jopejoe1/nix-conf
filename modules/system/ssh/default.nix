@@ -13,10 +13,10 @@ in
     services.openssh = {
       enable = true;
       passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
+      kbdInteractiveAuthentication = false;
       settings.X11forwarding = true;
       settings.PermitRootLogin = "yes";
-    }
+    };
     environment.systemPackages = with pkgs; [ sshfs ];
   };
 }
