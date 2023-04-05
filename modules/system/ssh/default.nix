@@ -12,10 +12,12 @@ in
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      passwordAuthentication = false;
-      kbdInteractiveAuthentication = false;
-      settings.X11forwarding = true;
-      settings.PermitRootLogin = "yes";
+      settings = {
+        X11forwarding = true;
+        PermitRootLogin = "yes";
+        passwordAuthentication = false;
+        kbdInteractiveAuthentication = false;
+      };
     };
     environment.systemPackages = with pkgs; [ sshfs ];
   };
