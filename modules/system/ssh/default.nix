@@ -10,10 +10,13 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.openssh.enable = true;
-    services.openssh.settings.X11forwarding = true;
-    services.openssh.settings.PermitRootLogin = "yes";
-
+    services.openssh = {
+      enable = true;
+      passwordAuthentication = false;
+    kbdInteractiveAuthentication = false;
+      settings.X11forwarding = true;
+      settings.PermitRootLogin = "yes";
+    }
     environment.systemPackages = with pkgs; [ sshfs ];
   };
 }
