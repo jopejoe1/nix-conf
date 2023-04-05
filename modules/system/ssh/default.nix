@@ -12,9 +12,11 @@ in
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
+      ports = [ 22 ];
+      openFirewall = true;
       settings = {
         X11forwarding = true;
-        PermitRootLogin = "yes";
+        PermitRootLogin = "no";
         passwordAuthentication = false;
         kbdInteractiveAuthentication = false;
       };
