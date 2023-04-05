@@ -14,11 +14,12 @@ in
       enable = true;
       ports = [ 22 ];
       openFirewall = true;
+      allowSFTP = true;
       settings = {
         X11forwarding = true;
         PermitRootLogin = "no";
-        passwordAuthentication = false;
-        kbdInteractiveAuthentication = false;
+        passwordAuthentication = true;
+        kbdInteractiveAuthentication = true;
       };
     };
     environment.systemPackages = with pkgs; [ sshfs ];
