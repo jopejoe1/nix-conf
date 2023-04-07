@@ -143,7 +143,7 @@ in
                 steam-database
                 refined-github
                 plasma-integration
-                bypass-paywalls-clean
+                #bypass-paywalls-clean
                 lovely-forks
                 search-by-image
                 skip-redirect

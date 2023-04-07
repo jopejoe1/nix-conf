@@ -28,11 +28,10 @@
   };
 
 
-  swapDevices = [ ];
-
-
-  # @NOTE(jakehamilton): NetworkManager will handle DHCP.
-  networking.interfaces.wlan0.useDHCP = false;
+  swapDevices = [ {
+    device = "/var/lib/swapfile";
+    size = (4*1024)+(2*1024);
+  } ];
 
   hardware.enableRedistributableFirmware = true;
 }
