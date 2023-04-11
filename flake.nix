@@ -1,8 +1,8 @@
 {
   inputs = {
     # nixpkgs (Packges and modules)
-   # nixpkgs.url = github:NixOS/nixpkgs;#/nixos-unstable;
-    nixpkgs.url = github:jopejoe1/nixpkgs/noto-fonts;
+    nixpkgs.url = github:NixOS/nixpkgs;#/nixos-unstable;
+    #nixpkgs.url = github:jopejoe1/nixpkgs/noto-fonts;
 
     # Nix Hardware (Hardware configs)
     nixos-hardware.url = github:NixOS/nixos-hardware;
