@@ -1,0 +1,19 @@
+pipeline:
+  check:
+    image: nixos/nix
+    commands:
+      - nix flake check --extra-experimental-features "flakes nix-command"
+
+  update:
+    image: nixos/nix
+    commands:
+      - export REPO_URL="https://$${CI_REPO_OWNER}:$${TOKEN}@codeberg.org/$${CI_REPO_OWNER}/$${CI_REPO_NAME}.git"
+      - git config --global user.email "woodpecker-ci@noreply.org"
+      - git config --global user.name "woodpecker-ci"
+      - git remote set-url origin "$${REPO_URL}"
+      - nix flake update --commit-lock-file --extra-experimental-features "flakes nix-command"
+      - git push origin HEAD:$CI_COMMIT_BRANCH
+    secrets: [ TOKEN ]
+    when:
+      event: cron
+      cron: update
