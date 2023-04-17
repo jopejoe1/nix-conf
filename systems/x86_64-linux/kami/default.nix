@@ -10,6 +10,8 @@
       ./hardware.nix
     ];
 
+  services.ivpn.enable = true;
+
   networking.hostName = "kami";
   networking.hostId = "16c22faf";
 
