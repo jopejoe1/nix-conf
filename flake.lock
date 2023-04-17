@@ -365,15 +365,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1681765576,
-        "narHash": "sha256-zXdYEfPuY2jU2519r+iqBdUslcmSESaU3cM1wrRE+go=",
-        "owner": "NixOS",
+        "lastModified": 1681670976,
+        "narHash": "sha256-R2vLaItAwa2E1au7ltNByygOoUP6pu2W5GuEG9+F0KI=",
+        "owner": "AtaraxiaSjel",
         "repo": "nixpkgs",
-        "rev": "cb2d5a2fa9f2fa6dd2a619fc3be3e2de21a6a2f4",
+        "rev": "6b70e841c49fa85a771577b5751f9aa3fbb3ef0c",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "AtaraxiaSjel",
+        "ref": "update/ivpn",
         "repo": "nixpkgs",
         "type": "github"
       }
