@@ -25,10 +25,5 @@ in
     };
 
     hardware.pulseaudio.enable = mkForce false;
-
-    environment.systemPackages = with pkgs; [
-      pulsemixer
-      pavucontrol
-    ];
   };
 }
