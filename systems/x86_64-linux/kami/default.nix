@@ -74,7 +74,7 @@
   custom.system.boot.uefi.enable = true;
   custom.system.xdg.enable = true;
   custom.system.fonts.enable = true;
-  custom.hardware.audio.enable = true;
+  #custom.hardware.audio.enable = true;
   custom.hardware.printing.enable = true;
   custom.system.ssh.enable = true;
 
