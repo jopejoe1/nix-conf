@@ -17,7 +17,7 @@
 
   boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" "i686-linux" ];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" "i686-linux" "armv6l-linux" "armv7l-linux" "aarch64_be-linux" "i386-linux" "i486-linux" "i586-linux" "alpha-linux" "sparc64-linux" "sparc-linux" "powerpc-linux" "powerpc64-linux" "powerpc64le-linux" "mips-linux" "mipsel-linux" "mips64-linux" "mips64el-linux" "riscv32-linux" "riscv64-linux" "wasm32-wasi" "wasm64-wasi" "x86_64-windows" "i686-windows" ];
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
