@@ -135,7 +135,6 @@
       overlays = with inputs; [
         nur.overlay
         snowfall-flake.overlay
-        prismlauncher.overlay # Temporly as its broken currently
       ];
 
       systems.modules = with inputs; [
