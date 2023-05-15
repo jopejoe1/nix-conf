@@ -50,6 +50,17 @@
     carla
     tela-icon-theme
     #devolo-dlan-cockpit
+
+    # Fonts
+    google-fonts
+    noto-fonts
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-emoji-blob-bin
+    nerdfonts
+    league-of-moveable-type
+    twitter-color-emoji
   ];
 
   hardware.nvidia.modesetting.enable = true;
