@@ -1,16 +1,10 @@
 { options, config, pkgs, ... }:
 
 let
-  cfg = config.custom.user.jopejoe1.home;
   hcfg = config.home-manager.users.jopejoe1;
 in
 {
-  options.custom.user.jopejoe1.home = with types; {
-    enable = mkBoolOpt false "Enable the home-manger for jopejoe1";
-  };
-
-  config = mkIf cfg.enable {
-    home-manager.users.jopejoe1 = {
+  home-manager.users.jopejoe1 = {
       home = {
         # Basic information for home-manager
         username = "jopejoe1";
@@ -210,5 +204,4 @@ in
         };
       };
     };
-  };
 }

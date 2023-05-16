@@ -1,14 +1,9 @@
 { options, config, pkgs, ... }:
 
 let
-  cfg = config.custom.user.root.home;
   hcfg = config.home-manager.users.root;
 in
 {
-  options.custom.user.root.home = with types; {
-    enable = mkBoolOpt false "Enable the home-manger for root";
-  };
-
   config = mkIf cfg.enable {
     home-manager.users.root = {
       home = {

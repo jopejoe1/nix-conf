@@ -1,4 +1,4 @@
-{ home-manager, nixpkgs, nur, prismlauncher, config, ... }:
+{ home-manager, nixpkgs, nur, prismlauncher, ... }:
 
 {
   home-manager = {
