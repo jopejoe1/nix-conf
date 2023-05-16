@@ -1,4 +1,4 @@
-{ home-manager, nixpkgs, nur, prismlauncher, ... }:
+{ home-manager, nixpkgs, nur, prismlauncher, inputs, ... }:
 
 {
   home-manager = {
@@ -11,6 +11,20 @@
     config.allowUnfree = true;
     overlays = [ prismlauncher.overlay nur.overlay ];
   };
+
+  system.stateVersion = "23.05";
+  nix.registry = {
+    flake-utils.flake = flake-utils;
+    home-manager.flake = home-manager;
+    nix-darwin.flake = nix-darwin;
+    nixos-hardware.flake = nixos-hardware;
+    nur.flake = nur;
+    nixpkgs.flake = nixpkgs;
+  };
+  nix.nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
+
+  environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
+
 
   services = {
     xserver = {
