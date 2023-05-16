@@ -1,7 +1,5 @@
-{ options, config, pkgs, lib, ... }:
+{ options, config, pkgs, ... }:
 
-with lib;
-#with lib.internal;
 let
   cfg = config.custom.user.jopejoe1.home;
   hcfg = config.home-manager.users.jopejoe1;
@@ -58,53 +56,6 @@ in
           videos = "${hcfg.home.homeDirectory}/Videos";
         };
       };
-
-      gtk = {
-        enable = true;
-        gtk2 = {
-          configLocation = "${hcfg.xdg.configHome}/gtk-2.0/gtkrc";
-        };
-        gtk3 = {
-          extraConfig = {
-            gtk-application-prefer-dark-theme = true;
-            gtk-button-images = true;
-            gtk-decoration-layout = "icon:minimize,maximize,close";
-            gtk-enable-animations = true;
-            gtk-menu-images = true;
-            gtk-modules = "colorreload-gtk-module";
-            gtk-primary-button-warps-slider = false;
-            gtk-toolbar-style = 3;
-          };
-        };
-        gtk4 = {
-          extraConfig = {
-            gtk-application-prefer-dark-theme = true;
-            gtk-decoration-layout = "icon:minimize,maximize,close";
-            gtk-enable-animations = true;
-            gtk-primary-button-warps-slider = false;
-          };
-        };
-        cursorTheme = {
-          package = pkgs.libsForQt5.breeze-icons;
-          name = "breeze_cursors";
-          size = 24;
-        };
-        font = {
-          package = pkgs.noto-fonts;
-          name = "Noto Sans";
-          size = 10;
-        };
-        theme = {
-          package = pkgs.libsForQt5.breeze-gtk;
-          name = "breeze-dark";
-        };
-        iconTheme = {
-          package = pkgs.tela-icon-theme;
-          name = "Tela-purple";
-        };
-      };
-
-      # Let Home Manager install and manage itself.
       programs = {
         home-manager.enable = true;
         git = {
@@ -113,65 +64,56 @@ in
           userEmail = "johannes@joens.email";
           userName = "jopejoe1";
         };
-        bash = {
+        direnv = {
           enable = true;
-          historyFile = "${hcfg.xdg.stateHome}/bash/history";
-          shellAliases = {
-            gc = "nix store gc";
-            rb = "git -C /etc/nixos pull && nix flake update /etc/nixos/ && nixos-rebuild switch && git -C /etc/nixos add . && git -C /etc/nixos commit -m 'Updated flake.lock' && git -C /etc/nixos push";
-          };
-        };
-        zsh = {
-          enable = true;
-          shellAliases = hcfg.programs.bash.shellAliases;
-          enableAutosuggestions = true;
-          enableCompletion = true;
-          enableSyntaxHighlighting = true;
-          enableVteIntegration = true;
-          dotDir = ".config/zsh";
-        };
-        fish.shellAbbrs = hcfg.programs.bash.shellAliases;
-        thunderbird = {
-          enable = false;
-          profiles = {
-            default = {
-              isDefault = true;
-            };
-          };
+          nix-direnv.enable = true;
         };
         firefox = {
           enable = true;
-          package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+          package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
             extraPolicies = {
               AppAutoUpdate = false;
               BackgroundAppUpdate = false;
-              DisableAppUpdate = true;
               CaptivePortal = false;
-              DisableFirefoxStudies = true;
-              DisablePocket = true;
-              DisableTelemetry = true;
-              DisableFirefoxAccounts = true;
-              DisableFormHistory = true;
               DefaultDownloadDirectory = "${hcfg.xdg.userDirs.download}";
+              DisableAppUpdate = true;
+              DisableFirefoxAccounts = true;
+              DisableFirefoxStudies = true;
+              DisableForgetButton = true;
+              DisableFormHistory = true;
+              DisableMasterPasswordCreation = true;
+              DisablePasswordReveal = true;
+              DisablePocket = true;
+              DisableSetDesktopBackground = true;
+              DisableSystemAddonUpdate = true;
+              DisableTelemetry = true;
               DontCheckDefaultBrowser = true;
               ExtensionUpdate = false;
+              HardwareAcceleration = true;
+              ManualAppUpdateOnly = true;
               NoDefaultBookmarks = true;
-              PasswordManagerEnabled = false;
               OfferToSaveLogins = false;
               OfferToSaveLoginsDefault = false;
+              PasswordManagerEnabled = false;
+              PrimaryPassword = false;
+              SearchBar = "unified";
+              StartDownloadsInTempDirectory = true;
               EnableTrackingProtection = {
                 Value = true;
+                EmailTracking = true;
                 Cryptomining = true;
                 Fingerprinting = true;
+                Locked = true;
               };
               FirefoxHome = {
-                Search = true;
-                Pocket = false;
-                SponsoredPocket = false;
-                Snippets = false;
-                TopSites = true;
-                SponsoredTopSites = false;
                 Highlights = false;
+                Pocket = false;
+                Search = true;
+                Snippets = false;
+                SponsoredPocket = false;
+                SponsoredTopSites = false;
+                TopSites = true;
+                Locked = true;
               };
               UserMessaging = {
                 ExtensionRecommendations = false;
@@ -192,7 +134,7 @@ in
                 libredirect
                 privacy-badger
                 languagetool
-                fastforward
+                #fastforward
                 return-youtube-dislikes
                 sponsorblock
                 augmented-steam
@@ -228,7 +170,12 @@ in
                     definedAliases = [ "@np" ];
                   };
                   "NixOS Wiki" = {
-                    urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+                    urls = [{
+                      template = "https://nixos.wiki/index.php";
+                      params = [
+                        { name = "search"; value = "{searchTerms}"; }
+                      ];
+                    }];
                     icon = "${hcfg.programs.firefox.profiles.default.search.engines."Nix Packages".icon}";
                     definedAliases = [ "@nw" ];
                   };
@@ -252,6 +199,12 @@ in
                 "pdfjs.annotationEditorMode" = 0;
                 "pdfjs.annotationmode" = 2;
               };
+            };
+            dev-edition-default = {
+              id = 1;
+              isDefault = false;
+              name = "dev-edition-default";
+              path = "default";
             };
           };
         };

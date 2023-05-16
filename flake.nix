@@ -46,21 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    snowfall-lib = {
-      url = github:snowfallorg/lib;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils-plus.follows = "flake-utils-plus";
-    };
-
-    snowfall-flake = {
-      url = github:snowfallorg/flake;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.unstable.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.snowfall-lib.follows = "snowfall-lib";
-    };
-
     peerix = {
       url = github:cid-chan/peerix;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,88 +75,43 @@
     flake-utils.url = github:numtide/flake-utils;
     nixlib.url = github:nix-community/nixpkgs.lib;
 
-    naersk = {
-      url = github:nix-community/naersk;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-utils-plus = {
-      url = github:gytis-ivaskevicius/flake-utils-plus;
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    comma = {
-      url = github:nix-community/comma;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.utils.follows = "flake-utils";
-      inputs.naersk.follows = "naersk";
-    };
-
-    deploy-rs = {
-      url = github:serokell/deploy-rs;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.utils.follows = "flake-utils";
-    };
-
     libnbtplusplus = {
       url = github:PrismLauncher/libnbtplusplus;
       flake = false;
     };
   };
 
-  outputs = inputs:
-    let
-      lib = inputs.snowfall-lib.mkLib {
-        inherit inputs;
-        src = ./.;
-      };
-    in
-    lib.mkFlake {
-      package-namespace = "custom";
-
-      channels-config.allowUnfree = true;
-
-      overlays = with inputs; [
-        nur.overlay
-        snowfall-flake.overlay
-      ];
-
-      systems.modules = with inputs; [
+  outputs = { self, nixpkgs, nixos-hardware, prismlauncher, home-manager, nur, ... }@attrs: {
+    nixosConfigurations.yokai = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = attrs;
+      modules = [
+        ./systems/yokai.nix
+        ./common.nix
+        nixos-hardware.nixosModules.pine64-pinebook-pro
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
-        peerix.nixosModules.peerix
-        agenix.nixosModules.default
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-          };
-          system.stateVersion = "23.05";
-          nix.registry = {
-            flake-utils.flake = flake-utils;
-            home-manager.flake = home-manager;
-            nix-darwin.flake = nix-darwin;
-            nixos-hardware.flake = nixos-hardware;
-            nur.flake = nur;
-            nixpkgs.flake = nixpkgs;
-          };
-          nix.nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
-          environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
-        }
-
       ];
-
-      systems.hosts.yokai.modules = with inputs; [
-        nixos-hardware.nixosModules.pine64-pinebook-pro
-      ];
-
-      deploy = lib.mkDeploy { inherit (inputs)  self; };
-
-      checks =
-        builtins.mapAttrs
-          (system: deploy-lib:
-            deploy-lib.deployChecks inputs.self.deploy)
-          inputs.deploy-rs.lib;
     };
+    nixosConfigurations.oni = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = attrs;
+      modules = [
+        ./systems/oni.nix
+        ./common.nix
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+      ];
+    };
+    nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = attrs;
+      modules = [
+        ./systems/kami.nix
+        ./common.nix
+        home-manager.nixosModules.home-manager
+        nur.nixosModules.nur
+      ];
+    };
+  };
 }

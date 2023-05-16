@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, inputs, ... }:
+{ config, pkgs, modulesPath, ... }:
 
 {
   imports = [
@@ -9,7 +9,6 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     initrd = {
-      # kernelModules = [ "amdgpu" ];
       availableKernelModules = [ "usbhid" ];
     };
 

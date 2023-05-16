@@ -9,14 +9,14 @@ in
     common-cpu-amd
     common-gpu-amd
     common-pc
-    #common-pc-ssd
+    common-pc-ssd
   ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
 
     initrd = {
-      # kernelModules = [ "amdgpu" ];
+      kernelModules = [ "amdgpu" ];
       availableKernelModules = [ "xhci_pci" "ahci" "ehci_pci" "usb_storage" "sd_mod" "sr_mod" ];
     };
 
@@ -46,7 +46,4 @@ in
   hardware.enableRedistributableFirmware = true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }

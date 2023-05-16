@@ -1,7 +1,5 @@
-{ options, config, pkgs, lib, ... }:
+{ options, config, pkgs, ... }:
 
-with lib;
-#with lib.internal;
 let
   cfg = config.custom.user.root.home;
   hcfg = config.home-manager.users.root;
