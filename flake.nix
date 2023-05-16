@@ -14,7 +14,6 @@
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
     };
 
     # Nix Darwin (Mac OS support)
@@ -86,7 +85,7 @@
       system = "aarch64-linux";
       specialArgs = attrs;
       modules = [
-        ./systems/yokai.nix
+        ./systems/yokai
         ./common.nix
         nixos-hardware.nixosModules.pine64-pinebook-pro
         home-manager.nixosModules.home-manager
@@ -97,7 +96,7 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [
-        ./systems/oni.nix
+        ./systems/oni
         ./common.nix
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
@@ -107,7 +106,7 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [
-        ./systems/kami.nix
+        ./systems/kami
         ./common.nix
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
