@@ -85,7 +85,7 @@
       system = "aarch64-linux";
       specialArgs = attrs;
       modules = [
-        ./systems/yokai
+        ./systems/yokai/default.nix
         ./common.nix
         nixos-hardware.nixosModules.pine64-pinebook-pro
         home-manager.nixosModules.home-manager
@@ -96,7 +96,7 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [
-        ./systems/oni
+        ./systems/oni/default.nix
         ./common.nix
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
@@ -106,7 +106,7 @@
       system = "x86_64-linux";
       specialArgs = attrs;
       modules = [
-        ./systems/kami
+        ./systems/kami/default.nix
         ./common.nix
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
