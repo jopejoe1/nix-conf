@@ -112,10 +112,7 @@ in {
               SkipOnboarding = true;
             };
           };
-          nameSuffix = "-devedition";
-          pname = "firefox-devedition";
-          desktopName = "Firefox DevEdition";
-          wmClass = "firefox-devedition";
+          icon = "firefox-devedition";;
         };
         profiles = {
           default = {
