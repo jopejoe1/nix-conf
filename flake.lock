@@ -154,11 +154,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1684525565,
-        "narHash": "sha256-mkvY7B1GaiPt56oDG1qgqp5WfHKVIOaDuBej7TjrGoU=",
+        "lastModified": 1684527793,
+        "narHash": "sha256-OqbLip5qIN5NJa3mY41xaQWyynUUtggqBWlYt2aXv24=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "86569578d5298fedcd6ccc6b18ecde0f67a9d0c7",
+        "rev": "8b186ad7a99398036bbc01b7ea67fc03f69fc69e",
         "type": "github"
       },
       "original": {
@@ -195,6 +195,18 @@
         "type": "github"
       }
     },
+    "prism-patch": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-zsL8t7BrbzdVkr8ApYzQcYgRm3WWTcF2SQlAmr5ISBk=",
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch"
+      }
+    },
     "prismlauncher": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -225,6 +237,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "prism-patch": "prism-patch",
         "prismlauncher": "prismlauncher",
         "tela-icon-theme": "tela-icon-theme"
       }

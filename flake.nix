@@ -14,7 +14,11 @@
     };
     nixos-hardware.url = github:NixOS/nixos-hardware;
     tela-icon-theme = {
-      url = "github:vinceliuice/Tela-icon-theme";
+      url = github:vinceliuice/Tela-icon-theme;
+      flake = false;
+    };
+    prism-patch = {
+      url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
       flake = false;
     };
   };
@@ -59,6 +63,11 @@
               (self: super: {
                 tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
                   src = inputs.tela-icon-theme;
+                });
+                prismlauncher = super.prismlauncher.overrideAttrs (old: {
+                  patches = (old.patches or []) ++ [
+                    inputs.prism-patch
+                  ];
                 });
               })
             ];
