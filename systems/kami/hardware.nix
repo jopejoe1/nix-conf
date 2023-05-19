@@ -4,8 +4,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = with nixos-hardware.nixosModules;
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   hardware.nvidia.prime = {
