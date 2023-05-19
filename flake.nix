@@ -9,9 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prismlauncher = {
-      url = "github:PrismLauncher/PrismLauncher";
+      url = github:PrismLauncher/PrismLauncher;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = github:NixOS/nixos-hardware;
   };
 
   outputs = inputs@{
@@ -20,6 +21,7 @@
       home-manager,
       prismlauncher,
       nur,
+      nixos-hardware,
       ...
   }: {
     nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
@@ -36,6 +38,12 @@
         ./modules/ssh
         ./modules/steam
         ./modules/users/jopejoe1
+        nixos-hardware.nixosModules.common-cpu-intel
+        nixos-hardware.nixosModules.common-gpu-intel
+        nixos-hardware.nixosModules.common-gpu-nvidia
+        nixos-hardware.nixosModules.common-pc
+        nixos-hardware.nixosModules.common-hidpi
+        nixos-hardware.nixosModules.common-pc-ssd
         {
           nixpkgs = {
             config.allowUnfree = true;
