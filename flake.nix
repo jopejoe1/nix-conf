@@ -16,6 +16,7 @@
       nixpkgs,
       home-manager,
       prismlauncher,
+      nur,
       ...
   }: {
     nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
