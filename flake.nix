@@ -47,7 +47,7 @@
             config.allowUnfree = true;
             #overlays = [ prismlauncher.overlay nur.overlay ];
           };
-          system.stateVersion = "23.05"
+          system.stateVersion = "23.05";
         }
       ];
     };
