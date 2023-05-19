@@ -8,7 +8,10 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
@@ -36,7 +39,7 @@
         {
           nixpkgs = {
             config.allowUnfree = true;
-            overlays = [ prismlauncher.overlay nur.overlay ];
+            overlays = [ prismlauncher.overlays.default nur.overlay ];
           };
           system.stateVersion = "23.05";
         }
