@@ -128,7 +128,7 @@
     wireplumber.enable = true;
   };
 
-  hardware.pulseaudio.enable = mkForce false;
+  hardware.pulseaudio.enable = false;
 
   environment.systemPackages = with pkgs; [
     sshfs
