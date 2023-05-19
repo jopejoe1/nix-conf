@@ -24,6 +24,7 @@
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
+    package = pkgs.nixVersions.nix_2_15;
   };
 
   environment.systemPackages = with pkgs; [
