@@ -22,7 +22,7 @@
   };
 
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs;
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
     nur.url = github:nix-community/NUR;
     home-manager= {
       url = github:nix-community/home-manager;
@@ -47,6 +47,7 @@
             config.allowUnfree = true;
             #overlays = [ prismlauncher.overlay nur.overlay ];
           };
+          system.stateVersion = "23.05"
         }
       ];
     };
