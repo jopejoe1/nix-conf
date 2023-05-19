@@ -112,7 +112,7 @@ in {
               SkipOnboarding = true;
             };
           };
-          icon = "firefox-devedition";;
+          icon = "firefox-devedition";
         };
         profiles = {
           default = {
