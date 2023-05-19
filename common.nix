@@ -69,7 +69,7 @@
   hardware.steam-hardware.enable = true;
 
   programs.steam = {
-    enable = true;
+    enable = false;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };

@@ -6,8 +6,6 @@
       ./hardware.nix
     ];
 
-  services.ivpn.enable = true;
-
   networking.hostName = "kami";
   networking.hostId = "16c22faf";
 
@@ -27,8 +25,6 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   #boot.kernelParams = [ "module_blacklist=i915" ];
-
-  #services.boinc.enable = true;
 
   environment.systemPackages = with pkgs; [
     prismlauncher
