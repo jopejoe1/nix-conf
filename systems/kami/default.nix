@@ -60,7 +60,7 @@
     dconf.enable = true;
     droidcam.enable = true;
     sysdig.enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
     kdeconnect.enable = true;
   };
   console = {
