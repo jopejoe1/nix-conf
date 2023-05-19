@@ -21,7 +21,15 @@
       specialArgs = inputs;
       modules = [
         ./systems/kami
-        ./common.nix
+        ./modules/audio
+        ./modules/bluetooth
+        ./modules/local
+        ./modules/nix
+        ./modules/plasma
+        ./modules/printing
+        ./modules/ssh
+        ./modules/steam
+        ./modules/users/jopejoe1
         {
           nixpkgs = {
             config.allowUnfree = true;

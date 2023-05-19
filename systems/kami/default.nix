@@ -8,6 +8,7 @@
 
   networking.hostName = "kami";
   networking.hostId = "16c22faf";
+  services.hardware.openrgb.enable = true;
 
   boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
