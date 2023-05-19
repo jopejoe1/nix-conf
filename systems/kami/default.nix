@@ -34,9 +34,15 @@
     discord
     jetbrains.pycharm-professional
     carla
-    tela-icon-theme
     git
     #devolo-dlan-cockpit
+    libsForQt5.qtstyleplugin-kvantum
+
+    # Theming
+    catppuccin-kvantum
+    catppuccin-kde
+    catppuccin-gtk
+    tela-icon-theme
 
     # Fonts
     google-fonts
