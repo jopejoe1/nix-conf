@@ -39,7 +39,10 @@
     nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = inputs;
-      modules = [ ./systems/kami ];
+      modules = [
+        ./systems/kami
+        ./common.nix
+      ];
     };
   };
 }
