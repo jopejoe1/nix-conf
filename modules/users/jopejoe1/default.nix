@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./home.nix
+  ];
+
   users.users.jopejoe1 = {
     isNormalUser = true;
     description = "jopejoe1 🚫";
