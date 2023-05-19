@@ -113,6 +113,10 @@ in {
             };
           };
           icon = "firefox-devedition";
+          nameSuffix = "-devedition";
+          pname = "firefox-devedition-bin";
+          desktopName = "Firefox DevEdition";
+          wmClass = "firefox-devedition";
         };
         profiles = {
           default = {
