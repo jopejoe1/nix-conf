@@ -34,6 +34,7 @@
     jetbrains.pycharm-professional
     carla
     tela-icon-theme
+    git
     #devolo-dlan-cockpit
 
     # Fonts
