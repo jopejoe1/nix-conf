@@ -17,8 +17,14 @@
       url = github:vinceliuice/Tela-icon-theme;
       flake = false;
     };
-    prism-patch = {
+
+    # PrismLauncher Patches
+    prism-game-options-patch = {
       url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
+      flake = false;
+    };
+    prism-ftb-patch = {
+      url = "https://github.com/AdenMck/PrismLauncher/commit/36df231f7ad5f8d54d08c4d2c5f99f6d000fc507.patch";
       flake = false;
     };
   };
@@ -66,7 +72,8 @@
                 });
                 prismlauncher = super.prismlauncher.overrideAttrs (old: {
                   patches = (old.patches or []) ++ [
-                    inputs.prism-patch
+                    inputs.prism-game-options-patch
+                    inputs.prism-ftb-patch
                   ];
                 });
               })
