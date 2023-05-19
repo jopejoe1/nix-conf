@@ -27,10 +27,6 @@
       url = "https://github.com/AdenMck/PrismLauncher/commit/36df231f7ad5f8d54d08c4d2c5f99f6d000fc507.patch";
       flake = false;
     };
-    prism-mod-depen-patch = {
-      url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/986.patch";
-      flake = false;
-    };
   };
 
   outputs = inputs@{
@@ -78,7 +74,6 @@
                   patches = (old.patches or []) ++ [
                     inputs.prism-game-options-patch
                     inputs.prism-ftb-patch
-                    inputs.prism-mod-depen-patch
                   ];
                 });
               })
