@@ -1,7 +1,6 @@
 { lib, config, pkgs, ... }:
 
 {
-
   services = {
     xserver = {
       enable = true;
@@ -105,11 +104,6 @@
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
     };
-
-    # flake-utils-plus
-    generateRegistryFromInputs = true;
-    generateNixPathFromInputs = true;
-    linkInputs = true;
   };
 
   security.rtkit.enable = true;
