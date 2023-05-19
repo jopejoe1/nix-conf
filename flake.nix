@@ -1,116 +1,45 @@
 {
+  description = "jopejoe1 NixOS configuration";
+
+  nixConfig = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = [
+      "https://cache.nixos.org"
+    ];
+
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://prismlauncher.cachix.org"
+      "https://nixos-search.cachix.org"
+    ];
+
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "prismlauncher.cachix.org-1:GhJfjdP1RFKtFSH3gXTIQCvZwsb2cioisOf91y/bK0w="
+      "nixos-search.cachix.org-1:1HV3YF8az4fywnH+pAd+CXFEdpTXtv9WpoivPi+H70o="
+    ];
+  };
+
   inputs = {
-    # nixpkgs (Packges and modules)
-    nixpkgs.url = github:NixOS/nixpkgs;#/nixos-unstable;
-    #nixpkgs.url = github:jopejoe1/nixpkgs/noto-fonts;
-
-    # Nix Hardware (Hardware configs)
-    nixos-hardware.url = github:NixOS/nixos-hardware;
-
-    # NUR (User Packges)
+    nixpkgs.url = github:NixOS/nixpkgs;
     nur.url = github:nix-community/NUR;
-
-    # Home Manger (Dot files)
-    home-manager = {
+    home-manager= {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Nix Darwin (Mac OS support)
-    nix-darwin = {
-      url = github:LnL7/nix-darwin;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Image generators
-    nixos-generators = {
-      url = github:nix-community/nixos-generators;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixlib.follows = "nixlib";
-    };
-
-    # PrismLauncher (git version of PrismLauncher)
-    prismlauncher = {
-      url = github:PrismLauncher/PrismLauncher;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.libnbtplusplus.follows = "libnbtplusplus";
-    };
-
-    # vscode extensions
-    nix-vscode-extensions = {
-      url = github:nix-community/nix-vscode-extensions;
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    peerix = {
-      url = github:cid-chan/peerix;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    agenix = {
-      url = github:ryantm/agenix;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "nix-darwin";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    dns = {
-      url = github:kirelagin/dns.nix;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    # Dependcies
-    flake-compat = {
-      url = github:edolstra/flake-compat;
-      flake = false;
-    };
-
-    flake-utils.url = github:numtide/flake-utils;
-    nixlib.url = github:nix-community/nixpkgs.lib;
-
-    libnbtplusplus = {
-      url = github:PrismLauncher/libnbtplusplus;
-      flake = false;
-    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, prismlauncher, home-manager, nur, ... }@attrs: {
-    nixosConfigurations.yokai = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = attrs;
-      modules = [
-        ./systems/yokai/default.nix
-        ./common.nix
-        nixos-hardware.nixosModules.pine64-pinebook-pro
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-      ];
-    };
-    nixosConfigurations.oni = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = attrs;
-      modules = [
-        ./systems/oni/default.nix
-        ./common.nix
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-      ];
-    };
+  outputs = inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+  }: {
     nixosConfigurations.kami = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = attrs;
-      modules = [
-        ./systems/kami/default.nix
-        ./common.nix
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-      ];
+      specialArgs = inputs;
+      modules = [ ./systems/kami ];
     };
   };
 }
