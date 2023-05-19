@@ -42,6 +42,12 @@
       modules = [
         ./systems/kami
         ./common.nix
+        {
+          nixpkgs = {
+            config.allowUnfree = true;
+            #overlays = [ prismlauncher.overlay nur.overlay ];
+          };
+        }
       ];
     };
   };
