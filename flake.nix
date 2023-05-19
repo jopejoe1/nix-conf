@@ -13,6 +13,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = github:NixOS/nixos-hardware;
+    tela-icon-theme = {
+      url = "github:vinceliuice/Tela-icon-theme";
+      flake = false;
+    };
   };
 
   outputs = inputs@{
@@ -49,7 +53,15 @@
         {
           nixpkgs = {
             config.allowUnfree = true;
-            overlays = [ prismlauncher.overlays.default nur.overlay ];
+            overlays = [
+              prismlauncher.overlays.default
+              nur.overlay
+              (self: super: {
+                tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
+                  src = inputs.tela-icon-theme;
+                });
+              })
+            ];
           };
           home-manager = {
             useGlobalPkgs = true;
