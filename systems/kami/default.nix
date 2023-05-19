@@ -13,7 +13,7 @@
 
   boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  #boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
