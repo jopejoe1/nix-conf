@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, self, ... }:
 
 {
   nix = {
@@ -26,15 +26,13 @@
     };
     package = pkgs.nixVersions.nix_2_15;
     registry = {
-      home-manager.flake = inputs.home-manager;
-      nixos-hardware.flake = inputs.nixos-hardware;
-      nur.flake = inputs.nur;
-      nixpkgs.flake = inputs.nixpkgs;
+      home-manager.flake = self.inputs.home-manager;
+      nixos-hardware.flake = self.inputs.nixos-hardware;
+      nur.flake = self.inputs.nur;
+      nixpkgs.flake = self.inputs.nixpkgs;
     };
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
+    nixPath = [ "nixpkgs=${self.inputs.nixpkgs}" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
   };
-
-  environment.etc."channels/nixpkgs".source = inputs.nixpkgs.outPath;
 
   environment.systemPackages = with pkgs; [
     deploy-rs
