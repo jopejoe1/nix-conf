@@ -55,9 +55,9 @@ in {
           terminal = false;
           genericName = "All-in-one cross-platform voice and text chat for gamers";
           categories = [ "Network" "InstantMessaging" ];
-          mimeTypes = [ "x-scheme-handler/discord" ];
+          mimeType = [ "x-scheme-handler/discord" ];
         };
-      };
+      }
     };
     programs = {
       home-manager.enable = true;
