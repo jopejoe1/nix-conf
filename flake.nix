@@ -49,7 +49,7 @@
         ./modules/nix
         ./modules/plasma
         ./modules/printing
-        ./modules/ssh
+        #./modules/ssh
         ./modules/steam
         ./modules/users/jopejoe1
         nixos-hardware.nixosModules.common-cpu-intel

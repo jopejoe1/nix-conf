@@ -10,6 +10,8 @@
   networking.hostId = "16c22faf";
   services.hardware.openrgb.enable = true;
 
+  services.xserver.desktopManager.kodi.enable = true;
+
   boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
