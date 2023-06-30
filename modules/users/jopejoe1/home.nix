@@ -37,7 +37,7 @@ in {
       stateHome = "${hcfg.home.homeDirectory}/.local/state";
       userDirs = {
         enable = true;
-        createDirectories = false;
+        createDirectories = true;
         desktop = "${hcfg.home.homeDirectory}/Desktop";
         documents = "${hcfg.home.homeDirectory}/Documents";
         download = "${hcfg.home.homeDirectory}/Downloads";
@@ -46,6 +46,17 @@ in {
         publicShare = "${hcfg.home.homeDirectory}/Public";
         templates = "${hcfg.home.homeDirectory}/Templates";
         videos = "${hcfg.home.homeDirectory}/Videos";
+      };
+      desktopEntries = {
+        discord = {
+          name = "Discord";
+          exec = "Discord --disable-gpu-sandbox";
+          icon = "discord";
+          terminal = false;
+          genericName = "All-in-one cross-platform voice and text chat for gamers";
+          categories = [ "Network" "InstantMessaging" ];
+          mimeTypes = [ "x-scheme-handler/discord" ];
+        };
       };
     };
     programs = {
