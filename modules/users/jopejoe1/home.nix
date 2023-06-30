@@ -57,7 +57,7 @@ in {
           categories = [ "Network" "InstantMessaging" ];
           mimeType = [ "x-scheme-handler/discord" ];
         };
-      }
+      };
     };
     programs = {
       home-manager.enable = true;
