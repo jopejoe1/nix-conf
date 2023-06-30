@@ -47,17 +47,6 @@ in {
         templates = "${hcfg.home.homeDirectory}/Templates";
         videos = "${hcfg.home.homeDirectory}/Videos";
       };
-      desktopEntries = {
-        discord = {
-          name = "Discord";
-          exec = "Discord --disable-gpu-sandbox";
-          icon = "discord";
-          terminal = false;
-          genericName = "All-in-one cross-platform voice and text chat for gamers";
-          categories = [ "Network" "InstantMessaging" ];
-          mimeType = [ "x-scheme-handler/discord" ];
-        };
-      };
     };
     programs = {
       home-manager.enable = true;

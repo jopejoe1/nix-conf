@@ -33,7 +33,6 @@
     prismlauncher
     libsForQt5.discover
     skypeforlinux
-    discord
     jetbrains.pycharm-professional
     carla
     git
