@@ -88,6 +88,6 @@
   virtualisation.docker = {
     enable = true;
     enableNvidia = true;
-    package = pkgs.padman;
+    package = pkgs.podman;
   };
 }
