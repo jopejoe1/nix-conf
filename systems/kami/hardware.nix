@@ -7,11 +7,11 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  nix.settings.system-features = [
-    "kvm"
-    "big-parallel"
-    "gccarch-alderlake"
-  ];
+  nixpkgs.localSystem = {
+      gcc.arch = "alderlake";
+      gcc.tune = "alderlake";
+      system = "x86_64-linux";
+    };
 
   hardware.nvidia.prime = {
     offload.enable = false;
