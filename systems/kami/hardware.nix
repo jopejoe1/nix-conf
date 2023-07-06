@@ -7,7 +7,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  nixpkgs.localSystem = {
+  nixpkgs.hostPlatform = {
       gcc.arch = "alderlake";
       gcc.tune = "alderlake";
       system = "x86_64-linux";
@@ -55,7 +55,7 @@
   # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
