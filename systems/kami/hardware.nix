@@ -7,6 +7,12 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  nix.settings.system-features = [
+    "kvm"
+    "big-parallel"
+    "gccarch-alderlake"
+  ];
+
   hardware.nvidia.prime = {
     offload.enable = false;
     sync.enable = false;
