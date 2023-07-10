@@ -35,6 +35,6 @@
 
   #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.enableRedistrubutableFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 }
 
