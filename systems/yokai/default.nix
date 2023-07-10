@@ -57,7 +57,7 @@
 
   boot.loader = {
     grub.enable = false;
-    genric-extlinux-compatible.enable = true;
+    generic-extlinux-compatible.enable = true;
     systemd-boot.configurationLimit = 10;
     systemd-boot.editor = false;
   };
