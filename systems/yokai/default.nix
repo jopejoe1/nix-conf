@@ -7,6 +7,7 @@
     ];
 
   networking.hostName = "yokai";
+  networking.hostId = "af13bbec";
 
   boot.supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
 
