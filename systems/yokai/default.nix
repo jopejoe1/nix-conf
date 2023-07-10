@@ -29,14 +29,14 @@
     tela-icon-theme
 
     # Fonts
-    google-fonts
+    #google-fonts
     noto-fonts
     noto-fonts-emoji
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-emoji-blob-bin
-    nerdfonts
-    league-of-moveable-type
+    #nerdfonts
+    #league-of-moveable-type
     twitter-color-emoji
   ];
 
