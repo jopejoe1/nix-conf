@@ -81,11 +81,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1688892808,
-        "narHash": "sha256-AeWzyG37EqyHH2C1GmrV9y0ZQ4e7rAs9AUOnw8I4YUI=",
+        "lastModified": 1688999869,
+        "narHash": "sha256-gLD2UI6+Nb9JV5Wh4FnLHAZwLMiY11RHYBKmBZCxLXc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b70db52ff06f30e3de7f21b6ea47e75baa0c46f6",
+        "rev": "a6d1d954b81caf4c9291b8ac35452fef842f289b",
         "type": "github"
       },
       "original": {
@@ -127,15 +127,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1688991623,
-        "narHash": "sha256-PDOaJUOLgof/5EiaECYvWOJHvqkoYsSovyJPyCBIqDs=",
+        "lastModified": 1688918189,
+        "narHash": "sha256-f8ZlJ67LgEUDnN7ZsAyd1/Fyby1VdOXWg4XY/irSGrQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e423abb13680d9f3671f20ceef9e849981972b9e",
+        "rev": "408c0e8c15a1c9cf5c3226931b6f283c9867c484",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -160,11 +161,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1688982359,
-        "narHash": "sha256-vx7KyLEX9hrZNEpSeo3yg2WVQ99w1fnpnnmvb2WWZls=",
+        "lastModified": 1689000131,
+        "narHash": "sha256-0HABmXSHJ0wSNBGEaxh9mlx7DIqtWf5mGOZTSftb7Ds=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "51999a3299f11668f0003a3b39e7da4cd8b880d8",
+        "rev": "a9f80e1f0e21ff48413973891ee54d035bdb6e49",
         "type": "github"
       },
       "original": {
@@ -239,11 +240,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1688990792,
-        "narHash": "sha256-0CiODEKAtQjNpgp54POSV2eCdeDTpKuKvQP/8N40mVE=",
+        "lastModified": 1689003758,
+        "narHash": "sha256-luU7K81ISuJCutcnsW8HiX2IDs41VrHcBchR9cThfwg=",
         "owner": "PrismLauncher",
         "repo": "PrismLauncher",
-        "rev": "4f4ccdaa59b166f74318d78beb7da62512677f96",
+        "rev": "9aedb5afffdda7db1b614f4f17ac5901b467d69d",
         "type": "github"
       },
       "original": {
