@@ -12,7 +12,7 @@
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
-  hardware-opengl.enable = true;
+  hardware.opengl.enable = true;
 
   networking.networkmanager.enable = true;
 
