@@ -7,8 +7,9 @@
 
   users.users.jopejoe1 = {
     isNormalUser = true;
-    description = "jopejoe1";
+    description = "Johannes Jöns";
     initialPassword = "password";
+    extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
       git
       kate
