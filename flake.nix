@@ -79,7 +79,7 @@
                   });
                   libadwaita = super.libadwaita.overrideAttrs (old: {
                     patches = (old.patches or []) ++ [
-                      (pkgs.fetchpatch {
+                      (super.fetchpatch {
                         name = "adwaita-theming-support.diff";
                         url = "https://aur.archlinux.org/cgit/aur.git/plain/theming_patch.diff?h=libadwaita-without-adwaita-git";
                         hash = "";
