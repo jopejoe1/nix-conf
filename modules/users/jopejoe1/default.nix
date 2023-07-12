@@ -11,12 +11,10 @@
     initialPassword = "password";
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
-      git
       kate
       libsForQt5.ark
       libreoffice-qt
       texlive.combined.scheme-full
-      tela-icon-theme
       lutris
       bottles
     ] ++ lib.optionals (system == "x86_64-linux") [ discord google-chrome ];

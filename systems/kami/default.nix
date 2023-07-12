@@ -24,6 +24,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
@@ -35,7 +36,6 @@
     skypeforlinux
     jetbrains.pycharm-professional
     carla
-    git
     #devolo-dlan-cockpit
     libsForQt5.qtstyleplugin-kvantum
 
@@ -57,7 +57,6 @@
     twitter-color-emoji
 
     # Gaming
-    gamemode
     wineWowPackages.waylandFull
   ];
 
@@ -71,6 +70,11 @@
     sysdig.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
+    gamemode.enable = true;
+    git = {
+      enable = true;
+      lfs.enable = true;
+    };
   };
   console = {
     enable = true;
