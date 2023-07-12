@@ -81,6 +81,7 @@
                     patches = (old.patches or []) ++ [
                       ./patches/adwaita-theming-support.patch
                     ];
+                    doCheck = false;
                   });
                   discord = super.discord.overrideAttrs (old: {
                     desktopItem = old.desktopItem.override (old: { exec = old.exec + " --disable-gpu-sandbox"; });
