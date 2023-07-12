@@ -18,13 +18,17 @@
       flake = false;
     };
 
-    # PrismLauncher Patches
+    # Patches
     prism-game-options-patch = {
       url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
       flake = false;
     };
     prism-ftb-patch = {
       url = "https://github.com/AdenMck/PrismLauncher/commit/36df231f7ad5f8d54d08c4d2c5f99f6d000fc507.patch";
+      flake = false;
+    };
+    adwaita-theming-support = {
+      url = "https://aur.archlinux.org/cgit/aur.git/plain/theming_patch.diff?h=libadwaita-without-adwaita-git";
       flake = false;
     };
   };
@@ -75,6 +79,11 @@
                     patches = (old.patches or []) ++ [
                       inputs.prism-game-options-patch
                       inputs.prism-ftb-patch
+                    ];
+                  });
+                  libadwaita = super.libadwaita.overrideAttrs (old: {
+                    patches = (old.patches or []) ++ [
+                      inputs.adwaita-theming-support
                     ];
                   });
                   discord = super.discord.overrideAttrs (old: {
