@@ -27,10 +27,6 @@
       url = "https://github.com/AdenMck/PrismLauncher/commit/36df231f7ad5f8d54d08c4d2c5f99f6d000fc507.patch";
       flake = false;
     };
-    adwaita-theming-support = {
-      url = "https://aur.archlinux.org/cgit/aur.git/plain/theming_patch.diff?h=libadwaita-without-adwaita-git";
-      flake = false;
-    };
   };
 
   outputs = inputs@{
@@ -83,7 +79,11 @@
                   });
                   libadwaita = super.libadwaita.overrideAttrs (old: {
                     patches = (old.patches or []) ++ [
-                      inputs.adwaita-theming-support
+                      (fetchpatch {
+                        name = "adwaita-theming-support.diff";
+                        url = "https://aur.archlinux.org/cgit/aur.git/plain/theming_patch.diff?h=libadwaita-without-adwaita-git";
+                        hash = "";
+                      })
                     ];
                   });
                   discord = super.discord.overrideAttrs (old: {
