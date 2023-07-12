@@ -79,11 +79,7 @@
                   });
                   libadwaita = super.libadwaita.overrideAttrs (old: {
                     patches = (old.patches or []) ++ [
-                      (super.fetchpatch {
-                        name = "adwaita-theming-support.diff";
-                        url = "https://aur.archlinux.org/cgit/aur.git/plain/theming_patch.diff?h=libadwaita-without-adwaita-git";
-                        hash = "";
-                      })
+                      ./patches/adwaita-theming-support.patch
                     ];
                   });
                   discord = super.discord.overrideAttrs (old: {
