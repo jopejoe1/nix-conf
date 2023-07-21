@@ -33,9 +33,18 @@
     enable = true;
     eula = true;
     openFirewall = true;
+    declarative = true;
+    serverProperties = {
+      difficulty = 3;
+      enable-rcon = true;
+      "rcon.password" = "test";
+      motd = "Not A Minecraft Servr";
+      spawn-protection = 0;
+    };
   };
 
   environment.systemPackages = with pkgs; [
+    mcrcon
     prismlauncher
     libsForQt5.discover
     skypeforlinux
