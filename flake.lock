@@ -161,11 +161,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1689922935,
-        "narHash": "sha256-WqjGPUksKfLI5i9QuGejt57JyNFQoz/OKaLEPpDG4fU=",
+        "lastModified": 1689975893,
+        "narHash": "sha256-BHopZYe79kvy3T3xcTDmoOBFtqLaJ+pLUaEaGdhUPpo=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "92d95e73551541dbb91c23e5f65f7c0127252013",
+        "rev": "c91a96e29e8518c0c7098e954d34a0aa34a00406",
         "type": "github"
       },
       "original": {
@@ -240,11 +240,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1689758187,
-        "narHash": "sha256-eWuxwjpQMfYpFhCK5KD29c7j+q6S4o3JSLELg5PqUpI=",
+        "lastModified": 1689930672,
+        "narHash": "sha256-V28FCjBlZdA+MUI0sUoU/8F/hUKBwrdy473HEpI3cDI=",
         "owner": "PrismLauncher",
         "repo": "PrismLauncher",
-        "rev": "593f45298614843c14acb11994320f90a474c750",
+        "rev": "821dd8400b1a27ab1f932200bfa77d7a04edef5d",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
     "tela-icon-theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1687791419,
-        "narHash": "sha256-O/JrNofu+c9Xx02Jcssopx8u9dfQN1cQB5OY8Lm3ts8=",
+        "lastModified": 1689260111,
+        "narHash": "sha256-tbvs1KnTZxUk4A5ixEGiwfgv9bCP1byVEkhedmOM5H8=",
         "owner": "vinceliuice",
         "repo": "Tela-icon-theme",
-        "rev": "71ba370936c720bb6fbf0353f0bb36c36d6bc10e",
+        "rev": "7378cc75bb4b48535d36d574ea19a92cdde6bb94",
         "type": "github"
       },
       "original": {
