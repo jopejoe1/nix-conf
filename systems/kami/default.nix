@@ -29,6 +29,11 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   #boot.kernelParams = [ "module_blacklist=i915" ];
+  services.minecraft-server = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
+  };
 
   environment.systemPackages = with pkgs; [
     prismlauncher
