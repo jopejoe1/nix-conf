@@ -28,6 +28,9 @@
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
+  services.logmein-hamachi.enable = true;
+  programs.haguichi.enable = true;
+
   #boot.kernelParams = [ "module_blacklist=i915" ];
   services.minecraft-server = {
     enable = true;
