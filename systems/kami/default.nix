@@ -103,6 +103,12 @@
     layout = "de";
   };
 
+  boot.plymouth = {
+    enable = true;
+    themePackages = [ pkgs.catppuccin-plymouth ];
+    theme = "catppuccin-frappe";
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
