@@ -97,19 +97,11 @@
               ];
             };
             home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
+              useGlobalPkgs = true;
+              useUserPackages = true;
             };
 
             system.stateVersion = "23.05";
-
-            nix.registry = {
-              home-manager.flake = home-manager;
-              nixos-hardware.flake = nixos-hardware;
-              nur.flake = nur;
-              nixpkgs.flake = nixpkgs;
-            };
-            nix.nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
           }
         ];
       };
@@ -151,14 +143,6 @@
             };
 
             system.stateVersion = "23.05";
-
-            nix.registry = {
-              home-manager.flake = home-manager;
-              nixos-hardware.flake = nixos-hardware;
-              nur.flake = nur;
-              nixpkgs.flake = nixpkgs;
-            };
-            nix.nixPath = [ "nixpkgs=/etc/channels/nixpkgs" "nixos-config=/etc/nixos/configuration.nix" "/nix/var/nix/profiles/per-user/root/channels" ];
           }
         ];
       };
