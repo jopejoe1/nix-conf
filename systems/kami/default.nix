@@ -48,7 +48,7 @@
     };
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     google-fonts
     noto-fonts
     noto-fonts-emoji
