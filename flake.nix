@@ -52,6 +52,7 @@
           ./modules/printing
           #./modules/ssh
           ./modules/steam
+          ./modules/minecraft-server
           ./modules/users/jopejoe1
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
