@@ -1,4 +1,4 @@
-{ pkgs, prismlauncher, nur, inputs ... }:
+{ pkgs, prismlauncher, nur, inputs, ... }:
 
 {
   nixpkgs = {
