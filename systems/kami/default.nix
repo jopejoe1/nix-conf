@@ -74,9 +74,6 @@
     nerdfonts
     league-of-moveable-type
     twitter-color-emoji
-
-    # Gaming
-    wineWowPackages.waylandFull
   ];
 
   hardware.nvidia.modesetting.enable = true;
