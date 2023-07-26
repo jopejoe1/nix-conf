@@ -139,8 +139,8 @@
               ];
             };
             home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
+              useGlobalPkgs = true;
+              useUserPackages = true;
             };
 
             system.stateVersion = "23.05";
