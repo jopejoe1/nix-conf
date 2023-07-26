@@ -48,6 +48,18 @@
     };
   };
 
+  fonts.fonts = with pkgs; [
+    google-fonts
+    noto-fonts
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-emoji-blob-bin
+    nerdfonts
+    league-of-moveable-type
+    twitter-color-emoji
+  ];
+
   environment.systemPackages = with pkgs; [
     mcrcon
     prismlauncher
@@ -63,17 +75,6 @@
     catppuccin-kde
     catppuccin-gtk
     tela-icon-theme
-
-    # Fonts
-    google-fonts
-    noto-fonts
-    noto-fonts-emoji
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-emoji-blob-bin
-    nerdfonts
-    league-of-moveable-type
-    twitter-color-emoji
   ];
 
   hardware.nvidia.modesetting.enable = true;
