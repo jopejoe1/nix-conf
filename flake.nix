@@ -54,6 +54,7 @@
           ./modules/steam
           ./modules/minecraft-server
           ./modules/users/jopejoe1
+          ./overlays
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
           nixos-hardware.nixosModules.common-gpu-nvidia
@@ -62,48 +63,6 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
-          {
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                prismlauncher.overlays.default
-                nur.overlay
-                (self: super: {
-                  tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
-                    src = inputs.tela-icon-theme;
-                  });
-                  prismlauncher = super.prismlauncher.overrideAttrs (old: {
-                    patches = (old.patches or []) ++ [
-                      inputs.prism-game-options-patch
-                      inputs.prism-ftb-patch
-                    ];
-                  });
-                  libadwaita = super.libadwaita.overrideAttrs (old: {
-                    patches = (old.patches or []) ++ [
-                      ./patches/adwaita-theming-support.patch
-                    ];
-                    doCheck = false;
-                  });
-                  discord = (super.discord.overrideAttrs (old: {
-                    desktopItem = old.desktopItem.override (old: { exec = old.exec + " --disable-gpu-sandbox"; });
-                  })).override {
-                    withOpenASAR = true;
-                    withVencord = true;
-                    withTTS = true;
-                  };
-                  catppuccin-plymouth = super.catppuccin-plymouth.override {
-                    variant = "frappe";
-                  };
-                })
-              ];
-            };
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-            };
-
-            system.stateVersion = "23.05";
-          }
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -119,32 +78,10 @@
           ./modules/printing
           #./modules/ssh
           ./modules/users/jopejoe1
+          ./overlays
           nixos-hardware.nixosModules.pine64-pinebook-pro
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
-          {
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                prismlauncher.overlays.default
-                nur.overlay
-                (self: super: {
-                  tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
-                    src = inputs.tela-icon-theme;
-                  });
-                  discord = super.discord.overrideAttrs (old: {
-                    desktopItem = old.desktopItem.override (old: { exec = old.exec + " --disable-gpu-sandbox"; });
-                  });
-                })
-              ];
-            };
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-            };
-
-            system.stateVersion = "23.05";
-          }
         ];
       };
     };
