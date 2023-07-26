@@ -90,6 +90,9 @@
                     withVencord = true;
                     withTTS = true;
                   };
+                  catppuccin-plymouth = super.catppuccin-plymouth.override {
+                    variant = "frappe";
+                  };
                 })
               ];
             };
