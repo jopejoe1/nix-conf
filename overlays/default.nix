@@ -1,4 +1,4 @@
-{ pkgs, prismlauncher, nur, self, ... }:
+{ prismlauncher, nur, self, ... }:
 
 {
   nixpkgs = {
@@ -8,9 +8,9 @@
       prismlauncher.overlays.default
       nur.overlay
 
-      (slef: super: {
+      (_self: super: {
 
-        tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
+        tela-icon-theme = super.tela-icon-theme.overrideAttrs (_old: {
           src = self.inputs.tela-icon-theme;
         });
 

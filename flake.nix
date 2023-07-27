@@ -30,10 +30,8 @@
   };
 
   outputs = inputs@{
-      self,
       nixpkgs,
       home-manager,
-      prismlauncher,
       nur,
       nixos-hardware,
       ...

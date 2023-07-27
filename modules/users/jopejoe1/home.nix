@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 let hcfg = config.home-manager.users.jopejoe1;
 in {
