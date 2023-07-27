@@ -51,6 +51,7 @@
           #./modules/ssh
           ./modules/steam
           ./modules/minecraft-server
+          ./modules/editor
           ./modules/users/jopejoe1
           ./overlays
           nixos-hardware.nixosModules.common-cpu-intel
