@@ -2,19 +2,19 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    nur.url = github:nix-community/NUR;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
     home-manager= {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     prismlauncher = {
-      url = github:PrismLauncher/PrismLauncher;
+      url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = github:NixOS/nixos-hardware;
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     tela-icon-theme = {
-      url = github:vinceliuice/Tela-icon-theme;
+      url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
 
