@@ -8,7 +8,7 @@
       prismlauncher.overlays.default
       nur.overlay
 
-      (self: super: {
+      (slef: super: {
 
         tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
           src = self.inputs.tela-icon-theme;
