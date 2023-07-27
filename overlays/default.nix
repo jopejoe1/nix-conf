@@ -23,7 +23,7 @@
 
         libadwaita = super.libadwaita.overrideAttrs (old: {
           patches = (old.patches or []) ++ [
-            ./patches/adwaita-theming-support.patch
+            ../patches/adwaita-theming-support.patch
           ];
           doCheck = false;
         });
