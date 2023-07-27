@@ -1,4 +1,4 @@
-{ pkgs, prismlauncher, nur, inputs, ... }:
+{ pkgs, prismlauncher, nur, self, ... }:
 
 {
   nixpkgs = {
@@ -11,13 +11,13 @@
       (self: super: {
 
         tela-icon-theme = super.tela-icon-theme.overrideAttrs (old: {
-          src = inputs.tela-icon-theme;
+          src = self.inputs.tela-icon-theme;
         });
 
         prismlauncher = super.prismlauncher.overrideAttrs (old: {
           patches = (old.patches or []) ++ [
-            inputs.prism-game-options-patch
-            inputs.prism-ftb-patch
+            self.inputs.prism-game-options-patch
+            self.inputs.prism-ftb-patch
           ];
         });
 
@@ -41,6 +41,11 @@
         };
       })
     ];
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
   };
 
   system.stateVersion = "23.05";
