@@ -177,7 +177,7 @@ in {
                     "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "@nm" ];
                 };
-                "Nix Modules" = {
+                "NixOS Modules" = {
                   urls = [{
                     template = "https://search.nixos.org/options";
                     params = [
@@ -215,6 +215,8 @@ in {
                 "Google".metaData.hidden = true;
                 "eBay".metaData.hidden = true;
                 "Amazon.de".metaData.hidden = true;
+                "Tos;DR Search".metaData.hidden = true;
+                "LibRedirect".metaData.hidden = true;
                 "Wikipedia (en)".metaData.alias = "@wiki";
               };
             };
