@@ -215,7 +215,7 @@ in {
                 "Google".metaData.hidden = true;
                 "eBay".metaData.hidden = true;
                 "Amazon.de".metaData.hidden = true;
-                "Tos;DR Search".metaData.hidden = true;
+                "ToS;DR Search".metaData.hidden = true;
                 "LibRedirect".metaData.hidden = true;
                 "Wikipedia (en)".metaData.alias = "@wiki";
               };
