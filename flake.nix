@@ -50,6 +50,7 @@
           ./modules/printing
           #./modules/ssh
           ./modules/steam
+          ./modules/asf
           ./modules/minecraft-server
           ./modules/editor
           ./modules/users/jopejoe1
