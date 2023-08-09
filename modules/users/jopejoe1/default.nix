@@ -10,6 +10,7 @@
     description = "Johannes Jöns";
     initialPassword = "password";
     extraGroups = [ "wheel" "networkmanager" ];
+    uid = 1000;
     packages = with pkgs; [
       kate
       libsForQt5.ark

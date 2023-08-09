@@ -23,21 +23,26 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
-
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/1F26-8168";
+    "/boot/efi" = {
+      device = "/dev/disk/by-uuid/1F26-8168";
       fsType = "vfat";
     };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/78d6db21-b823-4ca4-b495-7782d3e56ddc";
+    "/home" = {
+      device = "/dev/disk/by-uuid/78d6db21-b823-4ca4-b495-7782d3e56ddc";
       fsType = "ext4";
     };
+    "/media/gaming" = {
+      device = "/dev/disk/by-uuid/4038F97238F966F6";
+      fsType = "ntfs";
+      options = [ "rw" "uid=${config.users.users.jopejoe1.uid}"];
+    };
+  };
 
   swapDevices = [ ];
 
