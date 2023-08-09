@@ -40,7 +40,7 @@
     "/media/gaming" = {
       device = "/dev/disk/by-uuid/4038F97238F966F6";
       fsType = "ntfs";
-      options = [ "rw" "uid=${config.users.users.jopejoe1.uid}"];
+      options = [ "rw" "uid=1000"];
     };
   };
 
