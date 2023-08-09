@@ -42,6 +42,10 @@
       fsType = "ntfs";
       options = [ "rw" "uid=1000"];
     };
+    "/media/oldhome" = {
+      device = "jopejoe1";
+      fsType = "zfs";
+    };
   };
 
   swapDevices = [ ];
