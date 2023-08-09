@@ -12,6 +12,8 @@
 
   services.xserver.desktopManager.kodi.enable = true;
 
+  boot.supportedFilesystems = [ "zfs" ];
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
