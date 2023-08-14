@@ -11,7 +11,7 @@
       kernelModules = [ ];
     };
     kernelModules = [ ];
-    extraModulesPackages = [ ];
+    extraModulePackages = [ ];
   };
 
   fileSystems."/" = {
