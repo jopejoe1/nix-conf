@@ -23,6 +23,6 @@
 
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = "aarch64-linux";
-  powerManagement.cpuFreqGovenor = "ondemand";
+  powerManagement.cpuFreqGovernor = "ondemand";
 }
 
