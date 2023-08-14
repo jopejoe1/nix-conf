@@ -7,7 +7,7 @@
 
   boot = {
     initrd = {
-      avaibleKernelModules = [ "xhci_pci"];
+      availableKernelModules = [ "xhci_pci"];
       kernelModules = [ ];
     };
     kernelModules = [ ];
