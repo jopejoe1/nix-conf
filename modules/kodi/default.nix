@@ -1,25 +1,9 @@
 { pkgs, ... }:
 
 {
-  services = {
-    xserver = {
-      enable = true;
-
-      libinput.enable = true;
-      desktopManager.kodi = {
-        enable = true;
-        package = pkgs.kodi-wayland.withPackages (p: with p; [ trakt netflix youtube vfs-sftp ]);
-      };
-
-      displayManager.lightdm.enable = true;
-      displayManager.lightdm.autoLogin.timeout = 3;
-
-      displayManager.autoLogin = {
-        enable = true;
-        user = "kodi";
-      };
-    };
-  };
+  services.cage.user = "kodi";
+  services.cage.program = "${pkgs.kodi-wayland.withPackages (p: with p; [ trakt netflix youtube vfs-sftp ])}/bin/kodi-standalone";
+  services.cage.enable = true;
 
   networking.firewall = {
     allowedTCPPorts = [ 8080 ];
