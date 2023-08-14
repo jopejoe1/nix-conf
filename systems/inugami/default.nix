@@ -11,4 +11,11 @@
   };
 
   networking.hostName = "inugami";
+
+  programs = {
+    git = {
+      enable = true;
+      lfs.enable = true;
+    };
+  };
 }
