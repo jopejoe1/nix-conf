@@ -84,6 +84,23 @@
           home-manager.nixosModules.home-manager
         ];
       };
+      inugami = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./systems/inugami
+          ./modules/audio
+          ./modules/bluetooth
+          ./modules/local
+          ./modules/nix
+          ./modules/kodi
+          ./modules/auto-update
+          ./overlays
+          nixos-hardware.nixosModules.raspberry-pi-4
+          nur.nixosModules.nur
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
   };
 }
