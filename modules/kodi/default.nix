@@ -11,6 +11,9 @@
         package = pkgs.kodi-wayland.withPackages (p: with p; [ trakt netflix youtube vfs-sftp ]);
       };
 
+      displayManager.lightdm.enable = true;
+      displayManager.lightdm.autoLogin.timeout = 3;
+
       displayManager.autoLogin = {
         enable = true;
         user = "kodi";
