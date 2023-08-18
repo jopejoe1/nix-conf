@@ -53,6 +53,7 @@
     #devolo-dlan-cockpit
     libsForQt5.qtstyleplugin-kvantum
     mixxx
+    picard
 
     # Theming
     catppuccin-kvantum
