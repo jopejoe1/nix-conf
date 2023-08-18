@@ -12,6 +12,12 @@ in {
       sessionVariables = {
         XCOMPOSECACHE = "${hcfg.xdg.cacheHome}/X11/xcompos";
         XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+        ANDROID_HOME = "${hcfg.xdg.dataHome}/android";
+        CUDA_CACHE_PATH = "${hcfg.xdg.cacheHome}/nv";
+        GRADLE_USER_HOME = "${hcfg.xdg.dataHome}/gradle";
+        KODI_DATA = "${hcfg.xdg.dataHome}/kodi";
+        _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${hcfg.xdg.configHome}/java";
+        WINEPREFIX = "${hcfg.xdg.dataHome}/wine";
       };
 
       stateVersion = config.system.stateVersion;
