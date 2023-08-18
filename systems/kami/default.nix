@@ -52,6 +52,7 @@
     carla
     #devolo-dlan-cockpit
     libsForQt5.qtstyleplugin-kvantum
+    mixxx
 
     # Theming
     catppuccin-kvantum
