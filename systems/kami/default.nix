@@ -77,8 +77,8 @@
       mopidy-local
       mopidy-tunein
       mopidy-somafm
-      mopidy-ytmusic
-      mopidy-youtube
+      #mopidy-ytmusic
+      #mopidy-youtube
       mopidy-spotify
       mopidy-podcast
       mopidy-bandcamp
