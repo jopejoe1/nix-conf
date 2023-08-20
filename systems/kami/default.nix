@@ -49,7 +49,8 @@
     prismlauncher
     libsForQt5.discover
     skypeforlinux
-    jetbrains.pycharm-professional
+    jetbrains.pycharm-community
+    jetbrains.idea-community
     carla
     #devolo-dlan-cockpit
     libsForQt5.qtstyleplugin-kvantum
