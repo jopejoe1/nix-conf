@@ -64,6 +64,11 @@
     tela-icon-theme
   ];
 
+  programs.java = {
+    enable = true;
+    binfmt = true;
+  };
+
   hardware.nvidia.modesetting.enable = true;
 
   services.flatpak.enable = true;
