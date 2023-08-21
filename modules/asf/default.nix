@@ -4,6 +4,11 @@
   services.archisteamfarm = {
     enable = true;
     web-ui.enable = true;
+    settings = {
+      LicenseID = import /var/lib/asf/key.nix;
+      SteamProtocols = 7;
+      AutoSteamSaleEvent = true;
+    };
     bots.jopejoe1 = {
       username = "jopejoe1";
       enabled = true;
