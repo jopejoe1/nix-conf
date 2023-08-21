@@ -6,7 +6,6 @@
   ];
 
   users.users.root = {
-    description = "root";
     initialPassword = "password";
   };
 }
