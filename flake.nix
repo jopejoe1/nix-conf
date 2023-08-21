@@ -54,6 +54,7 @@
           ./modules/minecraft-server
           ./modules/editor
           ./modules/users/jopejoe1
+          ./modules/users/root
           ./overlays
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
@@ -78,6 +79,7 @@
           ./modules/printing
           #./modules/ssh
           ./modules/users/jopejoe1
+          ./modules/users/root
           ./overlays
           nixos-hardware.nixosModules.pine64-pinebook-pro
           nur.nixosModules.nur
