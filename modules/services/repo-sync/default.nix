@@ -17,6 +17,7 @@
       ${pkgs.git}/bin/git -C /var/lib/repo-sync pull -r gitlab
       ${pkgs.git}/bin/git -C /var/lib/repo-sync push origin
     '';
+    path = [pkgs.openssh];
     serviceConfig = {
       Type = "oneshot";
       User = "root";
