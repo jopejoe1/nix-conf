@@ -12,9 +12,9 @@
 
   systemd.services."repo-sync" = {
     script = ''
-      ${pkgs.git}/bin/git -r -C /var/lib/repo-sync pull codeberg
-      ${pkgs.git}/bin/git -r -C /var/lib/repo-sync pull github
-      ${pkgs.git}/bin/git -r -C /var/lib/repo-sync pull gitlab
+      ${pkgs.git}/bin/git -C /var/lib/repo-sync pull -r codeberg
+      ${pkgs.git}/bin/git -C /var/lib/repo-sync pull -r github
+      ${pkgs.git}/bin/git -C /var/lib/repo-sync pull -r gitlab
       ${pkgs.git}/bin/git -C /var/lib/repo-sync push origin
     '';
     serviceConfig = {
