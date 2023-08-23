@@ -11,12 +11,48 @@
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.libnbtplusplus.follows = "libnbtplusplus";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     tela-icon-theme = {
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
+
+    # Dependencys
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+    };
+    nixpkgs-lib.url = "github:NixOS/nixpkgs/nixos-unstable?dir=lib";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.gitignore.follows = "gitignore";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+    libnbtplusplus = {
+      url = "github:PrismLauncher/libnbtplusplus";
+      flake = false;
+    };
+    gitignore = {
+      url = "github:hercules-ci/gitignore.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "nix-systems";
+    };
+    nix-systems.url = "github:nix-systems/default";
 
     # Patches
     prism-game-options-patch = {
