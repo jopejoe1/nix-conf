@@ -53,6 +53,7 @@
           ./modules/asf
           ./modules/minecraft-server
           ./modules/editor
+          ./modules/services/repo-sync
           ./modules/users/jopejoe1
           ./modules/users/root
           ./overlays
