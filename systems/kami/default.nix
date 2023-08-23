@@ -69,27 +69,6 @@
     binfmt = true;
   };
 
-  services.mopidy = {
-    enable = true;
-    extensionPackages = with pkgs; [
-      mopidy-mpd
-      mopidy-tidal
-      mopidy-local
-      mopidy-tunein
-      mopidy-somafm
-      #mopidy-ytmusic
-      #mopidy-youtube
-      mopidy-spotify
-      mopidy-podcast
-      mopidy-bandcamp
-      mopidy-soundcloud
-      mopidy-iris
-    ];
-    extraConfigFiles = [
-      "/home/jopejoe1/.config/mopidy.conf"
-    ];
-  };
-
   hardware.nvidia.modesetting.enable = true;
 
   services.flatpak.enable = true;
