@@ -1,0 +1,1941 @@
+From e51a0a0fa2574d2be1ef0d8da463cf43adaea924 Mon Sep 17 00:00:00 2001
+From: "Svyatoshenko \"Megal\" Misha" <1654478+Megal@users.noreply.github.com>
+Date: Sat, 27 May 2023 17:43:01 +0300
+Subject: [PATCH] Revert "Merge pull request #1040 from
+ Scrumplex/remove-modpacksch"
+
+This reverts commit ae75585b52078ca6d89b4014668c08d9aea4a17b, reversing
+changes made to f54fc167180cffa9277c1d93eb8cf887af5671e4.
+---
+ launcher/CMakeLists.txt                       |  16 +
+ .../modpacksch/FTBPackInstallTask.cpp         | 387 ++++++++++++++++++
+ .../modpacksch/FTBPackInstallTask.h           | 101 +++++
+ .../modpacksch/FTBPackManifest.cpp            | 195 +++++++++
+ .../modplatform/modpacksch/FTBPackManifest.h  | 168 ++++++++
+ launcher/ui/dialogs/NewInstanceDialog.cpp     |   2 +
+ .../pages/modplatform/ftb/FtbFilterModel.cpp  |  93 +++++
+ .../ui/pages/modplatform/ftb/FtbFilterModel.h |  51 +++
+ .../ui/pages/modplatform/ftb/FtbListModel.cpp | 304 ++++++++++++++
+ .../ui/pages/modplatform/ftb/FtbListModel.h   |  83 ++++
+ launcher/ui/pages/modplatform/ftb/FtbPage.cpp | 199 +++++++++
+ launcher/ui/pages/modplatform/ftb/FtbPage.h   | 105 +++++
+ launcher/ui/pages/modplatform/ftb/FtbPage.ui  |  86 ++++
+ 13 files changed, 1790 insertions(+)
+ create mode 100644 launcher/modplatform/modpacksch/FTBPackInstallTask.cpp
+ create mode 100644 launcher/modplatform/modpacksch/FTBPackInstallTask.h
+ create mode 100644 launcher/modplatform/modpacksch/FTBPackManifest.cpp
+ create mode 100644 launcher/modplatform/modpacksch/FTBPackManifest.h
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbFilterModel.cpp
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbFilterModel.h
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbListModel.cpp
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbListModel.h
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbPage.cpp
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbPage.h
+ create mode 100644 launcher/ui/pages/modplatform/ftb/FtbPage.ui
+
+diff --git a/launcher/CMakeLists.txt b/launcher/CMakeLists.txt
+index 273b5449ac..90041d68bf 100644
+--- a/launcher/CMakeLists.txt
++++ b/launcher/CMakeLists.txt
+@@ -527,6 +527,13 @@ set(MODRINTH_SOURCES
+     modplatform/modrinth/ModrinthInstanceCreationTask.h
+ )
+ 
++set(MODPACKSCH_SOURCES
++    modplatform/modpacksch/FTBPackInstallTask.h
++    modplatform/modpacksch/FTBPackInstallTask.cpp
++    modplatform/modpacksch/FTBPackManifest.h
++    modplatform/modpacksch/FTBPackManifest.cpp
++)
++
+ set(PACKWIZ_SOURCES
+     modplatform/packwiz/Packwiz.h
+     modplatform/packwiz/Packwiz.cpp
+@@ -656,6 +663,7 @@ set(LOGIC_SOURCES
+     ${FTB_SOURCES}
+     ${FLAME_SOURCES}
+     ${MODRINTH_SOURCES}
++    ${MODPACKSCH_SOURCES}
+     ${PACKWIZ_SOURCES}
+     ${TECHNIC_SOURCES}
+     ${ATLAUNCHER_SOURCES}
+@@ -853,6 +861,13 @@ SET(LAUNCHER_SOURCES
+     ui/pages/modplatform/atlauncher/AtlUserInteractionSupportImpl.cpp
+     ui/pages/modplatform/atlauncher/AtlUserInteractionSupportImpl.h
+ 
++    ui/pages/modplatform/ftb/FtbFilterModel.cpp
++    ui/pages/modplatform/ftb/FtbFilterModel.h
++    ui/pages/modplatform/ftb/FtbListModel.cpp
++    ui/pages/modplatform/ftb/FtbListModel.h
++    ui/pages/modplatform/ftb/FtbPage.cpp
++    ui/pages/modplatform/ftb/FtbPage.h
++
+     ui/pages/modplatform/legacy_ftb/Page.cpp
+     ui/pages/modplatform/legacy_ftb/Page.h
+     ui/pages/modplatform/legacy_ftb/ListModel.h
+@@ -1029,6 +1044,7 @@ qt_wrap_ui(LAUNCHER_UI
+     ui/pages/modplatform/flame/FlamePage.ui
+     ui/pages/modplatform/legacy_ftb/Page.ui
+     ui/pages/modplatform/ImportPage.ui
++    ui/pages/modplatform/ftb/FtbPage.ui
+     ui/pages/modplatform/modrinth/ModrinthPage.ui
+     ui/pages/modplatform/technic/TechnicPage.ui
+     ui/widgets/InstanceCardWidget.ui
+diff --git a/launcher/modplatform/modpacksch/FTBPackInstallTask.cpp b/launcher/modplatform/modpacksch/FTBPackInstallTask.cpp
+new file mode 100644
+index 0000000000..68d4751cdd
+--- /dev/null
++++ b/launcher/modplatform/modpacksch/FTBPackInstallTask.cpp
+@@ -0,0 +1,387 @@
++// SPDX-License-Identifier: GPL-3.0-only
++/*
++ *  Prism Launcher - Minecraft Launcher
++ *  Copyright (C) 2022 flowln <flowlnlnln@gmail.com>
++ *  Copyright (c) 2022 Jamie Mansfield <jmansfield@cadixdev.org>
++ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, version 3.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * This file incorporates work covered by the following copyright and
++ * permission notice:
++ *
++ *      Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *      Copyright 2020-2021 Petr Mrazek <peterix@gmail.com>
++ *
++ *      Licensed under the Apache License, Version 2.0 (the "License");
++ *      you may not use this file except in compliance with the License.
++ *      You may obtain a copy of the License at
++ *
++ *          http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *      Unless required by applicable law or agreed to in writing, software
++ *      distributed under the License is distributed on an "AS IS" BASIS,
++ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *      See the License for the specific language governing permissions and
++ *      limitations under the License.
++ */
++
++#include "FTBPackInstallTask.h"
++
++#include "FileSystem.h"
++#include "Json.h"
++#include "minecraft/MinecraftInstance.h"
++#include "minecraft/PackProfile.h"
++#include "modplatform/flame/PackManifest.h"
++#include "net/ChecksumValidator.h"
++#include "settings/INISettingsObject.h"
++
++#include "Application.h"
++#include "BuildConfig.h"
++#include "ui/dialogs/BlockedModsDialog.h"
++
++namespace ModpacksCH {
++
++PackInstallTask::PackInstallTask(Modpack pack, QString version, QWidget* parent)
++    : m_pack(std::move(pack)), m_version_name(std::move(version)), m_parent(parent)
++{}
++
++bool PackInstallTask::abort()
++{
++    if (!canAbort())
++        return false;
++
++    bool aborted = true;
++
++    if (m_net_job)
++        aborted &= m_net_job->abort();
++    if (m_mod_id_resolver_task)
++        aborted &= m_mod_id_resolver_task->abort();
++
++    return aborted ? InstanceTask::abort() : false;
++}
++
++void PackInstallTask::executeTask()
++{
++    setStatus(tr("Getting the manifest..."));
++    setAbortable(false);
++
++    // Find pack version
++    auto version_it = std::find_if(m_pack.versions.constBegin(), m_pack.versions.constEnd(),
++                                   [this](ModpacksCH::VersionInfo const& a) { return a.name == m_version_name; });
++
++    if (version_it == m_pack.versions.constEnd()) {
++        emitFailed(tr("Failed to find pack version %1").arg(m_version_name));
++        return;
++    }
++
++    auto version = *version_it;
++
++    auto netJob = makeShared<NetJob>("ModpacksCH::VersionFetch", APPLICATION->network());
++
++    auto searchUrl = QString(BuildConfig.MODPACKSCH_API_BASE_URL + "public/modpack/%1/%2").arg(m_pack.id).arg(version.id);
++    netJob->addNetAction(Net::Download::makeByteArray(QUrl(searchUrl), &m_response));
++
++    QObject::connect(netJob.get(), &NetJob::succeeded, this, &PackInstallTask::onManifestDownloadSucceeded);
++    QObject::connect(netJob.get(), &NetJob::failed, this, &PackInstallTask::onManifestDownloadFailed);
++    QObject::connect(netJob.get(), &NetJob::aborted, this, &PackInstallTask::abort);
++    QObject::connect(netJob.get(), &NetJob::progress, this, &PackInstallTask::setProgress);
++
++    m_net_job = netJob;
++
++    setAbortable(true);
++    netJob->start();
++}
++
++void PackInstallTask::onManifestDownloadSucceeded()
++{
++    m_net_job.reset();
++
++    QJsonParseError parse_error{};
++    QJsonDocument doc = QJsonDocument::fromJson(m_response, &parse_error);
++    if (parse_error.error != QJsonParseError::NoError) {
++        qWarning() << "Error while parsing JSON response from ModpacksCH at " << parse_error.offset
++                   << " reason: " << parse_error.errorString();
++        qWarning() << m_response;
++        return;
++    }
++
++    ModpacksCH::Version version;
++    try {
++        auto obj = Json::requireObject(doc);
++        ModpacksCH::loadVersion(version, obj);
++    } catch (const JSONValidationError& e) {
++        emitFailed(tr("Could not understand pack manifest:\n") + e.cause());
++        return;
++    }
++
++    m_version = version;
++
++    resolveMods();
++}
++
++void PackInstallTask::resolveMods()
++{
++    setStatus(tr("Resolving mods..."));
++    setAbortable(false);
++    setProgress(0, 100);
++
++    m_file_id_map.clear();
++
++    Flame::Manifest manifest;
++    int index = 0;
++
++    for (auto const& file : m_version.files) {
++        if (!file.serverOnly && file.url.isEmpty()) {
++            if (file.curseforge.file_id <= 0) {
++                emitFailed(tr("Invalid manifest: There's no information available to download the file '%1'!").arg(file.name));
++                return;
++            }
++
++            Flame::File flame_file;
++            flame_file.projectId = file.curseforge.project_id;
++            flame_file.fileId = file.curseforge.file_id;
++            flame_file.hash = file.sha1;
++
++            manifest.files.insert(flame_file.fileId, flame_file);
++            m_file_id_map.append(flame_file.fileId);
++        } else {
++            m_file_id_map.append(-1);
++        }
++
++        index++;
++    }
++
++    m_mod_id_resolver_task.reset(new Flame::FileResolvingTask(APPLICATION->network(), manifest));
++
++    connect(m_mod_id_resolver_task.get(), &Flame::FileResolvingTask::succeeded, this, &PackInstallTask::onResolveModsSucceeded);
++    connect(m_mod_id_resolver_task.get(), &Flame::FileResolvingTask::failed, this, &PackInstallTask::onResolveModsFailed);
++    connect(m_mod_id_resolver_task.get(), &Flame::FileResolvingTask::aborted, this, &PackInstallTask::abort);
++    connect(m_mod_id_resolver_task.get(), &Flame::FileResolvingTask::progress, this, &PackInstallTask::setProgress);
++
++    setAbortable(true);
++
++    m_mod_id_resolver_task->start();
++}
++
++void PackInstallTask::onResolveModsSucceeded()
++{
++    auto anyBlocked = false;
++
++    Flame::Manifest results = m_mod_id_resolver_task->getResults();
++    for (int index = 0; index < m_file_id_map.size(); index++) {
++        auto const file_id = m_file_id_map.at(index);
++        if (file_id < 0)
++            continue;
++
++        Flame::File results_file = results.files[file_id];
++        VersionFile& local_file = m_version.files[index];
++
++        // First check for blocked mods
++        if (!results_file.resolved || results_file.url.isEmpty()) {
++            BlockedMod blocked_mod;
++            blocked_mod.name = local_file.name;
++            blocked_mod.websiteUrl = results_file.websiteUrl;
++            blocked_mod.hash = results_file.hash;
++            blocked_mod.matched = false;
++            blocked_mod.localPath = "";
++            blocked_mod.targetFolder = results_file.targetFolder;
++
++            m_blocked_mods.append(blocked_mod);
++
++            anyBlocked = true;
++        } else {
++            local_file.url = results_file.url.toString();
++        }
++    }
++
++    m_mod_id_resolver_task.reset();
++
++    if (anyBlocked) {
++        qDebug() << "Blocked files found, displaying file list";
++
++        BlockedModsDialog message_dialog(m_parent, tr("Blocked files found"),
++                                         tr("The following files are not available for download in third party launchers.<br/>"
++                                            "You will need to manually download them and add them to the instance."),
++                                         m_blocked_mods);
++
++        message_dialog.setModal(true);
++
++        if (message_dialog.exec() == QDialog::Accepted) {
++            qDebug() << "Post dialog blocked mods list: " << m_blocked_mods;
++            createInstance();
++        } else {
++            abort();
++        }
++
++    } else {
++        createInstance();
++    }
++}
++
++void PackInstallTask::createInstance()
++{
++    setAbortable(false);
++
++    setStatus(tr("Creating the instance..."));
++    QCoreApplication::processEvents();
++
++    auto instanceConfigPath = FS::PathCombine(m_stagingPath, "instance.cfg");
++    auto instanceSettings = std::make_shared<INISettingsObject>(instanceConfigPath);
++
++    MinecraftInstance instance(m_globalSettings, instanceSettings, m_stagingPath);
++    auto components = instance.getPackProfile();
++    components->buildingFromScratch();
++
++    for (auto target : m_version.targets) {
++        if (target.type == "game" && target.name == "minecraft") {
++            components->setComponentVersion("net.minecraft", target.version, true);
++            break;
++        }
++    }
++
++    for (auto target : m_version.targets) {
++        if (target.type != "modloader")
++            continue;
++
++        if (target.name == "forge") {
++            components->setComponentVersion("net.minecraftforge", target.version);
++        } else if (target.name == "fabric") {
++            components->setComponentVersion("net.fabricmc.fabric-loader", target.version);
++        }
++    }
++
++    // install any jar mods
++    QDir jarModsDir(FS::PathCombine(m_stagingPath, "minecraft", "jarmods"));
++    if (jarModsDir.exists()) {
++        QStringList jarMods;
++
++        for (const auto& info : jarModsDir.entryInfoList(QDir::NoDotAndDotDot | QDir::Files)) {
++            jarMods.push_back(info.absoluteFilePath());
++        }
++
++        components->installJarMods(jarMods);
++    }
++
++    components->saveNow();
++
++    instance.setName(name());
++    instance.setIconKey(m_instIcon);
++    instance.setManagedPack("modpacksch", QString::number(m_pack.id), m_pack.name, QString::number(m_version.id), m_version.name);
++
++    instance.saveNow();
++
++    onCreateInstanceSucceeded();
++}
++
++void PackInstallTask::onCreateInstanceSucceeded()
++{
++    downloadPack();
++}
++
++void PackInstallTask::downloadPack()
++{
++    setStatus(tr("Downloading mods..."));
++    setAbortable(false);
++
++    auto jobPtr = makeShared<NetJob>(tr("Mod download"), APPLICATION->network());
++    for (auto const& file : m_version.files) {
++        if (file.serverOnly || file.url.isEmpty())
++            continue;
++
++        auto path = FS::PathCombine(m_stagingPath, ".minecraft", file.path, file.name);
++        qDebug() << "Will try to download" << file.url << "to" << path;
++
++        QFileInfo file_info(file.name);
++
++        auto dl = Net::Download::makeFile(file.url, path);
++        if (!file.sha1.isEmpty()) {
++            auto rawSha1 = QByteArray::fromHex(file.sha1.toLatin1());
++            dl->addValidator(new Net::ChecksumValidator(QCryptographicHash::Sha1, rawSha1));
++        }
++
++        jobPtr->addNetAction(dl);
++    }
++
++    connect(jobPtr.get(), &NetJob::succeeded, this, &PackInstallTask::onModDownloadSucceeded);
++    connect(jobPtr.get(), &NetJob::failed, this, &PackInstallTask::onModDownloadFailed);
++    connect(jobPtr.get(), &NetJob::aborted, this, &PackInstallTask::abort);
++    connect(jobPtr.get(), &NetJob::progress, this, &PackInstallTask::setProgress);
++
++    m_net_job = jobPtr;
++
++    setAbortable(true);
++    jobPtr->start();
++}
++
++void PackInstallTask::onModDownloadSucceeded()
++{
++    m_net_job.reset();
++    if (!m_blocked_mods.isEmpty()) {
++        copyBlockedMods();
++    }
++    emitSucceeded();
++}
++
++void PackInstallTask::onManifestDownloadFailed(QString reason)
++{
++    m_net_job.reset();
++    emitFailed(reason);
++}
++void PackInstallTask::onResolveModsFailed(QString reason)
++{
++    m_net_job.reset();
++    emitFailed(reason);
++}
++void PackInstallTask::onCreateInstanceFailed(QString reason)
++{
++    emitFailed(reason);
++}
++void PackInstallTask::onModDownloadFailed(QString reason)
++{
++    m_net_job.reset();
++    emitFailed(reason);
++}
++
++/// @brief copy the matched blocked mods to the instance staging area
++void PackInstallTask::copyBlockedMods()
++{
++    setStatus(tr("Copying Blocked Mods..."));
++    setAbortable(false);
++    int i = 0;
++    int total = m_blocked_mods.length();
++    setProgress(i, total);
++    for (auto const& mod : m_blocked_mods) {
++        if (!mod.matched) {
++            qDebug() << mod.name << "was not matched to a local file, skipping copy";
++            continue;
++        }
++
++        auto dest_path = FS::PathCombine(m_stagingPath, ".minecraft", mod.targetFolder, mod.name);
++
++        setStatus(tr("Copying Blocked Mods (%1 out of %2 are done)").arg(QString::number(i), QString::number(total)));
++
++        qDebug() << "Will try to copy" << mod.localPath << "to" << dest_path;
++
++        if (!FS::copy(mod.localPath, dest_path)()) {
++            qDebug() << "Copy of" << mod.localPath << "to" << dest_path << "Failed";
++        }
++
++        i++;
++        setProgress(i, total);
++    }
++
++    setAbortable(true);
++}
++
++}  // namespace ModpacksCH
+diff --git a/launcher/modplatform/modpacksch/FTBPackInstallTask.h b/launcher/modplatform/modpacksch/FTBPackInstallTask.h
+new file mode 100644
+index 0000000000..97b1eb0b13
+--- /dev/null
++++ b/launcher/modplatform/modpacksch/FTBPackInstallTask.h
+@@ -0,0 +1,101 @@
++// SPDX-License-Identifier: GPL-3.0-only
++/*
++ *  Prism Launcher - Minecraft Launcher
++ *  Copyright (C) 2022 flowln <flowlnlnln@gmail.com>
++ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, version 3.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * This file incorporates work covered by the following copyright and
++ * permission notice:
++ *
++ *      Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *      Copyright 2020-2021 Petr Mrazek <peterix@gmail.com>
++ *
++ *      Licensed under the Apache License, Version 2.0 (the "License");
++ *      you may not use this file except in compliance with the License.
++ *      You may obtain a copy of the License at
++ *
++ *          http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *      Unless required by applicable law or agreed to in writing, software
++ *      distributed under the License is distributed on an "AS IS" BASIS,
++ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *      See the License for the specific language governing permissions and
++ *      limitations under the License.
++ */
++
++#pragma once
++
++#include "FTBPackManifest.h"
++
++#include "InstanceTask.h"
++#include "QObjectPtr.h"
++#include "modplatform/flame/FileResolvingTask.h"
++#include "net/NetJob.h"
++#include "ui/dialogs/BlockedModsDialog.h"
++
++#include <QWidget>
++
++namespace ModpacksCH {
++
++class PackInstallTask final : public InstanceTask
++{
++    Q_OBJECT
++
++public:
++    explicit PackInstallTask(Modpack pack, QString version, QWidget* parent = nullptr);
++    ~PackInstallTask() override = default;
++
++    bool abort() override;
++
++protected:
++    void executeTask() override;
++
++private slots:
++    void onManifestDownloadSucceeded();
++    void onResolveModsSucceeded();
++    void onCreateInstanceSucceeded();
++    void onModDownloadSucceeded();
++
++    void onManifestDownloadFailed(QString reason);
++    void onResolveModsFailed(QString reason);
++    void onCreateInstanceFailed(QString reason);
++    void onModDownloadFailed(QString reason);
++
++private:
++    void resolveMods();
++    void createInstance();
++    void downloadPack();
++    void copyBlockedMods();
++
++private:
++    NetJob::Ptr m_net_job = nullptr;
++    shared_qobject_ptr<Flame::FileResolvingTask> m_mod_id_resolver_task = nullptr;
++
++    QList<int> m_file_id_map;
++
++    QByteArray m_response;
++
++    Modpack m_pack;
++    QString m_version_name;
++    Version m_version;
++
++    QMap<QString, QString> m_files_to_copy;
++    QList<BlockedMod> m_blocked_mods;
++
++    //FIXME: nuke
++    QWidget* m_parent;
++};
++
++}
+diff --git a/launcher/modplatform/modpacksch/FTBPackManifest.cpp b/launcher/modplatform/modpacksch/FTBPackManifest.cpp
+new file mode 100644
+index 0000000000..421527aefd
+--- /dev/null
++++ b/launcher/modplatform/modpacksch/FTBPackManifest.cpp
+@@ -0,0 +1,195 @@
++// SPDX-License-Identifier: GPL-3.0-only
++/*
++ *  PolyMC - Minecraft Launcher
++ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, version 3.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * This file incorporates work covered by the following copyright and
++ * permission notice:
++ *
++ *      Copyright 2020 Jamie Mansfield <jmansfield@cadixdev.org>
++ *      Copyright 2020-2021 Petr Mrazek <peterix@gmail.com>
++ *
++ *      Licensed under the Apache License, Version 2.0 (the "License");
++ *      you may not use this file except in compliance with the License.
++ *      You may obtain a copy of the License at
++ *
++ *          http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *      Unless required by applicable law or agreed to in writing, software
++ *      distributed under the License is distributed on an "AS IS" BASIS,
++ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *      See the License for the specific language governing permissions and
++ *      limitations under the License.
++ */
++
++#include "FTBPackManifest.h"
++
++#include "Json.h"
++
++static void loadSpecs(ModpacksCH::Specs & s, QJsonObject & obj)
++{
++    s.id = Json::requireInteger(obj, "id");
++    s.minimum = Json::requireInteger(obj, "minimum");
++    s.recommended = Json::requireInteger(obj, "recommended");
++}
++
++static void loadTag(ModpacksCH::Tag & t, QJsonObject & obj)
++{
++    t.id = Json::requireInteger(obj, "id");
++    t.name = Json::requireString(obj, "name");
++}
++
++static void loadArt(ModpacksCH::Art & a, QJsonObject & obj)
++{
++    a.id = Json::requireInteger(obj, "id");
++    a.url = Json::requireString(obj, "url");
++    a.type = Json::requireString(obj, "type");
++    a.width = Json::requireInteger(obj, "width");
++    a.height = Json::requireInteger(obj, "height");
++    a.compressed = Json::requireBoolean(obj, "compressed");
++    a.sha1 = Json::requireString(obj, "sha1");
++    a.size = Json::requireInteger(obj, "size");
++    a.updated = Json::requireInteger(obj, "updated");
++}
++
++static void loadAuthor(ModpacksCH::Author & a, QJsonObject & obj)
++{
++    a.id = Json::requireInteger(obj, "id");
++    a.name = Json::requireString(obj, "name");
++    a.type = Json::requireString(obj, "type");
++    a.website = Json::requireString(obj, "website");
++    a.updated = Json::requireInteger(obj, "updated");
++}
++
++static void loadVersionInfo(ModpacksCH::VersionInfo & v, QJsonObject & obj)
++{
++    v.id = Json::requireInteger(obj, "id");
++    v.name = Json::requireString(obj, "name");
++    v.type = Json::requireString(obj, "type");
++    v.updated = Json::requireInteger(obj, "updated");
++    auto specs = Json::requireObject(obj, "specs");
++    loadSpecs(v.specs, specs);
++}
++
++void ModpacksCH::loadModpack(ModpacksCH::Modpack & m, QJsonObject & obj)
++{
++    m.id = Json::requireInteger(obj, "id");
++    m.name = Json::requireString(obj, "name");
++    m.synopsis = Json::requireString(obj, "synopsis");
++    m.description = Json::requireString(obj, "description");
++    m.type = Json::requireString(obj, "type");
++    m.featured = Json::requireBoolean(obj, "featured");
++    m.installs = Json::requireInteger(obj, "installs");
++    m.plays = Json::requireInteger(obj, "plays");
++    m.updated = Json::requireInteger(obj, "updated");
++    m.refreshed = Json::requireInteger(obj, "refreshed");
++    auto artArr = Json::requireArray(obj, "art");
++    for (QJsonValueRef artRaw : artArr)
++    {
++        auto artObj = Json::requireObject(artRaw);
++        ModpacksCH::Art art;
++        loadArt(art, artObj);
++        m.art.append(art);
++    }
++    auto authorArr = Json::requireArray(obj, "authors");
++    for (QJsonValueRef authorRaw : authorArr)
++    {
++        auto authorObj = Json::requireObject(authorRaw);
++        ModpacksCH::Author author;
++        loadAuthor(author, authorObj);
++        m.authors.append(author);
++    }
++    auto versionArr = Json::requireArray(obj, "versions");
++    for (QJsonValueRef versionRaw : versionArr)
++    {
++        auto versionObj = Json::requireObject(versionRaw);
++        ModpacksCH::VersionInfo version;
++        loadVersionInfo(version, versionObj);
++        m.versions.append(version);
++    }
++    auto tagArr = Json::requireArray(obj, "tags");
++    for (QJsonValueRef tagRaw : tagArr)
++    {
++        auto tagObj = Json::requireObject(tagRaw);
++        ModpacksCH::Tag tag;
++        loadTag(tag, tagObj);
++        m.tags.append(tag);
++    }
++    m.updated = Json::requireInteger(obj, "updated");
++}
++
++static void loadVersionTarget(ModpacksCH::VersionTarget & a, QJsonObject & obj)
++{
++    a.id = Json::requireInteger(obj, "id");
++    a.name = Json::requireString(obj, "name");
++    a.type = Json::requireString(obj, "type");
++    a.version = Json::requireString(obj, "version");
++    a.updated = Json::requireInteger(obj, "updated");
++}
++
++static void loadVersionFile(ModpacksCH::VersionFile & a, QJsonObject & obj)
++{
++    a.id = Json::requireInteger(obj, "id");
++    a.type = Json::requireString(obj, "type");
++    a.path = Json::requireString(obj, "path");
++    a.name = Json::requireString(obj, "name");
++    a.version = Json::requireString(obj, "version");
++    a.url = Json::ensureString(obj, "url");  // optional
++    a.sha1 = Json::requireString(obj, "sha1");
++    a.size = Json::requireInteger(obj, "size");
++    a.clientOnly = Json::requireBoolean(obj, "clientonly");
++    a.serverOnly = Json::requireBoolean(obj, "serveronly");
++    a.optional = Json::requireBoolean(obj, "optional");
++    a.updated = Json::requireInteger(obj, "updated");
++    auto curseforgeObj = Json::ensureObject(obj, "curseforge");  // optional
++    a.curseforge.project_id = Json::ensureInteger(curseforgeObj, "project");
++    a.curseforge.file_id = Json::ensureInteger(curseforgeObj, "file");
++}
++
++void ModpacksCH::loadVersion(ModpacksCH::Version & m, QJsonObject & obj)
++{
++    m.id = Json::requireInteger(obj, "id");
++    m.parent = Json::requireInteger(obj, "parent");
++    m.name = Json::requireString(obj, "name");
++    m.type = Json::requireString(obj, "type");
++    m.installs = Json::requireInteger(obj, "installs");
++    m.plays = Json::requireInteger(obj, "plays");
++    m.updated = Json::requireInteger(obj, "updated");
++    m.refreshed = Json::requireInteger(obj, "refreshed");
++    auto specs = Json::requireObject(obj, "specs");
++    loadSpecs(m.specs, specs);
++    auto targetArr = Json::requireArray(obj, "targets");
++    for (QJsonValueRef targetRaw : targetArr)
++    {
++        auto versionObj = Json::requireObject(targetRaw);
++        ModpacksCH::VersionTarget target;
++        loadVersionTarget(target, versionObj);
++        m.targets.append(target);
++    }
++    auto fileArr = Json::requireArray(obj, "files");
++    for (QJsonValueRef fileRaw : fileArr)
++    {
++        auto fileObj = Json::requireObject(fileRaw);
++        ModpacksCH::VersionFile file;
++        loadVersionFile(file, fileObj);
++        m.files.append(file);
++    }
++}
++
++//static void loadVersionChangelog(ModpacksCH::VersionChangelog & m, QJsonObject & obj)
++//{
++//    m.content = Json::requireString(obj, "content");
++//    m.updated = Json::requireInteger(obj, "updated");
++//}
+diff --git a/launcher/modplatform/modpacksch/FTBPackManifest.h b/launcher/modplatform/modpacksch/FTBPackManifest.h
+new file mode 100644
+index 0000000000..a8b6f35ec5
+--- /dev/null
++++ b/launcher/modplatform/modpacksch/FTBPackManifest.h
+@@ -0,0 +1,168 @@
++// SPDX-License-Identifier: GPL-3.0-only
++/*
++ *  PolyMC - Minecraft Launcher
++ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, version 3.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * This file incorporates work covered by the following copyright and
++ * permission notice:
++ *
++ *      Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *      Copyright 2020 Petr Mrazek <peterix@gmail.com>
++ *
++ *      Licensed under the Apache License, Version 2.0 (the "License");
++ *      you may not use this file except in compliance with the License.
++ *      You may obtain a copy of the License at
++ *
++ *          http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *      Unless required by applicable law or agreed to in writing, software
++ *      distributed under the License is distributed on an "AS IS" BASIS,
++ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *      See the License for the specific language governing permissions and
++ *      limitations under the License.
++ */
++
++#pragma once
++
++#include <QString>
++#include <QVector>
++#include <QUrl>
++#include <QJsonObject>
++#include <QMetaType>
++
++namespace ModpacksCH
++{
++
++struct Specs
++{
++    int id;
++    int minimum;
++    int recommended;
++};
++
++struct Tag
++{
++    int id;
++    QString name;
++};
++
++struct Art
++{
++    int id;
++    QString url;
++    QString type;
++    int width;
++    int height;
++    bool compressed;
++    QString sha1;
++    int size;
++    int64_t updated;
++};
++
++struct Author
++{
++    int id;
++    QString name;
++    QString type;
++    QString website;
++    int64_t updated;
++};
++
++struct VersionInfo
++{
++    int id;
++    QString name;
++    QString type;
++    int64_t updated;
++    Specs specs;
++};
++
++struct Modpack
++{
++    int id;
++    QString name;
++    QString synopsis;
++    QString description;
++    QString type;
++    bool featured;
++    int installs;
++    int plays;
++    int64_t updated;
++    int64_t refreshed;
++    QVector<Art> art;
++    QVector<Author> authors;
++    QVector<VersionInfo> versions;
++    QVector<Tag> tags;
++};
++
++struct VersionTarget
++{
++    int id;
++    QString type;
++    QString name;
++    QString version;
++    int64_t updated;
++};
++
++struct VersionFileCurseForge
++{
++    int project_id;
++    int file_id;
++};
++
++struct VersionFile
++{
++    int id;
++    QString type;
++    QString path;
++    QString name;
++    QString version;
++    QString url;
++    QString sha1;
++    int size;
++    bool clientOnly;
++    bool serverOnly;
++    bool optional;
++    int64_t updated;
++    VersionFileCurseForge curseforge;
++};
++
++struct Version
++{
++    int id;
++    int parent;
++    QString name;
++    QString type;
++    int installs;
++    int plays;
++    int64_t updated;
++    int64_t refreshed;
++    Specs specs;
++    QVector<VersionTarget> targets;
++    QVector<VersionFile> files;
++};
++
++struct VersionChangelog
++{
++    QString content;
++    int64_t updated;
++};
++
++void loadModpack(Modpack & m, QJsonObject & obj);
++
++void loadVersion(Version & m, QJsonObject & obj);
++}
++
++Q_DECLARE_METATYPE(ModpacksCH::Modpack)
+diff --git a/launcher/ui/dialogs/NewInstanceDialog.cpp b/launcher/ui/dialogs/NewInstanceDialog.cpp
+index 64ed767390..df182f0969 100644
+--- a/launcher/ui/dialogs/NewInstanceDialog.cpp
++++ b/launcher/ui/dialogs/NewInstanceDialog.cpp
+@@ -56,6 +56,7 @@
+ #include "ui/widgets/PageContainer.h"
+ #include "ui/pages/modplatform/VanillaPage.h"
+ #include "ui/pages/modplatform/atlauncher/AtlPage.h"
++#include "ui/pages/modplatform/ftb/FtbPage.h"
+ #include "ui/pages/modplatform/legacy_ftb/Page.h"
+ #include "ui/pages/modplatform/flame/FlamePage.h"
+ #include "ui/pages/modplatform/ImportPage.h"
+@@ -167,6 +168,7 @@ QList<BasePage *> NewInstanceDialog::getPages()
+     pages.append(new AtlPage(this));
+     if (APPLICATION->capabilities() & Application::SupportsFlame)
+         pages.append(new FlamePage(this));
++    pages.append(new FtbPage(this));
+     pages.append(new LegacyFTB::Page(this));
+     pages.append(new ModrinthPage(this));
+     pages.append(new TechnicPage(this));
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbFilterModel.cpp b/launcher/ui/pages/modplatform/ftb/FtbFilterModel.cpp
+new file mode 100644
+index 0000000000..e2b548f2dd
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbFilterModel.cpp
+@@ -0,0 +1,93 @@
++/*
++ * Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#include "FtbFilterModel.h"
++
++#include <QDebug>
++
++#include "modplatform/modpacksch/FTBPackManifest.h"
++
++#include "StringUtils.h"
++
++namespace Ftb {
++
++FilterModel::FilterModel(QObject *parent) : QSortFilterProxyModel(parent)
++{
++    currentSorting = Sorting::ByPlays;
++    sortings.insert(tr("Sort by Plays"), Sorting::ByPlays);
++    sortings.insert(tr("Sort by Installs"), Sorting::ByInstalls);
++    sortings.insert(tr("Sort by Name"), Sorting::ByName);
++}
++
++const QMap<QString, FilterModel::Sorting> FilterModel::getAvailableSortings()
++{
++    return sortings;
++}
++
++QString FilterModel::translateCurrentSorting()
++{
++    return sortings.key(currentSorting);
++}
++
++void FilterModel::setSorting(Sorting sorting)
++{
++    currentSorting = sorting;
++    invalidate();
++}
++
++FilterModel::Sorting FilterModel::getCurrentSorting()
++{
++    return currentSorting;
++}
++
++void FilterModel::setSearchTerm(const QString& term)
++{
++    searchTerm = term.trimmed();
++    invalidate();
++}
++
++bool FilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
++{
++    if (searchTerm.isEmpty()) {
++        return true;
++    }
++
++    auto index = sourceModel()->index(sourceRow, 0, sourceParent);
++    auto pack = sourceModel()->data(index, Qt::UserRole).value<ModpacksCH::Modpack>();
++    return pack.name.contains(searchTerm, Qt::CaseInsensitive);
++}
++
++bool FilterModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
++{
++    ModpacksCH::Modpack leftPack = sourceModel()->data(left, Qt::UserRole).value<ModpacksCH::Modpack>();
++    ModpacksCH::Modpack rightPack = sourceModel()->data(right, Qt::UserRole).value<ModpacksCH::Modpack>();
++
++    if (currentSorting == ByPlays) {
++        return leftPack.plays < rightPack.plays;
++    }
++    else if (currentSorting == ByInstalls) {
++        return leftPack.installs < rightPack.installs;
++    }
++    else if (currentSorting == ByName) {
++        return StringUtils::naturalCompare(leftPack.name, rightPack.name, Qt::CaseSensitive) >= 0;
++    }
++
++    // Invalid sorting set, somehow...
++    qWarning() << "Invalid sorting set!";
++    return true;
++}
++
++}
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbFilterModel.h b/launcher/ui/pages/modplatform/ftb/FtbFilterModel.h
+new file mode 100644
+index 0000000000..1be28e9957
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbFilterModel.h
+@@ -0,0 +1,51 @@
++/*
++ * Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#pragma once
++
++#include <QtCore/QSortFilterProxyModel>
++
++namespace Ftb {
++
++class FilterModel : public QSortFilterProxyModel
++{
++    Q_OBJECT
++
++public:
++    FilterModel(QObject* parent = Q_NULLPTR);
++    enum Sorting {
++        ByPlays,
++        ByInstalls,
++        ByName,
++    };
++    const QMap<QString, Sorting> getAvailableSortings();
++    QString translateCurrentSorting();
++    void setSorting(Sorting sorting);
++    Sorting getCurrentSorting();
++    void setSearchTerm(const QString& term);
++
++protected:
++    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
++    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
++
++private:
++    QMap<QString, Sorting> sortings;
++    Sorting currentSorting;
++    QString searchTerm { "" };
++
++};
++
++}
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbListModel.cpp b/launcher/ui/pages/modplatform/ftb/FtbListModel.cpp
+new file mode 100644
+index 0000000000..e806541585
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbListModel.cpp
+@@ -0,0 +1,304 @@
++/*
++ * Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#include "FtbListModel.h"
++
++#include "BuildConfig.h"
++#include "Application.h"
++#include "Json.h"
++
++#include <QPainter>
++
++namespace Ftb {
++
++ListModel::ListModel(QObject *parent) : QAbstractListModel(parent)
++{
++}
++
++ListModel::~ListModel()
++{
++}
++
++int ListModel::rowCount(const QModelIndex &parent) const
++{
++    return parent.isValid() ? 0 : modpacks.size();
++}
++
++int ListModel::columnCount(const QModelIndex &parent) const
++{
++    return parent.isValid() ? 0 : 1;
++}
++
++QVariant ListModel::data(const QModelIndex &index, int role) const
++{
++    int pos = index.row();
++    if(pos >= modpacks.size() || pos < 0 || !index.isValid())
++    {
++        return QString("INVALID INDEX %1").arg(pos);
++    }
++
++    ModpacksCH::Modpack pack = modpacks.at(pos);
++    if(role == Qt::DisplayRole)
++    {
++        return pack.name;
++    }
++    else if (role == Qt::ToolTipRole)
++    {
++        return pack.synopsis;
++    }
++    else if(role == Qt::DecorationRole)
++    {
++        QIcon placeholder = APPLICATION->getThemedIcon("screenshot-placeholder");
++
++        auto iter = m_logoMap.find(pack.name);
++        if (iter != m_logoMap.end()) {
++            auto & logo = *iter;
++            if(!logo.result.isNull()) {
++                return logo.result;
++            }
++            return placeholder;
++        }
++
++        for(auto art : pack.art) {
++            if(art.type == "square") {
++                ((ListModel *)this)->requestLogo(pack.name, art.url);
++            }
++        }
++        return placeholder;
++    }
++    else if(role == Qt::UserRole)
++    {
++        QVariant v;
++        v.setValue(pack);
++        return v;
++    }
++
++    return QVariant();
++}
++
++void ListModel::getLogo(const QString &logo, const QString &logoUrl, LogoCallback callback)
++{
++    if(m_logoMap.contains(logo))
++    {
++        callback(APPLICATION->metacache()->resolveEntry("ModpacksCHPacks", QString("logos/%1").arg(logo.section(".", 0, 0)))->getFullPath());
++    }
++    else
++    {
++        requestLogo(logo, logoUrl);
++    }
++}
++
++void ListModel::request()
++{
++    m_aborted = false;
++
++    beginResetModel();
++    modpacks.clear();
++    endResetModel();
++
++    auto netJob = makeShared<NetJob>("Ftb::Request", APPLICATION->network());
++    auto url = QString(BuildConfig.MODPACKSCH_API_BASE_URL + "public/modpack/all");
++    netJob->addNetAction(Net::Download::makeByteArray(QUrl(url), &response));
++    jobPtr = netJob;
++    jobPtr->start();
++
++    QObject::connect(netJob.get(), &NetJob::succeeded, this, &ListModel::requestFinished);
++    QObject::connect(netJob.get(), &NetJob::failed, this, &ListModel::requestFailed);
++}
++
++void ListModel::abortRequest()
++{
++    m_aborted = jobPtr->abort();
++    jobPtr.reset();
++}
++
++void ListModel::requestFinished()
++{
++    jobPtr.reset();
++    remainingPacks.clear();
++
++    QJsonParseError parse_error {};
++    QJsonDocument doc = QJsonDocument::fromJson(response, &parse_error);
++    if(parse_error.error != QJsonParseError::NoError) {
++        qWarning() << "Error while parsing JSON response from ModpacksCH at " << parse_error.offset << " reason: " << parse_error.errorString();
++        qWarning() << response;
++        return;
++    }
++
++    auto packs = doc.object().value("packs").toArray();
++    for(auto pack : packs) {
++        auto packId = pack.toInt();
++        remainingPacks.append(packId);
++    }
++
++    if(!remainingPacks.isEmpty()) {
++        currentPack = remainingPacks.at(0);
++        requestPack();
++    }
++}
++
++void ListModel::requestFailed(QString reason)
++{
++    jobPtr.reset();
++    remainingPacks.clear();
++}
++
++void ListModel::requestPack()
++{
++    auto netJob = makeShared<NetJob>("Ftb::Search", APPLICATION->network());
++    auto searchUrl = QString(BuildConfig.MODPACKSCH_API_BASE_URL + "public/modpack/%1").arg(currentPack);
++    netJob->addNetAction(Net::Download::makeByteArray(QUrl(searchUrl), &response));
++    jobPtr = netJob;
++    jobPtr->start();
++
++    QObject::connect(netJob.get(), &NetJob::succeeded, this, &ListModel::packRequestFinished);
++    QObject::connect(netJob.get(), &NetJob::failed, this, &ListModel::packRequestFailed);
++}
++
++void ListModel::packRequestFinished()
++{
++    if (!jobPtr || m_aborted)
++        return;
++
++    jobPtr.reset();
++    remainingPacks.removeOne(currentPack);
++
++    QJsonParseError parse_error;
++    QJsonDocument doc = QJsonDocument::fromJson(response, &parse_error);
++
++    if(parse_error.error != QJsonParseError::NoError) {
++        qWarning() << "Error while parsing JSON response from ModpacksCH at " << parse_error.offset << " reason: " << parse_error.errorString();
++        qWarning() << response;
++        return;
++    }
++
++    auto obj = doc.object();
++
++    ModpacksCH::Modpack pack;
++    try
++    {
++        ModpacksCH::loadModpack(pack, obj);
++    }
++    catch (const JSONValidationError &e)
++    {
++        qDebug() << QString::fromUtf8(response);
++        qWarning() << "Error while reading pack manifest from ModpacksCH: " << e.cause();
++        return;
++    }
++
++    // Since there is no guarantee that packs have a version, this will just
++    // ignore those "dud" packs.
++    if (pack.versions.empty())
++    {
++        qWarning() << "ModpacksCH Pack " << pack.id << " ignored. reason: lacking any versions";
++    }
++    else
++    {
++        beginInsertRows(QModelIndex(), modpacks.size(), modpacks.size());
++        modpacks.append(pack);
++        endInsertRows();
++    }
++
++    if(!remainingPacks.isEmpty()) {
++        currentPack = remainingPacks.at(0);
++        requestPack();
++    }
++}
++
++void ListModel::packRequestFailed(QString reason)
++{
++    jobPtr.reset();
++    remainingPacks.removeOne(currentPack);
++}
++
++void ListModel::logoLoaded(QString logo, bool stale)
++{
++    auto & logoObj = m_logoMap[logo];
++    logoObj.downloadJob.reset();
++    QString smallPath = logoObj.fullpath + ".small";
++
++    QFileInfo smallInfo(smallPath);
++
++    if(stale || !smallInfo.exists()) {
++        QImage image(logoObj.fullpath);
++        if (image.isNull())
++        {
++            logoObj.failed = true;
++            return;
++        }
++        QImage small;
++        if (image.width() > image.height()) {
++            small = image.scaledToWidth(512).scaledToWidth(256, Qt::SmoothTransformation);
++        }
++        else {
++            small = image.scaledToHeight(512).scaledToHeight(256, Qt::SmoothTransformation);
++        }
++        QPoint offset((256 - small.width()) / 2, (256 - small.height()) / 2);
++        QImage square(QSize(256, 256), QImage::Format_ARGB32);
++        square.fill(Qt::transparent);
++
++        QPainter painter(&square);
++        painter.drawImage(offset, small);
++        painter.end();
++
++        square.save(logoObj.fullpath + ".small", "PNG");
++    }
++
++    logoObj.result = QIcon(logoObj.fullpath + ".small");
++    for(int i = 0; i < modpacks.size(); i++) {
++        if(modpacks[i].name == logo) {
++            emit dataChanged(createIndex(i, 0), createIndex(i, 0), {Qt::DecorationRole});
++        }
++    }
++}
++
++void ListModel::logoFailed(QString logo)
++{
++    m_logoMap[logo].failed = true;
++    m_logoMap[logo].downloadJob.reset();
++}
++
++void ListModel::requestLogo(QString logo, QString url)
++{
++    if(m_logoMap.contains(logo)) {
++        return;
++    }
++
++    MetaEntryPtr entry = APPLICATION->metacache()->resolveEntry("ModpacksCHPacks", QString("logos/%1").arg(logo.section(".", 0, 0)));
++
++    bool stale = entry->isStale();
++
++    auto job = makeShared<NetJob>(QString("ModpacksCH Icon Download %1").arg(logo), APPLICATION->network());
++    job->addNetAction(Net::Download::makeCached(QUrl(url), entry));
++
++    auto fullPath = entry->getFullPath();
++    QObject::connect(job.get(), &NetJob::finished, this, [this, logo, fullPath, stale]
++    {
++        logoLoaded(logo, stale);
++    });
++
++    QObject::connect(job.get(), &NetJob::failed, this, [this, logo]
++    {
++        logoFailed(logo);
++    });
++
++    auto &newLogoEntry = m_logoMap[logo];
++    newLogoEntry.downloadJob = job;
++    newLogoEntry.fullpath = fullPath;
++    job->start();
++}
++
++}
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbListModel.h b/launcher/ui/pages/modplatform/ftb/FtbListModel.h
+new file mode 100644
+index 0000000000..d7a120f064
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbListModel.h
+@@ -0,0 +1,83 @@
++/*
++ * Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++#pragma once
++
++#include <QAbstractListModel>
++
++#include "modplatform/modpacksch/FTBPackManifest.h"
++#include "net/NetJob.h"
++#include <QIcon>
++
++namespace Ftb {
++
++struct Logo {
++    QString fullpath;
++    NetJob::Ptr downloadJob;
++    QIcon result;
++    bool failed = false;
++};
++
++typedef QMap<QString, Logo> LogoMap;
++typedef std::function<void(QString)> LogoCallback;
++
++class ListModel : public QAbstractListModel
++{
++    Q_OBJECT
++
++public:
++    ListModel(QObject *parent);
++    virtual ~ListModel();
++
++    int rowCount(const QModelIndex &parent) const override;
++    int columnCount(const QModelIndex &parent) const override;
++    QVariant data(const QModelIndex &index, int role) const override;
++
++    void request();
++    void abortRequest();
++
++    void getLogo(const QString &logo, const QString &logoUrl, LogoCallback callback);
++
++    [[nodiscard]] bool isMakingRequest() const { return jobPtr.get(); }
++    [[nodiscard]] bool wasAborted() const { return m_aborted; }
++
++private slots:
++    void requestFinished();
++    void requestFailed(QString reason);
++
++    void requestPack();
++    void packRequestFinished();
++    void packRequestFailed(QString reason);
++
++    void logoFailed(QString logo);
++    void logoLoaded(QString logo, bool stale);
++
++private:
++    void requestLogo(QString file, QString url);
++
++private:
++    bool m_aborted = false;
++
++    QList<ModpacksCH::Modpack> modpacks;
++    LogoMap m_logoMap;
++
++    NetJob::Ptr jobPtr;
++    int currentPack;
++    QList<int> remainingPacks;
++    QByteArray response;
++};
++
++}
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbPage.cpp b/launcher/ui/pages/modplatform/ftb/FtbPage.cpp
+new file mode 100644
+index 0000000000..7d59a6ae7e
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbPage.cpp
+@@ -0,0 +1,199 @@
++// SPDX-License-Identifier: GPL-3.0-only
++/*
++ *  PolyMC - Minecraft Launcher
++ *  Copyright (c) 2022 Jamie Mansfield <jmansfield@cadixdev.org>
++ *  Copyright (C) 2022 Sefa Eyeoglu <contact@scrumplex.net>
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, version 3.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * This file incorporates work covered by the following copyright and
++ * permission notice:
++ *
++ *      Copyright 2020-2021 Jamie Mansfield <jmansfield@cadixdev.org>
++ *      Copyright 2021 Philip T <me@phit.link>
++ *
++ *      Licensed under the Apache License, Version 2.0 (the "License");
++ *      you may not use this file except in compliance with the License.
++ *      You may obtain a copy of the License at
++ *
++ *          http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *      Unless required by applicable law or agreed to in writing, software
++ *      distributed under the License is distributed on an "AS IS" BASIS,
++ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *      See the License for the specific language governing permissions and
++ *      limitations under the License.
++ */
++
++#include "FtbPage.h"
++#include "ui_FtbPage.h"
++
++#include <QKeyEvent>
++
++#include "ui/dialogs/NewInstanceDialog.h"
++#include "modplatform/modpacksch/FTBPackInstallTask.h"
++
++#include "Markdown.h"
++
++FtbPage::FtbPage(NewInstanceDialog* dialog, QWidget *parent)
++        : QWidget(parent), ui(new Ui::FtbPage), dialog(dialog)
++{
++    ui->setupUi(this);
++
++    filterModel = new Ftb::FilterModel(this);
++    listModel = new Ftb::ListModel(this);
++    filterModel->setSourceModel(listModel);
++    ui->packView->setModel(filterModel);
++    ui->packView->setSortingEnabled(true);
++    ui->packView->header()->hide();
++    ui->packView->setIndentation(0);
++
++    ui->searchEdit->installEventFilter(this);
++
++    ui->versionSelectionBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
++    ui->versionSelectionBox->view()->parentWidget()->setMaximumHeight(300);
++
++    for(int i = 0; i < filterModel->getAvailableSortings().size(); i++)
++    {
++        ui->sortByBox->addItem(filterModel->getAvailableSortings().keys().at(i));
++    }
++    ui->sortByBox->setCurrentText(filterModel->translateCurrentSorting());
++
++    connect(ui->searchEdit, &QLineEdit::textChanged, this, &FtbPage::triggerSearch);
++    connect(ui->sortByBox, &QComboBox::currentTextChanged, this, &FtbPage::onSortingSelectionChanged);
++    connect(ui->packView->selectionModel(), &QItemSelectionModel::currentChanged, this, &FtbPage::onSelectionChanged);
++    connect(ui->versionSelectionBox, &QComboBox::currentTextChanged, this, &FtbPage::onVersionSelectionChanged);
++
++    ui->packDescription->setMetaEntry("FTBPacks");
++}
++
++FtbPage::~FtbPage()
++{
++    delete ui;
++}
++
++bool FtbPage::eventFilter(QObject* watched, QEvent* event)
++{
++    if (watched == ui->searchEdit && event->type() == QEvent::KeyPress) {
++        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
++        if (keyEvent->key() == Qt::Key_Return) {
++            triggerSearch();
++            keyEvent->accept();
++            return true;
++        }
++    }
++    return QWidget::eventFilter(watched, event);
++}
++
++bool FtbPage::shouldDisplay() const
++{
++    return true;
++}
++
++void FtbPage::retranslate()
++{
++    ui->retranslateUi(this);
++}
++
++void FtbPage::openedImpl()
++{
++    if(!initialised || listModel->wasAborted())
++    {
++        listModel->request();
++        initialised = true;
++    }
++
++    suggestCurrent();
++}
++
++void FtbPage::closedImpl()
++{
++    if (listModel->isMakingRequest())
++        listModel->abortRequest();
++}
++
++void FtbPage::suggestCurrent()
++{
++    if(!isOpened)
++    {
++        return;
++    }
++
++    if (selectedVersion.isEmpty())
++    {
++        dialog->setSuggestedPack();
++        return;
++    }
++
++    dialog->setSuggestedPack(selected.name, selectedVersion, new ModpacksCH::PackInstallTask(selected, selectedVersion, this));
++    for(auto art : selected.art) {
++        if(art.type == "square") {
++            QString editedLogoName;
++            editedLogoName = selected.name;
++
++            listModel->getLogo(selected.name, art.url, [this, editedLogoName](QString logo)
++            {
++                dialog->setSuggestedIconFromFile(logo + ".small", editedLogoName);
++            });
++        }
++    }
++}
++
++void FtbPage::triggerSearch()
++{
++    filterModel->setSearchTerm(ui->searchEdit->text());
++}
++
++void FtbPage::onSortingSelectionChanged(QString data)
++{
++    auto toSet = filterModel->getAvailableSortings().value(data);
++    filterModel->setSorting(toSet);
++}
++
++void FtbPage::onSelectionChanged(QModelIndex first, QModelIndex second)
++{
++    ui->versionSelectionBox->clear();
++
++    if(!first.isValid())
++    {
++        if(isOpened)
++        {
++            dialog->setSuggestedPack();
++        }
++        return;
++    }
++
++    selected = filterModel->data(first, Qt::UserRole).value<ModpacksCH::Modpack>();
++
++    QString output = markdownToHTML(selected.description.toUtf8());
++    ui->packDescription->setHtml(output);
++
++    // reverse foreach, so that the newest versions are first
++    for (auto i = selected.versions.size(); i--;) {
++        ui->versionSelectionBox->addItem(selected.versions.at(i).name);
++    }
++
++    suggestCurrent();
++}
++
++void FtbPage::onVersionSelectionChanged(QString data)
++{
++    if(data.isNull() || data.isEmpty())
++    {
++        selectedVersion = "";
++        return;
++    }
++
++    selectedVersion = data;
++    suggestCurrent();
++}
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbPage.h b/launcher/ui/pages/modplatform/ftb/FtbPage.h
+new file mode 100644
+index 0000000000..631ae7f568
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbPage.h
+@@ -0,0 +1,105 @@
++// SPDX-License-Identifier: GPL-3.0-only
++/*
++ *  PolyMC - Minecraft Launcher
++ *  Copyright (c) 2022 Jamie Mansfield <jmansfield@cadixdev.org>
++ *
++ *  This program is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, version 3.
++ *
++ *  This program is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ *
++ * This file incorporates work covered by the following copyright and
++ * permission notice:
++ *
++ *      Copyright 2013-2021 MultiMC Contributors
++ *
++ *      Licensed under the Apache License, Version 2.0 (the "License");
++ *      you may not use this file except in compliance with the License.
++ *      You may obtain a copy of the License at
++ *
++ *          http://www.apache.org/licenses/LICENSE-2.0
++ *
++ *      Unless required by applicable law or agreed to in writing, software
++ *      distributed under the License is distributed on an "AS IS" BASIS,
++ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ *      See the License for the specific language governing permissions and
++ *      limitations under the License.
++ */
++
++#pragma once
++
++#include "FtbFilterModel.h"
++#include "FtbListModel.h"
++
++#include <QWidget>
++
++#include "Application.h"
++#include "ui/pages/BasePage.h"
++#include "tasks/Task.h"
++
++namespace Ui
++{
++    class FtbPage;
++}
++
++class NewInstanceDialog;
++
++class FtbPage : public QWidget, public BasePage
++{
++Q_OBJECT
++
++public:
++    explicit FtbPage(NewInstanceDialog* dialog, QWidget *parent = 0);
++    virtual ~FtbPage();
++    virtual QString displayName() const override
++    {
++        return "FTB";
++    }
++    virtual QIcon icon() const override
++    {
++        return APPLICATION->getThemedIcon("ftb_logo");
++    }
++    virtual QString id() const override
++    {
++        return "ftb";
++    }
++    virtual QString helpPage() const override
++    {
++        return "FTB-platform";
++    }
++    virtual bool shouldDisplay() const override;
++    void retranslate() override;
++
++    void openedImpl() override;
++    void closedImpl() override;
++
++    bool eventFilter(QObject * watched, QEvent * event) override;
++
++private:
++    void suggestCurrent();
++
++private slots:
++    void triggerSearch();
++
++    void onSortingSelectionChanged(QString data);
++    void onSelectionChanged(QModelIndex first, QModelIndex second);
++    void onVersionSelectionChanged(QString data);
++
++private:
++    Ui::FtbPage *ui = nullptr;
++    NewInstanceDialog* dialog = nullptr;
++    Ftb::ListModel* listModel = nullptr;
++    Ftb::FilterModel* filterModel = nullptr;
++
++    ModpacksCH::Modpack selected;
++    QString selectedVersion;
++
++    bool initialised { false };
++};
+diff --git a/launcher/ui/pages/modplatform/ftb/FtbPage.ui b/launcher/ui/pages/modplatform/ftb/FtbPage.ui
+new file mode 100644
+index 0000000000..8de0f4e653
+--- /dev/null
++++ b/launcher/ui/pages/modplatform/ftb/FtbPage.ui
+@@ -0,0 +1,86 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ui version="4.0">
++ <class>FtbPage</class>
++ <widget class="QWidget" name="FtbPage">
++  <property name="geometry">
++   <rect>
++    <x>0</x>
++    <y>0</y>
++    <width>875</width>
++    <height>745</height>
++   </rect>
++  </property>
++  <layout class="QGridLayout" name="gridLayout">
++   <item row="2" column="0" colspan="2">
++    <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0" rowminimumheight="0" columnminimumwidth="0,0,0">
++     <item row="0" column="2">
++      <widget class="QComboBox" name="versionSelectionBox"/>
++     </item>
++     <item row="0" column="1">
++      <widget class="QLabel" name="label">
++       <property name="text">
++        <string>Version selected:</string>
++       </property>
++       <property name="alignment">
++        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++       </property>
++      </widget>
++     </item>
++     <item row="0" column="0">
++      <widget class="QComboBox" name="sortByBox"/>
++     </item>
++    </layout>
++   </item>
++   <item row="0" column="0">
++    <widget class="QLineEdit" name="searchEdit">
++     <property name="placeholderText">
++      <string>Search and filter...</string>
++     </property>
++     <property name="clearButtonEnabled">
++      <bool>true</bool>
++     </property>
++    </widget>
++   </item>
++   <item row="1" column="0" colspan="2">
++    <layout class="QGridLayout" name="gridLayout_3">
++     <item row="0" column="0">
++      <widget class="QTreeView" name="packView">
++       <property name="alternatingRowColors">
++        <bool>true</bool>
++       </property>
++       <property name="iconSize">
++        <size>
++         <width>48</width>
++         <height>48</height>
++        </size>
++       </property>
++      </widget>
++     </item>
++     <item row="0" column="1">
++      <widget class="ProjectDescriptionPage" name="packDescription">
++       <property name="openExternalLinks">
++        <bool>true</bool>
++       </property>
++       <property name="openLinks">
++        <bool>true</bool>
++       </property>
++      </widget>
++     </item>
++    </layout>
++   </item>
++  </layout>
++ </widget>
++ <customwidgets>
++  <customwidget>
++   <class>ProjectDescriptionPage</class>
++   <extends>QTextBrowser</extends>
++   <header>ui/widgets/ProjectDescriptionPage.h</header>
++  </customwidget>
++ </customwidgets>
++ <tabstops>
++  <tabstop>searchEdit</tabstop>
++  <tabstop>versionSelectionBox</tabstop>
++ </tabstops>
++ <resources/>
++ <connections/>
++</ui>

@@ -17,7 +17,7 @@
         prismlauncher = super.prismlauncher.overrideAttrs (old: {
           patches = (old.patches or []) ++ [
             self.inputs.prism-game-options-patch
-            self.inputs.prism-ftb-patch
+            ../patches/prism-ftb.patch
           ];
         });
 
