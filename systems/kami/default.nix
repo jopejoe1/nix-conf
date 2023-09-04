@@ -42,8 +42,6 @@
     nerdfonts
     league-of-moveable-type
     twitter-color-emoji
-    mangohud
-    goverlay
   ];
 
   environment.systemPackages = with pkgs; [
@@ -58,6 +56,8 @@
     libsForQt5.qtstyleplugin-kvantum
     mixxx
     picard
+    mangohud
+    goverlay
 
     (python3.withPackages(ps: with ps; [ beautifulsoup4 requests]))
 
