@@ -42,6 +42,8 @@
     nerdfonts
     league-of-moveable-type
     twitter-color-emoji
+    mangohud
+    goverlay
   ];
 
   environment.systemPackages = with pkgs; [
