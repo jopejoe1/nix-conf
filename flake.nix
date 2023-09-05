@@ -85,6 +85,7 @@
           ./modules/asf
           ./modules/minecraft-server
           ./modules/editor
+          ./modules/auto-update
           ./modules/services/repo-sync
           ./modules/users/jopejoe1
           ./modules/users/root
