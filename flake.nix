@@ -147,7 +147,7 @@
           ./modules/local
           ./modules/nix
           ./modules/auto-update
-          ./overlays
+          #./overlays
           nixos-hardware.nixosModules.common-cpu-intel
           #nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-pc-laptop
