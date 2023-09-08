@@ -137,6 +137,25 @@
           home-manager.nixosModules.home-manager
         ];
       };
+      tuny = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./systems/tuny
+          ./modules/audio
+          ./modules/bluetooth
+          ./modules/local
+          ./modules/nix
+          ./modules/auto-update
+          ./overlays
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-gpu-nvidia
+          nixos-hardware.nixosModules.common-pc-laptop
+          nixos-hardware.nixosModules.common-pc-laptop-hdd
+          nur.nixosModules.nur
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
   };
 }
