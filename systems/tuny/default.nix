@@ -6,6 +6,7 @@
   ];
 
   networking.hostName = "tuny";
+  boot.loader.grub.device = "/dev/sda";
 
   programs = {
     git = {

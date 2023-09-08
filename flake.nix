@@ -149,7 +149,7 @@
           ./modules/auto-update
           ./overlays
           nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-gpu-nvidia
+          #nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc-laptop-hdd
           nur.nixosModules.nur
