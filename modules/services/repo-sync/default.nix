@@ -12,7 +12,6 @@
 
   systemd.services."repo-sync" = {
     script = ''
-      ${pkgs.coreutils}/bin/rm -r /var/lib/repo-sync
       ${pkgs.git}/bin/git clone git@codeberg.org:jopejoe1/nix-conf.git /var/lib/repo-sync
       ${pkgs.git}/bin/git -C /var/lib/repo-sync remote add github git@github.com:jopejoe1/nix-conf.git
       ${pkgs.git}/bin/git -C /var/lib/repo-sync remote add gitlab git@gitlab.com:jopejoe1/nix-conf.git
