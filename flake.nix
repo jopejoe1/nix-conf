@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nur.url = "github:nix-community/NUR";
     home-manager= {
       url = "github:nix-community/home-manager";
@@ -66,6 +67,7 @@
       home-manager,
       nur,
       nixos-hardware,
+      chaotic,
       ...
   }: {
     nixosConfigurations = {
@@ -98,6 +100,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
+          chaotic.nixosModules.default
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -118,6 +121,7 @@
           nixos-hardware.nixosModules.pine64-pinebook-pro
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
+          chaotic.nixosModules.default
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -135,6 +139,7 @@
           nixos-hardware.nixosModules.raspberry-pi-4
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
+          chaotic.nixosModules.default
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -154,6 +159,7 @@
           nixos-hardware.nixosModules.common-pc-laptop-hdd
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
+          chaotic.nixosModules.default
         ];
       };
     };
