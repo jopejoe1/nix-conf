@@ -31,6 +31,11 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
+    inputs.flake-programs-sqlite = {
+      url = "github:wamserma/flake-programs-sqlite";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
+    };
 
 
 
@@ -121,6 +126,7 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
+          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -142,6 +148,7 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
+          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -160,6 +167,7 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
+          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -180,6 +188,7 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
+          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
     };
