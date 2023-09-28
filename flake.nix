@@ -3,8 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nur.url = "github:nix-community/NUR";
+    nyx = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-schemas.follows = "flake-schemas";
+      inputs.systems.follows = "nix-systems-linux";
+      inputs.compare-to.follows = "nix-empty-flake";
+      inputs.yafas.follows = "yafas";
+    };
     home-manager= {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +24,7 @@
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
       inputs.flake-compat.follows = "flake-compat";
       inputs.libnbtplusplus.follows = "libnbtplusplus";
+      inputs.nix-filter.follows = "nix-filter";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     tela-icon-theme = {
@@ -23,12 +32,15 @@
       flake = false;
     };
 
+
+
     # Dependencys
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     nixpkgs-lib.url = "github:NixOS/nixpkgs/nixos-unstable?dir=lib";
+    flake-schemas.url = "github:DeterminateSystems/flake-schemas";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +48,11 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.gitignore.follows = "gitignore";
       inputs.flake-utils.follows = "flake-utils";
+    };
+    yafas = {
+      url = "github:UbiqueLambda/yafas";
+      inputs.flake-schemas.follows = "flake-schemas";
+      inputs.systems.follows = "nix-systems";
     };
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -54,6 +71,9 @@
       inputs.systems.follows = "nix-systems";
     };
     nix-systems.url = "github:nix-systems/default";
+    nix-systems-linux.url = "github:nix-systems/default-linux";
+    nix-empty-flake.url = "github:chaotic-cx/nix-empty-flake";
+    nix-filter.url = "github:numtide/nix-filter";
 
     # Patches
     prism-game-options-patch = {
@@ -67,7 +87,7 @@
       home-manager,
       nur,
       nixos-hardware,
-      chaotic,
+      nyx,
       ...
   }: {
     nixosConfigurations = {
@@ -100,7 +120,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
-          chaotic.nixosModules.default
+          nyx.nixosModules.default
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -121,7 +141,7 @@
           nixos-hardware.nixosModules.pine64-pinebook-pro
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
-          chaotic.nixosModules.default
+          nyx.nixosModules.default
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -139,7 +159,7 @@
           nixos-hardware.nixosModules.raspberry-pi-4
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
-          chaotic.nixosModules.default
+          nyx.nixosModules.default
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -159,7 +179,7 @@
           nixos-hardware.nixosModules.common-pc-laptop-hdd
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
-          chaotic.nixosModules.default
+          nyx.nixosModules.default
         ];
       };
     };
