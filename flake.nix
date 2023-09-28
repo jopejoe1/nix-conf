@@ -31,7 +31,7 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
-    inputs.flake-programs-sqlite = {
+    flake-programs-sqlite = {
       url = "github:wamserma/flake-programs-sqlite";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
