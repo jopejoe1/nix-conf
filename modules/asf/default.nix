@@ -5,7 +5,7 @@
     enable = true;
     web-ui.enable = true;
     settings = {
-      #LicenseID = import /var/lib/asf/key.nix;
+      LicenseID = "@asfLicenseID@";
       SteamProtocols = 7;
       AutoSteamSaleEvent = true;
     };
