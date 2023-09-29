@@ -111,7 +111,7 @@
           ./modules/steam
           ./modules/asf
           ./modules/minecraft-server
-          ./modules/editor
+          ./modules/kate
           ./modules/auto-update
           ./modules/services/repo-sync
           ./modules/users/jopejoe1
