@@ -286,5 +286,25 @@ in {
         };
       };
     };
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      extraPackages = with pkgs; [
+        clang-tools
+        gcc
+        gopls
+        nixd
+        nodePackages.bash-language-server
+        nodePackages.vscode-langservers-extracted
+        nodePackages.yaml-language-server
+        python3Packages.python-lsp-server
+        shellcheck
+      ];
+
+      plugins = with pkgs.vimPlugins; [
+        nvim-treesitter.withAllGrammars
+        nvim-lspconfig
+      ];
+    };
   };
 }
