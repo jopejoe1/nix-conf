@@ -58,6 +58,7 @@
     picard
     mangohud
     goverlay
+    strawberry
 
     (python3.withPackages(ps: with ps; [ beautifulsoup4 requests]))
 
