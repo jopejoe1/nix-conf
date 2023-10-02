@@ -218,7 +218,7 @@ in {
                   }];
                   icon =
                     "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "@nm" ];
+                  definedAliases = [ "@np" ];
                 };
                 "NixOS Modules" = {
                   urls = [{
@@ -240,7 +240,7 @@ in {
                   }];
                   icon =
                     "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "@np" ];
+                  definedAliases = [ "@nm" ];
                 };
                 "NixOS Wiki" = {
                   urls = [{
@@ -253,6 +253,28 @@ in {
                   icon =
                     "${hcfg.programs.firefox.profiles.default.search.engines."Nix Packages".icon}";
                   definedAliases = [ "@nw" ];
+                };
+                "Minecraft Wiki" = {
+                  urls = [{
+                    template = "https://minecraft.wiki/";
+                    params = [{
+                      name = "search";
+                      value = "{searchTerms}";
+                    }];
+                  }];
+                  icon = "https://minecraft.wiki/images/Wiki.png";
+                  definedAliases = [ "@mc" ];
+                };
+                "Warframe Wiki" = {
+                  urls = [{
+                    template = "https://warframe.fandom.com/wiki/Special:Search";
+                    params = [{
+                      name = "query";
+                      value = "{searchTerms}";
+                    }];
+                  }];
+                  icon = "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
+                  definedAliases = [ "@wf" ];
                 };
                 "Bing".metaData.hidden = true;
                 "Google".metaData.hidden = true;
