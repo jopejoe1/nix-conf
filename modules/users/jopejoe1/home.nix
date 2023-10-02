@@ -275,6 +275,7 @@ in {
               "config.trim_on_minimize" = true;
               "pdfjs.annotationEditorMode" = 0;
               "pdfjs.annotationmode" = 2;
+              "font.name-list.emoji" = "Noto Color Emoji";
             };
           };
           dev-edition-default = {
