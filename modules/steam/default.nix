@@ -9,6 +9,8 @@
     dedicatedServer.openFirewall = true;
   };
 
+  programs.steam.gamescopeSession.enable = true;
+
   chaotic.steam.extraCompatPackages = with pkgs; [
     luxtorpeda
     proton-ge-custom
