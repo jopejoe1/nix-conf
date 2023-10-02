@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let hcfg = config.home-manager.users.jopejoe1;
 in {
@@ -275,7 +275,7 @@ in {
               "config.trim_on_minimize" = true;
               "pdfjs.annotationEditorMode" = 0;
               "pdfjs.annotationmode" = 2;
-              "font.name-list.emoji" = "Noto Color Emoji";
+              "font.name-list.emoji" = lib.strings.concatStringsSep ", " config.fonts.fontconfig.defaultFonts.emoji;
             };
           };
           dev-edition-default = {
