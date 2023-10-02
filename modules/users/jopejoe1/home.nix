@@ -262,7 +262,8 @@ in {
                       value = "{searchTerms}";
                     }];
                   }];
-                  icon = "https://minecraft.wiki/images/Wiki.png";
+                  iconUpdateURL = "https://minecraft.wiki/images/Wiki.png";
+                  updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@mc" ];
                 };
                 "Warframe Wiki" = {
@@ -273,7 +274,8 @@ in {
                       value = "{searchTerms}";
                     }];
                   }];
-                  icon = "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
+                  iconUpdateURL = "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
+                  updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@wf" ];
                 };
                 "Bing".metaData.hidden = true;
