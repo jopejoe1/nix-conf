@@ -1,4 +1,4 @@
-{ prismlauncher, nur, self, ... }:
+{ prismlauncher, nur, self, pkgs, ... }:
 
 {
   nixpkgs = {
@@ -20,6 +20,8 @@
             ../patches/prism-ftb.patch
           ];
         });
+
+        noto-fonts-color-emoji = pkgs.noto-fonts-color-emoji_withExtraFlags;
 
         libadwaita = super.libadwaita.overrideAttrs (old: {
           patches = (old.patches or []) ++ [
