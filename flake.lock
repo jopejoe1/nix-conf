@@ -36,29 +36,6 @@
         "type": "github"
       }
     },
-    "flake-programs-sqlite": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": [
-          "flake-utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1696752938,
-        "narHash": "sha256-8v/EJca6F1JG1Fx5GXi2Fj73CM2r9GXbKJVkKkc6VMA=",
-        "owner": "wamserma",
-        "repo": "flake-programs-sqlite",
-        "rev": "d81b79a72d05d09192790d904e7c3086308c28b0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wamserma",
-        "repo": "flake-programs-sqlite",
-        "type": "github"
-      }
-    },
     "flake-schemas": {
       "locked": {
         "lastModified": 1693615523,
@@ -227,16 +204,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1696776902,
-        "narHash": "sha256-7FKWY5/6POaaUaqakXfVuMsbQEijsfZ8D4ljrmg/4xQ=",
+        "lastModified": 1696778987,
+        "narHash": "sha256-3oh8urol1q7wajoahsrWk6my5CBUBWhS0pZecNngh4s=",
         "owner": "jopejoe1",
         "repo": "nixpkgs",
-        "rev": "ed573d569c4e272885c55488068b3ceeadcabbbe",
+        "rev": "1b201b0b2418cca06abed96615042a09c3e48076",
         "type": "github"
       },
       "original": {
         "owner": "jopejoe1",
-        "ref": "noto-emoji",
+        "ref": "noto-emoji-unstale",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -261,11 +238,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1696776060,
-        "narHash": "sha256-xFPhpxUxTZpdz8LINgpKg0ZqEaFVULUn0asb6uvkY70=",
+        "lastModified": 1696778116,
+        "narHash": "sha256-62qe0m0TSdvYugqEvGE4lGLH67jPM1S2uUtWM1Bzmug=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3b15663f14130656b180e1a0359d52d5962d8aca",
+        "rev": "749291816ea35c3630026937973ac776215c267a",
         "type": "github"
       },
       "original": {
@@ -393,7 +370,6 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
-        "flake-programs-sqlite": "flake-programs-sqlite",
         "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
         "gitignore": "gitignore",

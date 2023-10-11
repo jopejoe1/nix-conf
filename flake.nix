@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji";
+    nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji-unstale";
     nur.url = "github:nix-community/NUR";
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -30,11 +30,6 @@
     tela-icon-theme = {
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
-    };
-    flake-programs-sqlite = {
-      url = "github:wamserma/flake-programs-sqlite";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
     };
 
 
@@ -126,7 +121,6 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
-          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -148,7 +142,6 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
-          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -167,7 +160,6 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
-          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -188,7 +180,6 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
-          inputs.flake-programs-sqlite.nixosModules.programs-sqlite
         ];
       };
     };
