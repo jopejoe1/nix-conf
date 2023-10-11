@@ -25,8 +25,6 @@
 
   zramSwap.enable = true;
 
-  boot.supportedFilesystems = ["zfs"];
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
@@ -45,6 +43,10 @@
       device = "/dev/disk/by-uuid/4038F97238F966F6";
       fsType = "ntfs";
       options = [ "rw" "uid=1000"];
+    };
+    "/media/zfs" = {
+      device = "jopejoe1";
+      fsType = "zfs";
     };
   };
 
