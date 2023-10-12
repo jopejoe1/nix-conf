@@ -59,6 +59,7 @@
     mangohud
     goverlay
     strawberry
+    whatsapp-for-linux
 
     (python3.withPackages(ps: with ps; [ beautifulsoup4 requests]))
 
