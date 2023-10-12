@@ -11,6 +11,8 @@
   services.hardware.openrgb.enable = true;
   services.fwupd.enable = true;
 
+
+
   services.xserver.desktopManager.kodi.enable = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -60,6 +62,7 @@
     goverlay
     strawberry
     whatsapp-for-linux
+    qdirstat
 
     (python3.withPackages(ps: with ps; [ beautifulsoup4 requests]))
 
