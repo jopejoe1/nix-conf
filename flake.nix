@@ -31,6 +31,20 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
+    catppuccin-base16 = {
+      url = "github:catppuccin/base16";
+      flake = false;
+    };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.base16.follows = "base16";
+      inputs.home-manager.follows = "home-manager";
+    };
+    base16 = {
+      url = "github:SenchoPens/base16.nix";
+    };
 
 
 
@@ -107,6 +121,7 @@
           ./modules/asf
           ./modules/minecraft-server
           ./modules/kate
+          ./modules/theming
           ./modules/auto-update
           ./modules/services/repo-sync
           ./modules/users/jopejoe1
@@ -121,6 +136,7 @@
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           nyx.nixosModules.default
+          stylix.nixosModules.stylix
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
