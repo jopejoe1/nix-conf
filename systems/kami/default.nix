@@ -104,8 +104,8 @@
 
   boot.plymouth = {
     enable = true;
-    themePackages = [ pkgs.catppuccin-plymouth ];
-    theme = "catppuccin-frappe";
+    #themePackages = [ pkgs.catppuccin-plymouth ];
+    #theme = "catppuccin-frappe";
   };
 
   boot.loader.systemd-boot.enable = true;
