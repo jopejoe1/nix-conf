@@ -102,6 +102,7 @@
       nur,
       nixos-hardware,
       nyx,
+      sylix,
       ...
   }: {
     nixosConfigurations = {
