@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -12,11 +12,11 @@
     extraGroups = [ "wheel" "networkmanager" ];
     uid = 1000;
     packages = with pkgs; [
-      kate
+      libsForQt5.kate
       libsForQt5.ark
       libreoffice-qt
       texlive.combined.scheme-full
-    ] ++ lib.optionals (system == "x86_64-linux") [
+    ] ++ lib.optionals (config.system == "x86_64-linux") [
       discord
       google-chrome
       lutris

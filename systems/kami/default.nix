@@ -41,7 +41,7 @@
   fonts.packages = with pkgs; [
     google-fonts
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-emoji-blob-bin

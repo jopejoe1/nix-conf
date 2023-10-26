@@ -59,7 +59,7 @@ in {
       home-manager.enable = true;
       git = {
         enable = true;
-        package = pkgs.gitAndTools.gitFull;
+        package = pkgs.git;
         userEmail = "johannes@joens.email";
         userName = "jopejoe1";
       };

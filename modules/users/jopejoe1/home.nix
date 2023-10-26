@@ -95,7 +95,7 @@ in {
       home-manager.enable = true;
       git = {
         enable = true;
-        package = pkgs.gitAndTools.gitFull;
+        package = pkgs.git;
         userEmail = "johannes@joens.email";
         userName = "jopejoe1";
       };
@@ -320,8 +320,8 @@ in {
         gopls
         nixd
         nodePackages.bash-language-server
-        nodePackages.vscode-langservers-extracted
-        nodePackages.yaml-language-server
+        vscode-langservers-extracted
+        yaml-language-server
         python3Packages.python-lsp-server
         shellcheck
       ];
