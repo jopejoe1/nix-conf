@@ -11,7 +11,11 @@
   services.hardware.openrgb.enable = true;
   services.fwupd.enable = true;
 
-
+  nixpkgs.config = {
+    cudaSupport = true;
+    allowAliases = false;
+    allowUnfree = true;
+  }
 
   services.xserver.desktopManager.kodi.enable = true;
 

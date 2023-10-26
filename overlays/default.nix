@@ -21,7 +21,7 @@
           ];
         });
 
-        noto-fonts-color-emoji = pkgs.noto-fonts-color-emoji_withExtraFlags;
+        #noto-fonts-color-emoji = pkgs.noto-fonts-color-emoji_withExtraFlags;
 
         libadwaita = super.libadwaita.overrideAttrs (old: {
           patches = (old.patches or []) ++ [

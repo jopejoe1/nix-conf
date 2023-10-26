@@ -2,7 +2,8 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji-unstale";
+    #nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji-unstale";
+    nixpkgs.url = "github:nixos/nixpkgs";
     nur.url = "github:nix-community/NUR";
     nyx = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
