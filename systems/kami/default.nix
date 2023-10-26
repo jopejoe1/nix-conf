@@ -15,7 +15,7 @@
     cudaSupport = true;
     allowAliases = false;
     allowUnfree = true;
-  }
+  };
 
   services.xserver.desktopManager.kodi.enable = true;
 
