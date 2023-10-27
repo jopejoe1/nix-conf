@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -123,5 +123,6 @@
 
   # Re-Compile everything for my specific cpu
   nix.settings.system-features = ["gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test"];
+  systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
 
 }
