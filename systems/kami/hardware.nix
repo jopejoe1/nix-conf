@@ -29,7 +29,7 @@
     "/" = {
       device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "compress=zstd:8" ];
     };
     "/boot/efi" = {
       device = "/dev/disk/by-uuid/1F26-8168";
