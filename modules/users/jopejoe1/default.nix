@@ -14,7 +14,7 @@
     packages = with pkgs; [
       libsForQt5.kate
       libsForQt5.ark
-      libreoffice-qt
+      #libreoffice-qt
       texlive.combined.scheme-full
     ] ++ lib.optionals (config.system == "x86_64-linux") [
       discord

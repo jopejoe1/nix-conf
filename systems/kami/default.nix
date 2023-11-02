@@ -106,11 +106,11 @@
     layout = "de";
   };
 
-  boot.plymouth = {
-    enable = true;
+  #boot.plymouth = {
+   # enable = true;
     #themePackages = [ pkgs.catppuccin-plymouth ];
     #theme = "catppuccin-frappe";
-  };
+ # };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -124,5 +124,9 @@
   # Re-Compile everything for my specific cpu
   nix.settings.system-features = ["gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test"];
   systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
-
+  nixpkgs.hostPlatform = {
+    system = "x86_64-linux";
+    config = "x86_64-unknown-linux-gnu";
+    gcc.arch = "alderlake";
+  };
 }

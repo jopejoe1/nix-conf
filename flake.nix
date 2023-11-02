@@ -114,8 +114,8 @@
           ./modules/minecraft-server
           ./modules/kate
           ./modules/theming
-          ./modules/auto-update
-          ./modules/services/repo-sync
+          #./modules/auto-update
+          #./modules/services/repo-sync
           ./modules/users/jopejoe1
           ./modules/users/root
           ./overlays
