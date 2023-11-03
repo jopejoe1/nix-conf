@@ -5,7 +5,7 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "5m";
-      OnUnitActiveSec = "6h";
+      OnUnitActiveSec = "1h";
       Unit = "moodle-dl.service";
     };
   };
