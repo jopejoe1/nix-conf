@@ -13,7 +13,7 @@
   systemd.services."moodle-dl" = {
     script = ''
       ${lib.getExe pkgs.moodle-dl} --path /var/moodle-dl
-      ${lib.getExe pkgs.git} -C /var/moodle-dl add *
+      ${lib.getExe pkgs.git} -C /var/moodle-dl add .
       ${lib.getExe pkgs.git} -C /var/moodle-dl commit -m "moodle-dl updated on `$(${pkgs.coreutils}/bin/date)`"
     '';
     path = [pkgs.openssh];
