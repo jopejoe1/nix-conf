@@ -18,6 +18,10 @@
           doCheck = false;
         });
 
+        redis = super.redis.overrideAttrs (_old: {
+          doCheck = false;
+        });
+
         haskellPackages = super.haskellPackages.override {
           overrides = hsSelf: hsSuper: {
             crypton  = super.haskell.lib.overrideCabal hsSuper.crypton  (oa: {

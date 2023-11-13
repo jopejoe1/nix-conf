@@ -117,6 +117,7 @@
           ./modules/auto-update
           ./modules/services/repo-sync
           ./modules/services/moodle-dl
+          ./modules/web/peertube
           ./modules/users/jopejoe1
           ./modules/users/root
           ./overlays
