@@ -69,6 +69,7 @@
     qdirstat
     teams-for-linux
     webex
+    discord
 
     (python3.withPackages(ps: with ps; [ beautifulsoup4 requests]))
 
