@@ -130,6 +130,6 @@
   nixpkgs.hostPlatform = {
     system = "x86_64-linux";
     config = "x86_64-unknown-linux-gnu";
-    gcc.arch = "alderlake";
+  #  gcc.arch = "alderlake";
   };
 }
