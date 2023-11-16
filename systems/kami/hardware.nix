@@ -44,7 +44,7 @@
       device = "/dev/disk/by-uuid/1F26-8168";
       fsType = "vfat";
     };
-    "/home" = {
+    "/media/home" = {
       device = "/dev/disk/by-uuid/78d6db21-b823-4ca4-b495-7782d3e56ddc";
       fsType = "ext4";
     };
