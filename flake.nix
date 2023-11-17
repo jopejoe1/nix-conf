@@ -3,7 +3,7 @@
 
   inputs = {
     #nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji-unstale";
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     home-manager= {
       url = "github:nix-community/home-manager";
