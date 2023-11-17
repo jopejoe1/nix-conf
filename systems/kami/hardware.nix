@@ -40,7 +40,7 @@
       device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
       fsType = "bcachefs";
     };
-    "/boot/efi" = {
+    "/boot" = {
       device = "/dev/disk/by-uuid/1F26-8168";
       fsType = "vfat";
     };
