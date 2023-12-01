@@ -22,7 +22,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   #boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-
+  boot.kernelPackages = pkgs.linuxPackages_testing;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";
@@ -92,7 +92,7 @@
   programs = {
     dconf.enable = true;
     droidcam.enable = true;
-    sysdig.enable = true;
+    #sysdig.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;

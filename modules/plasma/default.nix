@@ -11,16 +11,16 @@
         enable = true;
         enableHidpi = true;
       };
-      desktopManager.plasma5 = {
+      desktopManager.plasma6 = {
         enable = true;
-        useQtScaling = true;
+        #useQtScaling = true;
       };
     };
   };
 
   programs.kdeconnect = {
     enable = true;
-    package = pkgs.plasma5Packages.kdeconnect-kde;
+    #package = pkgs.plasma5Packages.kdeconnect-kde;
   };
 }
 

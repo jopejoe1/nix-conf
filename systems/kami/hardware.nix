@@ -31,16 +31,16 @@
      # fsType = "btrfs";
      # options = [ "subvol=@" "compress=zstd:8" ];
     #};
-    "/" = { 
-      device = "none";
-      fsType = "tmpfs";
-      options = [ "size=4G" "mode=755" ]; # mode=755 so only root can write to those files
-    };
-    "/nix" = {
-      device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
+   # "/" = {
+    #  device = "none";
+   #   fsType = "tmpfs";
+   #   options = [ "size=4G" "mode=755" ]; # mode=755 so only root can write to those files
+  #  };
+    "/" = {
+      device = "/dev/nvme0n1p2";
       fsType = "bcachefs";
     };
-    "/boot" = {
+    "/boot/efi" = {
       device = "/dev/disk/by-uuid/1F26-8168";
       fsType = "vfat";
     };
@@ -53,10 +53,10 @@
       fsType = "ntfs";
       options = [ "rw" "uid=1000"];
     };
-    "/media/zfs" = {
-      device = "jopejoe1";
-      fsType = "zfs";
-    };
+    #"/media/zfs" = {
+   #   device = "jopejoe1";
+   #   fsType = "zfs";
+  #  };
   };
 
   swapDevices = [ ];

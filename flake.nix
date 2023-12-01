@@ -4,6 +4,7 @@
   inputs = {
     #nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji-unstale";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    kde2nix.url = "github:nix-community/kde2nix";
     nur.url = "github:nix-community/NUR";
     home-manager= {
       url = "github:nix-community/home-manager";
@@ -94,6 +95,7 @@
       nur,
       nixos-hardware,
       stylix,
+      kde2nix,
       ...
   }: {
     nixosConfigurations = {
@@ -114,9 +116,9 @@
           ./modules/minecraft-server
           ./modules/kate
           ./modules/theming
-          ./modules/auto-update
+          #./modules/auto-update
           ./modules/services/repo-sync
-          ./modules/services/moodle-dl
+          #./modules/services/moodle-dl
           ./modules/web/peertube
           ./modules/users/jopejoe1
           ./modules/users/root
@@ -129,6 +131,7 @@
           nixos-hardware.nixosModules.common-pc-ssd
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
+          kde2nix.nixosModules.plasma6
           #nyx.nixosModules.default
           stylix.nixosModules.stylix
         ];
