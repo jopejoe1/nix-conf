@@ -21,7 +21,7 @@
       warn-dirty = false;
       use-xdg-base-directories = true;
     };
-    package = pkgs.nixVersions.nix_2_15;
+    package = pkgs.nix;
     registry = {
       home-manager.flake = self.inputs.home-manager;
       nixos-hardware.flake = self.inputs.nixos-hardware;
