@@ -1,4 +1,4 @@
-{ prismlauncher, nur, self, pkgs, ... }:
+{ prismlauncher, nur, self, pkgs, config, ... }:
 
 {
   nixpkgs = {
@@ -44,11 +44,4 @@
       })
     ];
   };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  };
-
-  system.stateVersion = "23.05";
 }

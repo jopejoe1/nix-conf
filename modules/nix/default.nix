@@ -19,6 +19,7 @@
       allowed-users = [ "*" ];
       experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
+      use-xdg-base-directories = true;
     };
     package = pkgs.nixVersions.nix_2_15;
     registry = {
@@ -39,6 +40,14 @@
     nurl
     nix-init
   ];
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+  };
+
+  system.stateVersion = "24.05";
 }
 
 

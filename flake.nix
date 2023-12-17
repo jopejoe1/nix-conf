@@ -2,8 +2,8 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    #nixpkgs.url = "github:jopejoe1/nixpkgs/noto-emoji-unstale";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "/home/jopejoe1/dev/nixpkgs/";
+    nixpkgs.url = "github:nixos/nixpkgs";
     kde2nix.url = "github:nix-community/kde2nix";
     nur.url = "github:nix-community/NUR";
     home-manager= {
@@ -115,7 +115,7 @@
           ./modules/asf
           ./modules/minecraft-server
           ./modules/kate
-          ./modules/theming
+          #./modules/theming
           #./modules/auto-update
           ./modules/services/repo-sync
           #./modules/services/moodle-dl
@@ -133,7 +133,7 @@
           home-manager.nixosModules.home-manager
           kde2nix.nixosModules.plasma6
           #nyx.nixosModules.default
-          stylix.nixosModules.stylix
+          #stylix.nixosModules.stylix
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
