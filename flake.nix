@@ -3,7 +3,7 @@
 
   inputs = {
     #nixpkgs.url = "/home/jopejoe1/dev/nixpkgs/";
-    nixpkgs.url = "github:nixos/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
     nur.url = "github:nix-community/NUR";
     home-manager= {
