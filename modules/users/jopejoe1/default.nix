@@ -9,7 +9,7 @@
     isNormalUser = true;
     description = "Johannes Jöns";
     initialPassword = "password";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" ];
     uid = 1000;
     packages = with pkgs; [
       libsForQt5.kate
