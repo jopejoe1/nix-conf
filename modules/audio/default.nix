@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./sennheiser-hd660s.nix
+  ];
+
   security.rtkit.enable = true;
 
   services.pipewire = {
@@ -15,7 +19,7 @@
 
     wireplumber.enable = true;
 
-    extraConfig.pipewire.nixos = {
+    extraConfig.pipewire."30-noise-filter" = {
       "context.modules" = [{
         name = "libpipewire-module-filter-chain";
         args = {
