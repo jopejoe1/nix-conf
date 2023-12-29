@@ -1,7 +1,15 @@
-{ ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  cfg = config.jopejoe1.bluetooth;
+in
 {
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-}
+  options.jopejoe1.bluetooth = {
+    enable = lib.mkEnableOption "Enable Bluetooth";
+  };
 
+  config = lib.mkIf cfg.enable {
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
+  };
+}

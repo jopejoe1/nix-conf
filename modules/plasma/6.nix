@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.jopejoe1.plasma;
+  cfg = config.jopejoe1.plasma6;
 in
 {
-  options.jopejoe1.plasma = {
-    enable = lib.mkEnableOption "Enable KDE Plasma";
+  options.jopejoe1.plasma6 = {
+    enable = lib.mkEnableOption "Enable KDE Plasma 6";
   };
 
   config = lib.mkIf cfg.enable {
@@ -19,9 +19,8 @@ in
           enable = true;
           enableHidpi = true;
         };
-        desktopManager.plasma5 = {
+        desktopManager.plasma6 = {
           enable = true;
-          useQtScaling = true;
         };
       };
     };

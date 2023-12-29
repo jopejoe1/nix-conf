@@ -5,6 +5,16 @@
     ./hardware-configuration.nix
   ];
 
+  jopejoe1 = {
+    audio = {
+      enable = true;
+    };
+    bluetooth.enable = true;
+    local.enable = true;
+    nix.enable = true;
+    root.enable = true;
+  };
+
   boot.loader = {
     grub.enable = false;
     generic-extlinux-compatible.enable = true;

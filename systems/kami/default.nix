@@ -6,6 +6,23 @@
       ./hardware.nix
     ];
 
+  jopejoe1 = {
+    audio = {
+      enable = true;
+    };
+    bluetooth.enable = true;
+    local.enable = true;
+    nix.enable = true;
+    plasma6.enable = true;
+    printing.enable = true;
+    steam.enable = true;
+    asf.enable = true;
+    minecraft-server.enable = true;
+    repo-sync.enable = true;
+    jopejoe1.enable = true;
+    root.enable = true;
+  };
+
   networking.hostName = "kami";
   networking.hostId = "16c22faf";
   services.hardware.openrgb.enable = true;

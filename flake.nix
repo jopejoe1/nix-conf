@@ -2,10 +2,13 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    #nixpkgs.url = "/home/jopejoe1/dev/nixpkgs/";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
     nur.url = "github:nix-community/NUR";
+    jovian= {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager= {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,21 +27,6 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
-    catppuccin-base16 = {
-      url = "github:catppuccin/base16";
-      flake = false;
-    };
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.base16.follows = "base16";
-      inputs.home-manager.follows = "home-manager";
-    };
-    base16 = {
-      url = "github:SenchoPens/base16.nix";
-    };
-
 
 
     # Dependencys
@@ -91,11 +79,7 @@
 
   outputs = inputs@{
       nixpkgs,
-      home-manager,
-      nur,
       nixos-hardware,
-      stylix,
-      kde2nix,
       ...
   }: {
     nixosConfigurations = {
@@ -104,24 +88,7 @@
         specialArgs = inputs;
         modules = [
           ./systems/kami
-          ./modules/audio
-          ./modules/bluetooth
-          ./modules/local
-          ./modules/nix
-          ./modules/plasma
-          ./modules/printing
-          #./modules/ssh
-          ./modules/steam
-          ./modules/asf
-          ./modules/minecraft-server
-          ./modules/kate
-          #./modules/theming
-          #./modules/auto-update
-          ./modules/services/repo-sync
-          #./modules/services/moodle-dl
-          ./modules/web/peertube
-          ./modules/users/jopejoe1
-          ./modules/users/root
+          ./modules
           ./overlays
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-gpu-intel
@@ -129,11 +96,6 @@
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-hidpi
           nixos-hardware.nixosModules.common-pc-ssd
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          kde2nix.nixosModules.plasma6
-          #nyx.nixosModules.default
-          #stylix.nixosModules.stylix
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -141,20 +103,9 @@
         specialArgs = inputs;
         modules = [
           ./systems/yokai
-          ./modules/audio
-          ./modules/bluetooth
-          ./modules/local
-          ./modules/nix
-          ./modules/plasma
-          ./modules/printing
-          #./modules/ssh
-          ./modules/users/jopejoe1
-          ./modules/users/root
+          ./modules
           ./overlays
           nixos-hardware.nixosModules.pine64-pinebook-pro
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          #nyx.nixosModules.default
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -162,17 +113,9 @@
         specialArgs = inputs;
         modules = [
           ./systems/inugami
-          ./modules/audio
-          ./modules/bluetooth
-          ./modules/local
-          ./modules/nix
-          ./modules/kodi
-          ./modules/auto-update
+          ./modules
           ./overlays
           nixos-hardware.nixosModules.raspberry-pi-4
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          #nyx.nixosModules.default
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -180,19 +123,20 @@
         specialArgs = inputs;
         modules = [
           ./systems/tuny
-          ./modules/audio
-          ./modules/bluetooth
-          ./modules/local
-          ./modules/nix
-          ./modules/auto-update
-          #./overlays
+          ./modules
           nixos-hardware.nixosModules.common-cpu-intel
           #nixos-hardware.nixosModules.common-gpu-nvidia
           nixos-hardware.nixosModules.common-pc-laptop
           nixos-hardware.nixosModules.common-pc-laptop-hdd
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          #nyx.nixosModules.default
+        ];
+      };
+      steamdeck = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./systems/steamdeck
+          ./modules
+          ./overlays
         ];
       };
     };
