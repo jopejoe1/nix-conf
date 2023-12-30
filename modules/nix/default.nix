@@ -28,7 +28,11 @@ in {
         home-manager.flake = self.inputs.home-manager;
         nixos-hardware.flake = self.inputs.nixos-hardware;
         nur.flake = self.inputs.nur;
-        nixpkgs.flake = self.inputs.nixpkgs;
+        sys.flake = self;
+        nixpkgs.to = {
+          type = "path";
+          path = pkgs.path;
+        };
       };
       nixPath = [
         "nixpkgs=${self.inputs.nixpkgs}"
