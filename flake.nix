@@ -77,7 +77,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixos-hardware, ... }: {
+  outputs = inputs@{ nixpkgs, ... }: {
     nixosConfigurations = {
       kami = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -86,12 +86,6 @@
           ./systems/kami
           ./modules
           ./overlays
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-gpu-intel
-          nixos-hardware.nixosModules.common-gpu-nvidia
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-hidpi
-          nixos-hardware.nixosModules.common-pc-ssd
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -101,7 +95,6 @@
           ./systems/yokai
           ./modules
           ./overlays
-          nixos-hardware.nixosModules.pine64-pinebook-pro
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -111,7 +104,6 @@
           ./systems/inugami
           ./modules
           ./overlays
-          nixos-hardware.nixosModules.raspberry-pi-4
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -120,10 +112,6 @@
         modules = [
           ./systems/tuny
           ./modules
-          nixos-hardware.nixosModules.common-cpu-intel
-          #nixos-hardware.nixosModules.common-gpu-nvidia
-          nixos-hardware.nixosModules.common-pc-laptop
-          nixos-hardware.nixosModules.common-pc-laptop-hdd
         ];
       };
       steamdeck = nixpkgs.lib.nixosSystem {

@@ -1,7 +1,10 @@
-{ modulesPath, lib, ... }:
+{ modulesPath, lib, nixos-hardware, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    nixos-hardware.nixosModules.raspberry-pi-4
+  ];
 
   boot = {
     initrd = { availableKernelModules = [ "xhci_pci" ]; };

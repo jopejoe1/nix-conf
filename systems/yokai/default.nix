@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixos-hardware, ... }:
 
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    nixos-hardware.nixosModules.pine64-pinebook-pro
+  ];
 
   jopejoe1 = {
     audio = { enable = true; };

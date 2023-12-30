@@ -1,7 +1,15 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixos-hardware, ... }:
 
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ./hardware.nix
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-gpu-intel
+    nixos-hardware.nixosModules.common-gpu-nvidia
+    nixos-hardware.nixosModules.common-pc
+    nixos-hardware.nixosModules.common-hidpi
+    nixos-hardware.nixosModules.common-pc-ssd
+  ];
 
   jopejoe1 = {
     audio = {
