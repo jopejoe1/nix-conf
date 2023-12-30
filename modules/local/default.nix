@@ -1,12 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let
-  cfg = config.jopejoe1.local;
-in
-{
-  options.jopejoe1.local = {
-    enable = lib.mkEnableOption "Enable Locals";
-  };
+let cfg = config.jopejoe1.local;
+in {
+  options.jopejoe1.local = { enable = lib.mkEnableOption "Enable Locals"; };
 
   config = lib.mkIf cfg.enable {
     xdg = {
@@ -39,9 +35,7 @@ in
       };
     };
 
-    environment.variables = {
-      LOG_ICONS = "true";
-    };
+    environment.variables = { LOG_ICONS = "true"; };
 
     fonts.fontDir.enable = true;
   };

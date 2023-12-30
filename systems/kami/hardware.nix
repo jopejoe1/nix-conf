@@ -4,8 +4,7 @@
 { config, lib, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   hardware.nvidia.prime = {
     offload.enable = false;
@@ -18,7 +17,8 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  boot.initrd.availableKernelModules = [ "vmd" "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "vmd" "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -26,16 +26,16 @@
   zramSwap.enable = true;
 
   fileSystems = {
-   # "/" = {
+    # "/" = {
     #  device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
-     # fsType = "btrfs";
-     # options = [ "subvol=@" "compress=zstd:8" ];
+    # fsType = "btrfs";
+    # options = [ "subvol=@" "compress=zstd:8" ];
     #};
-   # "/" = {
+    # "/" = {
     #  device = "none";
-   #   fsType = "tmpfs";
-   #   options = [ "size=4G" "mode=755" ]; # mode=755 so only root can write to those files
-  #  };
+    #   fsType = "tmpfs";
+    #   options = [ "size=4G" "mode=755" ]; # mode=755 so only root can write to those files
+    #  };
     "/" = {
       device = "/dev/nvme0n1p2";
       fsType = "bcachefs";
@@ -51,12 +51,12 @@
     "/media/gaming" = {
       device = "/dev/disk/by-uuid/4038F97238F966F6";
       fsType = "ntfs";
-      options = [ "rw" "uid=1000"];
+      options = [ "rw" "uid=1000" ];
     };
     #"/media/zfs" = {
-   #   device = "jopejoe1";
-   #   fsType = "zfs";
-  #  };
+    #   device = "jopejoe1";
+    #   fsType = "zfs";
+    #  };
   };
 
   swapDevices = [ ];
@@ -71,5 +71,6 @@
 
   #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

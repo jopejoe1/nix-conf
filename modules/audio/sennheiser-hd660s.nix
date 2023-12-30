@@ -1,9 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ config, lib, ... }:
 
-let
-  cfg = config.jopejoe1.audio;
-in
-{
+let cfg = config.jopejoe1.audio;
+in {
   config = lib.mkIf cfg.sennheiser-hd-660s {
     services.pipewire = {
       extraConfig.pipewire."20-Senheiser-HD660S" = {
@@ -30,7 +28,7 @@ in
                   label = "bq_lowshelf";
                   control = {
                     "Freq" = 105.0;
-                    "Q" = 0.70;
+                    "Q" = 0.7;
                     "Gain" = 6.5;
                   };
                 }
@@ -184,5 +182,4 @@ in
     };
   };
 }
-
 

@@ -1,12 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
-let
-  cfg = config.jopejoe1.asf;
-in
-{
-  options.jopejoe1.asf = {
-    enable = lib.mkEnableOption "Enable ASF";
-  };
+let cfg = config.jopejoe1.asf;
+in {
+  options.jopejoe1.asf = { enable = lib.mkEnableOption "Enable ASF"; };
 
   config = lib.mkIf cfg.enable {
     services.archisteamfarm = {

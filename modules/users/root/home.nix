@@ -20,7 +20,8 @@ in
           CUDA_CACHE_PATH = "${hcfg.xdg.cacheHome}/nv";
           GRADLE_USER_HOME = "${hcfg.xdg.dataHome}/gradle";
           KODI_DATA = "${hcfg.xdg.dataHome}/kodi";
-          _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${hcfg.xdg.configHome}/java";
+          _JAVA_OPTIONS =
+            "-Djava.util.prefs.userRoot=${hcfg.xdg.configHome}/java";
           WINEPREFIX = "${hcfg.xdg.dataHome}/wine";
         };
 
@@ -76,7 +77,8 @@ in
           historyFile = "${hcfg.xdg.stateHome}/bash/history";
           shellAliases = {
             gc = "nix store gc";
-            rb = "git -C /etc/nixos pull && nix flake update /etc/nixos/ && sudo nixos-rebuild switch --impure && git -C /etc/nixos add . && git -C /etc/nixos commit -m 'Updated flake.lock' && git -C /etc/nixos push";
+            rb =
+              "git -C /etc/nixos pull && nix flake update /etc/nixos/ && sudo nixos-rebuild switch --impure && git -C /etc/nixos add . && git -C /etc/nixos commit -m 'Updated flake.lock' && git -C /etc/nixos push";
           };
         };
         zsh.shellAliases = hcfg.programs.bash.shellAliases;

@@ -20,7 +20,8 @@ in
           CUDA_CACHE_PATH = "${hcfg.xdg.cacheHome}/nv";
           GRADLE_USER_HOME = "${hcfg.xdg.dataHome}/gradle";
           KODI_DATA = "${hcfg.xdg.dataHome}/kodi";
-          _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${hcfg.xdg.configHome}/java";
+          _JAVA_OPTIONS =
+            "-Djava.util.prefs.userRoot=${hcfg.xdg.configHome}/java";
           WINEPREFIX = "${hcfg.xdg.dataHome}/wine";
         };
 
@@ -79,11 +80,7 @@ in
           userName = "jopejoe1";
           extraConfig = {
             core = {
-              whitespace = [
-                "blank-at-eol"
-                "blank-at-eof"
-                "space-before-tab"
-              ];
+              whitespace = [ "blank-at-eol" "blank-at-eof" "space-before-tab" ];
             };
           };
         };
@@ -332,13 +329,15 @@ in
                   };
                   "Warframe Wiki" = {
                     urls = [{
-                      template = "https://warframe.fandom.com/wiki/Special:Search";
+                      template =
+                        "https://warframe.fandom.com/wiki/Special:Search";
                       params = [{
                         name = "query";
                         value = "{searchTerms}";
                       }];
                     }];
-                    iconUpdateURL = "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
+                    iconUpdateURL =
+                      "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
                     updateInterval = 24 * 60 * 60 * 1000;
                     definedAliases = [ "@wf" ];
                   };
@@ -363,12 +362,14 @@ in
                 "config.trim_on_minimize" = true;
                 "pdfjs.annotationEditorMode" = 0;
                 "pdfjs.annotationMode" = 2;
-                "font.name-list.emoji" = lib.strings.concatStringsSep ", " config.fonts.fontconfig.defaultFonts.emoji;
+                "font.name-list.emoji" = lib.strings.concatStringsSep ", "
+                  config.fonts.fontconfig.defaultFonts.emoji;
 
                 ## Arkenfox Stuff
                 "browser.aboutConfig.showWarning" = false;
                 "browser.newtabpage.activity-stream.showSponsored" = false;
-                "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+                "browser.newtabpage.activity-stream.showSponsoredTopSites" =
+                  false;
                 "extensions.getAddons.showPane" = false;
                 "extensions.htmlaboutaddons.recommendations.enabled" = false;
                 "browser.discovery.enabled" = false;

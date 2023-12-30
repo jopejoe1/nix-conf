@@ -1,9 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
-let
-  cfg = config.jopejoe1.plasma;
-in
-{
+let cfg = config.jopejoe1.plasma;
+in {
   options.jopejoe1.plasma = {
     enable = lib.mkEnableOption "Enable KDE Plasma";
   };
@@ -26,9 +24,9 @@ in
       };
     };
 
-    programs.kdeconnect = {
-      enable = true;
-    };
+    programs.kdeconnect = { enable = true; };
+
+    networking.networkmanager.enable = true;
   };
 }
 

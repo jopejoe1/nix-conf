@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let
-  cfg = config.jopejoe1.jopejoe1;
-in
-{
+let cfg = config.jopejoe1.jopejoe1;
+in {
   options.jopejoe1.jopejoe1 = {
     enable = lib.mkEnableOption "Enable jopejoe1 user";
   };
@@ -15,15 +13,13 @@ in
       initialPassword = "passwor";
       extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" ];
       uid = 1000;
-      packages = with pkgs; [
-        libsForQt5.kate
-        libsForQt5.ark
-        texlive.combined.scheme-full
-      ] ++ lib.optionals (config.system == "x86_64-linux") [
-        discord
-        lutris
-        bottles
-      ];
+      packages = with pkgs;
+        [ libsForQt5.kate libsForQt5.ark texlive.combined.scheme-full ]
+        ++ lib.optionals (config.system == "x86_64-linux") [
+          discord
+          lutris
+          bottles
+        ];
     };
   };
 

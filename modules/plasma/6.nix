@@ -1,9 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
-let
-  cfg = config.jopejoe1.plasma6;
-in
-{
+let cfg = config.jopejoe1.plasma6;
+in {
   options.jopejoe1.plasma6 = {
     enable = lib.mkEnableOption "Enable KDE Plasma 6";
   };
@@ -19,15 +17,13 @@ in
           enable = true;
           enableHidpi = true;
         };
-        desktopManager.plasma6 = {
-          enable = true;
-        };
+        desktopManager.plasma6 = { enable = true; };
       };
     };
 
-    programs.kdeconnect = {
-      enable = true;
-    };
+    programs.kdeconnect = { enable = true; };
+
+    networking.networkmanager.enable = true;
   };
 }
 

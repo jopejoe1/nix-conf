@@ -5,11 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
     nur.url = "github:nix-community/NUR";
-    jovian= {
+    jovian = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager= {
+    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -27,7 +27,6 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
-
 
     # Dependencys
     flake-parts = {
@@ -72,16 +71,13 @@
 
     # Patches
     prism-game-options-patch = {
-      url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
+      url =
+        "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
       flake = false;
     };
   };
 
-  outputs = inputs@{
-      nixpkgs,
-      nixos-hardware,
-      ...
-  }: {
+  outputs = inputs@{ nixpkgs, nixos-hardware, ... }: {
     nixosConfigurations = {
       kami = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -133,11 +129,7 @@
       steamdeck = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
-        modules = [
-          ./systems/steamdeck
-          ./modules
-          ./overlays
-        ];
+        modules = [ ./systems/steamdeck ./modules ./overlays ];
       };
     };
   };

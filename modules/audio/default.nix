@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
-let
-  cfg = config.jopejoe1.audio;
-in
-{
+let cfg = config.jopejoe1.audio;
+in {
   options.jopejoe1.audio = {
     enable = lib.mkEnableOption "Enable Audio";
     sennheiser-hd-660s = lib.mkEnableOption "Equalizer for Sennheiser HD 660S";
@@ -34,7 +32,8 @@ in
               nodes = [{
                 type = "ladspa";
                 name = "rnnoise";
-                plugin = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+                plugin =
+                  "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
                 label = "noise_suppressor_mono";
                 control = {
                   "VAD Threshold (%)" = 50.0;
