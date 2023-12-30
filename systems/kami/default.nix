@@ -9,6 +9,7 @@
   jopejoe1 = {
     audio = {
       enable = true;
+      sennheiser-hd-660s = true;
     };
     bluetooth.enable = true;
     local.enable = true;
