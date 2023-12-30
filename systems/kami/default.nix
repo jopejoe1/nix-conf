@@ -96,7 +96,7 @@
   programs = {
     dconf.enable = true;
     droidcam.enable = true;
-    sysdig.enable = true;
+    sysdig.enable = false;
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
