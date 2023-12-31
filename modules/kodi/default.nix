@@ -7,7 +7,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.xserver = {
       enable = true;
-      desktopManger.kodi.enable = true;
+      desktopManager.kodi.enable = true;
       displayManager = {
         autoLogin = {
           enable = true;
