@@ -13,7 +13,7 @@ in {
           enable = true;
           user = "jopejoe1";
         };
-        ligthdm = {
+        lightdm = {
           enable = true;
           autoLogin.timeout = 3;
         };
