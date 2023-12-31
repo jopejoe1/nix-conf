@@ -7,6 +7,7 @@
     ./auto-update
     ./bluetooth
     ./events
+    ./kodi
     ./local
     ./minecraft-server
     ./moodle-dl

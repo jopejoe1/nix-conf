@@ -23,6 +23,7 @@
     bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
+    kodi.enable = true;
     root.enable = true;
     jopejoe1.enable = true;
   };
