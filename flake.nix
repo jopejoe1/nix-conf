@@ -77,14 +77,15 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, ... }: {
+  outputs = inputs@{ self, nixpkgs, ... }: {
+    nixosModules.default = import ./modules;
     nixosConfigurations = {
       kami = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
         modules = [
           ./systems/kami
-          ./modules
+          self.outputs.nixosModules.default
           ./overlays
         ];
       };
@@ -93,7 +94,7 @@
         specialArgs = inputs;
         modules = [
           ./systems/yokai
-          ./modules
+          self.outputs.nixosModules.default
           ./overlays
         ];
       };
@@ -102,7 +103,7 @@
         specialArgs = inputs;
         modules = [
           ./systems/inugami
-          ./modules
+          self.outputs.nixosModules.default
           ./overlays
         ];
       };
@@ -111,13 +112,13 @@
         specialArgs = inputs;
         modules = [
           ./systems/tuny
-          ./modules
+          self.outputs.nixosModules.default
         ];
       };
       steamdeck = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
-        modules = [ ./systems/steamdeck ./modules ./overlays ];
+        modules = [ ./systems/steamdeck self.outputs.nixosModules.default ./overlays ];
       };
     };
   };
