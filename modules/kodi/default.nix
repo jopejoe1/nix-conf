@@ -10,11 +10,11 @@ in {
       desktopManager.kodi.enable = true;
       displayManager = {
         autoLogin = {
-          enable = true;
+          enable = false;
           user = "jopejoe1";
         };
         lightdm = {
-          enable = false;
+          enable = true;
           autoLogin.timeout = 3;
         };
       };
