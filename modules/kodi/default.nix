@@ -14,7 +14,7 @@ in {
           user = "jopejoe1";
         };
         lightdm = {
-          enable = true;
+          enable = false;
           autoLogin.timeout = 3;
         };
       };
