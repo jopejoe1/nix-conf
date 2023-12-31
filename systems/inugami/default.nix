@@ -24,6 +24,7 @@
     local.enable = true;
     nix.enable = true;
     root.enable = true;
+    jopejoe1.enable = true;
   };
 
   networking = {
