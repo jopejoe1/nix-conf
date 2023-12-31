@@ -10,7 +10,7 @@ in {
     users.users.jopejoe1 = {
       isNormalUser = true;
       description = "Johannes Jöns";
-      initialPassword = "passwor";
+      initialPassword = "password";
       extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" ];
       uid = 1000;
       packages = with pkgs;
