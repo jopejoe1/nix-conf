@@ -59,7 +59,7 @@ in {
     };
 
     system.stateVersion = "24.05";
-    services.openssh.enable = enable;
+    services.openssh.enable = true;
   };
 }
 
