@@ -17,9 +17,10 @@ in {
           user = "jopejoe1";
         };
         lightdm = {
-          enable = false;
+          enable = true;
           autoLogin.timeout = 3;
         };
+        sddm.enable = lib.mkForce false;
       };
     };
   };
