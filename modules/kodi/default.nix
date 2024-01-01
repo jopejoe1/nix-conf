@@ -13,7 +13,7 @@ in {
       };
       displayManager = {
         autoLogin = {
-          enable = false;
+          enable = true;
           user = "jopejoe1";
         };
         lightdm = {
