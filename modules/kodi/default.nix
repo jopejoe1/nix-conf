@@ -7,7 +7,10 @@ in {
   config = lib.mkIf cfg.enable {
     services.xserver = {
       enable = true;
-      desktopManager.kodi.enable = true;
+      desktopManager.kodi = {
+        enable = true;
+        package = pkgs.kodi-wayland;
+      };
       displayManager = {
         autoLogin = {
           enable = false;
@@ -21,4 +24,3 @@ in {
     };
   };
 }
-
