@@ -5,7 +5,7 @@ in {
   options.jopejoe1.kodi = { enable = lib.mkEnableOption "Enable Kodi"; };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.kodi ];
+    environment.systemPackages = [ pkgs.kodi-wayland ];
     services.xserver = {
       enable = true;
       desktopManager.kodi = {
@@ -13,7 +13,7 @@ in {
         package = pkgs.kodi-wayland;
       };
       displayManager = {
-        defaultSession = "";
+        defaultSession = "plasmawayland";
         autoLogin = {
           enable = true;
           user = "jopejoe1";
