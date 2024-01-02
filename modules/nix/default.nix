@@ -60,6 +60,9 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       backupFileExtension = "backup";
+      sharedModules = [
+        self.outputs.homeManagerModules.default
+      ];
     };
 
     system.stateVersion = "24.05";

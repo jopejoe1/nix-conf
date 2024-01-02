@@ -24,7 +24,26 @@ in {
           bottles
         ];
     };
+    home-manager.users.jopejoe1 = {
+      home = {
+        username = config.users.users.jopejoe1.name;
+        homeDirectory = config.users.users.jopejoe1.home;
+        stateVersion = config.system.stateVersion;
+      };
+      jopejoe1 = {
+        common = {
+          enable = true;
+          fonts = {
+            serif = config.fonts.fontconfig.defaultFonts.serif;
+            sansSerif = config.fonts.fontconfig.defaultFonts.sansSerif;
+            monospace = config.fonts.fontconfig.defaultFonts.monospace;
+            emoji = config.fonts.fontconfig.defaultFonts.emoji;
+          };
+        };
+        git.enable = true;
+        direnv.enable = true;
+        firefox.enable = true;
+      };
+    };
   };
-
-  imports = [ ./home.nix ];
 }

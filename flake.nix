@@ -79,6 +79,7 @@
 
   outputs = inputs@{ self, nixpkgs, ... }: {
     nixosModules.default = import ./modules;
+    homeManagerModules.default = import ./home-modules;
     nixosConfigurations = {
       kami = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
