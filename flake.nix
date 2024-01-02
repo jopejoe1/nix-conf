@@ -4,7 +4,11 @@
   inputs = rec {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
-    nur.url = "github:nix-community/NUR";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     jovian = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -11,9 +11,10 @@ in {
 
       overlays = [
         self.inputs.prismlauncher.overlays.default
-        self.inputs.nur.overlay
 
         (_self: super: rec {
+
+          firefox-addons = self.inputs.firefox-addons.packages."${config.nixpkgs.hostPlatform.system}";
 
           tela-icon-theme = super.tela-icon-theme.overrideAttrs
             (_old: { src = self.inputs.tela-icon-theme; });

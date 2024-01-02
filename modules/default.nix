@@ -22,6 +22,5 @@
     ./users
     self.inputs.home-manager.nixosModules.home-manager
     self.inputs.kde2nix.nixosModules.plasma6
-    self.inputs.nur.nixosModules.nur
   ];
 }

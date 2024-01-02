@@ -27,7 +27,6 @@ in {
       registry = {
         home-manager.flake = self.inputs.home-manager;
         nixos-hardware.flake = self.inputs.nixos-hardware;
-        nur.flake = self.inputs.nur;
         system.flake = self;
         nixpkgs.to = {
           type = "path";

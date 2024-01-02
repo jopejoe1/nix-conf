@@ -144,7 +144,7 @@ in {
         };
         profiles = {
           default = {
-            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            extensions = with pkgs.firefox-addons; [
               ublock-origin
               privacy-badger
               bitwarden
@@ -154,8 +154,7 @@ in {
               ghostery
               libredirect
               privacy-badger
-              languagetool
-              #fastforward
+              #languagetool
               return-youtube-dislikes
               sponsorblock
               augmented-steam
@@ -168,7 +167,7 @@ in {
               skip-redirect
               terms-of-service-didnt-read
               unpaywall
-              wappalyzer
+              #wappalyzer
               wayback-machine
               modrinthify
             ];
