@@ -1,7 +1,7 @@
 {
   description = "jopejoe1 NixOS configuration";
 
-  inputs = {
+  inputs = rec {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
     nur.url = "github:nix-community/NUR";
@@ -33,8 +33,7 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
-    nixpkgs-lib.url = "github:NixOS/nixpkgs/nixos-unstable?dir=lib";
-    flake-schemas.url = "github:DeterminateSystems/flake-schemas";
+    nixpkgs-lib.url = "github:nixos/nixpkgs/nixos-unstable?dir=lib";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,11 +41,6 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.gitignore.follows = "gitignore";
       inputs.flake-utils.follows = "flake-utils";
-    };
-    yafas = {
-      url = "github:UbiqueLambda/yafas";
-      inputs.flake-schemas.follows = "flake-schemas";
-      inputs.systems.follows = "nix-systems";
     };
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -65,8 +59,6 @@
       inputs.systems.follows = "nix-systems";
     };
     nix-systems.url = "github:nix-systems/default";
-    nix-systems-linux.url = "github:nix-systems/default-linux";
-    nix-empty-flake.url = "github:chaotic-cx/nix-empty-flake";
     nix-filter.url = "github:numtide/nix-filter";
 
     # Patches
