@@ -50,8 +50,6 @@
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     loader = {
       generic-extlinux-compatible.enable = true;
-      systemd-boot.configurationLimit = 10;
-      systemd-boot.editor = false;
     };
   };
 }

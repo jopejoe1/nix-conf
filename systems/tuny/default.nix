@@ -16,17 +16,10 @@
     jopejoe1.enable = true;
     nix.enable = true;
     root.enable = true;
+    boot.systemd.enable = true;
   };
 
   networking = { hostName = "tuny"; };
-  boot.loader.grub.device = "/dev/sda";
-
-  programs = {
-    git = {
-      enable = true;
-      lfs.enable = true;
-    };
-  };
 
   environment.systemPackages = with pkgs; [ mixxx ];
 

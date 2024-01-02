@@ -67,6 +67,7 @@ in {
 
     system.stateVersion = "24.05";
     services.openssh.enable = true;
+    systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
   };
 }
 

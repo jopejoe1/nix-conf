@@ -28,6 +28,7 @@
     repo-sync.enable = true;
     jopejoe1.enable = true;
     root.enable = true;
+    boot.systemd.enable = true;
   };
 
   networking = {
@@ -55,17 +56,6 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_testing;
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
-        editor = false;
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
-    };
   };
 
   time.timeZone = "Europe/Berlin";
@@ -109,18 +99,11 @@
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
-    git = {
-      enable = true;
-      lfs.enable = true;
-    };
   };
   console = {
     enable = true;
     keyMap = "de";
   };
 
-  nix.settings.system-features =
-    [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ];
-  systemd.services.nix-daemon.serviceConfig.LimitNOFILE =
-    lib.mkForce 1048576000;
+  nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ];
 }

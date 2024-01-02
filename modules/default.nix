@@ -6,6 +6,7 @@
     ./audio
     ./auto-update
     ./bluetooth
+    ./boot
     ./events
     ./kodi
     ./local

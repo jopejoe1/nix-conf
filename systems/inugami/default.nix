@@ -40,11 +40,4 @@
   };
 
   powerManagement.cpuFreqGovernor = "ondemand";
-
-  programs = {
-    git = {
-      enable = true;
-      lfs.enable = true;
-    };
-  };
 }
