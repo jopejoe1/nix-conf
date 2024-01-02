@@ -21,6 +21,7 @@
     nix.enable = true;
     plasma6.enable = true;
     printing.enable = true;
+    overlays.enable = true;
     steam.enable = true;
     asf.enable = true;
     minecraft-server.enable = true;

@@ -12,6 +12,7 @@
     ./minecraft-server
     ./moodle-dl
     ./nix
+    ./overlays
     ./plasma
     ./plasma/6.nix
     ./printing

@@ -86,7 +86,6 @@
         modules = [
           ./systems/kami
           self.outputs.nixosModules.default
-          ./overlays
         ];
       };
       yokai = nixpkgs.lib.nixosSystem {
@@ -95,7 +94,6 @@
         modules = [
           ./systems/yokai
           self.outputs.nixosModules.default
-          ./overlays
         ];
       };
       inugami = nixpkgs.lib.nixosSystem {
@@ -104,7 +102,6 @@
         modules = [
           ./systems/inugami
           self.outputs.nixosModules.default
-          ./overlays
         ];
       };
       tuny = nixpkgs.lib.nixosSystem {
@@ -118,7 +115,7 @@
       steamdeck = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = inputs;
-        modules = [ ./systems/steamdeck self.outputs.nixosModules.default ./overlays ];
+        modules = [ ./systems/steamdeck self.outputs.nixosModules.default ];
       };
     };
   };
