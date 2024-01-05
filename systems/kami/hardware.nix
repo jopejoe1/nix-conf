@@ -53,6 +53,32 @@
       fsType = "ntfs";
       options = [ "rw" "uid=1000" ];
     };
+    "/media/backup" = {
+      device = "u384346@u384346.your-storagebox.de:/";
+      fsType = "fuse.sshfs";
+      noCheck = true;
+      options = [
+        "IdentityFile=/home/jopejoe1/.ssh/github"
+        "ServerAliveCountMax=3"
+        "ServerAliveInterval=15"
+        "_netdev"
+        "allow_other"
+        "default_permissions"
+        "exec"
+        "gid=100"
+        "idmap=user"
+        "noatime"
+        "noauto"
+        "reconnect"
+        "transform_symlinks"
+        "uid=1000"
+        "users"
+        "x-systemd.after=network-online.target"
+        "x-systemd.automount"
+        "x-systemd.mount-timeout=10s"
+        "x-systemd.requires=network-online.target"
+      ];
+    };
     #"/media/zfs" = {
     #   device = "jopejoe1";
     #   fsType = "zfs";

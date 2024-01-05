@@ -37,7 +37,11 @@
   };
 
   services = {
-    hardware.openrgb.enable = true;
+    hardware.openrgb = {
+      enable = true;
+      motherboard = "intel";
+      package = pkgs.openrgb;
+    };
     fwupd.enable = true;
     xserver = {
       videoDrivers = [ "nvidia" ];
@@ -84,6 +88,8 @@
     discord
     element-desktop
     mumble
+    sshfs
+
 
     # Theming
     catppuccin-kvantum
@@ -95,7 +101,6 @@
   programs = {
     dconf.enable = true;
     droidcam.enable = true;
-    sysdig.enable = false;
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;

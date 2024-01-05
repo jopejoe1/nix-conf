@@ -19,14 +19,15 @@ in {
           tela-icon-theme = super.tela-icon-theme.overrideAttrs
             (_old: { src = self.inputs.tela-icon-theme; });
 
+          openrgb = super.openrgb.overrideAttrs
+            (_old: { src = self.inputs.openrgb; });
+
           prismlauncher = super.prismlauncher.overrideAttrs (old: {
             patches = (old.patches or [ ]) ++ [
               self.inputs.prism-game-options-patch
               ./prism-ftb.patch
             ];
           });
-
-          #noto-fonts-color-emoji = pkgs.noto-fonts-color-emoji_withExtraFlags;
 
           libadwaita = super.libadwaita.overrideAttrs (old: {
             patches = (old.patches or [ ])
