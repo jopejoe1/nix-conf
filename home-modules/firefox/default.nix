@@ -222,6 +222,33 @@ in {
                     "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "@nm" ];
                 };
+                "Home Manager Modules" = {
+                  urls = [{
+                    template = "https://mipmip.github.io/home-manager-option-search";
+                    params = [
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }];
+                  icon =
+                    "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                  definedAliases = [ "@hm" ];
+                };
+                "Repology" = {
+                  urls = [{
+                    template = "https://repology.org/projects";
+                    params = [
+                      {
+                        name = "search";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }];
+                  iconUpdateURL = "https://raw.githubusercontent.com/repology/repology-webapp/master/repologyapp/static/repology40x40.v1.png";
+                  definedAliases = [ "@repo" ];
+                };
                 "NixOS Wiki" = {
                   urls = [{
                     template = "https://nixos.wiki/index.php";
@@ -233,6 +260,17 @@ in {
                   icon =
                     "${config.programs.firefox.profiles.default.search.engines."Nix Packages".icon}";
                   definedAliases = [ "@nw" ];
+                };
+                "Arch Wiki" = {
+                  urls = [{
+                    template = "https://wiki.archlinux.org/index.php";
+                    params = [{
+                      name = "search";
+                      value = "{searchTerms}";
+                    }];
+                  }];
+                  iconUpdateURL = "https://upload.wikimedia.org/wikipedia/commons/1/13/Arch_Linux_%22Crystal%22_icon.svg";
+                  definedAliases = [ "@arch" ];
                 };
                 "Minecraft Wiki" = {
                   urls = [{
