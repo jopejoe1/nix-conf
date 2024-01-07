@@ -26,16 +26,6 @@
   zramSwap.enable = true;
 
   fileSystems = {
-    # "/" = {
-    #  device = "/dev/disk/by-uuid/99a47ace-7e69-4520-b914-d4fe5b31dc79";
-    # fsType = "btrfs";
-    # options = [ "subvol=@" "compress=zstd:8" ];
-    #};
-    # "/" = {
-    #  device = "none";
-    #   fsType = "tmpfs";
-    #   options = [ "size=4G" "mode=755" ]; # mode=755 so only root can write to those files
-    #  };
     "/" = {
       device = "/dev/nvme0n1p2";
       fsType = "bcachefs";
@@ -55,28 +45,14 @@
     };
     "/media/backup" = {
       device = "u384346@u384346.your-storagebox.de:/";
-      fsType = "fuse.sshfs";
-      noCheck = true;
+      fsType = "sshfs";
       options = [
-        "IdentityFile=/home/jopejoe1/.ssh/github"
-        "ServerAliveCountMax=3"
-        "ServerAliveInterval=15"
         "_netdev"
         "allow_other"
-        "default_permissions"
-        "exec"
-        "gid=100"
-        "idmap=user"
-        "noatime"
-        "noauto"
-        "reconnect"
-        "transform_symlinks"
-        "uid=1000"
-        "users"
-        "x-systemd.after=network-online.target"
         "x-systemd.automount"
-        "x-systemd.mount-timeout=10s"
-        "x-systemd.requires=network-online.target"
+        "IdentityFile=/home/jopejoe1/.ssh/github"
+        "ServerAliveInterval=15"
+        "reconnect"
       ];
     };
     #"/media/zfs" = {
