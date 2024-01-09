@@ -99,6 +99,7 @@
   ];
 
   programs = {
+    adb.enable = true;
     dconf.enable = true;
     droidcam.enable = true;
     xwayland.enable = true;

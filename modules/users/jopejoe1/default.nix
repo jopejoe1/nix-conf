@@ -11,7 +11,7 @@ in {
       isNormalUser = true;
       description = "Johannes Jöns";
       initialPassword = "password";
-      extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" ];
+      extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" "adbusers" ];
       uid = 1000;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8oyMpS2hK3gQXyHIIVS6oilgMpemLmfhKKJ6RBMwUh johannes@joens.email"
