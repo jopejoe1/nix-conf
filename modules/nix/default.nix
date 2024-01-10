@@ -24,25 +24,17 @@ in {
         use-xdg-base-directories = true;
       };
       package = pkgs.nix;
-      registry = {
-        home-manager.flake = self.inputs.home-manager;
-        nixos-hardware.flake = self.inputs.nixos-hardware;
-        system.flake = self;
-        nixpkgs.to = {
-          type = "path";
-          path = pkgs.path;
-        };
+      registry = mkForce (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
+        self.flake = self;
       };
-      nixPath = [
-        "nixpkgs=${self.inputs.nixpkgs}"
-        "nixos-config=/etc/nixos/configuration.nix"
-        "/nix/var/nix/profiles/per-user/root/channels"
-      ];
+      nixPath = mkForce [ "/etc/nix/path" ];
     };
 
     nixpkgs = {
       config.allowUnfree = true;
     };
+
+    environment.etc = lib.mapAttrs' (name: value: { name = "nix/path/${name}"; value.source = value.flake; }) config.nix.registry;
 
     environment.systemPackages = with pkgs; [
       deploy-rs
@@ -65,7 +57,14 @@ in {
     };
 
     system.stateVersion = "24.05";
-    services.openssh.enable = true;
+    services.openssh = {
+      enable = true;
+      banner = "Hackers are in Your System!!!";
+      settings = {
+        PasswordAuthentication = false;
+        PermitRootLogin = "prohibit-password";
+      };
+    };
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
   };
 }
