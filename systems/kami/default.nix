@@ -50,7 +50,10 @@
   };
 
   nixpkgs = {
-    config = { cudaSupport = true; };
+    config = {
+      cudaSupport = true;
+      cudaCapabilities = [ "8.6" ];
+    };
     hostPlatform = {
       system = "x86_64-linux";
       config = "x86_64-unknown-linux-gnu";
