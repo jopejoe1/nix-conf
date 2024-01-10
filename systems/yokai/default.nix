@@ -15,6 +15,7 @@
     printing.enable = true;
     jopejoe1.enable = true;
     root.enable = true;
+    ssh.enable = true;
   };
 
   networking = {

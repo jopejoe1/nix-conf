@@ -23,6 +23,7 @@
     printing.enable = true;
     overlays.enable = true;
     steam.enable = true;
+    ssh.enable = true;
     asf.enable = true;
     minecraft-server.enable = true;
     repo-sync.enable = true;
@@ -92,7 +93,6 @@
     element-desktop
     mumble
     sshfs
-
 
     # Theming
     catppuccin-kvantum

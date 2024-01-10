@@ -18,6 +18,7 @@
     ./plasma/6.nix
     ./printing
     ./repo-sync
+    ./ssh
     ./steam
     ./users
     self.inputs.home-manager.nixosModules.home-manager

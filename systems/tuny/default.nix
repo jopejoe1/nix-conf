@@ -17,6 +17,7 @@
     nix.enable = true;
     root.enable = true;
     boot.systemd.enable = true;
+    ssh.enable = true;
   };
 
   networking = { hostName = "tuny"; };

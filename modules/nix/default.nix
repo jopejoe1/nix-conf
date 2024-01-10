@@ -59,14 +59,6 @@ in {
     };
 
     system.stateVersion = "24.05";
-    services.openssh = {
-      enable = true;
-      banner = "Hackers are in Your System!!!";
-      settings = {
-        PasswordAuthentication = false;
-        PermitRootLogin = "prohibit-password";
-      };
-    };
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
   };
 }

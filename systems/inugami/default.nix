@@ -27,6 +27,7 @@
     plasma.enable = true;
     root.enable = true;
     jopejoe1.enable = true;
+    ssh.enable = true;
   };
 
   networking = {
