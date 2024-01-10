@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   jopejoe1 = {
@@ -15,6 +15,7 @@
 
   networking = {
     hostName = "installer";
+    wireless.enable = lib.mkForce false;
   };
 
   nixpkgs = {
@@ -43,6 +44,8 @@
   ];
 
   i18n.supportedLocales = [ "all" ];
+
+  services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
   programs = {
     xwayland.enable = true;
