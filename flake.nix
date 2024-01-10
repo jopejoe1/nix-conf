@@ -27,6 +27,11 @@
       inputs.nix-filter.follows = "nix-filter";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixlib.follows = "nixpkgs-lib";
+    };
     tela-icon-theme = {
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
@@ -110,6 +115,14 @@
         specialArgs = inputs;
         modules = [
           ./systems/tuny
+          self.outputs.nixosModules.default
+        ];
+      };
+      installer = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./systems/installer
           self.outputs.nixosModules.default
         ];
       };
