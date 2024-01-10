@@ -41,7 +41,6 @@
     hardware.openrgb = {
       enable = true;
       motherboard = "intel";
-      package = pkgs.openrgb;
     };
     fwupd.enable = true;
     xserver = {
@@ -60,10 +59,6 @@
       config = "x86_64-unknown-linux-gnu";
       #  gcc.arch = "alderlake";
     };
-  };
-
-  boot = {
-    kernelPackages = pkgs.linuxPackages_testing;
   };
 
   time.timeZone = "Europe/Berlin";
@@ -92,7 +87,6 @@
     discord
     element-desktop
     mumble
-    sshfs
 
     # Theming
     catppuccin-kvantum

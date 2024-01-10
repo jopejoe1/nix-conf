@@ -54,10 +54,10 @@
         "reconnect"
       ];
     };
-    #"/media/zfs" = {
-    #   device = "jopejoe1";
-    #   fsType = "zfs";
-    #  };
+    "/media/zfs" = {
+       device = "jopejoe1";
+       fsType = "zfs";
+    };
   };
 
   swapDevices = [ ];
