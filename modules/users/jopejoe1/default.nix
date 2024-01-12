@@ -9,6 +9,7 @@ in {
   config = lib.mkIf cfg.enable {
     users.users.jopejoe1 = {
       isNormalUser = true;
+      shell = pkgs.nushell;
       description = "Johannes Jöns";
       initialPassword = "password";
       extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" "adbusers" ];
@@ -29,6 +30,9 @@ in {
         username = config.users.users.jopejoe1.name;
         homeDirectory = config.users.users.jopejoe1.home;
         stateVersion = config.system.stateVersion;
+      };
+      programs.nushell = {
+        enable = true;
       };
       jopejoe1 = {
         common = {
