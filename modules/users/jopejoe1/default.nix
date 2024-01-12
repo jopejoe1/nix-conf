@@ -17,7 +17,7 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8oyMpS2hK3gQXyHIIVS6oilgMpemLmfhKKJ6RBMwUh johannes@joens.email"
       ];
       packages = with pkgs;
-        [ libsForQt5.kate libsForQt5.ark texlive.combined.scheme-full ]
+        [ libsForQt5.kate libsForQt5.ark ]
         ++ lib.optionals (config.system == "x86_64-linux") [
           discord
           lutris

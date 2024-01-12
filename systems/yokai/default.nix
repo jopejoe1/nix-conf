@@ -10,9 +10,9 @@
     audio = { enable = true; };
     bluetooth.enable = true;
     local.enable = true;
+    overlays.enable = true;
     nix.enable = true;
     plasma.enable = true;
-    printing.enable = true;
     jopejoe1.enable = true;
     root.enable = true;
     ssh.enable = true;
@@ -32,6 +32,7 @@
     catppuccin-kde
     catppuccin-gtk
     tela-icon-theme
+    element-desktop
   ];
 
   programs = {
@@ -46,10 +47,16 @@
   };
   services.xserver = { layout = "us"; };
 
+  nixpkgs.hostPlatform = {
+    system = "aarch64-linux";
+    config = "aarch64-unknown-linux-gnu";
+  };
+
   boot = {
     supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     loader = {
+      grub.enable = false;
       generic-extlinux-compatible.enable = true;
     };
   };
