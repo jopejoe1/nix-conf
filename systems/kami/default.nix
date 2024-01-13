@@ -21,7 +21,6 @@
     nix.enable = true;
     plasma6.enable = true;
     printing.enable = true;
-    overlays.enable = true;
     steam.enable = true;
     ssh.enable = true;
     asf.enable = true;

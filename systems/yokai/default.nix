@@ -10,7 +10,6 @@
     audio = { enable = true; };
     bluetooth.enable = true;
     local.enable = true;
-    overlays.enable = true;
     nix.enable = true;
     plasma.enable = true;
     sway.enable = true;

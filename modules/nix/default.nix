@@ -34,6 +34,14 @@ in {
 
     nixpkgs = {
       config.allowUnfree = true;
+      overlays = [
+        self.inputs.prismlauncher.overlays.default
+
+        (_self: super: rec {
+          firefox-addons = self.inputs.firefox-addons.packages.${config.nixpkgs.hostPlatform.system};
+          localPkgs = self.outputs.packages.${config.nixpkgs.hostPlatform.system};
+        })
+      ];
     };
 
     environment.etc = lib.mapAttrs' (name: value: { name = "nix/path/${name}"; value.source = value.flake; }) config.nix.registry;
