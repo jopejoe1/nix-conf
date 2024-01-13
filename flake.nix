@@ -1,7 +1,7 @@
 {
   description = "jopejoe1 NixOS configuration";
 
-  inputs = rec {
+  inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     kde2nix.url = "github:nix-community/kde2nix";
     firefox-addons = {
@@ -76,8 +76,7 @@
 
     # Patches
     prism-game-options-patch = {
-      url =
-        "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
+      url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
       flake = false;
     };
   };
