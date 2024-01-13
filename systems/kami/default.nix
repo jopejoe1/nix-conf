@@ -25,6 +25,7 @@
     steam.enable = true;
     ssh.enable = true;
     asf.enable = true;
+    sway.enable = true;
     minecraft-server.enable = true;
     repo-sync.enable = true;
     jopejoe1.enable = true;
