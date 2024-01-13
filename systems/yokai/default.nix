@@ -13,6 +13,7 @@
     overlays.enable = true;
     nix.enable = true;
     plasma.enable = true;
+    sway.enable = true;
     jopejoe1.enable = true;
     root.enable = true;
     ssh.enable = true;
@@ -33,6 +34,7 @@
     catppuccin-gtk
     tela-icon-theme
     element-desktop
+    kitty
   ];
 
   programs = {

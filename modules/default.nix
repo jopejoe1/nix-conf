@@ -20,6 +20,7 @@
     ./repo-sync
     ./ssh
     ./steam
+    ./sway
     ./users
     ../upstream
     self.inputs.home-manager.nixosModules.home-manager
