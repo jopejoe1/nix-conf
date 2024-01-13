@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixos-hardware, ... }:
+{ config, pkgs, lib, nixos-hardware, self, ... }:
 
 {
   imports = [
@@ -76,7 +76,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    prismlauncher
+    localPkgs.prismlauncher-withExtraStuff
     mixxx
     picard
     mangohud
@@ -93,7 +93,7 @@
     catppuccin-kvantum
     catppuccin-kde
     catppuccin-gtk
-    tela-icon-theme
+    localPkgs.tela-icon-theme-git
   ];
 
   programs = {

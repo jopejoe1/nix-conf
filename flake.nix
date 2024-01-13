@@ -82,55 +82,60 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
-    nixosModules.default = import ./modules;
-    homeManagerModules.default = import ./home-modules;
-    nixosConfigurations = {
-      kami = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs;
-        modules = [
-          ./systems/kami
-          self.outputs.nixosModules.default
-        ];
-      };
-      yokai = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = inputs;
-        modules = [
-          ./systems/yokai
-          self.outputs.nixosModules.default
-        ];
-      };
-      inugami = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = inputs;
-        modules = [
-          ./systems/inugami
-          self.outputs.nixosModules.default
-        ];
-      };
-      tuny = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs;
-        modules = [
-          ./systems/tuny
-          self.outputs.nixosModules.default
-        ];
-      };
-      installer = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs;
-        modules = [
-          ./systems/installer
-          self.outputs.nixosModules.default
-        ];
-      };
-      steamdeck = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = inputs;
-        modules = [ ./systems/steamdeck self.outputs.nixosModules.default ];
+  outputs = inputs@{ self, nixpkgs, ... }:
+    {
+      nixosModules.default = import ./modules;
+      homeManagerModules.default = import ./home-modules;
+      packages = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system: import ./packages {
+        inherit system inputs;
+        pkgs = nixpkgs.legacyPackages.${system};
+      });
+      nixosConfigurations = {
+        kami = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = inputs;
+          modules = [
+            ./systems/kami
+            self.outputs.nixosModules.default
+          ];
+        };
+        yokai = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = inputs;
+          modules = [
+            ./systems/yokai
+            self.outputs.nixosModules.default
+          ];
+        };
+        inugami = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = inputs;
+          modules = [
+            ./systems/inugami
+            self.outputs.nixosModules.default
+          ];
+        };
+        tuny = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = inputs;
+          modules = [
+            ./systems/tuny
+            self.outputs.nixosModules.default
+          ];
+        };
+        installer = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = inputs;
+          modules = [
+            ./systems/installer
+            self.outputs.nixosModules.default
+          ];
+        };
+        steamdeck = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = inputs;
+          modules = [ ./systems/steamdeck self.outputs.nixosModules.default ];
+        };
       };
     };
-  };
 }
