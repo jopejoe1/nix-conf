@@ -11,11 +11,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1705069194,
-        "narHash": "sha256-hLonLHQb6OVo+Ixc7/oU04DAKrma9Hv5F9chjb0c+YA=",
+        "lastModified": 1705103913,
+        "narHash": "sha256-PX6zS6uni5IXZMUQB2DUbhj+oV7QyAfwEEenOb/DstU=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "27f2d691df31110ce4f194eeea94aff912c1849c",
+        "rev": "c8e94a42015531a061a4518aff7aee03d5a4f215",
         "type": "gitlab"
       },
       "original": {
@@ -164,11 +164,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704980804,
-        "narHash": "sha256-lPNNKdPqIYcjhhYIVwlajNt/HqVWbMOoSdNnwCvOP04=",
+        "lastModified": 1705169127,
+        "narHash": "sha256-j9OEtNxOIPWZWjbECVMkI1TO17SzlpHMm0LnVWKOR/g=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "93e804e7f8a1eb88bde6117cd5046501e66aa4bd",
+        "rev": "f2942f3385f1b35cc8a1abb03a45e29c9cb4d3c8",
         "type": "github"
       },
       "original": {
@@ -393,11 +393,11 @@
     "openrgb": {
       "flake": false,
       "locked": {
-        "lastModified": 1705023767,
-        "narHash": "sha256-brXeW+xFRDJgb5RwFs9/kXEu+onl8QevYtJmmyWtc4c=",
+        "lastModified": 1705174352,
+        "narHash": "sha256-ZRraHGcGHctHi1pNAOOKhvWPSbkdnBGbEJOQd+o7IDQ=",
         "owner": "CalcProgrammer1",
         "repo": "OpenRGB",
-        "rev": "de2b60b0bd93e2c7f197dad9c7f05a0923421014",
+        "rev": "ccec0828f99616db36fca4e451c62e35d2833355",
         "type": "gitlab"
       },
       "original": {
