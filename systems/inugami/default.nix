@@ -25,8 +25,10 @@
     nix.enable = true;
     kodi.enable = true;
     plasma.enable = true;
-    root.enable = true;
-    jopejoe1.enable = true;
+    user = {
+      jopejoe1.enable = true;
+      root.enable = true;
+    };
     ssh.enable = true;
   };
 

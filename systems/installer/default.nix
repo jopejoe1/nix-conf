@@ -9,8 +9,10 @@
     nix.enable = true;
     plasma6.enable = true;
     overlays.enable = true;
-    jopejoe1.enable = true;
-    root.enable = true;
+    user = {
+      jopejoe1.enable = true;
+      root.enable = true;
+    };
     ssh.enable = true;
   };
 

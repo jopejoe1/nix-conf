@@ -13,9 +13,11 @@
     audio = { enable = true; };
     bluetooth.enable = true;
     local.enable = true;
-    jopejoe1.enable = true;
     nix.enable = true;
-    root.enable = true;
+    user = {
+      jopejoe1.enable = true;
+      root.enable = true;
+    };
     boot.systemd.enable = true;
     ssh.enable = true;
   };

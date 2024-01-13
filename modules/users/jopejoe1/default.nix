@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
-let cfg = config.jopejoe1.jopejoe1;
+let cfg = config.jopejoe1.user.jopejoe1;
 in {
-  options.jopejoe1.jopejoe1 = {
+  options.jopejoe1.user.jopejoe1 = {
     enable = lib.mkEnableOption "Enable jopejoe1 user";
   };
 

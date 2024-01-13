@@ -1,8 +1,8 @@
 { config, lib, ... }:
 
-let cfg = config.jopejoe1.root;
+let cfg = config.jopejoe1.user.root;
 in {
-  options.jopejoe1.root = { enable = lib.mkEnableOption "Enable root user"; };
+  options.jopejoe1.user.root = { enable = lib.mkEnableOption "Enable root user"; };
 
   config = lib.mkIf cfg.enable {
     users.users.root = {
