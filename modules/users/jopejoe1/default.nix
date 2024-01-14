@@ -44,6 +44,7 @@ in {
             emoji = config.fonts.fontconfig.defaultFonts.emoji;
           };
         };
+        nushell.enable = true;
         git.enable = true;
         direnv.enable = true;
         firefox.enable = true;

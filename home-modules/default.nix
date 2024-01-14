@@ -6,5 +6,6 @@
     ./direnv
     ./firefox
     ./git
+    ./nushell
   ];
 }
