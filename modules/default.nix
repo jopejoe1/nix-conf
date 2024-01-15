@@ -9,6 +9,7 @@
     ./boot
     ./events
     ./kodi
+    ./keyboard
     ./local
     ./minecraft-server
     ./moodle-dl

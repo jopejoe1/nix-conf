@@ -66,7 +66,6 @@ in {
       ];
     };
 
-    system.stateVersion = "24.05";
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
   };
 }

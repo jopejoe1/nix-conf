@@ -22,8 +22,6 @@
     ssh.enable = true;
   };
 
-  networking = { hostName = "tuny"; };
-
   environment.systemPackages = with pkgs; [ mixxx ];
 
   time.timeZone = "Europe/Berlin";

@@ -466,18 +466,6 @@
         "type": "github"
       }
     },
-    "prism-game-options-patch": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-Susj3gS7Xa0dTZh9g6NPzlTE6gi0ncI2m84HCrBP3gQ=",
-        "type": "file",
-        "url": "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch"
-      }
-    },
     "prismlauncher": {
       "inputs": {
         "flake-compat": [
@@ -532,7 +520,6 @@
         "nixpkgs-lib": "nixpkgs-lib",
         "openrgb": "openrgb",
         "pre-commit-hooks": "pre-commit-hooks_2",
-        "prism-game-options-patch": "prism-game-options-patch",
         "prismlauncher": "prismlauncher",
         "tela-icon-theme": "tela-icon-theme"
       }

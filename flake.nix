@@ -73,12 +73,6 @@
     };
     nix-systems.url = "github:nix-systems/default";
     nix-filter.url = "github:numtide/nix-filter";
-
-    # Patches
-    prism-game-options-patch = {
-      url = "https://patch-diff.githubusercontent.com/raw/PrismLauncher/PrismLauncher/pull/907.patch";
-      flake = false;
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {

@@ -16,7 +16,6 @@
 
   prismlauncher-withExtraStuff = inputs.prismlauncher.packages.${system}.prismlauncher.overrideAttrs (old: {
     patches = (old.patches or [ ]) ++ [
-      inputs.prism-game-options-patch
       ./prism-ftb.patch
     ];
   });

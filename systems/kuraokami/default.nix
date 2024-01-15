@@ -27,6 +27,10 @@
     sway.enable = true;
     minecraft-server.enable = true;
     repo-sync.enable = true;
+    keyboard = {
+      enable = true;
+      layout = "de";
+    };
     user = {
       jopejoe1.enable = true;
       root.enable = true;
@@ -35,7 +39,6 @@
   };
 
   networking = {
-    hostName = "kami";
     hostId = "16c22faf";
   };
 
@@ -43,11 +46,6 @@
     hardware.openrgb = {
       enable = true;
       motherboard = "intel";
-    };
-    fwupd.enable = true;
-    xserver = {
-      videoDrivers = [ "nvidia" ];
-      layout = "de";
     };
   };
 
@@ -57,8 +55,6 @@
       cudaCapabilities = [ "8.6" ];
     };
     hostPlatform = {
-      system = "x86_64-linux";
-      config = "x86_64-unknown-linux-gnu";
       #  gcc.arch = "alderlake";
     };
   };
@@ -104,10 +100,6 @@
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
-  };
-  console = {
-    enable = true;
-    keyMap = "de";
   };
 
   nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ];

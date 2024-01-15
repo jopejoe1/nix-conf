@@ -21,7 +21,6 @@
   };
 
   networking = {
-    hostName = "yokai";
     hostId = "af13bbec";
   };
 
@@ -49,11 +48,6 @@
     keyMap = "us";
   };
   services.xserver = { layout = "us"; };
-
-  nixpkgs.hostPlatform = {
-    system = "aarch64-linux";
-    config = "aarch64-unknown-linux-gnu";
-  };
 
   boot = {
     supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];

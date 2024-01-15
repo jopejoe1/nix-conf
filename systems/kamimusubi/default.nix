@@ -17,15 +17,7 @@
   };
 
   networking = {
-    hostName = "installer";
     wireless.enable = lib.mkForce false;
-  };
-
-  nixpkgs = {
-    hostPlatform = {
-      system = "x86_64-linux";
-      config = "x86_64-unknown-linux-gnu";
-    };
   };
 
   time.timeZone = "Europe/Berlin";
