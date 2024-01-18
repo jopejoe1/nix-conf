@@ -51,47 +51,37 @@
   };
   disko.devices = {
     disk = {
-      one = {
-        type = "disk";
+      vdb = {
         device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL2512HCJQ-00B00_S675NX0RA55622";
+        type = "disk";
         content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              type = "EF00";
-              size = "500M";
+          type = "table";
+          format = "msdos";
+          partitions = [
+            {
+              name = "ESP";
+              start = "1M";
+              end = "500M";
+              bootable = true;
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
               };
-            };
-            root = {
-              size = "100%";
+            }
+            {
+              name = "root";
+              start = "500M";
+              end = "100%";
+              part-type = "primary";
+              bootable = true;
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
               };
-            };
-          };
-        };
-      };
-      two = {
-        type = "disk";
-        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL2512HCJQ-00B00_S675NX0RA55649";
-        content = {
-          type = "gpt";
-          partitions = {
-            extra = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/media/extra";
-              };
-            };
-          };
+            }
+          ];
         };
       };
     };
