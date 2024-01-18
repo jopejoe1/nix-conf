@@ -28,6 +28,13 @@
 
   time.timeZone = "Europe/Berlin";
 
+  services.openssh.listenAddresses = [
+    {
+      addr = "85.10.200.204";
+      port = 22;
+    }
+  ];
+
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
   console = {
@@ -37,7 +44,7 @@
     disk = {
       one = {
         type = "disk";
-        device = "/dev/nvme0n1";
+        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL2512HCJQ-00B00_S675NX0RA55622";
         content = {
           type = "gpt";
           partitions = {
@@ -65,7 +72,7 @@
       };
       two = {
         type = "disk";
-        device = "/dev/nvme1n1";
+        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL2512HCJQ-00B00_S675NX0RA55649";
         content = {
           type = "gpt";
           partitions = {
