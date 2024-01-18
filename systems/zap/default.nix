@@ -41,6 +41,11 @@
 
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
+  services.hedgedoc = {
+    enabled = true;
+  };
+  services.surrealdb.enable = true;
+
   console = {
     enable = true;
   };
