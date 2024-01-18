@@ -43,13 +43,6 @@
 
   time.timeZone = "Europe/Berlin";
 
-  services.openssh.listenAddresses = [
-    {
-      addr = "85.10.200.204";
-      port = 22;
-    }
-  ];
-
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
   console = {
