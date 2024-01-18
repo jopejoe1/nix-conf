@@ -28,16 +28,16 @@
     enable = true;
     networks."eth0" = {
       extraConfig = ''
-      [Match]
-      Name = eth0
-      [Network]
-      # Add your own assigned ipv6 subnet here here!
-      Address = 2a01:4f8:a0:31e5::/64
-      Gateway = fe80::1
-      # optionally you can do the same for ipv4 and disable DHCP (networking.dhcpcd.enable = false;)
-      Address = 85.10.200.204
-      Gateway = 85.10.200.193
-    '';
+        [Match]
+        Name = eth0
+        [Network]
+        # Add your own assigned ipv6 subnet here here!
+        Address = 2a01:4f8:a0:31e5::/64
+        Gateway = fe80::1
+        # optionally you can do the same for ipv4 and disable DHCP (networking.dhcpcd.enable = false;)
+        Address = 85.10.200.204
+        Gateway = 85.10.200.193
+      '';
     };
   };
 
@@ -56,23 +56,21 @@
         content = {
           type = "gpt";
           partitions = {
-            BOOT = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-            };
             ESP = {
-              size = "500M";
               type = "EF00";
+              size = "500M";
               content = {
-                type = "mdraid";
-                name = "boot";
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
               };
             };
-            mdadm = {
+            root = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid1";
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
               };
             };
           };
@@ -84,51 +82,13 @@
         content = {
           type = "gpt";
           partitions = {
-            boot = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-            };
-            ESP = {
-              size = "500M";
-              type = "EF00";
-              content = {
-                type = "mdraid";
-                name = "boot";
-              };
-            };
-            mdadm = {
+            extra = {
               size = "100%";
               content = {
-                type = "mdraid";
-                name = "raid1";
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/media/extra";
               };
-            };
-          };
-        };
-      };
-    };
-    mdadm = {
-      boot = {
-        type = "mdadm";
-        level = 1;
-        metadata = "1.0";
-        content = {
-          type = "filesystem";
-          format = "vfat";
-          mountpoint = "/boot";
-        };
-      };
-      raid1 = {
-        type = "mdadm";
-        level = 1;
-        content = {
-          type = "gpt";
-          partitions.primary = {
-            size = "100%";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
             };
           };
         };
