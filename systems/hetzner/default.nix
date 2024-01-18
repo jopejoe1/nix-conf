@@ -18,7 +18,7 @@
   boot.loader = {
     grub = {
       enable = true;
-      device = "/dev/disk/by-label/ESP";
+      device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL2512HCJQ-00B00_S675NX0RA55622";
     };
   };
 
