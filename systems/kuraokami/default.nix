@@ -27,6 +27,7 @@
     sway.enable = true;
     minecraft-server.enable = true;
     repo-sync.enable = true;
+    zerotierone.enable = true;
     keyboard = {
       enable = true;
       layout = "de";
@@ -102,5 +103,6 @@
     gamemode.enable = true;
   };
 
-  nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ];
+  nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ]
+    ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or []);
 }

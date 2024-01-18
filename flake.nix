@@ -2,8 +2,15 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    kde2nix.url = "github:nix-community/kde2nix";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    kde2nix = {
+      url = "github:nix-community/kde2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
