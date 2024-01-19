@@ -50,7 +50,7 @@
   services.hedgedoc = {
     enable = true;
   };
-  services.surrealdb.enable = false;
+  services.surrealdb.enable = true;
 
   console = {
     enable = true;
