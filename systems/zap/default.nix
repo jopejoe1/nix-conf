@@ -52,6 +52,8 @@
 
   services.hedgedoc = {
     enable = true;
+    settings.domain = "missing.ninja";
+    settings.host = "missing.ninja";
   };
   services.surrealdb.enable = true;
 
