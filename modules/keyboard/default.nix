@@ -6,7 +6,7 @@ in {
     enable = lib.mkEnableOption "Enable Keyboard";
     layout = lib.mkOption {
       type = lib.types.str;
-      default  = "us";
+      default = "us";
       description = lib.mdDoc "Keyboard Layout.";
     };
   };

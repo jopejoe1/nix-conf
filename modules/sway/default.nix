@@ -7,7 +7,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    programs.sway = { 
+    programs.sway = {
       enable = true;
     };
     networking.networkmanager.enable = true;

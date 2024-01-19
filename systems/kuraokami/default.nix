@@ -104,5 +104,5 @@
   };
 
   nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ]
-    ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or []);
+    ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
 }

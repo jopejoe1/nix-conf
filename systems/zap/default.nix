@@ -12,7 +12,8 @@
   };
 
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
@@ -36,22 +37,22 @@
 };
 
 
-#   networking = {
-#     wireless.enable = lib.mkForce false;
-#     interfaces.eth0 = {
-#       ipv4.addresses = [{
-#         address = "134.255.219.135";
-#         prefixLength = 24;
-#       }];
-#     };
-#     interfaces.ens18 = {
-#       ipv4.addresses = [{
-#         address = "185.249.199.92";
-#         prefixLength = 24;
-#       }];
-#     };
-#     defaultGateway = "134.255.219.1";
-#   };
+  #   networking = {
+  #     wireless.enable = lib.mkForce false;
+  #     interfaces.eth0 = {
+  #       ipv4.addresses = [{
+  #         address = "134.255.219.135";
+  #         prefixLength = 24;
+  #       }];
+  #     };
+  #     interfaces.ens18 = {
+  #       ipv4.addresses = [{
+  #         address = "185.249.199.92";
+  #         prefixLength = 24;
+  #       }];
+  #     };
+  #     defaultGateway = "134.255.219.1";
+  #   };
 
   time.timeZone = "Europe/Berlin";
 
@@ -77,17 +78,17 @@
           type = "table";
           format = "msdos";
           partitions = [
-#             {
-#               name = "ESP";
-#               start = "1M";
-#               end = "500M";
-#               bootable = true;
-#               content = {
-#                 type = "filesystem";
-#                 format = "vfat";
-#                 mountpoint = "/boot";
-#               };
-#             }
+            #             {
+            #               name = "ESP";
+            #               start = "1M";
+            #               end = "500M";
+            #               bootable = true;
+            #               content = {
+            #                 type = "filesystem";
+            #                 format = "vfat";
+            #                 mountpoint = "/boot";
+            #               };
+            #             }
             {
               name = "root";
               start = "500M";

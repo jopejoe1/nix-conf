@@ -10,7 +10,7 @@
   };
 
   libadwaita-follow-theme = pkgs.libadwaita.overrideAttrs (old: {
-    patches = (old.patches or [ ])++ [ ./adwaita-theming-support.patch ];
+    patches = (old.patches or [ ]) ++ [ ./adwaita-theming-support.patch ];
     doCheck = false;
   });
 
