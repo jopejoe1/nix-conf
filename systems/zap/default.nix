@@ -28,6 +28,13 @@
 
   services.cloud-init.enable = true;
   services.cloud-init.network.enable = true;
+  
+  networking.firewall = {
+  enable = true;
+  allowedTCPPorts = [ 3000 ];
+  allowedUDPPorts = [ 3000 ];
+};
+
 
 #   networking = {
 #     wireless.enable = lib.mkForce false;
