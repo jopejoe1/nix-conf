@@ -26,6 +26,21 @@
 
   networking = {
     wireless.enable = lib.mkForce false;
+    interfaces.eth0 = {
+      ipv4.addresses = [{
+        address = "134.255.219.135";
+        prefixLength = 24;
+      }];
+      ipv6.addresses = [{
+        address = "fe80::a018:44ff:fe5a:fb5b";
+        prefixLength = 64;
+      }];
+    };
+    defaultGateway6 = {
+      address = "fe80::";
+      interface = "eth0";
+    };
+    defaultGateway = "134.255.219.255";
   };
 
   time.timeZone = "Europe/Berlin";
@@ -68,7 +83,7 @@
               bootable = true;
               content = {
                 type = "filesystem";
-                format = "ext4";
+                format = "bcachefs";
                 mountpoint = "/";
               };
             }
