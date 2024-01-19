@@ -31,8 +31,8 @@
   
   networking.firewall = {
   enable = true;
-  allowedTCPPorts = [ 3000 ];
-  allowedUDPPorts = [ 3000 ];
+  allowedTCPPorts = [ 80 ];
+  allowedUDPPorts = [ 80 ];
 };
 
 
@@ -61,6 +61,7 @@
     enable = true;
     settings.domain = "missing.ninja";
     settings.host = "missing.ninja";
+    settings.port = 80;
   };
   services.surrealdb.enable = true;
 
