@@ -24,15 +24,6 @@
     };
   };
 
-  services.openssh.listenAddresses = [
-    {
-      addr = "134.255.219.135";
-      port = 22;
-    }
-  ];
-
-
-
   networking = {
     wireless.enable = lib.mkForce false;
   };
@@ -44,7 +35,7 @@
   services.hedgedoc = {
     enable = true;
   };
-  services.surrealdb.enable = true;
+  services.surrealdb.enable = false;
 
   console = {
     enable = true;
