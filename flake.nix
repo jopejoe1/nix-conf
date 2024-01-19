@@ -24,15 +24,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #prismlauncher = {
-    #  url = "github:PrismLauncher/PrismLauncher";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.flake-parts.follows = "flake-parts";
-    #  inputs.pre-commit-hooks.follows = "pre-commit-hooks";
-    #  inputs.flake-compat.follows = "flake-compat";
-    #  inputs.libnbtplusplus.follows = "libnbtplusplus";
-    #  inputs.nix-filter.follows = "nix-filter";
-    #};
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.libnbtplusplus.follows = "libnbtplusplus";
+      inputs.nix-filter.follows = "nix-filter";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -43,10 +43,10 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
-    #openrgb = {
-    #  url = "gitlab:CalcProgrammer1/OpenRGB";
-    #  flake = false;
-    #};
+    openrgb = {
+      url = "gitlab:CalcProgrammer1/OpenRGB";
+      flake = false;
+    };
 
     # Dependencys
     flake-parts = {

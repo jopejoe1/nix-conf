@@ -396,6 +396,22 @@
         "type": "github"
       }
     },
+    "openrgb": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705609609,
+        "narHash": "sha256-Il3EpVsM5FjzpH5ayplz1ezCeV+cY0LPF/66+US8RGY=",
+        "owner": "CalcProgrammer1",
+        "repo": "OpenRGB",
+        "rev": "6c279ea830e5442fc409a958b979fb8949073b2e",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "CalcProgrammer1",
+        "repo": "OpenRGB",
+        "type": "gitlab"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -456,6 +472,41 @@
         "type": "github"
       }
     },
+    "prismlauncher": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "libnbtplusplus": [
+          "libnbtplusplus"
+        ],
+        "nix-filter": [
+          "nix-filter"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pre-commit-hooks": [
+          "pre-commit-hooks"
+        ]
+      },
+      "locked": {
+        "lastModified": 1705608124,
+        "narHash": "sha256-zVhmURyQ7Q0ZibCNZS12I2CJQXstnnpO9j/gM0h7LNY=",
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "rev": "4cda04271fd615657e1eed7a32f791cbcdcbea76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PrismLauncher",
+        "repo": "PrismLauncher",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -474,7 +525,9 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-lib": "nixpkgs-lib",
+        "openrgb": "openrgb",
         "pre-commit-hooks": "pre-commit-hooks_2",
+        "prismlauncher": "prismlauncher",
         "tela-icon-theme": "tela-icon-theme"
       }
     },

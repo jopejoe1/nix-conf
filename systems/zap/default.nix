@@ -17,6 +17,8 @@
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
 
+  networking.useDHCP = false;
+
   boot.loader = {
     grub = {
       enable = true;
@@ -24,24 +26,25 @@
     };
   };
 
-  networking = {
-    wireless.enable = lib.mkForce false;
-    interfaces.eth0 = {
-      ipv4.addresses = [{
-        address = "134.255.219.135";
-        prefixLength = 24;
-      }];
-      ipv6.addresses = [{
-        address = "fe80::a018:44ff:fe5a:fb5b";
-        prefixLength = 64;
-      }];
-    };
-    defaultGateway6 = {
-      address = "fe80::";
-      interface = "eth0";
-    };
-    defaultGateway = "134.255.219.255";
-  };
+  services.cloud-init.enable = true;
+  services.cloud-init.network.enable = true;
+
+#   networking = {
+#     wireless.enable = lib.mkForce false;
+#     interfaces.eth0 = {
+#       ipv4.addresses = [{
+#         address = "134.255.219.135";
+#         prefixLength = 24;
+#       }];
+#     };
+#     interfaces.ens18 = {
+#       ipv4.addresses = [{
+#         address = "185.249.199.92";
+#         prefixLength = 24;
+#       }];
+#     };
+#     defaultGateway = "134.255.219.1";
+#   };
 
   time.timeZone = "Europe/Berlin";
 
@@ -64,17 +67,17 @@
           type = "table";
           format = "msdos";
           partitions = [
-            {
-              name = "ESP";
-              start = "1M";
-              end = "500M";
-              bootable = true;
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-              };
-            }
+#             {
+#               name = "ESP";
+#               start = "1M";
+#               end = "500M";
+#               bootable = true;
+#               content = {
+#                 type = "filesystem";
+#                 format = "vfat";
+#                 mountpoint = "/boot";
+#               };
+#             }
             {
               name = "root";
               start = "500M";
@@ -83,7 +86,7 @@
               bootable = true;
               content = {
                 type = "filesystem";
-                format = "bcachefs";
+                format = "ext4";
                 mountpoint = "/";
               };
             }
