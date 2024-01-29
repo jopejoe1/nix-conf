@@ -17,6 +17,7 @@
       sennheiser-hd-660s = true;
     };
     bluetooth.enable = true;
+    doc.enable = true;
     local.enable = true;
     nix.enable = true;
     plasma6.enable = true;
@@ -77,7 +78,6 @@
     localPkgs.prismlauncher-withExtraStuff
     mixxx
     picard
-    mangohud
     goverlay
     strawberry
     whatsapp-for-linux

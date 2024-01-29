@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
     kde2nix = {
       url = "github:nix-community/kde2nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +31,6 @@
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
       inputs.flake-compat.follows = "flake-compat";
       inputs.libnbtplusplus.follows = "libnbtplusplus";
-      inputs.nix-filter.follows = "nix-filter";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-generators = {
@@ -79,7 +78,6 @@
       inputs.systems.follows = "nix-systems";
     };
     nix-systems.url = "github:nix-systems/default";
-    nix-filter.url = "github:numtide/nix-filter";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {

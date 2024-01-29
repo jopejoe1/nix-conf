@@ -7,6 +7,7 @@
     ./auto-update
     ./bluetooth
     ./boot
+    ./doc
     ./events
     ./kodi
     ./keyboard
