@@ -26,6 +26,7 @@ in {
         experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = true;
         use-xdg-base-directories = true;
+        keep-going = true;
       };
       package = pkgs.nix;
       registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
