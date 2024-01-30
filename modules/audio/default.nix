@@ -12,7 +12,7 @@ in {
 
     services.pipewire = {
       enable = true;
-      systemWide = true;
+      systemWide = false;
       alsa = {
         enable = true;
         support32Bit = true;
