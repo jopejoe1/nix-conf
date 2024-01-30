@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     kde2nix = {
       url = "github:nix-community/kde2nix";
       inputs.nixpkgs.follows = "nixpkgs";
