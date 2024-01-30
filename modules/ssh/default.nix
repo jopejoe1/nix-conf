@@ -7,7 +7,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      banner = "Hackers are in Your System!!!";
+      banner = "Hackers are in Your System!!!\n";
       settings = {
         PasswordAuthentication = false;
         PermitRootLogin = "prohibit-password";

@@ -27,44 +27,93 @@
     };
   };
 
+  services.nginx.virtualHosts = {
+    "missing.ninja" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:8080/";
+      };
+    };
+    "doc.missing.ninja" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:3000/";
+      };
+    };
+    "rss.missing.ninja" = {
+      enableACME = true;
+      forceSSL = true;
+    };
+    "db.missing.ninja" = {
+      enableACME = true;
+      forceSSL = false;
+      locations."/" = {
+        proxyPass = "http://134.255.219.135:8000/";
+      };
+    };
+  };
+
+  services.nginx.enable = true;
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "admin@missing.ninja";
+  };
+
+  services.jitsi-meet = {
+    enable = true;
+    hostName = "meet.missing.ninja";
+    nginx.enable = true;
+  };
+
   services.cloud-init.enable = true;
   services.cloud-init.network.enable = true;
-  
+
+  services.rss-bridge.enable = true;
+  services.rss-bridge.virtualHost = "rss.missing.ninja";
+  services.rss-bridge.whitelist = [ "*" ];
+
+  services.forgejo = {
+    enable = true;
+    settings.server = {
+      HTTP_PORT = 8080;
+      ROOT_URL = "https://missing.ninja/";
+    };
+    lfs.enable = true;
+  };
+
   networking.firewall = {
-  enable = true;
-  allowedTCPPorts = [ 80 3000 ];
-  allowedUDPPorts = [ 80 3000 ];
-};
+    enable = true;
+    allowedTCPPorts = [ 443 8000 ];
+    allowedUDPPorts = [ 443 8000 ];
+  };
 
-
-  #   networking = {
-  #     wireless.enable = lib.mkForce false;
-  #     interfaces.eth0 = {
-  #       ipv4.addresses = [{
-  #         address = "134.255.219.135";
-  #         prefixLength = 24;
-  #       }];
-  #     };
-  #     interfaces.ens18 = {
-  #       ipv4.addresses = [{
-  #         address = "185.249.199.92";
-  #         prefixLength = 24;
-  #       }];
-  #     };
-  #     defaultGateway = "134.255.219.1";
-  #   };
+  users.users.fp = {
+    isNormalUser = true;
+    initialPassword = "fp";
+    description = "felix";
+    openssh.authorizedKeys.keys = [
+      "ssh.ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBFp5TEsP0rdhkDpMfuMkCuLrDPoXBVu8EpRyLwuAMs fp@IAP-597"
+      "ssh-ed25519 AAAAC3NzaC11ZDI1NTE5AAAAIMBFp5TEsPOrdhkDpMfuMkCuLrDP0XBVu8EpRyLWUAMs Fp@IAP-597"
+    ];
+  };
 
   time.timeZone = "Europe/Berlin";
 
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
+  services.openssh.ports = [ 8081 22 ];
+
   services.hedgedoc = {
     enable = true;
-    settings.domain = "missing.ninja";
-    settings.host = "missing.ninja";
+    settings.domain = "doc.missing.ninja";
+    settings.host = "localhost";
     settings.port = 3000;
+    settings.protocolUseSSL = true;
   };
   services.surrealdb.enable = true;
+  services.surrealdb.host = "134.255.219.135";
 
   console = {
     enable = true;
@@ -78,17 +127,6 @@
           type = "table";
           format = "msdos";
           partitions = [
-            #             {
-            #               name = "ESP";
-            #               start = "1M";
-            #               end = "500M";
-            #               bootable = true;
-            #               content = {
-            #                 type = "filesystem";
-            #                 format = "vfat";
-            #                 mountpoint = "/boot";
-            #               };
-            #             }
             {
               name = "root";
               start = "500M";
