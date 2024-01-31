@@ -22,6 +22,7 @@
 
   networking = {
     hostId = "af13bbec";
+    networkmanager.enable = true;
   };
 
   hardware.opengl.enable = true;
