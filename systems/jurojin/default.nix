@@ -39,8 +39,6 @@
   ];
 
   programs = {
-    droidcam.enable = true;
-    dconf.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
   };
@@ -51,8 +49,7 @@
   services.xserver = { layout = "us"; };
 
   boot = {
-    supportedFilesystems = [ "ntfs" "btrfs" "zfs" ];
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    supportedFilesystems = [ "ntfs" "btrfs" ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
