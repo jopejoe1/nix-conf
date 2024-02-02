@@ -28,6 +28,20 @@ in {
         use-xdg-base-directories = true;
         keep-going = true;
       };
+      buildMachines = [
+        {
+          systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ] ++ self.nixosConfigurations.kuraokami.config.nix.settings.extra-platform;
+          supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
+          hostName = "kuraokami";
+          protocol = "ssh-ng";
+        }
+        {
+          systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ] ++ self.nixosConfigurations.zap.config.nix.settings.extra-platform;
+          supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
+          hostName = "zap";
+          protocol = "ssh-ng";
+        }
+      ];
       package = pkgs.nix;
       registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
         self.flake = self;

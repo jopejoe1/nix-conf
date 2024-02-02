@@ -17,6 +17,7 @@ in {
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8oyMpS2hK3gQXyHIIVS6oilgMpemLmfhKKJ6RBMwUh johannes@joens.email"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP3pKtvhOOjG1pGJq7cVHS5uWy5IP8y1Ra/ENpmJcqOe root@zap"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFEcNAVRN66mfKmaCpxs++0094Eh4mqXkUwDPZPkIIBB johannes@joens.email"
       ];
       packages = with pkgs;
         [ libsForQt5.kate libsForQt5.ark ]
