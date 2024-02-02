@@ -30,13 +30,13 @@ in {
       };
       buildMachines = [
         {
-          systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ] ++ self.nixosConfigurations.kuraokami.config.nix.settings.extra-platform;
+          systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
           hostName = "kuraokami";
           protocol = "ssh-ng";
         }
         {
-          systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ] ++ self.nixosConfigurations.zap.config.nix.settings.extra-platform;
+          systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
           hostName = "zap";
           protocol = "ssh-ng";
