@@ -32,12 +32,16 @@ in {
         {
           systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
+          maxJobs = 24;
+          speedFactor = 20;
           hostName = "kuraokami";
           protocol = "ssh-ng";
         }
         {
           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
+          maxJobs = 4;
+          speedFactor = 10;
           hostName = "zap";
           protocol = "ssh-ng";
         }
