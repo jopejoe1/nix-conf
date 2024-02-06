@@ -45,7 +45,15 @@ in {
           hostName = "zap";
           protocol = "ssh-ng";
         }
+        {
+          systems = [ config.nixpkgs.hostPlatform.system ];
+          supportedFeatures = config.nix.settings.system-features;
+          speedFactor = 15;
+          hostName = "localhost";
+          protocol = "null";
+        }
       ];
+      distributedBuilds = true;
       package = pkgs.nixVersions.unstable;
       registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
         self.flake = self;
