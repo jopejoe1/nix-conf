@@ -27,30 +27,28 @@ in {
         warn-dirty = true;
         use-xdg-base-directories = true;
         keep-going = true;
+        builders-use-substitutes = true;
       };
       buildMachines = [
-        {
+        (rec {
           systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
-          maxJobs = 24;
+          maxJobs = if hostName != config.networking.hostName then 24 else 0;
           speedFactor = 20;
+          sshKey = "/home/jopejoe1/.ssh/github";
+          sshUser = "jopejoe1";
           hostName = "kuraokami";
           protocol = "ssh-ng";
-        }
+        })
         {
           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
-          maxJobs = 4;
+          maxJobs = if hostName != config.networking.hostName then 4 else 0;;
           speedFactor = 10;
+          sshUser = "jopejoe1";
+          sshKey = "/home/jopejoe1/.ssh/github";
           hostName = "zap";
           protocol = "ssh-ng";
-        }
-        {
-          systems = [ config.nixpkgs.hostPlatform.system ];
-          supportedFeatures = config.nix.settings.system-features;
-          speedFactor = 15;
-          hostName = "localhost";
-          protocol = null;
         }
       ];
       distributedBuilds = true;
