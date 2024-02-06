@@ -46,7 +46,7 @@ in {
           protocol = "ssh-ng";
         }
       ];
-      package = pkgs.nix;
+      package = pkgs.nixVersions.unstable;
       registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
         self.flake = self;
       });
