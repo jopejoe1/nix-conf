@@ -29,7 +29,7 @@
       device = "/dev/nvme0n1p2";
       fsType = "bcachefs";
     };
-    "/boot/efi" = {
+    "/boot" = {
       device = "/dev/disk/by-uuid/1F26-8168";
       fsType = "vfat";
     };
