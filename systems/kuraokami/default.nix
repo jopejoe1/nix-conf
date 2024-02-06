@@ -82,6 +82,7 @@
     strawberry
     whatsapp-for-linux
     teams-for-linux
+    libreoffice-qt
     webex
     ((discord.overrideAttrs (old: {
       desktopItem = old.desktopItem.override
