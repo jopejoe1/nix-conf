@@ -10,12 +10,12 @@ in {
         substituters = lib.mkForce [
           "https://cache.nixos.org"
           "https://nix-community.cachix.org"
-          "https://surrealdb.cachix.org"
+          "http://kuraokami:5000"
         ];
         trusted-public-keys = lib.mkForce [
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "surrealdb.cachix.org-1:rbm7Qs+s36pxbfk9jhIa5HRld6gZ63koZz1h/9sSxaA="
+          "kuraokami:2H7ZvTtwBccxDW7QGzhiQk81ey7iVSjsjqVv4gn+zog="
         ];
         trusted-users = [ "root" ];
         sandbox = true;
@@ -50,7 +50,7 @@ in {
           supportedFeatures = config.nix.settings.system-features;
           speedFactor = 15;
           hostName = "localhost";
-          protocol = "null";
+          protocol = null;
         }
       ];
       distributedBuilds = true;
@@ -59,6 +59,7 @@ in {
         self.flake = self;
       });
       nixPath = lib.mkForce [ "/etc/nix/path" ];
+
     };
 
     nixpkgs = {
@@ -70,6 +71,13 @@ in {
         })
       ];
     };
+
+    services.nix-serve = {
+      enable = true;
+      openFirewall = true;
+      secretKeyFile = "/var/cache-priv-key.pem";
+    };
+
 
     environment.etc = lib.mapAttrs' (name: value: { name = "nix/path/${name}"; value.source = value.flake; }) config.nix.registry;
 
