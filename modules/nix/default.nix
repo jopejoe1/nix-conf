@@ -40,16 +40,16 @@ in {
           hostName = "kuraokami";
           protocol = "ssh-ng";
         })
-        {
+        (rec {
           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
-          maxJobs = if hostName != config.networking.hostName then 4 else 0;;
+          maxJobs = if hostName != config.networking.hostName then 4 else 0;
           speedFactor = 10;
           sshUser = "jopejoe1";
           sshKey = "/home/jopejoe1/.ssh/github";
           hostName = "zap";
           protocol = "ssh-ng";
-        }
+        })
       ];
       distributedBuilds = true;
       package = pkgs.nixVersions.unstable;
@@ -101,10 +101,10 @@ in {
 
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
 
-    networking.extraHosts = ''
-      192.168.191.46 zap
-      192.168.191.142 kuraokami
-    '';
+    networking.hosts = {
+      "192.168.191.46" = [ "zap" ];
+      "192.168.191.142" = [ "kuraokami" ];
+    };
   };
 }
 
