@@ -14,7 +14,7 @@ in {
   config = lib.mkIf cfg.enable {
     services = {
       xserver = {
-        layout = cfg.layout;
+        xkb.layout = cfg.layout;
       };
     };
     console = {

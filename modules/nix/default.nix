@@ -23,7 +23,14 @@ in {
         max-jobs = "auto";
         auto-optimise-store = true;
         allowed-users = [ "*" ];
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = [
+          "nix-command"
+          "flakes"
+          "auto-allocate-uids"
+          "configurable-impure-env"
+          "impure-derivations"
+          "git-hashing"
+        ];
         warn-dirty = true;
         use-xdg-base-directories = true;
         keep-going = true;

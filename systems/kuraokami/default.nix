@@ -9,6 +9,8 @@
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-ssd
+    self.inputs.nether.nixosModules.hosts
+    self.inputs.nether.nixosModules.zerotier
   ];
 
   jopejoe1 = {

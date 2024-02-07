@@ -41,7 +41,7 @@
 
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
-  services.openssh.ports = [ 2222 ];
+  services.openssh.ports = [ 2222 22 ];
 
   console = {
     enable = true;

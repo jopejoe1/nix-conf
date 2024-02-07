@@ -46,6 +46,10 @@
       url = "gitlab:CalcProgrammer1/OpenRGB";
       flake = false;
     };
+    nether = {
+      url = "github:Lassulus/nether";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Dependencys
     flake-parts = {
