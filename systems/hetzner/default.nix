@@ -38,41 +38,49 @@
 
   disko.devices = {
     disk = {
-      vdb = {
+      one = {
         type = "disk";
         device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
             boot = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-            };
-            mdadm = {
-              size = "100%";
+              size = "500M";
+              type = "EF00";
               content = {
                 type = "mdraid";
-                name = "raid0";
+                name = "boot";
+              };
+            };
+            primary = {
+              size = "100%";
+              content = {
+                type = "lvm_pv";
+                vg = "pool";
               };
             };
           };
         };
       };
-      vdc = {
+      two = {
         type = "disk";
         device = "/dev/nvme1n1";
         content = {
           type = "gpt";
           partitions = {
             boot = {
-              size = "1M";
-              type = "EF02"; # for grub MBR
-            };
-            mdadm = {
-              size = "100%";
+              size = "500M";
+              type = "EF00";
               content = {
                 type = "mdraid";
-                name = "raid0";
+                name = "boot";
+              };
+            };
+            primary = {
+              size = "100%";
+              content = {
+                type = "lvm_pv";
+                vg = "pool";
               };
             };
           };
@@ -80,19 +88,35 @@
       };
     };
     mdadm = {
-      raid0 = {
+      boot = {
         type = "mdadm";
-        level = 0;
+        level = 1;
+        metadata = "1.0";
         content = {
-          type = "gpt";
-          partitions = {
-            primary = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
+          type = "filesystem";
+          format = "vfat";
+          mountpoint = "/boot";
+        };
+      };
+    };
+    lvm_vg = {
+      pool = {
+        type = "lvm_vg";
+        lvs = {
+          root = {
+            size = "95%FREE";
+            lvm_type = "raid1";
+            extraArgs = [
+              "--raidintegrity"
+              "y"
+            ];
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+              mountOptions = [
+                "defaults"
+              ];
             };
           };
         };

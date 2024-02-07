@@ -79,11 +79,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1707192239,
-        "narHash": "sha256-OW7hWDLQfuV1yy5PERotp+kagQ0D6371lSPP1wqp7EQ=",
+        "lastModified": 1707278626,
+        "narHash": "sha256-rUyhz5Bafu6pwVrQZ/LV29nUFEzdTm+0fJQG+emYEng=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "e689b7bb4cb08c7cf8c4358b3cb6f36061b7b9e9",
+        "rev": "352a387143af3b32d9f0529588eb615a7c77baf0",
         "type": "gitlab"
       },
       "original": {
@@ -275,11 +275,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707082092,
-        "narHash": "sha256-icyIxbBXl1iG8gvF/gjGI5N4Phpoo1vFcQxmUz2DsNA=",
+        "lastModified": 1707226874,
+        "narHash": "sha256-uo3oGHc/oLbcS6tDlm+Z130tQNRX2ufs9r+kGRTx0Ng=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "3a9a168c04218418a6321e157b0f7a31a9ca342c",
+        "rev": "8f355736d9449a6650418f8e70f8dacf652401a7",
         "type": "github"
       },
       "original": {
@@ -513,11 +513,11 @@
     "openrgb": {
       "flake": false,
       "locked": {
-        "lastModified": 1707082375,
-        "narHash": "sha256-8QxUKK6llRE6PwyCRd+gl4IzizRJJspyu8upK0MgnaM=",
+        "lastModified": 1707316147,
+        "narHash": "sha256-kLOCikZ9ZHrWJEHiP1+tyJo7Io9In5Mt/n0xoRc45lM=",
         "owner": "CalcProgrammer1",
         "repo": "OpenRGB",
-        "rev": "350863e3b85d6a83ec78af2bc2e384e24cbc7d28",
+        "rev": "cc376b71c81094b2083448ede08644125205362e",
         "type": "gitlab"
       },
       "original": {
@@ -573,11 +573,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706424699,
-        "narHash": "sha256-Q3RBuOpZNH2eFA1e+IHgZLAOqDD9SKhJ/sszrL8bQD4=",
+        "lastModified": 1707297608,
+        "narHash": "sha256-ADjo/5VySGlvtCW3qR+vdFF4xM9kJFlRDqcC9ZGI8EA=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "7c54e08a689b53c8a1e5d70169f2ec9e2a68ffaf",
+        "rev": "0db2e67ee49910adfa13010e7f012149660af7f0",
         "type": "github"
       },
       "original": {
@@ -639,6 +639,7 @@
         "openrgb": "openrgb",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "prismlauncher": "prismlauncher",
+        "srvos": "srvos",
         "tela-icon-theme": "tela-icon-theme"
       }
     },
@@ -665,6 +666,29 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "srvos": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1707160670,
+        "narHash": "sha256-svt/yQB8l/edU9yhYB78lIGKiaO7mXzUQvu/uJLZAVs=",
+        "owner": "nix-community",
+        "repo": "srvos",
+        "rev": "977371a151fc3c96d6fac923b3032d07000e9490",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "srvos",
         "type": "github"
       }
     },
