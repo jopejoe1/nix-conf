@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, self, ... }:
 
 {
+
+  imports = [
+    self.inputs.srvos.nixosModules.server
+    self.inputs.srvos.nixosModules.hardware-hetzner-online-amd
+    self.inputs.srvos.nixosModules.mixins-nginx
+  ];
+
   jopejoe1 = {
     local.enable = true;
     nix.enable = true;
@@ -16,69 +23,78 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
     grub = {
       enable = true;
-      efiSupport = true;
-      device = "nodev";
     };
   };
 
-  networking = {
-    useDHCP = false;
-    interfaces."enp41s0" = {
-      ipv4.addresses = [{ address = "85.10.200.204 	"; prefixLength = 26; }];
-      ipv6.addresses = [{ address = "2a01:4f8:a0:31e5::"; prefixLength = 64; }];
-    };
-    defaultGateway = "85.10.200.193";
-    defaultGateway6 = { address = "fe80::1"; interface = "enp41s0"; };
-  };
+  systemd.network.networks."10-uplink".networkConfig.Address = " 2a01:4f8:a0:31e5::/64";
 
   time.timeZone = "Europe/Berlin";
 
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
-  services.openssh.ports = [ 2222 22 ];
+  services.openssh.ports = [ 22 ];
 
-  console = {
-    enable = true;
-  };
   disko.devices = {
     disk = {
       vdb = {
-        device = "/dev/disk/by-id/nvme-SAMSUNG_MZVL2512HCJQ-00B00_S675NX0RA55622";
         type = "disk";
+        device = "/dev/nvme0n1";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "ESP";
-              start = "1M";
-              end = "500M";
-              bootable = true;
+          type = "gpt";
+          partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
+            mdadm = {
+              size = "100%";
               content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
+                type = "mdraid";
+                name = "raid0";
               };
-            }
-            {
-              name = "root";
-              start = "500M";
-              end = "100%";
-              part-type = "primary";
-              bootable = true;
+            };
+          };
+        };
+      };
+      vdc = {
+        type = "disk";
+        device = "/dev/nvme1n1";
+        content = {
+          type = "gpt";
+          partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
+            mdadm = {
+              size = "100%";
+              content = {
+                type = "mdraid";
+                name = "raid0";
+              };
+            };
+          };
+        };
+      };
+    };
+    mdadm = {
+      raid0 = {
+        type = "mdadm";
+        level = 0;
+        content = {
+          type = "gpt";
+          partitions = {
+            primary = {
+              size = "100%";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
               };
-            }
-          ];
+            };
+          };
         };
       };
     };

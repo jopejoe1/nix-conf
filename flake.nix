@@ -50,6 +50,11 @@
       url = "github:Lassulus/nether";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    srvos = {
+      url = "github:nix-community/srvos";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
 
     # Dependencys
     flake-parts = {
