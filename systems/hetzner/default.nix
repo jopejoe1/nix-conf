@@ -39,49 +39,41 @@
 
   disko.devices = {
     disk = {
-      one = {
+      vdb = {
         type = "disk";
         device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
             boot = {
-              size = "500M";
-              type = "EF00";
-              content = {
-                type = "mdraid";
-                name = "boot";
-              };
+              size = "1M";
+              type = "EF02"; # for grub MBR
             };
-            primary = {
+            mdadm = {
               size = "100%";
               content = {
-                type = "lvm_pv";
-                vg = "pool";
+                type = "mdraid";
+                name = "raid0";
               };
             };
           };
         };
       };
-      two = {
+      vdc = {
         type = "disk";
         device = "/dev/nvme1n1";
         content = {
           type = "gpt";
           partitions = {
             boot = {
-              size = "500M";
-              type = "EF00";
-              content = {
-                type = "mdraid";
-                name = "boot";
-              };
+              size = "1M";
+              type = "EF02"; # for grub MBR
             };
-            primary = {
+            mdadm = {
               size = "100%";
               content = {
-                type = "lvm_pv";
-                vg = "pool";
+                type = "mdraid";
+                name = "raid0";
               };
             };
           };
@@ -89,35 +81,19 @@
       };
     };
     mdadm = {
-      boot = {
+      raid0 = {
         type = "mdadm";
-        level = 1;
-        metadata = "1.0";
+        level = 0;
         content = {
-          type = "filesystem";
-          format = "vfat";
-          mountpoint = "/boot";
-        };
-      };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          root = {
-            size = "95%FREE";
-            lvm_type = "raid1";
-            extraArgs = [
-#              "--raidintegrity"
- #             "y"
-            ];
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [
-                "defaults"
-              ];
+          type = "gpt";
+          partitions = {
+            primary = {
+              size = "100%";
+              content = {
+                type = "filesystem";
+                format = "ext4";
+                mountpoint = "/";
+              };
             };
           };
         };
