@@ -25,6 +25,7 @@
   boot.loader = {
     grub = {
       enable = true;
+      device = config.fileSystems."/boot".device;
     };
   };
 
@@ -107,8 +108,8 @@
             size = "95%FREE";
             lvm_type = "raid1";
             extraArgs = [
-              "--raidintegrity"
-              "y"
+#              "--raidintegrity"
+ #             "y"
             ];
             content = {
               type = "filesystem";
