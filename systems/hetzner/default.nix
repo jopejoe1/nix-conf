@@ -25,7 +25,6 @@
   boot.loader = {
     grub = {
       enable = true;
-      device = config.fileSystems."/boot".device;
     };
   };
 
