@@ -10,7 +10,6 @@ in {
     programs.sway = {
       enable = true;
     };
-    networking.networkmanager.enable = true;
   };
 }
 
