@@ -7,11 +7,9 @@
   ];
 
   jopejoe1 = {
-    audio = { enable = true; };
-    bluetooth.enable = true;
+    audio.enable = true;
     local.enable = true;
     nix.enable = true;
-    plasma.enable = true;
     sway.enable = true;
     user = {
       jopejoe1.enable = true;
@@ -22,7 +20,6 @@
 
   networking = {
     hostId = "af13bbec";
-    networkmanager.enable = true;
   };
 
   hardware.opengl.enable = true;
