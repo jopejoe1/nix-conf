@@ -145,4 +145,13 @@
       };
     };
   };
+
+  services.wordpress = {
+    webserver = "nginx";
+    sites."testing.missing.ninja" = {
+      virtualHost = {
+        enableACME = true; 
+      };
+    };
+  };
 }
