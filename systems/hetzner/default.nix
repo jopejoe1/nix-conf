@@ -6,6 +6,7 @@
     self.inputs.srvos.nixosModules.server
     self.inputs.srvos.nixosModules.hardware-hetzner-online-amd
     self.inputs.srvos.nixosModules.mixins-nginx
+    ./bind.nix
   ];
 
   jopejoe1 = {
