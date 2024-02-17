@@ -42,10 +42,6 @@
       url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
-    openrgb = {
-      url = "gitlab:CalcProgrammer1/OpenRGB";
-      flake = false;
-    };
     nether = {
       url = "github:Lassulus/nether";
       inputs.nixpkgs.follows = "nixpkgs";

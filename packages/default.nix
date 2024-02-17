@@ -5,10 +5,6 @@
     src = inputs.tela-icon-theme;
   };
 
-  openrgb-git = pkgs.openrgb.overrideAttrs {
-    src = inputs.openrgb;
-  };
-
   libadwaita-follow-theme = pkgs.libadwaita.overrideAttrs (old: {
     patches = (old.patches or [ ]) ++ [ ./adwaita-theming-support.patch ];
     doCheck = false;

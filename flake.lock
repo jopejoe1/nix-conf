@@ -510,22 +510,6 @@
         "type": "github"
       }
     },
-    "openrgb": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1708099263,
-        "narHash": "sha256-XvrmeDyLH6ZZfxi0dHb7fUZYWxRy1aM2QSgCP5O7X2c=",
-        "owner": "CalcProgrammer1",
-        "repo": "OpenRGB",
-        "rev": "4134de5daf77f3e6b87e3014f55f5d81607aeac1",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "CalcProgrammer1",
-        "repo": "OpenRGB",
-        "type": "gitlab"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -636,7 +620,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-lib": "nixpkgs-lib",
-        "openrgb": "openrgb",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "prismlauncher": "prismlauncher",
         "srvos": "srvos",
