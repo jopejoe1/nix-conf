@@ -47,6 +47,10 @@
       enableACME = true;
       forceSSL = true;
     };
+    "testing.missing.ninja"= {
+      enableACME = true;
+      forceSSL = true;
+    };
     "db.missing.ninja" = {
       enableACME = true;
       forceSSL = false;
@@ -149,6 +153,10 @@
   services.wordpress = {
     webserver = "nginx";
     sites."testing.missing.ninja" = {
+      languages = [ pkgs.wordpressPackages.languages.de_DE ];
+      settings = {
+        WPLANG = "de_DE";
+      };
       virtualHost = {
         enableACME = true; 
       };
