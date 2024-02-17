@@ -3,6 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # Outputs
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Modules
     kde2nix = {
       url = "github:nix-community/kde2nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,11 +18,6 @@
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
     jovian = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
@@ -24,24 +27,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    prismlauncher = {
-      url = "github:PrismLauncher/PrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.libnbtplusplus.follows = "libnbtplusplus";
-    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixlib.follows = "nixpkgs-lib";
-    };
-    tela-icon-theme = {
-      url = "github:vinceliuice/Tela-icon-theme";
-      flake = false;
-    };
     nether = {
       url = "github:Lassulus/nether";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,40 +35,21 @@
     srvos = {
       url = "github:nix-community/srvos";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
-    # Dependencys
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
-    };
-    nixpkgs-lib.url = "github:nixos/nixpkgs/nixos-unstable?dir=lib";
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.gitignore.follows = "gitignore";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
+    # Packages
+    tela-icon-theme = {
+      url = "github:vinceliuice/Tela-icon-theme";
       flake = false;
     };
-    libnbtplusplus = {
-      url = "github:PrismLauncher/libnbtplusplus";
-      flake = false;
-    };
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "nix-systems";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-systems.url = "github:nix-systems/default";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
