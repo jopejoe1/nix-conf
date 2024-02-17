@@ -52,8 +52,8 @@
       forceSSL = true;
     };
     "db.missing.ninja" = {
-      enableACME = false;
-      forceSSL = false;
+      enableACME = true;
+      forceSSL = true;
       locations."/" = {
         proxyPass = "http://134.255.219.135:8000/";
       };
@@ -90,8 +90,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 443 8000 ];
-    allowedUDPPorts = [ 443 8000 ];
+    allowedTCPPorts = [ 80 443 8000 ];
+#     allowedUDPPorts = [ 80 443 8000 ];
   };
 
   users.users.fp = {
