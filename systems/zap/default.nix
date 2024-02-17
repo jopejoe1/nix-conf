@@ -52,7 +52,7 @@
       forceSSL = true;
     };
     "db.missing.ninja" = {
-      enableACME = true;
+      enableACME = false;
       forceSSL = false;
       locations."/" = {
         proxyPass = "http://134.255.219.135:8000/";
