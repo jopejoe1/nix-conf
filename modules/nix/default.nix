@@ -10,12 +10,10 @@ in {
         substituters = lib.mkForce [
           "https://cache.nixos.org"
           "https://nix-community.cachix.org"
-          "http://kuraokami:5000"
         ];
         trusted-public-keys = lib.mkForce [
           "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "kuraokami:2H7ZvTtwBccxDW7QGzhiQk81ey7iVSjsjqVv4gn+zog="
         ];
         trusted-users = [ "root" ];
         sandbox = true;
@@ -36,28 +34,28 @@ in {
         keep-going = true;
         builders-use-substitutes = true;
       };
-      buildMachines = [
-        (rec {
-          systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
-          supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
-          maxJobs = if hostName != config.networking.hostName then 24 else 0;
-          speedFactor = 20;
-          sshKey = "/home/jopejoe1/.ssh/github";
-          sshUser = "jopejoe1";
-          hostName = "kuraokami";
-          protocol = "ssh-ng";
-        })
-        (rec {
-          systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
-          supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
-          maxJobs = if hostName != config.networking.hostName then 4 else 0;
-          speedFactor = 10;
-          sshUser = "jopejoe1";
-          sshKey = "/home/jopejoe1/.ssh/github";
-          hostName = "zap";
-          protocol = "ssh-ng";
-        })
-      ];
+#       buildMachines = [
+#         (rec {
+#           systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
+#           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
+#           maxJobs = if hostName != config.networking.hostName then 24 else 0;
+#           speedFactor = 20;
+#           sshKey = "/home/jopejoe1/.ssh/github";
+#           sshUser = "jopejoe1";
+#           hostName = "kuraokami";
+#           protocol = "ssh-ng";
+#         })
+#         (rec {
+#           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
+#           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
+#           maxJobs = if hostName != config.networking.hostName then 4 else 0;
+#           speedFactor = 10;
+#           sshUser = "jopejoe1";
+#           sshKey = "/home/jopejoe1/.ssh/github";
+#           hostName = "zap";
+#           protocol = "ssh-ng";
+#         })
+#       ];
       distributedBuilds = true;
       package = pkgs.nixVersions.unstable;
       registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
@@ -76,13 +74,6 @@ in {
         })
       ];
     };
-
-    services.nix-serve = {
-      enable = true;
-      openFirewall = true;
-      secretKeyFile = "/var/cache-priv-key.pem";
-    };
-
 
     environment.etc = lib.mapAttrs' (name: value: { name = "nix/path/${name}"; value.source = value.flake; }) config.nix.registry;
 
