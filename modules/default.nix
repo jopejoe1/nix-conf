@@ -26,8 +26,7 @@
     ./zerotierone
     ../upstream
     self.inputs.home-manager.nixosModules.home-manager
-    self.inputs.kde2nix.nixosModules.plasma6
-    self.inputs.disko.nixosModules.disko
+    #self.inputs.disko.nixosModules.disko
     self.inputs.nixos-generators.nixosModules.all-formats
   ];
 }

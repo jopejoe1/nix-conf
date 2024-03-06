@@ -28,7 +28,6 @@
     ssh.enable = true;
     asf.enable = true;
     sway.enable = true;
-    minecraft-server.enable = true;
     repo-sync.enable = true;
     zerotierone.enable = true;
     keyboard = {

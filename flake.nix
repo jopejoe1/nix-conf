@@ -11,10 +11,6 @@
     };
 
     # Modules
-    kde2nix = {
-      url = "github:nix-community/kde2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
