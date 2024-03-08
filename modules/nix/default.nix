@@ -66,7 +66,10 @@ in {
     };
 
     nixpkgs = {
-      config.allowUnfree = true;
+      config ={
+        allowUnfree = true;
+        nvidia.acceptLicense = true;
+      };
       overlays = [
         (_self: super: rec {
           firefox-addons = self.inputs.firefox-addons.packages.${config.nixpkgs.hostPlatform.system};
