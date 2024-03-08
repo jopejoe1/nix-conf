@@ -115,4 +115,6 @@
 
   nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ]
     ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
+
+  boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 }
