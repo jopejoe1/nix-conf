@@ -26,11 +26,12 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/nvme1n1p2";
+      device = "/dev/disk/by-uuid/ec151a68-5886-4747-b5e3-2f9bdb89e162";
       fsType = "btrfs";
+      options = [ "subvol=@" ];
     };
     "/boot" = {
-      device = "/dev/nvme1n1p1";
+      device = "/dev/disk/by-uuid/8EED-43E3";
       fsType = "vfat";
     };
     "/media/gaming" = {
