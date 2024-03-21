@@ -26,38 +26,18 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/nvme0n1p2";
-      fsType = "bcachefs";
+      device = "/dev/nvme1n1p2";
+      fsType = "btrfs";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/1F26-8168";
+      device = "/dev/nvme1n1p1";
       fsType = "vfat";
-    };
-    "/media/home" = {
-      device = "/dev/disk/by-uuid/78d6db21-b823-4ca4-b495-7782d3e56ddc";
-      fsType = "ext4";
     };
     "/media/gaming" = {
       device = "/dev/disk/by-uuid/4038F97238F966F6";
       fsType = "ntfs";
       options = [ "rw" "uid=1000" ];
     };
-    "/media/backup" = {
-      device = "u384346@u384346.your-storagebox.de:/";
-      fsType = "sshfs";
-      options = [
-        "_netdev"
-        "allow_other"
-        "x-systemd.automount"
-        "IdentityFile=/home/jopejoe1/.ssh/github"
-        "ServerAliveInterval=15"
-        "reconnect"
-      ];
-    };
-    #"/media/zfs" = {
-    #   device = "jopejoe1";
-    #   fsType = "zfs";
-    #};
   };
 
   swapDevices = [ ];
