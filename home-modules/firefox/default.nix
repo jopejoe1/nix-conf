@@ -298,7 +298,7 @@ in {
                 };
                 "NixOS Wiki" = {
                   urls = [{
-                    template = "https://nixos.wiki/index.php";
+                    template = "https://wiki.nixos.org/w/index.php";
                     params = [{
                       name = "search";
                       value = "{searchTerms}";
