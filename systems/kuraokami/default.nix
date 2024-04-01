@@ -49,6 +49,20 @@
       enable = true;
       motherboard = "intel";
     };
+    postgresql = {
+      enable = false;
+      #extraPlugins = ps: with ps; [ pg_libversion ];
+      enableTCPIP = true;
+      initialScript = pkgs.writeText "backend-initScript" ''
+        CREATE DATABASE repology
+        CREATE USER repology WITH PASSWORD 'repology'
+        GRANT ALL ON DATABASE repology TO repology
+      '';
+      authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser  auth-method
+        local all       all     trust
+      '';
+    };
   };
 
   nixpkgs = {
@@ -94,12 +108,17 @@
     })
     element-desktop
     mumble
+    python3
+    ffmpeg-full
 
     # Theming
     catppuccin-kvantum
     catppuccin-kde
-    catppuccin-gtk
+    #catppuccin-gtk
     localPkgs.tela-icon-theme-git
+    git
+    rsync
+    subversion
   ];
 
   programs = {
