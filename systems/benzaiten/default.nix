@@ -14,7 +14,7 @@
     bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
-    plasma.enable = true;
+    plasma6.enable = true;
     user = {
       jopejoe1.enable = true;
       root.enable = true;
