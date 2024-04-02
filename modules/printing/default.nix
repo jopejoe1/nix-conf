@@ -10,13 +10,13 @@ in {
     services.printing = {
       enable = true;
       webInterface = true;
-      drivers = with pkgs; [ hplipWithPlugin ];
+      drivers = with pkgs; [ ];
     };
 
     hardware = {
       sane = {
         enable = true;
-        extraBackends = with pkgs; [ sane-airscan hplipWithPlugin ];
+        extraBackends = with pkgs; [ sane-airscan ];
       };
     };
 

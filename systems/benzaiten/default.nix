@@ -19,6 +19,7 @@
       jopejoe1.enable = true;
       root.enable = true;
     };
+    printing.enable = true;
     ssh.enable = true;
     keyboard = {
       enable = true;
