@@ -382,6 +382,9 @@ in {
               "pdfjs.annotationMode" = 2;
               "font.name-list.emoji" = lib.strings.concatStringsSep ", " config.jopejoe1.common.fonts.emoji;
 
+              # Theming
+              "widget.gtk.overlay-scrollbars.enabled" = false;
+
               ## Arkenfox Stuff
               "browser.aboutConfig.showWarning" = false;
               "browser.newtabpage.activity-stream.showSponsored" = false;
