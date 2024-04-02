@@ -20,7 +20,18 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFEcNAVRN66mfKmaCpxs++0094Eh4mqXkUwDPZPkIIBB johannes@joens.email"
       ];
       packages = with pkgs;
-        [ libsForQt5.kate libsForQt5.ark ]
+        [
+          libsForQt5.kate
+          libsForQt5.ark
+          element-desktop
+          mumble
+
+          # Theming
+          catppuccin-kvantum
+          catppuccin-kde
+          #catppuccin-gtk
+          localPkgs.tela-icon-theme-git
+        ]
         ++ lib.optionals (config.system == "x86_64-linux") [
           discord
           lutris

@@ -98,6 +98,7 @@
     teams-for-linux
     libreoffice-qt
     webex
+
     ((discord.overrideAttrs (old: {
       desktopItem = old.desktopItem.override
         (old: { exec = old.exec + " --disable-gpu-sandbox"; });
@@ -106,19 +107,6 @@
       withVencord = true;
       withTTS = true;
     })
-    element-desktop
-    mumble
-    python3
-    ffmpeg-full
-
-    # Theming
-    catppuccin-kvantum
-    catppuccin-kde
-    #catppuccin-gtk
-    localPkgs.tela-icon-theme-git
-    git
-    rsync
-    subversion
   ];
 
   programs = {
