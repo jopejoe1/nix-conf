@@ -17,7 +17,10 @@ in {
           enable = true;
           enableHidpi = true;
         };
-        desktopManager.plasma6 = { enable = true; };
+      };
+      desktopManager.plasma6 = {
+        enable = true;
+        enableQt5Integration = true;
       };
     };
 
