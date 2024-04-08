@@ -116,7 +116,12 @@
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
-    appimage.enable = true; # Not upstream jet
+    appimage = {
+      enable = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [ pkgs.brotli ];
+      };
+    };
   };
 
   nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ]
