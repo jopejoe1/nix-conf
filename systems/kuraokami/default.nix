@@ -98,6 +98,7 @@
     teams-for-linux
     libreoffice-qt
     webex
+    jitsi-meet-electron
 
     ((discord.overrideAttrs (old: {
       desktopItem = old.desktopItem.override
