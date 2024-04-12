@@ -388,8 +388,7 @@ in {
               ## Arkenfox Stuff
               "browser.aboutConfig.showWarning" = false;
               "browser.newtabpage.activity-stream.showSponsored" = false;
-              "browser.newtabpage.activity-stream.showSponsoredTopSites" =
-                false;
+              "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
               "extensions.getAddons.showPane" = false;
               "extensions.htmlaboutaddons.recommendations.enabled" = false;
               "browser.discovery.enabled" = false;
