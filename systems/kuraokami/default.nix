@@ -63,6 +63,8 @@
         local all       all     trust
       '';
     };
+    pcscd.enable = true;
+    udev.packages = [ pkgs.yubikey-personalization ];
   };
 
   nixpkgs = {
@@ -86,6 +88,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
     };
+    gpgSmartcards.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -122,6 +125,11 @@
       package = pkgs.appimage-run.override {
         extraPkgs = pkgs: [ pkgs.brotli ];
       };
+    };
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-qt;
     };
   };
 
