@@ -1,4 +1,4 @@
-{ config, lib, pkgs, self, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let cfg = config.jopejoe1.firefox;
 in {
@@ -193,7 +193,7 @@ in {
         };
         profiles = {
           default = {
-            extensions = with self.inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
+            extensions = with pkgs.firefox-addons; [
               ublock-origin
               privacy-badger
               bitwarden

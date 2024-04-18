@@ -37,6 +37,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
 
     # Packages
     tela-icon-theme = {
