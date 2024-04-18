@@ -15,4 +15,6 @@
       ./prism-ftb.patch
     ];
   });
+
+  nixos-anywhere = inputs.nixos-anywhere.packages.${system}.nixos-anywhere;
 }
