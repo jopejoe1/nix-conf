@@ -25,8 +25,9 @@
     ./users
     ./zerotierone
     ../upstream
-    self.inputs.home-manager.nixosModules.home-manager
     self.inputs.disko.nixosModules.disko
+    self.inputs.home-manager.nixosModules.home-manager
     self.inputs.nixos-generators.nixosModules.all-formats
+    self.inputs.sops-nix.nixosModules.sops
   ];
 }
