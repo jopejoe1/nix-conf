@@ -33,7 +33,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://localhost:8080/";
+        proxyPass = "http://localhost:8085/";
       };
     };
     "doc.missing.ninja" = {
@@ -42,10 +42,6 @@
       locations."/" = {
         proxyPass = "http://localhost:3000/";
       };
-    };
-    "rss.missing.ninja" = {
-      enableACME = true;
-      forceSSL = true;
     };
     "testing.missing.ninja"= {
       enableACME = true;
@@ -67,7 +63,7 @@
   };
 
   services.jitsi-meet = {
-    enable = true;
+    enable = false;
     hostName = "meet.missing.ninja";
     nginx.enable = true;
   };
@@ -75,14 +71,14 @@
   services.cloud-init.enable = true;
   services.cloud-init.network.enable = true;
 
-  services.rss-bridge.enable = true;
+  services.rss-bridge.enable = false;
   services.rss-bridge.virtualHost = "rss.missing.ninja";
   services.rss-bridge.whitelist = [ "*" ];
 
   services.forgejo = {
     enable = true;
     settings.server = {
-      HTTP_PORT = 8080;
+      HTTP_PORT = 8085;
       ROOT_URL = "https://missing.ninja/";
     };
     lfs.enable = true;
@@ -91,7 +87,7 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 443 8000 ];
-#     allowedUDPPorts = [ 80 443 8000 ];
+    allowedUDPPorts = [ 80 443 8000 ];
   };
 
   users.users.fp = {
@@ -111,7 +107,7 @@
   services.openssh.ports = [ 8081 22 ];
 
   services.hedgedoc = {
-    enable = true;
+    enable = false;
     settings.domain = "doc.missing.ninja";
     settings.host = "localhost";
     settings.port = 3000;
