@@ -29,7 +29,7 @@
   };
 
   services.nginx.virtualHosts = {
-    "missing.ninja" = {
+    "git.missing.ninja" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -79,7 +79,7 @@
     enable = true;
     settings.server = {
       HTTP_PORT = 8085;
-      ROOT_URL = "https://missing.ninja/";
+      ROOT_URL = "https://git.missing.ninja/";
     };
     lfs.enable = true;
   };
