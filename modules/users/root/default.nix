@@ -20,6 +20,7 @@ in {
       jopejoe1 = {
         common = {
           enable = true;
+          gui.enable = config.jopejoe1.gui.enable;
           fonts = {
             serif = config.fonts.fontconfig.defaultFonts.serif;
             sansSerif = config.fonts.fontconfig.defaultFonts.sansSerif;
@@ -29,7 +30,6 @@ in {
         };
         git.enable = true;
         direnv.enable = true;
-        gui.enable = config.jopejoe1.gui.enable;
       };
     };
   };
