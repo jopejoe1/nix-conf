@@ -59,7 +59,6 @@
           ".local/share/direnv"
         ];
         files = [
-          ".screenrc"
         ];
       };
     };
@@ -80,7 +79,6 @@
           ".local/share/direnv"
         ];
         files = [
-          ".screenrc"
         ];
       };
     };
@@ -182,7 +180,9 @@
                     mountOptions = [ "compress=zstd" "noatime" ];
                     mountpoint = "/nix";
                   };
-                  "/nix/persistent" = {};
+                  "/nix/persistent" = {
+                    mountpoint = "/nix/persistent";
+                  };
                 };
               };
             };
