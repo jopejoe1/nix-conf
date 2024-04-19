@@ -29,6 +29,7 @@
     asf.enable = true;
     sway.enable = true;
     zerotierone.enable = true;
+    gui.enable = true;
     keyboard = {
       enable = true;
       layout = "de";

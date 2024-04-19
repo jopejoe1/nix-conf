@@ -4,6 +4,7 @@ let cfg = config.jopejoe1.common;
 in {
   options.jopejoe1.common = {
     enable = lib.mkEnableOption "Enable Common Homanger settings";
+    gui = lib.mkEnableOption "Graphical programms";
     fonts = {
       monospace = lib.mkOption {
         type = lib.types.listOf lib.types.str;

@@ -10,6 +10,7 @@
       root.enable = true;
     };
     ssh.enable = true;
+    gui.enable = false;
   };
 
   imports =

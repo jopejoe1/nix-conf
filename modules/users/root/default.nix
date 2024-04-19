@@ -29,6 +29,7 @@ in {
         };
         git.enable = true;
         direnv.enable = true;
+        gui.enable = config.jopejoe1.gui.enable;
       };
     };
   };

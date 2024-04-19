@@ -21,7 +21,8 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZDUoC+1lNR2JTY1Q+vhXpuLmKMdVl2OMFLVbQ3cGkw jopejoe1@kuraokami"
       ];
       packages = with pkgs;
-        [
+        []
+        ++ lib.optionals config.jopejoe1.gui.enable [
           libsForQt5.kate
           libsForQt5.ark
           element-desktop
@@ -32,8 +33,6 @@ in {
           catppuccin-kde
           #catppuccin-gtk
           localPkgs.tela-icon-theme-git
-        ]
-        ++ lib.optionals (config.system == "x86_64-linux") [
           discord
           lutris
           bottles
@@ -60,8 +59,9 @@ in {
         };
         nushell.enable = true;
         git.enable = true;
+        gui.enable = config.jopejoe1.gui.enable;
         direnv.enable = true;
-        firefox.enable = true;
+        firefox.enable = config.jopejoe1.gui.enable;
       };
     };
   };

@@ -6,13 +6,13 @@ in {
 
   config = lib.mkIf cfg.enable {
     xdg = {
-      sounds.enable = true;
+      sounds.enable = config.jopejoe1.gui.enable;
       mime.enable = true;
-      menus.enable = true;
-      icons.enable = true;
+      menus.enable = config.jopejoe1.gui.enable;
+      icons.enable = config.jopejoe1.gui.enable;
       autostart.enable = true;
       portal = {
-        enable = true;
+        enable = config.jopejoe1.gui.enable;
         extraPortals = with pkgs; [ xdg-desktop-portal ];
       };
     };

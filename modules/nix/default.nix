@@ -3,6 +3,7 @@
 let cfg = config.jopejoe1.nix;
 in {
   options.jopejoe1.nix = { enable = lib.mkEnableOption "Enable Nix"; };
+  options.jopejoe1.gui = { enable = lib.mkEnableOption "Enable GUI"; };
 
   config = lib.mkIf cfg.enable {
     nix = {
