@@ -24,10 +24,6 @@ in {
         experimental-features = [
           "nix-command"
           "flakes"
-          "auto-allocate-uids"
-          "configurable-impure-env"
-          "impure-derivations"
-          "git-hashing"
         ];
         warn-dirty = true;
         use-xdg-base-directories = true;
@@ -105,6 +101,7 @@ in {
     networking.hosts = {
       "192.168.191.46" = [ "zap" ];
       "192.168.191.142" = [ "kuraokami" ];
+      "2a01:4f8:1c1e:7f93::1" = [ "bloomshine.de" ];
     };
   };
 }
