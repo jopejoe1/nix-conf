@@ -113,7 +113,7 @@
     settings.port = 3000;
     settings.protocolUseSSL = true;
   };
-  services.surrealdb.enable = true;
+  services.surrealdb.enable = false;
   services.surrealdb.host = "134.255.219.135";
 
   console = {
