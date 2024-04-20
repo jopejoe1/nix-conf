@@ -40,4 +40,6 @@
   environment.systemPackages = with pkgs; [ mixxx ];
 
   time.timeZone = "Europe/Berlin";
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }

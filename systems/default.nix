@@ -28,4 +28,5 @@ in
   hetzner = mkSystem "x86_64-unknown-linux-gnu" "hetzner";
   zap = mkSystem "x86_64-unknown-linux-gnu" "zap";
   pi4 = mkSystem "aarch64-unknown-linux-gnu" "pi4";
+  raspberry4 = mkSystem "aarch64-unknown-linux-gnu" "raspberry4";
 }
