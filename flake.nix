@@ -38,6 +38,11 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    snm = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 
     # Packages
     tela-icon-theme = {
