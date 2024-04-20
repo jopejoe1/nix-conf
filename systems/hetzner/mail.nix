@@ -15,8 +15,33 @@
       };
     };
 
+    fullTextSearch = {
+      enable = true;
+      # index new email as they arrive
+      autoIndex = true;
+      # this only applies to plain text attachments, binary attachments are never indexed
+      indexAttachments = true;
+      enforced = "body";
+    };
+
     # Use Let's Encrypt certificates. Note that this needs to set up a stripped
     # down nginx and opens port 80.
     certificateScheme = "acme-nginx";
   };
+
+  services.roundcube = {
+     enable = true;
+     # this is the url of the vhost, not necessarily the same as the fqdn of
+     # the mailserver
+     hostName = "webmail.missing.ninja";
+     extraConfig = ''
+       # starttls needed for authentication, so the fqdn required to match
+       # the certificate
+       $config['smtp_server'] = "tls://${config.mailserver.fqdn}";
+       $config['smtp_user'] = "%u";
+       $config['smtp_pass'] = "%p";
+     '';
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
