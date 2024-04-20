@@ -44,6 +44,20 @@
   users.users.jopejoe1.hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
   users.users.root.hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
 
+  services.vsftpd = {
+    enable = true;
+    writeEnable = true;
+    userlistEnable = true;
+    userlist = [ "backupftp" ];
+    localUsers = true;
+    chrootlocalUser = true;
+  };
+
+  users.users.backupftp = {
+    isNormalUser = true;
+    initialPassword = "backupPassword";
+  };
+
   disko.devices = {
     disk = {
       vdb = {
