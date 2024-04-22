@@ -9,8 +9,8 @@
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
-      "admin@missing.ninja" = {
-        hashedPasswordFile = "/a/file/containing/a/hashed/password";
+      "jopejoe1@missing.ninja" = {
+        hashedPassword = "$2b$05$ZZk/X.gQqjRc08ej9XTuaO0aVnWjPGWUqo/xYGxHGsMEyDL.Hr8AS";
         aliases = [ "@missing.ninja" ];
       };
     };
