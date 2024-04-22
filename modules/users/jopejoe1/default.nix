@@ -48,6 +48,7 @@ in {
         enable = true;
       };
       jopejoe1 = {
+        programs.thunderbird.enable = config.jopejoe1.gui.enable;
         common = {
           enable = true;
           gui.enable = config.jopejoe1.gui.enable;
