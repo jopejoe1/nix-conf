@@ -103,6 +103,7 @@
     libreoffice-qt
     webex
     jitsi-meet-electron
+    thunderbird
 
     ((discord.overrideAttrs (old: {
       desktopItem = old.desktopItem.override
