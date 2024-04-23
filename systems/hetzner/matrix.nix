@@ -61,19 +61,25 @@ in
 
   services.matrix-synapse = {
     enable = true;
-    settings.server_name = "missing.ninja";
-    settings.public_baseurl = baseUrl;
-    settings.listeners = [
-      { port = 8008;
-        bind_addresses = [ "::1" ];
-        type = "http";
-        tls = false;
-        x_forwarded = true;
-        resources = [ {
-          names = [ "client" "federation" ];
-          compress = true;
-        } ];
-      }
-    ];
+    settings = {
+      server_name = "missing.ninja";
+      enable_registration = true;
+      public_baseurl = baseUrl;
+      listeners = [
+        {
+          port = 8008;
+          bind_addresses = [ "::1" ];
+          type = "http";
+          tls = false;
+          x_forwarded = true;
+          resources = [
+            {
+              names = [ "client" "federation" ];
+              compress = true;
+            }
+          ];
+        }
+      ];
+    };
   };
 }
