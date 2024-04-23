@@ -97,7 +97,7 @@ in
         encryption = {
           allow = true;
           default = true;
-          require = true;
+          require = false;
           appservice = true;
 
         };
