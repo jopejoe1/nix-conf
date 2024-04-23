@@ -61,6 +61,9 @@ in
       server_name = "missing.ninja";
       registration_shared_secret = "";
       public_baseurl = baseUrl;
+      app_service_config_files = [
+        "/var/lib/mautrix-whatsapp/whatsapp-registration.yaml"
+      ];
       listeners = [
         {
           port = 8448;
@@ -84,8 +87,8 @@ in
     settings = {
       appservice = {
         database = {
-          type = "postgres";
-          uri = "postgresql:///mautrix_whatsapp?host=/run/postgresql";
+          type = "sqlite3";
+          uri = "/var/lib/mautrix-whatsapp/mautrix-whatsapp.db";
         };
         ephemeral_events = false;
         id = "whatsapp";
