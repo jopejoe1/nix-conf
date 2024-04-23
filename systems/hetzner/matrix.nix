@@ -78,4 +78,13 @@ in
       ];
     };
   };
+
+  services.mautrix-whatsapp = {
+    enable = true;
+    settings = {
+       homeserver = {
+        address = "http://localhost:8018";
+      };
+    };
+  };
 }
