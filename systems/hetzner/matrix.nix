@@ -40,8 +40,8 @@ in
         locations."/".extraConfig = ''
           return 404;
         '';
-        locations."/_matrix".proxyPass = "http://[::1]:8008";
-        locations."/_synapse/client".proxyPass = "http://[::1]:8008";
+        locations."/_matrix".proxyPass = "http://[::1]:8018";
+        locations."/_synapse/client".proxyPass = "http://[::1]:8018";
       };
       "element.missing.ninja" = {
         enableACME = true;
@@ -63,7 +63,7 @@ in
       public_baseurl = baseUrl;
       listeners = [
         {
-          port = 8008;
+          port = 8018;
           bind_addresses = [ "::1" ];
           type = "http";
           tls = false;
