@@ -40,8 +40,8 @@ in
         locations."/".extraConfig = ''
           return 404;
         '';
-        locations."/_matrix".proxyPass = "http://[::1]:8018";
-        locations."/_synapse/client".proxyPass = "http://[::1]:8018";
+        locations."/_matrix".proxyPass = "http://[::1]:8448";
+        locations."/_synapse/client".proxyPass = "http://[::1]:8448";
       };
       "element.missing.ninja" = {
         enableACME = true;
@@ -63,7 +63,7 @@ in
       public_baseurl = baseUrl;
       listeners = [
         {
-          port = 8018;
+          port = 8448;
           bind_addresses = [ "::1" ];
           type = "http";
           tls = false;
@@ -81,10 +81,5 @@ in
 
   services.mautrix-whatsapp = {
     enable = true;
-    settings = {
-       homeserver = {
-        address = "http://localhost:8018";
-      };
-    };
   };
 }
