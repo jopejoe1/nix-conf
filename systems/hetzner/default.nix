@@ -8,6 +8,7 @@
     self.inputs.srvos.nixosModules.mixins-nginx
     self.inputs.snm.nixosModules.mailserver
     ./mail.nix
+    ./matrix.nix
   ];
 
   jopejoe1 = {

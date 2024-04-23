@@ -1,4 +1,4 @@
-{config, ...}:
+{ config, pkgs, ...}:
 
 let
   fqdn = "matrix.missing.ninja";
