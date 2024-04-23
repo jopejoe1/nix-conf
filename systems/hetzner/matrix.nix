@@ -59,7 +59,7 @@ in
     enable = true;
     settings = {
       server_name = "missing.ninja";
-      enable_registration = true;
+      registration_shared_secret = "";
       public_baseurl = baseUrl;
       listeners = [
         {
