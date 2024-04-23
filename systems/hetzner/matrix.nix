@@ -62,7 +62,7 @@ in
       registration_shared_secret = "";
       public_baseurl = baseUrl;
       app_service_config_files = [
-        "/var/lib/mautrix-whatsapp/whatsapp-registration.yaml"
+        "/var/lib/matrix-synapse/whatsapp-registration.yaml"
       ];
       listeners = [
         {
@@ -90,7 +90,7 @@ in
           type = "sqlite3";
           uri = "/var/lib/mautrix-whatsapp/mautrix-whatsapp.db";
         };
-        ephemeral_events = false;
+        ephemeral_events = true;
         id = "whatsapp";
       };
       bridge = {
@@ -98,15 +98,27 @@ in
           allow = true;
           default = true;
           require = true;
+          appservice = true;
+
         };
         history_sync = {
           request_full_sync = true;
+          message_count = -1;
         };
         mute_bridging = true;
+        personal_filtering_spaces = true;
         permissions = {
+          "*" = "relay";
           "missing.ninja" = "user";
+          "@admin:missing.ninja" = "admin";
         };
         private_chat_portal_meta = true;
+        whatsapp_thumbnail = true;
+        federate_rooms = false;
+        caption_in_message = true;
+        extev_polls = true;
+        cross_room_replies = true;
+
         provisioning = {
           shared_secret = "disable";
         };
