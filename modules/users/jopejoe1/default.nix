@@ -33,7 +33,15 @@ in {
           catppuccin-kde
           #catppuccin-gtk
           localPkgs.tela-icon-theme-git
-          discord
+          ((discord.overrideAttrs (old: {
+              desktopItem = old.desktopItem.override
+              (old: { exec = old.exec + " --disable-gpu-sandbox"; });
+            })).override {
+              withOpenASAR = true;
+              withVencord = true;
+              withTTS = true;
+            }
+          )
           lutris
           bottles
         ];

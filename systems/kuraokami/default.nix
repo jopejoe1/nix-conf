@@ -105,14 +105,7 @@
     jitsi-meet-electron
     thunderbird
 
-    ((discord.overrideAttrs (old: {
-      desktopItem = old.desktopItem.override
-        (old: { exec = old.exec + " --disable-gpu-sandbox"; });
-    })).override {
-      withOpenASAR = true;
-      withVencord = true;
-      withTTS = true;
-    })
+
   ];
 
   programs = {
