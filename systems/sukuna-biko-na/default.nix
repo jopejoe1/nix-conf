@@ -33,7 +33,6 @@
   };
 
   networking = {
-    hostName = "inugami";
     useDHCP = lib.mkDefault true;
   };
 
