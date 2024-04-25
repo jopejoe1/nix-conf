@@ -18,13 +18,11 @@ in {
 
     systemd.services."moodle-dl" = {
       script = ''
-        ${lib.getExe pkgs.moodle-dl} --path /var/moodle-dl
-        ${lib.getExe pkgs.git} -C /var/moodle-dl add .
-        ${
-          lib.getExe pkgs.git
-        } -C /var/moodle-dl commit -m "moodle-dl updated on `$(${pkgs.coreutils}/bin/date)`"
+        moodle-dl --path /var/lib/moodle-dl
+        git -C /var/lib/moodle-dl add .
+        git -C /var/lib/moodle-dl commit -m "moodle-dl updated on `$(date)`"
       '';
-      path = [ pkgs.openssh ];
+      path = with pkgs; [ openssh moodle-dl git coreutils ];
       serviceConfig = {
         Type = "oneshot";
         User = "root";
