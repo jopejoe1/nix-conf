@@ -89,58 +89,52 @@ in {
             MoreFromMozilla = false;
             Locked = true;
           };
-          Extensions.Uninstall = [
-          ];
-          # Extension Settings does work currently
           "3rdparty" = {
             Extensions = {
-              "uBlock0@raymondhill.net" = {
-                #adminSettings = {
+              "uBlock0@raymondhill.net".adminSettings = {
                 userSettings = {
                   uiTheme = "dark";
-                  autoUpdate = true;
+                  uiAccentCustom = true;
+                  uiAccentCustom0 = "#b4befe";
                   cloudStorageEnabled = false;
-                  webrtcIPAddressHidden = true;
                 };
-                toOverwrite = [
-                  "user-filters"
-                  "ublock-filters"
-                  "ublock-badware"
-                  "ublock-privacy"
-                  "ublock-abuse"
-                  "ublock-unbreak"
-                  "ublock-quick-fixes"
-                  "adguard-generic"
-                  "adguard-mobile"
-                  "easylist"
-                  "adguard-spyware-url"
-                  "adguard-spyware"
-                  "block-lan"
-                  "easyprivacy"
-                  "urlhaus-1"
-                  "curben-phishing"
-                  "adguard-social"
-                  "adguard-cookies"
-                  "ublock-cookies-adguard"
-                  "adguard-popup-overlays"
-                  "adguard-mobile-app-banners"
-                  "adguard-other-annoyances"
-                  "adguard-widgets"
-                  "fanboy-thirdparty_social"
-                  "easylist-annoyances"
-                  "easylist-chat"
-                  "fanboy-cookiemonster"
-                  "ublock-cookies-easylist"
-                  "easylist-newsletters"
-                  "easylist-notifications"
-                  "fanboy-social"
-                  "ublock-annoyances"
-                  "dpollock-0"
-                  "plowe-0"
-                  "DEU-0"
-                ];
-              };
-              #};
+              selectedFilterLists = [
+              "adguard-generic"
+              "adguard-annoyance"
+              "adguard-cookies"
+              "adguard-social"
+              "adguard-spyware"
+              "adguard-spyware-url"
+              "adguard-popup-overlays"
+              "adguard-other-annoyances"
+              "adguard-widgets"
+              "block-lan"
+              "curben-phishing"
+              "dpollock-0"
+              "easylist"
+              "easylist-chat"
+              "easylist-newsletters"
+              "easylist-notifications"
+              "easylist-annoyances"
+              "easyprivacy"
+              "fanboy-cookiemonster"
+              "fanboy-social"
+              "fanboy-thirdparty_social"
+              "FIN-0"
+              "plowe-0"
+              "ublock-abuse"
+              "ublock-badware"
+              "ublock-cookies-adguard"
+              "ublock-cookies-easylist"
+              "ublock-filters"
+              "ublock-privacy"
+              "ublock-quick-fixes"
+              "ublock-unbreak"
+              "ublock-annoyances"
+              "urlhaus-1"
+              ];
+            };
+            filters = [''stackoverflow.com##.sm\:fd-column.flex__allitems6.d-flex.mx-auto.wmx9''];
             };
           };
         };
