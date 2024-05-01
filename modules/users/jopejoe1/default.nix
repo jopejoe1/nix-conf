@@ -27,12 +27,13 @@ in {
           libsForQt5.ark
           element-desktop
           mumble
+          libreoffice-qt-fresh
 
           # Theming
           catppuccin-kvantum
           catppuccin-kde
           #catppuccin-gtk
-          localPkgs.tela-icon-theme-git
+          tela-icon-theme
           ((discord.overrideAttrs (old: {
               desktopItem = old.desktopItem.override
               (old: { exec = old.exec + " --disable-gpu-sandbox"; });
@@ -42,8 +43,6 @@ in {
               withTTS = true;
             }
           )
-          lutris
-          bottles
         ];
     };
     home-manager.users.jopejoe1 = {
