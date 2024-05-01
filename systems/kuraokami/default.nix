@@ -11,6 +11,7 @@
     nixos-hardware.nixosModules.common-pc-ssd
     self.inputs.nether.nixosModules.hosts
     self.inputs.nether.nixosModules.zerotier
+    self.inputs.srvos.nixosModules.desktop
   ];
 
   jopejoe1 = {
