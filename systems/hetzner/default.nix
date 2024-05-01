@@ -14,6 +14,7 @@
   jopejoe1 = {
     local.enable = true;
     nix.enable = true;
+    zerotierone.enable = true;
     user = {
       jopejoe1.enable = true;
       root.enable = true;
