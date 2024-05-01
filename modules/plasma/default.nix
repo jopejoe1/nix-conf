@@ -10,8 +10,9 @@ in {
     services = {
       xserver = {
         enable = true;
-        libinput.enable = true;
       };
+
+      libinput.enable = true;
 
       displayManager.sddm = {
         enable = true;
