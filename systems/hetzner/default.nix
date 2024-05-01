@@ -9,6 +9,7 @@
     self.inputs.snm.nixosModules.mailserver
     ./mail.nix
     ./matrix.nix
+    ./nginx.nix
   ];
 
   jopejoe1 = {
