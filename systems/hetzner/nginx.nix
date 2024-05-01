@@ -31,7 +31,7 @@
     };
   };
 
-  hedgedoc = {
+  services.hedgedoc = {
     enable = true;
     settings = {
       db = {
