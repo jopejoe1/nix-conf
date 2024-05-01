@@ -29,6 +29,7 @@ in
     recommendedProxySettings = true;
     virtualHosts = {
       "missing.ninja" = {
+        serverAliases = [ "joens.zone" "joens.website" "joens.site" "joens.online" "joens.link" "joens.international" "joens.family" "joens.digital" "joens.blog" "net0loggy.net" "clan-war.net" "net0loggy.de" "dtg-c.de" ];
         enableACME = true;
         forceSSL = true;
         locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
@@ -51,6 +52,9 @@ in
             default_server_config = clientConfig;
           };
         };
+      };
+      "webmail.missing.ninja" = {
+        serverAliases = [ "joens.email" ];
       };
     };
   };
