@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware.nix
-    nixos-hardware.nixosModules.common-cpu-intel
+    #nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-gpu-intel
     nixos-hardware.nixosModules.common-gpu-nvidia
     nixos-hardware.nixosModules.common-pc
