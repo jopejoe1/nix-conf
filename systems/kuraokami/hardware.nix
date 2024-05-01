@@ -24,66 +24,6 @@
 
   zramSwap.enable = true;
 
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = "1";
-  };
-
-  services.dnsmasq = {
-    enable = true;
-    settings = {
-      interface = [ "enp6s0" ];
-      dhcp-range = [ "10.0.0.2,10.0.0.255,255.255.255.0,24h" ];
-      listen-address = "10.0.0.1";
-    };
-  };
-
-  networking = {
-    wireless = {
-      enable = true;
-      networks = {
-
-      };
-    };
-    firewall = {
-      allowedUDPPorts = [ 53 ];
-      allowedTCPPorts = [ 53 ];
-    };
-    nameservers = [ "2a07:a8c0::fe:e334" "2a07:a8c1::fe:e334" ];
-    useDHCP = lib.mkDefault true;
-    dhcpcd.extraConfig = "nohook resolv.conf";
-    networkmanager.enable = lib.mkForce false;
-    nftables = {
-      enable = true;
-      ruleset = ''
-        table ip nat {
-          chain postrouting {
-            type nat hook postrouting priority 100;
-            oifname "wlo1" masquerade
-          }
-        }
-      '';
-    };
-  };
-
-  systemd.network = {
-    enable = true;
-    networks = {
-      # Connect the bridge ports to the bridge
-      "30-enp6s0" = {
-        matchConfig.Name = "enp6s0";
-        networkConfig = {
-          Address = "10.0.0.1/24";
-        };
-      };
-      "30-wlo1" = {
-        matchConfig.Name = "wlo1";
-        networkConfig = {
-          DHCP = "yes";
-          IgnoreCarrierLoss = "3s";
-        };
-      };
-    };
-  };
 
   fileSystems = {
     "/" = {
