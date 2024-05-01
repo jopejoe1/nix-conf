@@ -22,7 +22,7 @@
     doc.enable = true;
     local.enable = true;
     nix.enable = true;
-    plasma6.enable = true;
+    plasma.enable = true;
     printing.enable = true;
     steam.enable = true;
     ssh.enable = true;

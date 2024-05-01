@@ -16,7 +16,6 @@
     ./moodle-dl
     ./nix
     ./plasma
-    ./plasma/6.nix
     ./printing
     ./repo-sync
     ./ssh
