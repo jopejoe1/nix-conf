@@ -66,6 +66,11 @@
     };
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
+    nix-serve = {
+      enable = true;
+      openFirewall = true;
+      secretKeyFile = "/var/cache-priv-key.pem";
+    };
   };
 
   nixpkgs = {
@@ -104,8 +109,6 @@
     webex
     jitsi-meet-electron
     thunderbird
-
-
   ];
 
   programs = {
