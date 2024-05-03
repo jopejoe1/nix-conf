@@ -10,6 +10,7 @@
     ./mail.nix
     ./matrix.nix
     ./nginx.nix
+    ./radicale.nix
   ];
 
   jopejoe1 = {
