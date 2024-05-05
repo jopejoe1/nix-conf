@@ -57,7 +57,7 @@
     name = "madara";
     version = "1.7.4.1";
     src = pkgs.fetchzip {
-      url = "file://var/dl/madara-${version}.zip";
+      url = "file:///var/dl/madara-${version}.zip";
       hash = "";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
@@ -66,7 +66,7 @@
     name = "madara-child";
     version = "1.0.3";
     src = pkgs.fetchzip {
-      url = "file://var/dl/madara-child-${version}.zip";
+      url = "file:///var/dl/madara-child-${version}.zip";
       hash = "";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
@@ -75,7 +75,7 @@
     name = "madara-core";
     version = "1.7.4.1";
     src = pkgs.fetchzip {
-      url = "file://var/dl/madara-core-${version}.zip";
+      url = "file:///var/dl/madara-core-${version}.zip";
       hash = "";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
@@ -84,7 +84,7 @@
     name = "madara-shortcodes";
     version = "1.5.5.9";
     src = pkgs.fetchzip {
-      url = "file://var/dl/madara-shortcodes-${version}.zip";
+      url = "file:///var/dl/madara-shortcodes-${version}.zip";
       hash = "";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
@@ -93,7 +93,7 @@
     name = "option-tree-lean";
     version = "0";
     src = pkgs.fetchzip {
-      url = "file://var/dl/option-tree-lean.zip";
+      url = "file:///var/dl/option-tree-lean.zip";
       hash = "";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
