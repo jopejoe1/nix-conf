@@ -28,6 +28,10 @@
             ;
         };
       };
+      "test.missing.ninja" = {
+        forceSSL = true;
+        enableACME = true;
+      };
     };
   };
 
