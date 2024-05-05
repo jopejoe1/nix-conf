@@ -131,6 +131,7 @@
     themes = [
       madara
       madara-child
+      pkgs.wordpressPackages.themes.twentytwentythree
     ];
     plugins = [
       madara-core
