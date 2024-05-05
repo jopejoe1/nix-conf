@@ -1,9 +1,6 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, self, ... }:
 
 {
-  imports = [
-    ./wp-test.nix
-  ];
   jopejoe1 = {
     local.enable = true;
     nix.enable = true;
@@ -19,6 +16,10 @@
   imports =
     [
       (modulesPath + "/profiles/qemu-guest.nix")
+      self.inputs.srvos.nixosModules.server
+      self.inputs.srvos.nixosModules.mixins-cloud-init
+      self.inputs.srvos.nixosModules.mixins-nginx
+      ./wp-test.nix
     ];
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
