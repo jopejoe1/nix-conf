@@ -100,6 +100,15 @@
   };
   in
   {
+    themes = [
+      madara
+      madara-child
+    ];
+    plugins = [
+      madara-core
+      madara-shortcodes
+      option-tree-lean
+    ];
     settings = {
       FORCE_SSL_ADMIN = true;
     };
