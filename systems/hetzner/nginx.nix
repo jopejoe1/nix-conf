@@ -61,6 +61,9 @@
       url = "https://mangabooth.com/";
       hash = "sha256-JxfjZLoN6I9twAQMT60Q27CgJg22G7zEU5GDra9rROs=";
     };
+    nativeBuildInputs = [
+      unzip
+    ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-child = pkgs.stdenv.mkDerivation rec {
@@ -71,6 +74,9 @@
       url = "https://mangabooth.com/";
       hash = "sha256-h9w2TmX1nXaoP27b9DQ1jf6z1hTS5+BWtlz+Fprk5dQ=";
     };
+    nativeBuildInputs = [
+      unzip
+    ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-core = pkgs.stdenv.mkDerivation rec {
@@ -81,6 +87,9 @@
       url = "https://mangabooth.com/";
       hash = "sha256-r22hGCDlVeYTOFlhfKoc3r4TtpZExJ2E2QP9ssRoJco=";
     };
+    nativeBuildInputs = [
+      unzip
+    ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-shortcodes = pkgs.stdenv.mkDerivation rec {
@@ -91,6 +100,9 @@
       url = "https://mangabooth.com/";
       hash = "sha256-IW7C5DTzvt3ROFpfB21LY2wmdR45lNj9c8/THHCi6eY=";
     };
+    nativeBuildInputs = [
+      unzip
+    ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   option-tree-lean = pkgs.stdenv.mkDerivation rec {
@@ -101,6 +113,9 @@
       url = "https://mangabooth.com/";
       hash = "sha256-9u+MGdOarNdLtARWiJpw/hsMR9X8r0h5qugGir+amUI=";
     };
+    nativeBuildInputs = [
+      unzip
+    ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   in
