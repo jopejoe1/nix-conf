@@ -44,4 +44,63 @@
       protocolUseSSL = true;
     };
   };
+
+  services.wordpress.webserver = "nginx";
+
+  services.wordpress.sites."test.missing.ninja" =
+  let
+  madara = pkgs.stdenv.mkDerivation rec {
+    name = "madara";
+    version = "1.7.4.1";
+    src = pkgs.fetchzip {
+      url = "file://var/dl/madara-${version}.zip";
+      hash = "";
+    };
+    installPhase = "mkdir -p $out; cp -R * $out/";
+  };
+  madara-child = pkgs.stdenv.mkDerivation rec {
+    name = "madara-child";
+    version = "1.0.3";
+    src = pkgs.fetchzip {
+      url = "file://var/dl/madara-child-${version}.zip";
+      hash = "";
+    };
+    installPhase = "mkdir -p $out; cp -R * $out/";
+  };
+  madara-core = pkgs.stdenv.mkDerivation rec {
+    name = "madara-core";
+    version = "1.7.4.1";
+    src = pkgs.fetchzip {
+      url = "file://var/dl/madara-core-${version}.zip";
+      hash = "";
+    };
+    installPhase = "mkdir -p $out; cp -R * $out/";
+  };
+  madara-shortcodes = pkgs.stdenv.mkDerivation rec {
+    name = "madara-shortcodes";
+    version = "1.5.5.9";
+    src = pkgs.fetchzip {
+      url = "file://var/dl/madara-shortcodes-${version}.zip";
+      hash = "";
+    };
+    installPhase = "mkdir -p $out; cp -R * $out/";
+  };
+  option-tree-lean = pkgs.stdenv.mkDerivation rec {
+    name = "option-tree-lean";
+    version = "0";
+    src = pkgs.fetchzip {
+      url = "file://var/dl/option-tree-lean.zip";
+      hash = "";
+    };
+    installPhase = "mkdir -p $out; cp -R * $out/";
+  };
+  in
+  {
+    settings = {
+      FORCE_SSL_ADMIN = true;
+    };
+    extraConfig = ''
+      $_SERVER['HTTPS']='on';
+    '';
+  };
 }
