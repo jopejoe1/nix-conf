@@ -1,6 +1,9 @@
 { config, pkgs, lib, modulesPath, ... }:
 
 {
+  imports = [
+    ./wp-test.nix
+  ];
   jopejoe1 = {
     local.enable = true;
     nix.enable = true;
@@ -37,24 +40,13 @@
         proxyPass = "http://localhost:8085/";
       };
     };
-    "doc.missing.ninja" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://localhost:3000/";
-      };
-    };
-    "testing.missing.ninja"= {
-      enableACME = true;
-      forceSSL = true;
-    };
-    "db.missing.ninja" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://134.255.219.135:8000/";
-      };
-    };
+    #"db.missing.ninja" = {
+    #  enableACME = true;
+    #  forceSSL = true;
+   #   locations."/" = {
+    #    proxyPass = "http://134.255.219.135:8000/";
+   #   };
+   # };
   };
 
   services.nginx.enable = true;
@@ -63,18 +55,8 @@
     defaults.email = "admin@missing.ninja";
   };
 
-  services.jitsi-meet = {
-    enable = false;
-    hostName = "meet.missing.ninja";
-    nginx.enable = true;
-  };
-
   services.cloud-init.enable = true;
   services.cloud-init.network.enable = true;
-
-  services.rss-bridge.enable = false;
-  services.rss-bridge.virtualHost = "rss.missing.ninja";
-  services.rss-bridge.whitelist = [ "*" ];
 
   services.forgejo = {
     enable = true;
@@ -107,13 +89,6 @@
 
   services.openssh.ports = [ 8081 22 ];
 
-  services.hedgedoc = {
-    enable = false;
-    settings.domain = "doc.missing.ninja";
-    settings.host = "localhost";
-    settings.port = 3000;
-    settings.protocolUseSSL = true;
-  };
   services.surrealdb.enable = false;
   services.surrealdb.host = "134.255.219.135";
 
@@ -143,19 +118,6 @@
             }
           ];
         };
-      };
-    };
-  };
-
-  services.wordpress = {
-    webserver = "nginx";
-    sites."testing.missing.ninja" = {
-      languages = [ pkgs.wordpressPackages.languages.de_DE ];
-      settings = {
-        WPLANG = "de_DE";
-      };
-      virtualHost = {
-        enableACME = true; 
       };
     };
   };
