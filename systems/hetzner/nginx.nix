@@ -77,6 +77,10 @@
     nativeBuildInputs = [
       pkgs.unzip
     ];
+    unpackPhase = ''
+      mkdir -p $out
+      unzip $src "madara-child/*" -d $out
+    '';
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-core = pkgs.stdenv.mkDerivation rec {
@@ -103,6 +107,10 @@
     nativeBuildInputs = [
       pkgs.unzip
     ];
+    unpackPhase = ''
+      mkdir -p $out
+      unzip $src "madara-shortcodes/*" -d $out
+    '';
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   option-tree-lean = pkgs.stdenv.mkDerivation rec {
