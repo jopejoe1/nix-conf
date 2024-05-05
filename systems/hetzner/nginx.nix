@@ -56,45 +56,50 @@
   madara = pkgs.stdenv.mkDerivation rec {
     name = "madara";
     version = "1.7.4.1";
-    src = pkgs.fetchzip {
-      url = "file:///var/dl/madara-${version}.zip";
-      hash = "";
+    src = pkgs.requireFile {
+      name = "madara-${version}.zip";
+      url = "https://mangabooth.com/";
+      hash = "sha256-JxfjZLoN6I9twAQMT60Q27CgJg22G7zEU5GDra9rROs=";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-child = pkgs.stdenv.mkDerivation rec {
     name = "madara-child";
     version = "1.0.3";
-    src = pkgs.fetchzip {
-      url = "file:///var/dl/madara-child-${version}.zip";
-      hash = "";
+    src = pkgs.requireFile {
+      name = "madara-child-${version}.zip";
+      url = "https://mangabooth.com/";
+      hash = "sha256-h9w2TmX1nXaoP27b9DQ1jf6z1hTS5+BWtlz+Fprk5dQ=";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-core = pkgs.stdenv.mkDerivation rec {
     name = "madara-core";
     version = "1.7.4.1";
-    src = pkgs.fetchzip {
-      url = "file:///var/dl/madara-core-${version}.zip";
-      hash = "";
+    src = pkgs.requireFile {
+      name = "madara-core-${version}.zip";
+      url = "https://mangabooth.com/";
+      hash = "sha256-r22hGCDlVeYTOFlhfKoc3r4TtpZExJ2E2QP9ssRoJco=";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-shortcodes = pkgs.stdenv.mkDerivation rec {
     name = "madara-shortcodes";
     version = "1.5.5.9";
-    src = pkgs.fetchzip {
-      url = "file:///var/dl/madara-shortcodes-${version}.zip";
-      hash = "";
+    src = pkgs.requireFile {
+      name = "madara-shortcodes-${version}.zip";
+      url = "https://mangabooth.com/";
+      hash = "sha256-IW7C5DTzvt3ROFpfB21LY2wmdR45lNj9c8/THHCi6eY=";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   option-tree-lean = pkgs.stdenv.mkDerivation rec {
     name = "option-tree-lean";
     version = "0";
-    src = pkgs.fetchzip {
-      url = "file:///var/dl/option-tree-lean.zip";
-      hash = "";
+    src = pkgs.requireFile {
+      name = "option-tree-lean.zip";
+      url = "https://mangabooth.com/";
+      hash = "sha256-9u+MGdOarNdLtARWiJpw/hsMR9X8r0h5qugGir+amUI=";
     };
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
