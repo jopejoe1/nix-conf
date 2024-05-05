@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, pkgs, self, ...}:
 
 {
   services.nginx = {
@@ -57,83 +57,7 @@
     max_input_time = 300
   '';
 
-  services.wordpress.sites."test.missing.ninja" =
-  let
-  madara = pkgs.stdenv.mkDerivation rec {
-    name = "madara";
-    version = "1.7.4.1";
-    src = pkgs.requireFile {
-      name = "madara-${version}.zip";
-      url = "https://mangabooth.com/";
-      hash = "sha256-JxfjZLoN6I9twAQMT60Q27CgJg22G7zEU5GDra9rROs=";
-    };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
-    installPhase = "mkdir -p $out; cp -R * $out/";
-  };
-  madara-child = pkgs.stdenv.mkDerivation rec {
-    name = "madara-child";
-    version = "1.0.3";
-    src = pkgs.requireFile {
-      name = "madara-child-${version}.zip";
-      url = "https://mangabooth.com/";
-      hash = "sha256-h9w2TmX1nXaoP27b9DQ1jf6z1hTS5+BWtlz+Fprk5dQ=";
-    };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
-    unpackPhase = ''
-      mkdir -p $out
-      unzip $src "madara-child/*" -d $out
-    '';
-    installPhase = "mkdir -p $out; cp -R * $out/";
-  };
-  madara-core = pkgs.stdenv.mkDerivation rec {
-    name = "madara-core";
-    version = "1.7.4.1";
-    src = pkgs.requireFile {
-      name = "madara-core-${version}.zip";
-      url = "https://mangabooth.com/";
-      hash = "sha256-r22hGCDlVeYTOFlhfKoc3r4TtpZExJ2E2QP9ssRoJco=";
-    };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
-    installPhase = "mkdir -p $out; cp -R * $out/";
-  };
-  madara-shortcodes = pkgs.stdenv.mkDerivation rec {
-    name = "madara-shortcodes";
-    version = "1.5.5.9";
-    src = pkgs.requireFile {
-      name = "madara-shortcodes-${version}.zip";
-      url = "https://mangabooth.com/";
-      hash = "sha256-IW7C5DTzvt3ROFpfB21LY2wmdR45lNj9c8/THHCi6eY=";
-    };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
-    unpackPhase = ''
-      mkdir -p $out
-      unzip $src "madara-shortcodes/*" -d $out
-    '';
-    installPhase = "mkdir -p $out; cp -R * $out/";
-  };
-  option-tree-lean = pkgs.stdenv.mkDerivation rec {
-    name = "option-tree-lean";
-    version = "0";
-    src = pkgs.requireFile {
-      name = "option-tree-lean.zip";
-      url = "https://mangabooth.com/";
-      hash = "sha256-9u+MGdOarNdLtARWiJpw/hsMR9X8r0h5qugGir+amUI=";
-    };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
-    installPhase = "mkdir -p $out; cp -R * $out/";
-  };
-  in
-  {
+  services.wordpress.sites."test.missing.ninja" = with self.packages.${nixpkgs.hostPlatform.system}; {
     themes = [
       madara
       madara-child
@@ -142,7 +66,9 @@
     plugins = [
       madara-core
       madara-shortcodes
+      option-tree
       option-tree-lean
+      widget-logic
     ];
     settings = {
       FORCE_SSL_ADMIN = true;
