@@ -57,7 +57,7 @@
     max_input_time = 300
   '';
 
-  services.wordpress.sites."test.missing.ninja" = with self.packages.${nixpkgs.hostPlatform.system}; {
+  services.wordpress.sites."test.missing.ninja" = with self.packages.${config.nixpkgs.hostPlatform.system}; {
     themes = [
       madara
       madara-child
