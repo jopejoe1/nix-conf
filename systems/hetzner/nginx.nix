@@ -50,6 +50,12 @@
   };
 
   services.wordpress.webserver = "nginx";
+  services.phpfpm.phpOptions = ''
+    post_max_size = "64M"
+    upload_max_filesize = "64M"
+    max_execution_time = 300
+    max_input_time = 300
+  '';
 
   services.wordpress.sites."test.missing.ninja" =
   let
