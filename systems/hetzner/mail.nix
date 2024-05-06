@@ -4,14 +4,14 @@
   mailserver = {
     enable = true;
     fqdn = "mail.missing.ninja";
-    domains = [ "missing.ninja" ];
+    domains = [ "missing.ninja" "joens.zone" "joens.website" "joens.site" "joens.online" "joens.link" "joens.international" "joens.family" "joens.digital" "joens.blog" "net0loggy.net" "clan-war.net" "net0loggy.de" "dtg-c.de" "joens.email" ];
 
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
       "jopejoe1@missing.ninja" = {
         hashedPassword = "$2b$05$ZZk/X.gQqjRc08ej9XTuaO0aVnWjPGWUqo/xYGxHGsMEyDL.Hr8AS";
-        aliases = [ "@missing.ninja" ];
+        aliases = [ "@missing.ninja" "@joens.zone" "@joens.website" "@joens.site" "@joens.online" "@joens.link" "@joens.international" "@joens.family" "@joens.digital" "@joens.blog" "@net0loggy.net" "@clan-war.net" "@net0loggy.de" "@dtg-c.de" "@joens.email" ];
       };
     };
 
