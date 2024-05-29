@@ -7,7 +7,7 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   hardware.nvidia.prime = {
-    offload.enable = true;
+    offload.enable = false;
     sync.enable = false;
 
     # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
