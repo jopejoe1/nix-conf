@@ -97,6 +97,8 @@
     gpgSmartcards.enable = true;
   };
 
+  boot.kernelModules = [ "i2c-nct6775" ];
+
   environment.systemPackages = with pkgs; [
     localPkgs.prismlauncher-withExtraStuff
     mixxx
