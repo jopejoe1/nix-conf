@@ -51,9 +51,6 @@
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "security@missing.ninja";
 
-  users.users.jopejoe1.hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
-  users.users.root.hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
-
   services.vsftpd = {
     enable = true;
     writeEnable = true;

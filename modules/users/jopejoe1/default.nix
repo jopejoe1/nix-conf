@@ -11,7 +11,7 @@ in {
       isNormalUser = true;
       shell = pkgs.nushell;
       description = "Johannes Jöns";
-      initialPassword = "password";
+      hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
       extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" "adbusers" ];
       uid = 1000;
       openssh.authorizedKeys.keys = [
