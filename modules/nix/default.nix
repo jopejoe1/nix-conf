@@ -54,7 +54,7 @@ in {
 #         })
 #       ];
       distributedBuilds = true;
-      package = pkgs.nixVersions.unstable;
+      package = pkgs.lix;
       registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
         self.flake = self;
       });
