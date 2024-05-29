@@ -51,8 +51,8 @@
       motherboard = "intel";
     };
     postgresql = {
-      enable = false;
-      #extraPlugins = ps: with ps; [ pg_libversion ];
+      enable = true;
+      extraPlugins = ps: with ps; [ pg_libversion ];
       enableTCPIP = true;
       initialScript = pkgs.writeText "backend-initScript" ''
         CREATE DATABASE repology
@@ -67,7 +67,7 @@
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
     nix-serve = {
-      enable = true;
+      enable = false;
       openFirewall = true;
       secretKeyFile = "/var/cache-priv-key.pem";
     };
@@ -75,7 +75,7 @@
 
   nixpkgs = {
     config = {
-      cudaSupport = true;
+      cudaSupport = false;
       cudaCapabilities = [ "8.6" ];
     };
     hostPlatform = {
@@ -109,6 +109,7 @@
     webex
     jitsi-meet-electron
     thunderbird
+    python3
   ];
 
   programs = {
