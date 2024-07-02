@@ -20,6 +20,7 @@ let
 in
 {
   kuraokami = mkSystem "x86_64-unknown-linux-gnu" "kuraokami";
+  omoikane = mkSystem "x86_64-unknown-linux-gnu" "omoikane";
   yokai = mkSystem "aarch64-unknown-linux-gnu" "yokai";
   sukuna-biko-na = mkSystem "aarch64-unknown-linux-gnu" "sukuna-biko-na";
   benzaiten = mkSystem "x86_64-unknown-linux-gnu" "benzaiten";
