@@ -23,9 +23,7 @@ stdenv.mkDerivation {
     kdePackages.wrapQtAppsHook
   ];
 
-  buildInputs = [
-    kdePackages.qtbase
-  ];
+  buildInputs = [ kdePackages.qtbase ];
 
   cmakeFlags = [
     "-DECM_DIR=${kdePackages.extra-cmake-modules}/share/ECM/cmake"

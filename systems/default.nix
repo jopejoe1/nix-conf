@@ -1,22 +1,38 @@
-{ self, nixpkgs, inputs }:
+{
+  self,
+  nixpkgs,
+  inputs,
+}:
 
 let
-  mkSystem = systemConfig: name: nixpkgs.lib.nixosSystem rec {
-    system = builtins.replaceStrings [ "-unknown-" "-gnu" ] [ "-" "" ] systemConfig;
-    specialArgs = inputs;
-    modules = [
-      ./${name}
-      self.outputs.nixosModules.default
-      {
-        system.stateVersion = "24.05";
-        nixpkgs.hostPlatform = {
-          system = system;
-          config = systemConfig;
-        };
-        networking.hostName = name;
-      }
-    ];
-  };
+  mkSystem =
+    systemConfig: name:
+    nixpkgs.lib.nixosSystem rec {
+      system =
+        builtins.replaceStrings
+          [
+            "-unknown-"
+            "-gnu"
+          ]
+          [
+            "-"
+            ""
+          ]
+          systemConfig;
+      specialArgs = inputs;
+      modules = [
+        ./${name}
+        self.outputs.nixosModules.default
+        {
+          system.stateVersion = "24.05";
+          nixpkgs.hostPlatform = {
+            system = system;
+            config = systemConfig;
+          };
+          networking.hostName = name;
+        }
+      ];
+    };
 in
 {
   kuraokami = mkSystem "x86_64-unknown-linux-gnu" "kuraokami";

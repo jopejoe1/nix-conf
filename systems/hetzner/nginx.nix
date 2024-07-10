@@ -1,4 +1,9 @@
-{config, pkgs, self, ...}:
+{
+  config,
+  pkgs,
+  self,
+  ...
+}:
 
 {
   services.nginx = {
@@ -9,7 +14,21 @@
     recommendedProxySettings = true;
     virtualHosts = {
       "missing.ninja" = {
-        serverAliases = [ "joens.zone" "joens.website" "joens.site" "joens.online" "joens.link" "joens.international" "joens.family" "joens.digital" "joens.blog" "net0loggy.net" "clan-war.net" "net0loggy.de" "dtg-c.de" ];
+        serverAliases = [
+          "joens.zone"
+          "joens.website"
+          "joens.site"
+          "joens.online"
+          "joens.link"
+          "joens.international"
+          "joens.family"
+          "joens.digital"
+          "joens.blog"
+          "net0loggy.net"
+          "clan-war.net"
+          "net0loggy.de"
+          "dtg-c.de"
+        ];
         enableACME = true;
         forceSSL = true;
       };
@@ -23,9 +42,7 @@
         locations."/socket.io/" = {
           proxyPass = "http://localhost:3333";
           proxyWebsockets = true;
-          extraConfig =
-            "proxy_ssl_server_name on;"
-            ;
+          extraConfig = "proxy_ssl_server_name on;";
         };
       };
       "test.missing.ninja" = {
@@ -57,24 +74,25 @@
     max_input_time = 300
   '';
 
-  services.wordpress.sites."test.missing.ninja" = with self.packages.${config.nixpkgs.hostPlatform.system}; {
-    themes = [
-      madara
-      madara-child
-      pkgs.wordpressPackages.themes.twentytwentythree
-    ];
-    plugins = [
-      madara-core
-      madara-shortcodes
-      option-tree
-      option-tree-lean
-      widget-logic
-    ];
-    settings = {
-      FORCE_SSL_ADMIN = true;
+  services.wordpress.sites."test.missing.ninja" =
+    with self.packages.${config.nixpkgs.hostPlatform.system}; {
+      themes = [
+        madara
+        madara-child
+        pkgs.wordpressPackages.themes.twentytwentythree
+      ];
+      plugins = [
+        madara-core
+        madara-shortcodes
+        option-tree
+        option-tree-lean
+        widget-logic
+      ];
+      settings = {
+        FORCE_SSL_ADMIN = true;
+      };
+      extraConfig = ''
+        $_SERVER['HTTPS']='on';
+      '';
     };
-    extraConfig = ''
-      $_SERVER['HTTPS']='on';
-    '';
-  };
 }

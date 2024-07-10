@@ -1,7 +1,5 @@
 { self, ... }:
 
 {
-  imports = [
-    ./modules
-  ];
+  imports = [ ./modules ];
 }

@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.jopejoe1.user.jopejoe1;
-in {
+let
+  cfg = config.jopejoe1.user.jopejoe1;
+in
+{
   options.jopejoe1.user.jopejoe1 = {
     enable = lib.mkEnableOption "Enable jopejoe1 user";
   };
@@ -12,7 +19,13 @@ in {
       shell = pkgs.nushell;
       description = "Johannes Jöns";
       hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
-      extraGroups = [ "wheel" "networkmanager" "pipewire" "audio" "adbusers" ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "pipewire"
+        "audio"
+        "adbusers"
+      ];
       uid = 1000;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8oyMpS2hK3gQXyHIIVS6oilgMpemLmfhKKJ6RBMwUh johannes@joens.email"
@@ -21,8 +34,9 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFZDUoC+1lNR2JTY1Q+vhXpuLmKMdVl2OMFLVbQ3cGkw jopejoe1@kuraokami"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKm2igbJ+Ke+dJO3r7wp5ZTreHqC39Sjctca119Bl2yc jopejoe1@zap"
       ];
-      packages = with pkgs;
-        []
+      packages =
+        with pkgs;
+        [ ]
         ++ lib.optionals config.jopejoe1.gui.enable [
           libsForQt5.kate
           libsForQt5.ark
@@ -35,10 +49,13 @@ in {
           catppuccin-kde
           #catppuccin-gtk
           tela-icon-theme
-          ((discord.overrideAttrs (old: {
-              desktopItem = old.desktopItem.override
-              (old: { exec = old.exec + " --disable-gpu-sandbox"; });
-            })).override {
+          (
+            (discord.overrideAttrs (old: {
+              desktopItem = old.desktopItem.override (old: {
+                exec = old.exec + " --disable-gpu-sandbox";
+              });
+            })).override
+            {
               withOpenASAR = true;
               withVencord = true;
               withTTS = true;

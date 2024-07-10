@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.jopejoe1.boot.systemd;
-in {
+let
+  cfg = config.jopejoe1.boot.systemd;
+in
+{
   options.jopejoe1.boot.systemd = {
     enable = lib.mkEnableOption "Enable Systemd boot";
   };

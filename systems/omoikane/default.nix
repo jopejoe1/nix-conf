@@ -1,4 +1,11 @@
-{ config, pkgs, lib, nixos-hardware, self, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixos-hardware,
+  self,
+  ...
+}:
 
 {
   imports = [
@@ -73,9 +80,17 @@
     };
   };
 
-  nix.settings.system-features = [ "benchmark" "big-parallel" "kvm" "nixos-test" ];
+  nix.settings.system-features = [
+    "benchmark"
+    "big-parallel"
+    "kvm"
+    "nixos-test"
+  ];
 
-  boot.binfmt.emulatedSystems = [ "riscv64-linux" "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = [
+    "riscv64-linux"
+    "aarch64-linux"
+  ];
   boot.plymouth = {
     enable = true;
   };

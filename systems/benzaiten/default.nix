@@ -1,4 +1,9 @@
-{ pkgs, config, nixos-hardware, ... }:
+{
+  pkgs,
+  config,
+  nixos-hardware,
+  ...
+}:
 
 {
   imports = [
@@ -10,7 +15,9 @@
   ];
 
   jopejoe1 = {
-    audio = { enable = true; };
+    audio = {
+      enable = true;
+    };
     bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
@@ -60,9 +67,7 @@
     settings = {
       server = {
         systemTrayEnabled = true;
-        extensionRepos = [
-          "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"
-        ];
+        extensionRepos = [ "https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json" ];
         webUIEnabled = true;
         initialOpenInBrowserEnabled = true;
         webUIInterface = "browser";
@@ -103,6 +108,10 @@
   networking.hosts = {
     "192.168.88.251" = [ "wiki.it3" ];
     "192.168.88.252" = [ "pi400" ];
-    "127.0.0.1" = [ "local" "rss.local" "manga.local" ];
+    "127.0.0.1" = [
+      "local"
+      "rss.local"
+      "manga.local"
+    ];
   };
 }

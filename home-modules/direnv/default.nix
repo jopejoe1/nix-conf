@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.jopejoe1.direnv;
-in {
+let
+  cfg = config.jopejoe1.direnv;
+in
+{
   options.jopejoe1.direnv = {
     enable = lib.mkEnableOption "Enable direnv";
   };
@@ -13,5 +15,3 @@ in {
     };
   };
 }
-
-

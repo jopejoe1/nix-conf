@@ -1,16 +1,22 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 
 let
   mailAccounts = config.mailserver.loginAccounts;
-  htpasswd = pkgs.writeText "radicale.users" (concatStrings
-    (flip mapAttrsToList mailAccounts (mail: user:
-      mail + ":" + user.hashedPassword + "\n"
-    ))
+  htpasswd = pkgs.writeText "radicale.users" (
+    concatStrings (
+      flip mapAttrsToList mailAccounts (mail: user: mail + ":" + user.hashedPassword + "\n")
+    )
   );
 
-in {
+in
+{
   services.radicale = {
     enable = true;
     settings = {

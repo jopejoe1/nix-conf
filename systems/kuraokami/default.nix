@@ -1,4 +1,11 @@
-{ config, pkgs, lib, nixos-hardware, self, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nixos-hardware,
+  self,
+  ...
+}:
 
 {
   imports = [
@@ -105,25 +112,25 @@
   environment.systemPackages = with pkgs; [
     localPkgs.prismlauncher-withExtraStuff
     mixxx
-    (picard.overrideAttrs{
-      dontUseSetuptoolsCheck = true;
-    })
+    (picard.overrideAttrs { dontUseSetuptoolsCheck = true; })
     goverlay
-    (strawberry-qt6.overrideAttrs (finalAttrs: previousAttrs: {
-      version = "1.1.0-rc3";
-      src = fetchFromGitHub {
-        owner = "strawberrymusicplayer";
-        repo = "strawberry";
-        rev = "1.1.0-rc3";
-        hash = "sha256-4LhFxCi0ixMAjVaNVrQrLc0Vf1Z2dhnw6DTfTqtpiC4=";
-      };
-      buildInputs = previousAttrs.buildInputs ++ [
-        kdsingleapplication
-        gst_all_1.gst-plugins-rs
-        kdePackages.qtsvg
-        kdePackages.qtimageformats
-      ];
-    }))
+    (strawberry-qt6.overrideAttrs (
+      finalAttrs: previousAttrs: {
+        version = "1.1.0-rc3";
+        src = fetchFromGitHub {
+          owner = "strawberrymusicplayer";
+          repo = "strawberry";
+          rev = "1.1.0-rc3";
+          hash = "sha256-4LhFxCi0ixMAjVaNVrQrLc0Vf1Z2dhnw6DTfTqtpiC4=";
+        };
+        buildInputs = previousAttrs.buildInputs ++ [
+          kdsingleapplication
+          gst_all_1.gst-plugins-rs
+          kdePackages.qtsvg
+          kdePackages.qtimageformats
+        ];
+      }
+    ))
     libreoffice-qt
     jitsi-meet-electron
     thunderbird
@@ -139,9 +146,7 @@
     gamemode.enable = true;
     appimage = {
       enable = true;
-      package = pkgs.appimage-run.override {
-        extraPkgs = pkgs: [ pkgs.brotli ];
-      };
+      package = pkgs.appimage-run.override { extraPkgs = pkgs: [ pkgs.brotli ]; };
     };
     gnupg.agent = {
       enable = true;
@@ -150,13 +155,28 @@
     };
   };
 
-  nix.settings.system-features = [ "gccarch-alderlake" "benchmark" "big-parallel" "kvm" "nixos-test" ]
-    ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
+  nix.settings.system-features = [
+    "gccarch-alderlake"
+    "benchmark"
+    "big-parallel"
+    "kvm"
+    "nixos-test"
+  ] ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
 
-  boot.binfmt.emulatedSystems = [ "riscv64-linux" "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = [
+    "riscv64-linux"
+    "aarch64-linux"
+  ];
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [ libz xz xorg.libX11 freetype zstd dbus ];
+    libraries = with pkgs; [
+      libz
+      xz
+      xorg.libX11
+      freetype
+      zstd
+      dbus
+    ];
   };
 }

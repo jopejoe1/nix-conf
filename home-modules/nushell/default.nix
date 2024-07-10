@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.jopejoe1.nushell;
-in {
+let
+  cfg = config.jopejoe1.nushell;
+in
+{
   options.jopejoe1.nushell = {
     enable = lib.mkEnableOption "Enable Nushell";
   };
@@ -28,5 +35,3 @@ in {
     };
   };
 }
-
-

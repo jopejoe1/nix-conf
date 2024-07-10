@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.jopejoe1.moodle-dl;
-in {
+let
+  cfg = config.jopejoe1.moodle-dl;
+in
+{
   options.jopejoe1.moodle-dl = {
     enable = lib.mkEnableOption "Enable moodle-dl";
   };
@@ -22,7 +29,12 @@ in {
         git -C /var/lib/moodle-dl add .
         git -C /var/lib/moodle-dl commit -m "moodle-dl updated on `$(date)`"
       '';
-      path = with pkgs; [ openssh moodle-dl git coreutils ];
+      path = with pkgs; [
+        openssh
+        moodle-dl
+        git
+        coreutils
+      ];
       serviceConfig = {
         Type = "oneshot";
         User = "root";
@@ -30,4 +42,3 @@ in {
     };
   };
 }
-

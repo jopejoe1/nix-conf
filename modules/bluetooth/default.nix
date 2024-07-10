@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.jopejoe1.bluetooth;
-in {
+let
+  cfg = config.jopejoe1.bluetooth;
+in
+{
   options.jopejoe1.bluetooth = {
     enable = lib.mkEnableOption "Enable Bluetooth";
   };

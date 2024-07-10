@@ -1,9 +1,21 @@
-{ config, lib, pkgs, self, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
 
-let cfg = config.jopejoe1.nix;
-in {
-  options.jopejoe1.nix = { enable = lib.mkEnableOption "Enable Nix"; };
-  options.jopejoe1.gui = { enable = lib.mkEnableOption "Enable GUI"; };
+let
+  cfg = config.jopejoe1.nix;
+in
+{
+  options.jopejoe1.nix = {
+    enable = lib.mkEnableOption "Enable Nix";
+  };
+  options.jopejoe1.gui = {
+    enable = lib.mkEnableOption "Enable GUI";
+  };
 
   config = lib.mkIf cfg.enable {
     nix = {
@@ -31,39 +43,44 @@ in {
         keep-going = true;
         builders-use-substitutes = true;
       };
-#       buildMachines = [
-#         (rec {
-#           systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
-#           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
-#           maxJobs = if hostName != config.networking.hostName then 24 else 0;
-#           speedFactor = 20;
-#           sshKey = "/home/jopejoe1/.ssh/github";
-#           sshUser = "jopejoe1";
-#           hostName = "kuraokami";
-#           protocol = "ssh-ng";
-#         })
-#         (rec {
-#           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
-#           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
-#           maxJobs = if hostName != config.networking.hostName then 4 else 0;
-#           speedFactor = 10;
-#           sshUser = "jopejoe1";
-#           sshKey = "/home/jopejoe1/.ssh/github";
-#           hostName = "zap";
-#           protocol = "ssh-ng";
-#         })
-#       ];
+      #       buildMachines = [
+      #         (rec {
+      #           systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
+      #           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
+      #           maxJobs = if hostName != config.networking.hostName then 24 else 0;
+      #           speedFactor = 20;
+      #           sshKey = "/home/jopejoe1/.ssh/github";
+      #           sshUser = "jopejoe1";
+      #           hostName = "kuraokami";
+      #           protocol = "ssh-ng";
+      #         })
+      #         (rec {
+      #           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
+      #           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
+      #           maxJobs = if hostName != config.networking.hostName then 4 else 0;
+      #           speedFactor = 10;
+      #           sshUser = "jopejoe1";
+      #           sshKey = "/home/jopejoe1/.ssh/github";
+      #           hostName = "zap";
+      #           protocol = "ssh-ng";
+      #         })
+      #       ];
       distributedBuilds = true;
       package = pkgs.lix;
-      registry = lib.mkForce ((lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) self.inputs) // {
-        self.flake = self;
-      });
+      registry = lib.mkForce (
+        (lib.mapAttrs (_: flake: { inherit flake; })) (
+          (lib.filterAttrs (_: lib.isType "flake")) self.inputs
+        )
+        // {
+          self.flake = self;
+        }
+      );
       nixPath = lib.mkForce [ "/etc/nix/path" ];
 
     };
 
     nixpkgs = {
-      config ={
+      config = {
         allowUnfree = true;
         nvidia.acceptLicense = true;
       };
@@ -75,7 +92,10 @@ in {
       ];
     };
 
-    environment.etc = lib.mapAttrs' (name: value: { name = "nix/path/${name}"; value.source = value.flake; }) config.nix.registry;
+    environment.etc = lib.mapAttrs' (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    }) config.nix.registry;
 
     environment.systemPackages = with pkgs; [
       deploy-rs
@@ -92,9 +112,7 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
       backupFileExtension = "backup";
-      sharedModules = [
-        self.outputs.homeManagerModules.default
-      ];
+      sharedModules = [ self.outputs.homeManagerModules.default ];
     };
 
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
@@ -106,4 +124,3 @@ in {
     };
   };
 }
-

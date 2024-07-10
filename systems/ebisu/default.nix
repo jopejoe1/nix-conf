@@ -3,7 +3,9 @@
 {
 
   jopejoe1 = {
-    audio = { enable = true; };
+    audio = {
+      enable = true;
+    };
     bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
@@ -13,7 +15,6 @@
     };
     boot.systemd.enable = true;
   };
-
 
   environment.systemPackages = with pkgs; [ moonlight-qt ];
 

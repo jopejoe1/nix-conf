@@ -1,4 +1,10 @@
-{ modulesPath, lib, nixos-hardware, pkgs, ... }:
+{
+  modulesPath,
+  lib,
+  nixos-hardware,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -7,11 +13,23 @@
   ];
 
   boot = {
-    initrd = { availableKernelModules = [ "xhci_pci" ]; };
+    initrd = {
+      availableKernelModules = [ "xhci_pci" ];
+    };
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  boot.supportedFilesystems = lib.mkForce [ "btrfs" "cifs" "f2fs" "jfs" "ntfs" "reiserfs" "vfat" "xfs" "bchachefs" ];
+  boot.supportedFilesystems = lib.mkForce [
+    "btrfs"
+    "cifs"
+    "f2fs"
+    "jfs"
+    "ntfs"
+    "reiserfs"
+    "vfat"
+    "xfs"
+    "bchachefs"
+  ];
 
   #hardware.raspberry-pi."4".fkms-3d.enable = true;
 

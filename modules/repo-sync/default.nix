@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.jopejoe1.repo-sync;
-in {
+let
+  cfg = config.jopejoe1.repo-sync;
+in
+{
   options.jopejoe1.repo-sync = {
     enable = lib.mkEnableOption "Enable Repo Sync";
   };
@@ -30,7 +37,12 @@ in {
         git -C /var/lib/repo-sync push gitlab
         rm -r /var/lib/repo-sync
       '';
-      path = [ pkgs.openssh pkgs.git pkgs.coreutils pkgs.nix ];
+      path = [
+        pkgs.openssh
+        pkgs.git
+        pkgs.coreutils
+        pkgs.nix
+      ];
       serviceConfig = {
         Type = "oneshot";
         User = "root";
@@ -38,4 +50,3 @@ in {
     };
   };
 }
-

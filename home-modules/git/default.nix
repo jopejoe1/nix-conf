@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.jopejoe1.git;
-in {
+let
+  cfg = config.jopejoe1.git;
+in
+{
   options.jopejoe1.git = {
     enable = lib.mkEnableOption "Enable Git";
   };
@@ -15,11 +22,13 @@ in {
       userName = "jopejoe1";
       extraConfig = {
         core = {
-          whitespace = [ "blank-at-eol" "blank-at-eof" "space-before-tab" ];
+          whitespace = [
+            "blank-at-eol"
+            "blank-at-eof"
+            "space-before-tab"
+          ];
         };
       };
     };
   };
 }
-
-

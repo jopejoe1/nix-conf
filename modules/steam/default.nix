@@ -1,8 +1,17 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
-let cfg = config.jopejoe1.steam;
-in {
-  options.jopejoe1.steam = { enable = lib.mkEnableOption "Enable Steam"; };
+let
+  cfg = config.jopejoe1.steam;
+in
+{
+  options.jopejoe1.steam = {
+    enable = lib.mkEnableOption "Enable Steam";
+  };
 
   config = lib.mkIf cfg.enable {
     hardware.steam-hardware.enable = true;
@@ -14,10 +23,7 @@ in {
       localNetworkGameTransfers.openFirewall = true;
       gamescopeSession.enable = true;
       extest.enable = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
   };
 }
-

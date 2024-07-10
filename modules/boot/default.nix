@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./systemd
-  ];
+  imports = [ ./systemd ];
 }

@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./root ./jopejoe1 ];
+  imports = [
+    ./root
+    ./jopejoe1
+  ];
 }

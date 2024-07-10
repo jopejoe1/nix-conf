@@ -1,4 +1,10 @@
-{ config, pkgs, lib, self, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  self,
+  ...
+}:
 
 {
 
@@ -24,7 +30,10 @@
     ssh.enable = true;
   };
 
-  boot.initrd.availableKernelModules = [ "ahci" "nvme" ];
+  boot.initrd.availableKernelModules = [
+    "ahci"
+    "nvme"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];

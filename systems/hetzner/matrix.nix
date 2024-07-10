@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 let
   fqdn = "matrix.missing.ninja";
@@ -54,9 +54,7 @@ in
       server_name = "missing.ninja";
       registration_shared_secret = "";
       public_baseurl = baseUrl;
-      app_service_config_files = [
-        "/var/lib/matrix-synapse/whatsapp-registration.yaml"
-      ];
+      app_service_config_files = [ "/var/lib/matrix-synapse/whatsapp-registration.yaml" ];
       listeners = [
         {
           port = 8448;
@@ -66,7 +64,10 @@ in
           x_forwarded = true;
           resources = [
             {
-              names = [ "client" "federation" ];
+              names = [
+                "client"
+                "federation"
+              ];
               compress = true;
             }
           ];

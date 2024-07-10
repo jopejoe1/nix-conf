@@ -1,4 +1,9 @@
-{ config, pkgs, nixos-hardware, ... }:
+{
+  config,
+  pkgs,
+  nixos-hardware,
+  ...
+}:
 
 {
   imports = [
@@ -43,14 +48,18 @@
     enable = true;
     keyMap = "us";
   };
-  services.xserver = { layout = "us"; };
+  services.xserver = {
+    layout = "us";
+  };
 
   boot = {
-    supportedFilesystems = [ "ntfs" "btrfs" ];
+    supportedFilesystems = [
+      "ntfs"
+      "btrfs"
+    ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
     };
   };
 }
-

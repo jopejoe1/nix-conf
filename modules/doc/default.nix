@@ -1,8 +1,18 @@
-{ config, lib, pkgs, self, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
 
-let cfg = config.jopejoe1.doc;
-in {
-  options.jopejoe1.doc = { enable = lib.mkEnableOption "Enable Documentation"; };
+let
+  cfg = config.jopejoe1.doc;
+in
+{
+  options.jopejoe1.doc = {
+    enable = lib.mkEnableOption "Enable Documentation";
+  };
 
   config = lib.mkIf cfg.enable {
     documentation = {

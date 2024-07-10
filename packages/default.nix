@@ -1,20 +1,22 @@
-{ inputs, pkgs, system }:
+{
+  inputs,
+  pkgs,
+  system,
+}:
 
 {
-  tela-icon-theme-git = pkgs.tela-icon-theme.overrideAttrs {
-    src = inputs.tela-icon-theme;
-  };
+  tela-icon-theme-git = pkgs.tela-icon-theme.overrideAttrs { src = inputs.tela-icon-theme; };
 
   libadwaita-follow-theme = pkgs.libadwaita.overrideAttrs (old: {
     patches = (old.patches or [ ]) ++ [ ./adwaita-theming-support.patch ];
     doCheck = false;
   });
 
-  prismlauncher-withExtraStuff = inputs.prismlauncher.packages.${system}.prismlauncher.overrideAttrs (old: {
-    patches = (old.patches or [ ]) ++ [
-      ./prism-ftb.patch
-    ];
-  });
+  prismlauncher-withExtraStuff =
+    inputs.prismlauncher.packages.${system}.prismlauncher.overrideAttrs
+      (old: {
+        patches = (old.patches or [ ]) ++ [ ./prism-ftb.patch ];
+      });
 
   nixos-anywhere = inputs.nixos-anywhere.packages.${system}.nixos-anywhere;
 
@@ -26,9 +28,7 @@
       url = "https://mangabooth.com/";
       hash = "sha256-JxfjZLoN6I9twAQMT60Q27CgJg22G7zEU5GDra9rROs=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-child = pkgs.stdenv.mkDerivation rec {
@@ -39,9 +39,7 @@
       url = "https://mangabooth.com/";
       hash = "sha256-h9w2TmX1nXaoP27b9DQ1jf6z1hTS5+BWtlz+Fprk5dQ=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = ''
       mkdir -p $out
       unzip $src "madara-child/*" -d $out
@@ -56,9 +54,7 @@
       url = "https://mangabooth.com/";
       hash = "sha256-r22hGCDlVeYTOFlhfKoc3r4TtpZExJ2E2QP9ssRoJco=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   madara-shortcodes = pkgs.stdenv.mkDerivation rec {
@@ -69,9 +65,7 @@
       url = "https://mangabooth.com/";
       hash = "sha256-IW7C5DTzvt3ROFpfB21LY2wmdR45lNj9c8/THHCi6eY=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     unpackPhase = ''
       mkdir -p $out
       unzip $src "madara-shortcodes/*" -d $out
@@ -86,9 +80,7 @@
       url = "https://mangabooth.com/";
       hash = "sha256-9u+MGdOarNdLtARWiJpw/hsMR9X8r0h5qugGir+amUI=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   option-tree = pkgs.stdenv.mkDerivation rec {
@@ -98,9 +90,7 @@
       url = "https://downloads.wordpress.org/plugin/option-tree.zip";
       hash = "sha256-+dPt8qJ4rkmSKrIXX5IiWO4zkFkR+Uapjlbx1g7KzKs=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
   widget-logic = pkgs.stdenv.mkDerivation rec {
@@ -110,11 +100,9 @@
       url = "https://downloads.wordpress.org/plugin/widget-logic.zip";
       hash = "sha256-J2NOth3q+IaPVhFT97arsNfjUPyTZF4Vvin1Cb+xnKw=";
     };
-    nativeBuildInputs = [
-      pkgs.unzip
-    ];
+    nativeBuildInputs = [ pkgs.unzip ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
-  kde-hdr-fix = pkgs.callPackage ./kde-hdr.nix {};
-  kde-wallpaper = pkgs.callPackage ./kde-wallpaper.nix {};
+  kde-hdr-fix = pkgs.callPackage ./kde-hdr.nix { };
+  kde-wallpaper = pkgs.callPackage ./kde-wallpaper.nix { };
 }

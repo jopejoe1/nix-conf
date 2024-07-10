@@ -1,4 +1,9 @@
-{pkgs, config, lib, ...}:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   services.nginx = {
@@ -58,7 +63,7 @@
     };
   };
 
-  users.users.www-wordpress= {
+  users.users.www-wordpress = {
     isNormalUser = true;
     group = "www-wordpress";
     packages = with pkgs; [
@@ -96,37 +101,48 @@
     #    ensurePermissions = { "www-wordpress.*" = "ALL PRIVILEGES"; };
     #  }
     #];
-   };
+  };
 
-   systemd.services =
-   let
-    secretsVars = [ "AUTH_KEY" "SECURE_AUTH_KEY" "LOGGED_IN_KEY" "NONCE_KEY" "AUTH_SALT" "SECURE_AUTH_SALT" "LOGGED_IN_SALT" "NONCE_SALT" ];
-    secretsScript = hostStateDir: ''
-      # The match in this line is not a typo, see https://github.com/NixOS/nixpkgs/pull/124839
-      grep -q "LOOGGED_IN_KEY" "${hostStateDir}/secret-keys.php" && rm "${hostStateDir}/secret-keys.php"
-      if ! test -e "${hostStateDir}/secret-keys.php"; then
-        umask 0177
-        echo "<?php" >> "${hostStateDir}/secret-keys.php"
-        ${lib.concatMapStringsSep "\n" (var: ''
-          echo "define('${var}', '`tr -dc a-zA-Z0-9 </dev/urandom | head -c 64`');" >> "${hostStateDir}/secret-keys.php"
-        '') secretsVars}
-        echo "?>" >> "${hostStateDir}/secret-keys.php"
-        chmod 440 "${hostStateDir}/secret-keys.php"
-      fi
-    '';
-   in
-   {
-    "wordpress-init" = {
-      wantedBy = [ "multi-user.target" ];
-      before = [ "phpfpm-wordpress.service" ];
-      after = [ "mysql.service" ];
-      script = secretsScript "/var/www/wordpress/";
+  systemd.services =
+    let
+      secretsVars = [
+        "AUTH_KEY"
+        "SECURE_AUTH_KEY"
+        "LOGGED_IN_KEY"
+        "NONCE_KEY"
+        "AUTH_SALT"
+        "SECURE_AUTH_SALT"
+        "LOGGED_IN_SALT"
+        "NONCE_SALT"
+      ];
+      secretsScript = hostStateDir: ''
+        # The match in this line is not a typo, see https://github.com/NixOS/nixpkgs/pull/124839
+        grep -q "LOOGGED_IN_KEY" "${hostStateDir}/secret-keys.php" && rm "${hostStateDir}/secret-keys.php"
+        if ! test -e "${hostStateDir}/secret-keys.php"; then
+          umask 0177
+          echo "<?php" >> "${hostStateDir}/secret-keys.php"
+          ${
+            lib.concatMapStringsSep "\n" (var: ''
+              echo "define('${var}', '`tr -dc a-zA-Z0-9 </dev/urandom | head -c 64`');" >> "${hostStateDir}/secret-keys.php"
+            '') secretsVars
+          }
+          echo "?>" >> "${hostStateDir}/secret-keys.php"
+          chmod 440 "${hostStateDir}/secret-keys.php"
+        fi
+      '';
+    in
+    {
+      "wordpress-init" = {
+        wantedBy = [ "multi-user.target" ];
+        before = [ "phpfpm-wordpress.service" ];
+        after = [ "mysql.service" ];
+        script = secretsScript "/var/www/wordpress/";
 
-      serviceConfig = {
-        Type = "oneshot";
-        User = "www-wordpress";
-        Group = "nginx";
+        serviceConfig = {
+          Type = "oneshot";
+          User = "www-wordpress";
+          Group = "nginx";
+        };
       };
     };
-  };
 }

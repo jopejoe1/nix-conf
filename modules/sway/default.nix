@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.jopejoe1.sway;
-in {
+let
+  cfg = config.jopejoe1.sway;
+in
+{
   options.jopejoe1.sway = {
     enable = lib.mkEnableOption "Enable Sway";
   };
@@ -12,4 +14,3 @@ in {
     };
   };
 }
-

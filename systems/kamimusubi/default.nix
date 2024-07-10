@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   jopejoe1 = {
@@ -10,11 +15,10 @@
     ssh.enable = true;
   };
 
-
   time.timeZone = "Europe/Berlin";
-  
+
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
-  
+
   boot.loader = {
     efi = {
       canTouchEfiVariables = false;

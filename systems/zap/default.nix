@@ -1,4 +1,11 @@
-{ config, pkgs, lib, modulesPath, self, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  modulesPath,
+  self,
+  ...
+}:
 
 {
   jopejoe1 = {
@@ -13,16 +20,22 @@
     gui.enable = false;
   };
 
-  imports =
-    [
-      (modulesPath + "/profiles/qemu-guest.nix")
-      self.inputs.srvos.nixosModules.server
-      self.inputs.srvos.nixosModules.mixins-cloud-init
-      self.inputs.srvos.nixosModules.mixins-nginx
-      ./wp-test.nix
-    ];
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+    self.inputs.srvos.nixosModules.server
+    self.inputs.srvos.nixosModules.mixins-cloud-init
+    self.inputs.srvos.nixosModules.mixins-nginx
+    ./wp-test.nix
+  ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [
+    "ata_piix"
+    "uhci_hcd"
+    "virtio_pci"
+    "virtio_scsi"
+    "sd_mod"
+    "sr_mod"
+  ];
 
   networking.useDHCP = false;
 
@@ -44,10 +57,10 @@
     #"db.missing.ninja" = {
     #  enableACME = true;
     #  forceSSL = true;
-   #   locations."/" = {
+    #   locations."/" = {
     #    proxyPass = "http://134.255.219.135:8000/";
-   #   };
-   # };
+    #   };
+    # };
   };
 
   services.nginx.enable = true;
@@ -70,8 +83,16 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 8000 ];
-    allowedUDPPorts = [ 80 443 8000 ];
+    allowedTCPPorts = [
+      80
+      443
+      8000
+    ];
+    allowedUDPPorts = [
+      80
+      443
+      8000
+    ];
   };
 
   users.users.fp = {
@@ -88,7 +109,10 @@
 
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
 
-  services.openssh.ports = [ 8081 22 ];
+  services.openssh.ports = [
+    8081
+    22
+  ];
 
   services.surrealdb.enable = false;
   services.surrealdb.host = "134.255.219.135";

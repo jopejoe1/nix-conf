@@ -43,7 +43,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # Packages
     tela-icon-theme = {
       url = "github:vinceliuice/Tela-icon-theme";
@@ -67,18 +66,21 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
-    nixosModules.default = import ./modules;
-    homeManagerModules.default = import ./home-modules;
-    nixosConfigurations = import ./systems {
-      inherit self inputs nixpkgs;
+  outputs =
+    inputs@{ self, nixpkgs, ... }:
+    {
+      nixosModules.default = import ./modules;
+      homeManagerModules.default = import ./home-modules;
+      nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };
+      packages = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (
+        system:
+        import ./packages {
+          inherit system inputs;
+          pkgs = nixpkgs.legacyPackages.${system};
+        }
+      );
+      formatter = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (
+        system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
+      );
     };
-    packages = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system: import ./packages {
-      inherit system inputs;
-      pkgs = nixpkgs.legacyPackages.${system};
-    });
-    formatter = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system:
-      nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
-    );
-  };
 }

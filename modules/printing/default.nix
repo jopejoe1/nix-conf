@@ -1,7 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.jopejoe1.printing;
-in {
+let
+  cfg = config.jopejoe1.printing;
+in
+{
   options.jopejoe1.printing = {
     enable = lib.mkEnableOption "Enable Printing";
   };
@@ -27,4 +34,3 @@ in {
     };
   };
 }
-

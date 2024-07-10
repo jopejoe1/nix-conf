@@ -1,4 +1,9 @@
-{ modulesPath, lib, nixos-hardware, ... }:
+{
+  modulesPath,
+  lib,
+  nixos-hardware,
+  ...
+}:
 
 {
   imports = [
@@ -7,8 +12,12 @@
   ];
 
   boot = {
-    initrd = { availableKernelModules = [ "xhci_pci" ]; };
-    loader = { generic-extlinux-compatible.enable = true; };
+    initrd = {
+      availableKernelModules = [ "xhci_pci" ];
+    };
+    loader = {
+      generic-extlinux-compatible.enable = true;
+    };
   };
 
   fileSystems."/" = {

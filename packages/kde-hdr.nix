@@ -2,7 +2,7 @@
   lib,
   stdenv,
   meson,
-#  ninja,
+  #  ninja,
   fetchFromGitHub,
   vulkan-headers,
   libX11,
@@ -22,10 +22,13 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     meson
- #   ninja
+    #   ninja
   ];
 
-  buildInputs = [ vulkan-headers libX11 ];
+  buildInputs = [
+    vulkan-headers
+    libX11
+  ];
 
   strictDeps = true;
 

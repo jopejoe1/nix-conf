@@ -28,14 +28,20 @@
   };
 
   systemd.services.dns-rfc2136-conf = {
-    requiredBy = [ "acme-net0loggy.net.service" "bind.service" ];
-    before = [ "acme-net0loggy.net.service" "bind.service" ];
+    requiredBy = [
+      "acme-net0loggy.net.service"
+      "bind.service"
+    ];
+    before = [
+      "acme-net0loggy.net.service"
+      "bind.service"
+    ];
     unitConfig = {
       ConditionPathExists = "!/var/lib/secrets/dnskeys.conf";
     };
     serviceConfig = {
       Type = "oneshot";
-      UMask = 0077;
+      UMask = 77;
     };
     path = [ pkgs.bind ];
     script = ''

@@ -19,10 +19,12 @@
     fsType = "vfat";
   };
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = (4 * 1024) + (2 * 1024);
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = (4 * 1024) + (2 * 1024);
+    }
+  ];
 
   networking.wireless.enable = true;
 
@@ -37,4 +39,3 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.enableRedistributableFirmware = true;
 }
-

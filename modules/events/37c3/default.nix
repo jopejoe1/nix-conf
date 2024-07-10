@@ -1,7 +1,9 @@
 { config, lib, ... }:
 
-let cfg = config.events."37c3";
-in {
+let
+  cfg = config.events."37c3";
+in
+{
   options.events."37c3" = {
     enable = lib.mkEnableOption "Enable settings for the 37c3 event";
   };
@@ -29,7 +31,9 @@ in {
           password = "37C3";
           phase2-auth = "mschapv2";
         };
-        ipv4 = { method = "auto"; };
+        ipv4 = {
+          method = "auto";
+        };
         ipv6 = {
           addr-gen-mode = "default";
           method = "auto";
@@ -43,8 +47,7 @@ in {
         ca_cert="${
           builtins.fetchurl {
             url = "https://letsencrypt.org/certs/isrgrootx1.pem";
-            sha256 =
-              "sha256:1la36n2f31j9s03v847ig6ny9lr875q3g7smnq33dcsmf2i5gd92";
+            sha256 = "sha256:1la36n2f31j9s03v847ig6ny9lr875q3g7smnq33dcsmf2i5gd92";
           }
         }"
         altsubject_match="DNS:radius.c3noc.net"
