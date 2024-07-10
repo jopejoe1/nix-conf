@@ -1,6 +1,11 @@
 { config, lib, pkgs, inputs, ... }:
 
-let cfg = config.jopejoe1.firefox;
+let
+  cfg = config.jopejoe1.firefox;
+  lock = value: {
+    Value = value;
+    Status = "locked";
+  };
 in {
   options.jopejoe1.firefox = {
     enable = lib.mkEnableOption "Enable Firefox";
@@ -10,13 +15,7 @@ in {
     programs = {
       firefox = {
         enable = true;
-        package = pkgs.wrapFirefox pkgs.firefox-devedition-unwrapped {
-          icon = "firefox-devedition";
-          nameSuffix = "-devedition";
-          pname = "firefox-devedition";
-          desktopName = "Firefox DevEdition";
-          wmClass = "firefox-devedition";
-        };
+        package = pkgs.firefox;
         policies = {
           AppAutoUpdate = false;
           BackgroundAppUpdate = false;
@@ -77,8 +76,8 @@ in {
             EnablePermissions = false;
           };
           SupportMenu = {
-            Title = "Localhost";
-            URL = "http://localhost";
+            Title = "Config";
+            URL = "https://codeberg.org/jopejoe1/nix-conf";
           };
           UserMessaging = {
             WhatsNew = false;
@@ -88,6 +87,71 @@ in {
             SkipOnboarding = true;
             MoreFromMozilla = false;
             Locked = true;
+          };
+          Preferences = {
+            "privacy.resistFingerprinting" = lock true;
+              "privacy.trackingprotection.fingerprinting.enabled" = lock true;
+              "privacy.trackingprotection.cryptomining.enabled" = lock true;
+              "dom.event.clipboardevents.enabled" = lock false;
+              "dom.battery.enabled" = lock false;
+              "browser.safebrowsing.phishing.enabled" = lock false;
+              "browser.safebrowsing.malware.enabled" = lock false;
+              "browser.zoom.siteSpecific" = lock true;
+              "config.trim_on_minimize" = lock true;
+              "pdfjs.annotationEditorMode" = lock 0;
+              "pdfjs.annotationMode" = lock 2;
+              "font.name-list.emoji" = lock (lib.strings.concatStringsSep ", " config.jopejoe1.common.fonts.emoji);
+
+              # Theming
+              "widget.gtk.overlay-scrollbars.enabled" = lock false;
+
+              ## Arkenfox Stuff
+              "browser.aboutConfig.showWarning" = lock false;
+              "browser.newtabpage.activity-stream.showSponsored" = lock false;
+              "browser.newtabpage.activity-stream.showSponsoredTopSites" = lock false;
+              "extensions.getAddons.showPane" = lock false;
+              "extensions.htmlaboutaddons.recommendations.enabled" = lock false;
+              "browser.discovery.enabled" = lock false;
+              "browser.shopping.experience2023.enabled" = lock false;
+              "datareporting.policy.dataSubmissionEnabled" = lock false;
+              "datareporting.healthreport.uploadEnabled" = lock false;
+              "toolkit.telemetry.unified" = lock false;
+              "toolkit.telemetry.enabled" = lock false;
+              "toolkit.telemetry.server" = lock "data:,";
+              "toolkit.telemetry.archive.enabled" = lock false;
+              "toolkit.telemetry.newProfilePing.enabled" = lock false;
+              "toolkit.telemetry.shutdownPingSender.enabled" = lock false;
+              "toolkit.telemetry.updatePing.enabled" = lock false;
+              "toolkit.telemetry.bhrPing.enabled" = lock false;
+              "toolkit.telemetry.firstShutdownPing.enabled" = lock false;
+              "toolkit.telemetry.coverage.opt-out" = lock true;
+              "toolkit.coverage.opt-out" = lock true;
+              "toolkit.coverage.endpoint.base" = lock "";
+              "browser.ping-centre.telemetry" = lock false;
+              "browser.newtabpage.activity-stream.feeds.telemetry" = lock false;
+              "browser.newtabpage.activity-stream.telemetry" = lock false;
+              "app.shield.optoutstudies.enabled" = lock false;
+              "app.normandy.enabled" = lock false;
+              "app.normandy.api_url" = lock "";
+              "breakpad.reportURL" = lock "";
+              "browser.tabs.crashReporting.sendReport" = lock false;
+              "browser.crashReports.unsubmittedCheck.autoSubmit2" = lock false;
+              "captivedetect.canonicalURL" = lock "";
+              "network.captive-portal-service.enabled" = lock false;
+              "network.connectivity-service.enabled" = lock false;
+              "network.prefetch-next" = lock false;
+              "network.dns.disablePrefetch" = lock true;
+              "network.predictor.enabled" = lock false;
+              "network.predictor.enable-prefetch" = lock false;
+              "network.http.speculative-parallel-limit" = lock 0;
+              "browser.places.speculativeConnect.enabled" = lock false;
+              "browser.urlbar.speculativeConnect.enabled" = lock false;
+              "browser.urlbar.suggest.quicksuggest.nonsponsored" = lock false;
+              "browser.urlbar.suggest.quicksuggest.sponsored" = lock false;
+              "browser.formfill.enable" = lock false;
+              "browser.download.start_downloads_in_tmp_dir" = lock true;
+              "browser.uitour.enabled" = lock false;
+              "browser.tabs.inTitlebar" = lock 0;
           };
           "3rdparty" = {
             Extensions = {
@@ -318,70 +382,6 @@ in {
                 "LibRedirect".metaData.hidden = true;
                 "Wikipedia (en)".metaData.alias = "@wiki";
               };
-            };
-            settings = {
-              "privacy.resistFingerprinting" = true;
-              "privacy.trackingprotection.fingerprinting.enabled" = true;
-              "privacy.trackingprotection.cryptomining.enabled" = true;
-              "dom.event.clipboardevents.enabled" = false;
-              "dom.battery.enabled" = false;
-              "browser.safebrowsing.phishing.enabled" = false;
-              "browser.safebrowsing.malware.enabled" = false;
-              "browser.zoom.siteSpecific" = true;
-              "config.trim_on_minimize" = true;
-              "pdfjs.annotationEditorMode" = 0;
-              "pdfjs.annotationMode" = 2;
-              "font.name-list.emoji" = lib.strings.concatStringsSep ", " config.jopejoe1.common.fonts.emoji;
-
-              # Theming
-              "widget.gtk.overlay-scrollbars.enabled" = false;
-
-              ## Arkenfox Stuff
-              "browser.aboutConfig.showWarning" = false;
-              "browser.newtabpage.activity-stream.showSponsored" = false;
-              "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-              "extensions.getAddons.showPane" = false;
-              "extensions.htmlaboutaddons.recommendations.enabled" = false;
-              "browser.discovery.enabled" = false;
-              "browser.shopping.experience2023.enabled" = false;
-              "datareporting.policy.dataSubmissionEnabled" = false;
-              "datareporting.healthreport.uploadEnabled" = false;
-              "toolkit.telemetry.unified" = false;
-              "toolkit.telemetry.enabled" = false;
-              "toolkit.telemetry.server" = "data:,";
-              "toolkit.telemetry.archive.enabled" = false;
-              "toolkit.telemetry.newProfilePing.enabled" = false;
-              "toolkit.telemetry.shutdownPingSender.enabled" = false;
-              "toolkit.telemetry.updatePing.enabled" = false;
-              "toolkit.telemetry.bhrPing.enabled" = false;
-              "toolkit.telemetry.firstShutdownPing.enabled" = false;
-              "toolkit.telemetry.coverage.opt-out" = true;
-              "toolkit.coverage.opt-out" = true;
-              "toolkit.coverage.endpoint.base" = "";
-              "browser.ping-centre.telemetry" = false;
-              "browser.newtabpage.activity-stream.feeds.telemetry" = false;
-              "browser.newtabpage.activity-stream.telemetry" = false;
-              "app.shield.optoutstudies.enabled" = false;
-              "app.normandy.enabled" = false;
-              "app.normandy.api_url" = "";
-              "breakpad.reportURL" = "";
-              "browser.tabs.crashReporting.sendReport" = false;
-              "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
-              "captivedetect.canonicalURL" = "";
-              "network.captive-portal-service.enabled" = false;
-              "network.connectivity-service.enabled" = false;
-              "network.prefetch-next" = false;
-              "network.dns.disablePrefetch" = true;
-              "network.predictor.enabled" = false;
-              "network.predictor.enable-prefetch" = false;
-              "network.http.speculative-parallel-limit" = 0;
-              "browser.places.speculativeConnect.enabled" = false;
-              "browser.urlbar.speculativeConnect.enabled" = false;
-              "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-              "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-              "browser.formfill.enable" = false;
-              "browser.download.start_downloads_in_tmp_dir" = true;
-              "browser.uitour.enabled" = false;
             };
           };
           dev-edition-default = {
