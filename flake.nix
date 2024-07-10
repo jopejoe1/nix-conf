@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Outputs
     nixos-generators = {
@@ -77,5 +77,8 @@
       inherit system inputs;
       pkgs = nixpkgs.legacyPackages.${system};
     });
+    formatter = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system:
+      nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
+    );
   };
 }
