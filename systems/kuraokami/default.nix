@@ -3,9 +3,9 @@
 {
   imports = [
     ./hardware.nix
-    #nixos-hardware.nixosModules.common-cpu-intel
-    nixos-hardware.nixosModules.common-gpu-intel
-    nixos-hardware.nixosModules.common-gpu-nvidia
+    nixos-hardware.nixosModules.common-cpu-intel
+    #nixos-hardware.nixosModules.common-gpu-intel
+    #nixos-hardware.nixosModules.common-gpu-nvidia
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-ssd
@@ -86,32 +86,46 @@
   time.timeZone = "Europe/Berlin";
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [ ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ ];
     };
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
+      #package = config.boot.kernelPackages.nvidiaPackages.stable;
+      #modesetting.enable = true;
     };
     gpgSmartcards.enable = true;
   };
 
   boot.kernelModules = [ "i2c-nct6775" ];
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   environment.systemPackages = with pkgs; [
     localPkgs.prismlauncher-withExtraStuff
     mixxx
     picard
     goverlay
-    strawberry
-    whatsapp-for-linux
-    teams-for-linux
+    (strawberry-qt6.overrideAttrs (finalAttrs: previousAttrs: {
+      version = "1.1.0-rc3";
+      src = fetchFromGitHub {
+        owner = "strawberrymusicplayer";
+        repo = "strawberry";
+        rev = "1.1.0-rc3";
+        hash = "sha256-4LhFxCi0ixMAjVaNVrQrLc0Vf1Z2dhnw6DTfTqtpiC4=";
+      };
+      buildInputs = previousAttrs.buildInputs ++ [
+        kdsingleapplication
+        gst_all_1.gst-plugins-rs
+        kdePackages.qtsvg
+        kdePackages.qtimageformats
+      ];
+    }))
     libreoffice-qt
-    webex
     jitsi-meet-electron
     thunderbird
-    python3
+    vesktop
   ];
 
   programs = {
@@ -138,4 +152,9 @@
     ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
 
   boot.binfmt.emulatedSystems = [ "riscv64-linux" "aarch64-linux" ];
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ libz xz xorg.libX11 freetype zstd dbus ];
+  };
 }
