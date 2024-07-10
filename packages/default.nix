@@ -115,4 +115,6 @@
     ];
     installPhase = "mkdir -p $out; cp -R * $out/";
   };
+  kde-hdr-fix = pkgs.callPackage ./kde-hdr.nix {};
+  kde-wallpaper = pkgs.callPackage ./kde-wallpaper.nix {};
 }
