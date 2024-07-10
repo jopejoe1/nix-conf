@@ -105,7 +105,9 @@
   environment.systemPackages = with pkgs; [
     localPkgs.prismlauncher-withExtraStuff
     mixxx
-    picard
+    (picard.overrideAttrs{
+      dontUseSetuptoolsCheck = true;
+    })
     goverlay
     (strawberry-qt6.overrideAttrs (finalAttrs: previousAttrs: {
       version = "1.1.0-rc3";
