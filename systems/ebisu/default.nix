@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 
 {
 
@@ -19,4 +19,5 @@
   environment.systemPackages = with pkgs; [ moonlight-qt ];
 
   time.timeZone = "Europe/Berlin";
+  imports = [ ./hardware-configuration.nix ];
 }

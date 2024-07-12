@@ -16,6 +16,7 @@
     local.enable = true;
     nix.enable = true;
     sway.enable = true;
+    gui.enable = true;
     user = {
       jopejoe1.enable = true;
       root.enable = true;
@@ -27,7 +28,7 @@
     hostId = "af13bbec";
   };
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   time.timeZone = "Europe/Berlin";
 
@@ -49,7 +50,7 @@
     keyMap = "us";
   };
   services.xserver = {
-    layout = "us";
+    xkb.layout = "us";
   };
 
   boot = {

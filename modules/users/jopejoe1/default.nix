@@ -49,18 +49,7 @@ in
           catppuccin-kde
           #catppuccin-gtk
           tela-icon-theme
-          (
-            (discord.overrideAttrs (old: {
-              desktopItem = old.desktopItem.override (old: {
-                exec = old.exec + " --disable-gpu-sandbox";
-              });
-            })).override
-            {
-              withOpenASAR = true;
-              withVencord = true;
-              withTTS = true;
-            }
-          )
+          vesktop
         ];
     };
     home-manager.users.jopejoe1 = {

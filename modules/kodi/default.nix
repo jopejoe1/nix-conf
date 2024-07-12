@@ -23,17 +23,18 @@ in
         package = pkgs.kodi-wayland;
       };
       displayManager = {
-        defaultSession = "plasmawayland";
-        autoLogin = {
-          enable = true;
-          user = "jopejoe1";
-        };
         lightdm = {
           enable = true;
           autoLogin.timeout = 3;
         };
-        sddm.enable = lib.mkForce false;
       };
+    };
+    services.displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "jopejoe1";
+      };
+      sddm.enable = lib.mkForce false;
     };
   };
 }

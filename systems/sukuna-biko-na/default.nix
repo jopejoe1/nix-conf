@@ -34,6 +34,7 @@
     nix.enable = true;
     kodi.enable = true;
     plasma.enable = true;
+    gui.enable = true;
     user = {
       jopejoe1.enable = true;
       root.enable = true;
