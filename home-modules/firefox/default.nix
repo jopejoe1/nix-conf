@@ -230,6 +230,7 @@ in
               terms-of-service-didnt-read
               unpaywall
               modrinthify
+              stylus
             ];
             id = 0;
             isDefault = true;
