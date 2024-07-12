@@ -43,28 +43,6 @@ in
         keep-going = true;
         builders-use-substitutes = true;
       };
-      #       buildMachines = [
-      #         (rec {
-      #           systems = [ self.nixosConfigurations.kuraokami.config.nixpkgs.hostPlatform.system ];
-      #           supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
-      #           maxJobs = if hostName != config.networking.hostName then 24 else 0;
-      #           speedFactor = 20;
-      #           sshKey = "/home/jopejoe1/.ssh/github";
-      #           sshUser = "jopejoe1";
-      #           hostName = "kuraokami";
-      #           protocol = "ssh-ng";
-      #         })
-      #         (rec {
-      #           systems = [ self.nixosConfigurations.zap.config.nixpkgs.hostPlatform.system ];
-      #           supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
-      #           maxJobs = if hostName != config.networking.hostName then 4 else 0;
-      #           speedFactor = 10;
-      #           sshUser = "jopejoe1";
-      #           sshKey = "/home/jopejoe1/.ssh/github";
-      #           hostName = "zap";
-      #           protocol = "ssh-ng";
-      #         })
-      #       ];
       distributedBuilds = true;
       package = pkgs.lix;
       registry = lib.mkForce (
@@ -98,14 +76,9 @@ in
     }) config.nix.registry;
 
     environment.systemPackages = with pkgs; [
-      deploy-rs
-      nixfmt
-      nixpkgs-fmt
       nix-index
       nix-prefetch-git
       nixpkgs-review
-      nurl
-      nix-init
     ];
 
     home-manager = {
@@ -120,7 +93,6 @@ in
     networking.hosts = {
       "192.168.191.46" = [ "zap" ];
       "192.168.191.142" = [ "kuraokami" ];
-      "2a01:4f8:1c1e:7f93::1" = [ "bloomshine.de" ];
     };
   };
 }

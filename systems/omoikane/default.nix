@@ -40,7 +40,7 @@
   };
 
   services.xserver = {
-    xkbVariant = "altgr-intl";
+    xkb.variant = "altgr-intl";
   };
 
   services = {
@@ -53,9 +53,9 @@
   time.timeZone = "Europe/Berlin";
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     gpgSmartcards.enable = true;
   };
