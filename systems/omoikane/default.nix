@@ -96,4 +96,12 @@
   };
 
   boot.initrd.systemd.enable = true;
+  programs.captive-browser = {
+    enable = true;
+    interface = "wlp5s0";
+  };
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [];
+  };
 }
