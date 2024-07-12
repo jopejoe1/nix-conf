@@ -215,14 +215,9 @@ in
           default = {
             extensions = with pkgs.firefox-addons; [
               ublock-origin
-              privacy-badger
               bitwarden
               clearurls
-              decentraleyes
-              duckduckgo-privacy-essentials
-              ghostery
               libredirect
-              privacy-badger
               #languagetool
               return-youtube-dislikes
               sponsorblock
@@ -231,13 +226,9 @@ in
               refined-github
               plasma-integration
               #bypass-paywalls-clean
-              lovely-forks
-              search-by-image
               skip-redirect
               terms-of-service-didnt-read
               unpaywall
-              #wappalyzer
-              wayback-machine
               modrinthify
             ];
             id = 0;
