@@ -22,7 +22,7 @@ in
     programs = {
       firefox = {
         enable = true;
-        package = pkgs.firefox;
+        package = pkgs.firefox-devedition;
         policies = {
           AppAutoUpdate = false;
           BackgroundAppUpdate = false;
