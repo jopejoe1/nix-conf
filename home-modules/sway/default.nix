@@ -18,16 +18,16 @@ in
       enable = true;
       config = {
         output = {
-          HDMI-A-4 = {
+          "Acer Technologies Acer AL1717 0x70201097" = {
             mode = "1280x1024@75.025Hz";
             pos = "2560 0";
           };
-          HDMI-A-3 = {
+          "LG Electronics LG ULTRAGEAR+ 305NTLE00976" = {
             mode = "2560x1440@143.991Hz";
             adaptive_sync = "on";
             pos = "0 0";
           };
-          DP-3 = {
+          "Eizo Nanao Corporation EV2316W 36270122" = {
             mode = "1920x1080@60.000Hz";
             transform = "270";
             pos = "-1080 0";
