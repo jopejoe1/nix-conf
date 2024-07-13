@@ -27,7 +27,7 @@ in
           };
           DP-3 = {
             mode = "1920x1080@60.000Hz";
-            transform ="90";
+            transform ="270";
           };
         };
       };
