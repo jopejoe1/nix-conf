@@ -231,6 +231,7 @@ in
               unpaywall
               modrinthify
               stylus
+              multi-account-containers
             ];
             id = 0;
             isDefault = true;
