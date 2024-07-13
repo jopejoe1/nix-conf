@@ -8,5 +8,6 @@
     ./git
     ./gpg
     ./nushell
+    ./sway
   ];
 }

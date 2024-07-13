@@ -75,6 +75,7 @@ in
         nushell.enable = true;
         git.enable = true;
         direnv.enable = true;
+        sway.enable = true;
         firefox.enable = config.jopejoe1.gui.enable;
       };
     };
