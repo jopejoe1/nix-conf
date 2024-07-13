@@ -384,6 +384,26 @@ in
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@wf" ];
                 };
+                "MusicBrainz Artis" = {
+                  urls = [
+                    {
+                      template = "https://musicbrainz.org/search";
+                      params = [
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                        {
+                          name = "type";
+                          value = "artis";
+                        }
+                      ];
+                    }
+                  ];
+                  iconUpdateURL = "https://musicbrainz.org/static/images/favicons/apple-touch-icon-180x180.png";
+                  updateInterval = 24 * 60 * 60 * 1000;
+                  definedAliases = [ "@mb" ];
+                };
                 "DuckDuckGo" = {
                   urls = [
                     {
