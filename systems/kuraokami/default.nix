@@ -109,8 +109,8 @@
 
   environment.systemPackages = with pkgs; [
     localPkgs.prismlauncher-withExtraStuff
+    picard
     mixxx
-    (picard.overrideAttrs { dontUseSetuptoolsCheck = true; })
     goverlay
     (strawberry-qt6.overrideAttrs (
       finalAttrs: previousAttrs: {
@@ -132,7 +132,6 @@
     libreoffice-qt
     jitsi-meet-electron
     thunderbird
-    vesktop
   ];
 
   programs = {
