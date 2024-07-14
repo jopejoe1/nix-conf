@@ -85,7 +85,10 @@ in
       useGlobalPkgs = true;
       useUserPackages = true;
       backupFileExtension = "backup";
-      sharedModules = [ self.outputs.homeManagerModules.default ];
+      sharedModules = [
+        self.outputs.homeManagerModules.default
+        self.inputs.catppuccin.homeManagerModules.catppuccin
+      ];
     };
 
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;

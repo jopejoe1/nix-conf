@@ -63,5 +63,11 @@ in
         videos = "${config.home.homeDirectory}/Videos";
       };
     };
+    qt = {
+      enable = true;
+      style.name = "kvantum";
+      platformTheme.name = "kvantum";
+    };
+    gtk.enable = true;
   };
 }

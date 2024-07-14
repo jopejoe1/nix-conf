@@ -12,7 +12,7 @@
     ./hardware.nix
     nixos-hardware.nixosModules.common-cpu-intel
     #nixos-hardware.nixosModules.common-gpu-intel
-    #nixos-hardware.nixosModules.common-gpu-nvidia
+    nixos-hardware.nixosModules.common-gpu-nvidia
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-ssd
@@ -165,15 +165,9 @@
     "aarch64-linux"
   ];
 
-  programs.nix-ld = {
+  catppuccin = {
     enable = true;
-    libraries = with pkgs; [
-      libz
-      xz
-      xorg.libX11
-      freetype
-      zstd
-      dbus
-    ];
+    flavor = "frappe";
+    accent = "mauve";
   };
 }

@@ -78,6 +78,11 @@ in
         sway.enable = true;
         firefox.enable = config.jopejoe1.gui.enable;
       };
+      catppuccin = {
+        enable = true;
+        flavor = "frappe";
+        accent = "mauve";
+      };
     };
   };
 }

@@ -28,5 +28,6 @@
     self.inputs.home-manager.nixosModules.home-manager
     self.inputs.nixos-generators.nixosModules.all-formats
     self.inputs.sops-nix.nixosModules.sops
+    self.inputs.catppuccin.nixosModules.catppuccin
   ];
 }
