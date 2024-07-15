@@ -11,6 +11,16 @@ in
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
+      viAlias = true;
+      vimAlias = true;
+      colorschemes.catppuccin = {
+        enable = true;
+        settings.flavour = "frappe";
+      };
+      plugins = {
+        treesitter.enable = true;
+        direnv.enable = true;
+      };
     };
   };
 }
