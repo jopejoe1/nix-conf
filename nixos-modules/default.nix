@@ -29,5 +29,7 @@
     self.inputs.nixos-generators.nixosModules.all-formats
     self.inputs.sops-nix.nixosModules.sops
     self.inputs.catppuccin.nixosModules.catppuccin
+    self.inputs.nixvim.nixosModules.nixvim
+    self.outputs.modules.default
   ];
 }

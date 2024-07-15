@@ -74,6 +74,7 @@
   outputs =
     inputs@{ self, nixpkgs, ... }:
     {
+      modules.default = import ./modules;
       nixosModules.default = import ./nixos-modules;
       homeManagerModules.default = import ./home-modules;
       nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };
