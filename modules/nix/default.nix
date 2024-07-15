@@ -97,5 +97,6 @@ in
       "192.168.191.46" = [ "zap" ];
       "192.168.191.142" = [ "kuraokami" ];
     };
+    users.mutableUsers = false;
   };
 }
