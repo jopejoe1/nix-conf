@@ -18,6 +18,7 @@ in
       enable = true;
       config = {
         output = {
+          # Main Desktop
           "Acer Technologies Acer AL1717 0x70201097" = {
             mode = "1280x1024@75.025Hz";
             pos = "2560 0";
@@ -31,6 +32,18 @@ in
             mode = "1920x1080@60.000Hz";
             transform = "270";
             pos = "-1080 0";
+          };
+          # FrameWork 16
+          "BOE 0x0BC9 Unknown" = {
+            mode = "2560x1600@165.000Hz";
+            pos = "0 0";
+          };
+        };
+        input = {
+          "12972:18:Framework_Laptop_16_Keyboard_Module_-_ANSI_Keyboard" = {
+            "xkb_layout" = "us";
+            "xkb_variant" = "altgr-intl";
+            "xkb_model" = "pc104";
           };
         };
       };

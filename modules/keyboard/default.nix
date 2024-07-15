@@ -26,7 +26,7 @@ in
     };
     console = {
       enable = true;
-      keyMap = "de";
+      keyMap = cfg.layout;
     };
   };
 }
