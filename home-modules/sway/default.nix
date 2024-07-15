@@ -38,6 +38,11 @@ in
             mode = "2560x1600@165.000Hz";
             pos = "0 0";
           };
+          # Msi Laptop
+          "LG Display 0x0259 Unknown" = {
+            mode = "1920x1080@59.934Hz";
+            pos = "0 0";
+          };
         };
         input = {
           "12972:18:Framework_Laptop_16_Keyboard_Module_-_ANSI_Keyboard" = {
@@ -46,6 +51,10 @@ in
             "xkb_model" = "pc104";
           };
           "5426:515:Razer_Razer_BlackWidow_Chroma" = {
+            "xkb_layout" = "de";
+            "xkb_model" = "pc105";
+          };
+          "1:1:AT_Translated_Set_2_keyboard" = {
             "xkb_layout" = "de";
             "xkb_model" = "pc105";
           };
