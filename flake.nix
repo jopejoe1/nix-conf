@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     # Packages
     tela-icon-theme = {
@@ -63,14 +68,13 @@
       url = "github:nix-community/nixos-anywhere";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.disko.follows = "disko";
-
     };
   };
 
   outputs =
     inputs@{ self, nixpkgs, ... }:
     {
-      nixosModules.default = import ./modules;
+      nixosModules.default = import ./nixos-modules;
       homeManagerModules.default = import ./home-modules;
       nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };
       packages = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (
