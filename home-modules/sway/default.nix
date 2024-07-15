@@ -45,6 +45,10 @@ in
             "xkb_variant" = "altgr-intl";
             "xkb_model" = "pc104";
           };
+          "5426:515:Razer_Razer_BlackWidow_Chroma" = {
+            "xkb_layout" = "de";
+            "xkb_model" = "pc105";
+          };
         };
       };
     };
