@@ -43,6 +43,7 @@
 
   networking.nftables.enable = true;
 
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 53 ];
@@ -77,14 +78,14 @@
   };
 
   services.freshrss = {
-    enable = true;
+    enable = false;
     virtualHost = "rss.local";
     authType = "none";
     baseUrl = "http://rss.local";
   };
 
   services.nginx = {
-    enable = true;
+    enable = false;
     virtualHosts = {
       "manga.local" = {
         locations."/" = {
