@@ -83,7 +83,7 @@
     enable = true;
     runInUwsgi = false;
     settings = {
-       server.secret_key = "NotASecret";
+      server.secret_key = "NotASecret";
     };
     uwsgiConfig = {
       socket = "/run/searx/searx.sock";

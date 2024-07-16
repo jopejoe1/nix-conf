@@ -1,7 +1,5 @@
 { ... }:
 
 {
-  imports = [
-    ./neovim
-  ];
+  imports = [ ./neovim ];
 }
