@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.jopejoe1.common;
@@ -70,5 +70,7 @@ in
     };
     gtk.enable = true;
     gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    gtk.iconTheme.package = pkgs.tela-icon-theme;
+    gtk.iconTheme.name = "Tela-purple-dark";
   };
 }
