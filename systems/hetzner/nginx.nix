@@ -84,6 +84,7 @@
     runInUwsgi = true;
     uwsgiConfig = {
       socket = "/run/searx/searx.sock";
+      chmod-socket = "660";
     };
   };
 
