@@ -9,5 +9,6 @@
     ./gpg
     ./nushell
     ./sway
+    ./users
   ];
 }
