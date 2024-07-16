@@ -52,7 +52,7 @@
       "search.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://unix:${config.services.searx.uwsgiConfig.socket}";
+        locations."/".proxyPass = "http://localhost:3355";
       };
     };
   };
@@ -83,6 +83,7 @@
     enable = true;
     runInUwsgi = true;
     uwsgiConfig = {
+      http = ":3355";
       socket = "/run/searx/searx.sock";
       chmod-socket = "660";
     };
