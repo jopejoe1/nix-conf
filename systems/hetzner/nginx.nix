@@ -49,6 +49,11 @@
         forceSSL = true;
         enableACME = true;
       };
+      "search.missing.ninja" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://unix:${config.services.searx.uwsgiConfig.socket}";
+      };
     };
   };
 
@@ -73,6 +78,14 @@
     max_execution_time = 300
     max_input_time = 300
   '';
+
+  services.searx = {
+    enable = true;
+    runInUwsgi = true;
+    uwsgiConfig = {
+      socket = "/run/searx/searx.sock";
+    };
+  };
 
   services.wordpress.sites."test.missing.ninja" =
     with self.packages.${config.nixpkgs.hostPlatform.system}; {
