@@ -34,6 +34,11 @@ in
         max-jobs = "auto";
         auto-optimise-store = true;
         allowed-users = [ "*" ];
+        trusted-users = [
+          "builder"
+          "jopejeo1"
+          "root"
+        ];
         experimental-features = [
           "nix-command"
           "flakes"
@@ -43,6 +48,15 @@ in
         keep-going = true;
         builders-use-substitutes = true;
       };
+      #buildMachines = {
+      #  systems = [
+      #    "x86_64-linux"
+      #  ];
+      #  supportedFeatures = [
+      #    "kvm"
+      #    "big-parallel"
+      #  ];
+      #};
       distributedBuilds = true;
       package = pkgs.lix;
       registry = lib.mkForce (
