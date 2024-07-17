@@ -14,7 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.users.jopejoe1 = {
+    users.users.builder = {
       isNormalUser = true;
       description = "Build User";
       hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
