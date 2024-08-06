@@ -62,7 +62,7 @@ in
             "nixos-test"
           ];
           hostName = "missing.ninja";
-          publicHostKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXC3OTdOwL8WSChxEDCb5/VmFXp6fYFD3mL0XEw1EL0";
+          publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZYQzNPVGRPd0w4V1NDaHhFRENiNS9WbUZYcDZmWUZEM21MMFhFdzFFTDAgcm9vdEBoZXR6bmVyCg==";
           protocol = "ssh-ng";
           sshUser = "builder";
           sshKey = "/root/.ssh/builder";
