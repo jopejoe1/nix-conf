@@ -48,7 +48,6 @@ in
         builders-use-substitutes = true;
         download-attempts = 1;
         fallback = true;
-
       };
       buildMachines = [
         {
