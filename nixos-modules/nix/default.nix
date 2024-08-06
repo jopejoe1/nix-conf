@@ -31,7 +31,6 @@ in
         sandbox = true;
         require-sigs = true;
         max-jobs = "auto";
-        auto-optimise-store = true;
         allowed-users = [ "*" ];
         trusted-users = [
           "builder"
@@ -43,19 +42,32 @@ in
           "flakes"
         ];
         warn-dirty = true;
+        allow-dirty = false;
         use-xdg-base-directories = true;
         keep-going = true;
         builders-use-substitutes = true;
+        download-attempts = 1;
+        fallback = true;
+
       };
-      #buildMachines = {
-      #  systems = [
-      #    "x86_64-linux"
-      #  ];
-      #  supportedFeatures = [
-      #    "kvm"
-      #    "big-parallel"
-      #  ];
-      #};
+      buildMachines = [
+        {
+          systems = [
+            "x86_64-linux"
+          ];
+          supportedFeatures = [
+            "kvm"
+            "big-parallel"
+            "benchmark"
+            "nixos-test"
+          ];
+          hostName = "missing.ninja";
+          publicHostKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFXC3OTdOwL8WSChxEDCb5/VmFXp6fYFD3mL0XEw1EL0";
+          protocol = "ssh-ng";
+          sshUser = "builder";
+          sshKey = "/root/.ssh/builder";
+        }
+      ];
       distributedBuilds = true;
       package = pkgs.lix;
       registry = lib.mkForce (

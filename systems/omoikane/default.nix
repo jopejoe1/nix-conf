@@ -101,8 +101,4 @@
     enable = true;
     interface = "wlp5s0";
   };
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [ ];
-  };
 }
