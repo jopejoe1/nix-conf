@@ -66,6 +66,7 @@ in
           protocol = "ssh-ng";
           sshUser = "builder";
           sshKey = "/root/.ssh/builder";
+          maxJobs = 12;
         }
       ];
       distributedBuilds = true;
