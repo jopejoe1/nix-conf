@@ -68,6 +68,7 @@
     thunderbird
     strawberry-qt6
     picard
+    gh
   ];
 
   programs = {
