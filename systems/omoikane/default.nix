@@ -66,6 +66,8 @@
     goverlay
     libreoffice-qt
     thunderbird
+    strawberry-qt6
+    picard
   ];
 
   programs = {
