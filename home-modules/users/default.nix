@@ -1,6 +1,4 @@
 { ... }:
 {
-  imports = [
-    ./jopejoe1
-  ];
+  imports = [ ./jopejoe1 ];
 }

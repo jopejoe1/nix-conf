@@ -83,7 +83,12 @@
   };
 
   outputs =
-    inputs@{ self, nixpkgs, treefmt-nix, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      treefmt-nix,
+      ...
+    }:
     let
       forSystems = f: nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system: f system);
       pkgs' = system: nixpkgs.legacyPackages.${system};
@@ -101,10 +106,8 @@
           pkgs = pkgs' system;
         }
       );
-      formatter = forSystems (
-        system: (treefmtEval system).config.build.wrapper
-      );
-      checks = forSystems ( system: {
+      formatter = forSystems (system: (treefmtEval system).config.build.wrapper);
+      checks = forSystems (system: {
         formatting = (treefmtEval system).config.build.check self;
       });
     };
