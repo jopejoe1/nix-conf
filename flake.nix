@@ -74,24 +74,38 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.disko.follows = "disko";
     };
+
+    # Flake Stuff
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs@{ self, nixpkgs, ... }:
+    inputs@{ self, nixpkgs, treefmt-nix, ... }:
+    let
+      forSystems = f: nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system: f system);
+      pkgs' = system: nixpkgs.legacyPackages.${system};
+      treefmtEval = system: treefmt-nix.lib.evalModule (pkgs' system) ./treefmt.nix;
+    in
     {
       modules.default = import ./modules;
       nixosModules.default = import ./nixos-modules;
       homeManagerModules.default = import ./home-modules;
       nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };
-      packages = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (
+      packages = forSystems (
         system:
         import ./packages {
           inherit system inputs;
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = pkgs' system;
         }
       );
-      formatter = nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (
-        system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
+      formatter = forSystems (
+        system: (treefmtEval system).config.build.wrapper
       );
+      checks = forSystems ( system: {
+        formatting = (treefmtEval system).config.build.check self;
+      });
     };
 }
