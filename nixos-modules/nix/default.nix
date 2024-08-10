@@ -49,23 +49,29 @@ in
         download-attempts = 1;
         fallback = true;
       };
-      buildMachines = [
-        {
-          systems = [ "x86_64-linux" ];
-          supportedFeatures = [
-            "kvm"
-            "big-parallel"
-            "benchmark"
-            "nixos-test"
-          ];
-          hostName = "missing.ninja";
-          publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZYQzNPVGRPd0w4V1NDaHhFRENiNS9WbUZYcDZmWUZEM21MMFhFdzFFTDAgcm9vdEBoZXR6bmVyCg==";
-          protocol = "ssh-ng";
-          sshUser = "builder";
-          sshKey = "/root/.ssh/builder";
-          maxJobs = 12;
-        }
-      ];
+      buildMachines =
+        let
+          getMainArch =
+            name:
+            self.nixosConfigurations.${name}.config.nixpkgs.hostPlatform.system
+              or self.nixosConfigurations.${name}.config.nixpkgs.system;
+          getArchs =
+            name:
+            [ (getMainArch name) ]
+            ++ self.nixosConfigurations.${name}.config.nix.settings.extra-platforms or [ ];
+        in
+        [
+          {
+            systems = getArchs "hetzner";
+            supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
+            hostName = "missing.ninja";
+            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZYQzNPVGRPd0w4V1NDaHhFRENiNS9WbUZYcDZmWUZEM21MMFhFdzFFTDAgcm9vdEBoZXR6bmVyCg==";
+            protocol = "ssh-ng";
+            sshUser = "builder";
+            sshKey = "/root/.ssh/builder";
+            maxJobs = 12;
+          }
+        ];
       distributedBuilds = true;
       package = pkgs.lix;
       registry = lib.mkForce (
