@@ -74,9 +74,14 @@
 
   services.forgejo = {
     enable = true;
-    settings.server = {
-      HTTP_PORT = 8085;
-      ROOT_URL = "https://git.missing.ninja/";
+    settings = {
+      server = {
+        HTTP_PORT = 8085;
+        ROOT_URL = "https://git.missing.ninja/";
+      };
+      service = {
+        DISABLE_REGISTRATION = true;
+      };
     };
     lfs.enable = true;
   };
