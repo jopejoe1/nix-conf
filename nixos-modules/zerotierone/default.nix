@@ -14,7 +14,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.zerotierone.enable = true;
+    # TODO re-enable next update
+    services.zerotierone.enable = false;
     services.zerotierone.joinNetworks = [
       "9e1948db638e9f93"
     ] ++ lib.optional (config.networking.hostName == "kuraokami") "7c31a21e86f9a75c";
