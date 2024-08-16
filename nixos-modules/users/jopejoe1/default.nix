@@ -42,7 +42,6 @@ in
           libsForQt5.ark
           element-desktop
           mumble
-          libreoffice-qt-fresh
 
           # Theming
           catppuccin-kvantum

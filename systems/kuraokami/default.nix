@@ -129,7 +129,6 @@
         ];
       }
     ))
-    libreoffice-qt
     jitsi-meet-electron
     thunderbird
   ];

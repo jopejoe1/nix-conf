@@ -64,7 +64,6 @@
   environment.systemPackages = with pkgs; [
     localPkgs.prismlauncher-withExtraStuff
     goverlay
-    libreoffice-qt
     thunderbird
     strawberry-qt6
     picard
