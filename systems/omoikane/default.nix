@@ -93,6 +93,7 @@
   boot.binfmt.emulatedSystems = [
     "riscv64-linux"
     "aarch64-linux"
+    "armv6l-linux"
   ];
   boot.plymouth = {
     enable = true;
