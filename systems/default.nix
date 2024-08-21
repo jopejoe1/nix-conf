@@ -8,17 +8,7 @@ let
   mkSystem =
     systemConfig: name:
     nixpkgs.lib.nixosSystem rec {
-      system =
-        builtins.replaceStrings
-          [
-            "-unknown-"
-            "-gnu"
-          ]
-          [
-            "-"
-            ""
-          ]
-          systemConfig;
+      system = lib.systems.parse.doubleFromSystem systemConfig;
       specialArgs = inputs;
       modules = [
         ./${name}
