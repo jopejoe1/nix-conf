@@ -5,10 +5,11 @@
 }:
 
 let
+  inherit (nixpkgs.lib.systems.parse) doubleFromSystem mkSystemFromString;
   mkSystem =
     systemConfig: name:
     nixpkgs.lib.nixosSystem rec {
-      system = lib.systems.parse.doubleFromSystem systemConfig;
+      system = doubleFromSystem (mkSystemFromString systemConfig);
       specialArgs = inputs;
       modules = [
         ./${name}
