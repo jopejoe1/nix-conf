@@ -49,6 +49,17 @@
     udev.packages = [ pkgs.yubikey-personalization ];
     fwupd.enable = true;
     libinput.enable = true;
+    minecraft-server = {
+      enable = true;
+      eula = true;
+      servers = {
+        yolo = {
+          serverProperties = {
+            motd = "Test 12345";
+          };
+        };
+      };
+    };
   };
 
   time.timeZone = "Europe/Berlin";
