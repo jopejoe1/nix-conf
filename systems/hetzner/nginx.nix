@@ -90,26 +90,4 @@
       chmod-socket = "660";
     };
   };
-
-  services.wordpress.sites."test.missing.ninja" =
-    with self.packages.${config.nixpkgs.hostPlatform.system}; {
-      themes = [
-        madara
-        madara-child
-        pkgs.wordpressPackages.themes.twentytwentythree
-      ];
-      plugins = [
-        madara-core
-        madara-shortcodes
-        option-tree
-        option-tree-lean
-        widget-logic
-      ];
-      settings = {
-        FORCE_SSL_ADMIN = true;
-      };
-      extraConfig = ''
-        $_SERVER['HTTPS']='on';
-      '';
-    };
 }
