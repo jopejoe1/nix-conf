@@ -125,6 +125,8 @@ in
     networking.hosts = {
       "192.168.191.46" = [ "zap" ];
       "192.168.191.142" = [ "kuraokami" ];
+      "192.168.194.208" = [ "hetzner" ];
+      "192.168.194.232" = [ "omoikane" ];
     };
     users.mutableUsers = false;
   };
