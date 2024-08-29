@@ -36,6 +36,15 @@ in
         locations."/_matrix".proxyPass = "http://[::1]:8448";
         locations."/_synapse/client".proxyPass = "http://[::1]:8448";
       };
+      "element.missing.ninja" = {
+        enableACME = true;
+        forceSSL = true;
+        root = pkgs.element-web.override {
+          conf = {
+            default_server_config = clientConfig;
+          };
+        };
+      };
     };
   };
 
