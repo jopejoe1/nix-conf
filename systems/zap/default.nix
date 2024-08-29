@@ -15,6 +15,7 @@
     user = {
       jopejoe1.enable = true;
       root.enable = true;
+      builder.enable = true;
     };
     ssh.enable = true;
     gui.enable = false;
