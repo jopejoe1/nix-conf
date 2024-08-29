@@ -64,12 +64,22 @@ in
           {
             systems = getArchs "hetzner";
             supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
-            hostName = "missing.ninja";
+            hostName = "hetzner";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZYQzNPVGRPd0w4V1NDaHhFRENiNS9WbUZYcDZmWUZEM21MMFhFdzFFTDAgcm9vdEBoZXR6bmVyCg==";
             protocol = "ssh-ng";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             maxJobs = 12;
+          }
+          {
+            systems = getArchs "zap";
+            supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
+            hostName = "zap";
+            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSU5Xb056T0QrM0UzT20xbGpkRUNxWUhaQkZteHA3bTNsS1MxSHBkQnZkZjYgcm9vdEB6YXAK";
+            protocol = "ssh-ng";
+            sshUser = "builder";
+            sshKey = "/root/.ssh/builder";
+            maxJobs = 4;
           }
         ];
       distributedBuilds = true;
