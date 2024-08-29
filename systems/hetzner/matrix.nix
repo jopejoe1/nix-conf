@@ -77,7 +77,7 @@ in
   };
 
   services.mautrix-whatsapp = {
-    enable = true;
+    enable = false;
     settings = {
       appservice = {
         database = {
