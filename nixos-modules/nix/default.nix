@@ -81,6 +81,16 @@ in
             sshKey = "/root/.ssh/builder";
             maxJobs = 4;
           }
+          {
+            systems = getArchs "kuraokami";
+            supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
+            hostName = "kuraokami";
+            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUtJbFZhWTZ0aTJkVFVGUks0eFVoRitxa1kwbUhiT3pNSWpjTjZpMFNiTW0gcm9vdEBrdXJhb2thbWkK";
+            protocol = "ssh-ng";
+            sshUser = "builder";
+            sshKey = "/root/.ssh/builder";
+            maxJobs = 24;
+          }
         ];
       distributedBuilds = true;
       package = pkgs.lix;
