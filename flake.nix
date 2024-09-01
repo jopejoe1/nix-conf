@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "/home/jopejoe1/Documents/nixpkgs/";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixified-ai = {
       url = "github:nixified-ai/flake";
