@@ -133,7 +133,7 @@ in
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
 
     networking.hosts = {
-      "192.168.191.46" = [ "zap" ];
+      "192.168.194.46" = [ "zap" ];
       "192.168.191.142" = [ "kuraokami" ];
       "192.168.194.208" = [ "hetzner" ];
       "192.168.194.232" = [ "omoikane" ];
