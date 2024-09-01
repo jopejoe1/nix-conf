@@ -44,6 +44,7 @@
     user = {
       jopejoe1.enable = true;
       root.enable = true;
+      builder.enable = true;
     };
     boot.systemd.enable = true;
   };
