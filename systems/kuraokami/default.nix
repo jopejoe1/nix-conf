@@ -141,6 +141,7 @@
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
+    tmux.enable = true;
     appimage = {
       enable = true;
       package = pkgs.appimage-run.override { extraPkgs = pkgs: [ pkgs.brotli ]; };
