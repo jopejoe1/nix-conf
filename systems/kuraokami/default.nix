@@ -151,6 +151,10 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-qt;
     };
+    alvr = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   nix.settings.system-features = [
