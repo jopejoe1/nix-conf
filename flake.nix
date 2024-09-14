@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     nixified-ai = {
       url = "github:nixified-ai/flake";

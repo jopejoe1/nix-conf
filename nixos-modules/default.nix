@@ -30,6 +30,7 @@
     self.inputs.sops-nix.nixosModules.sops
     self.inputs.catppuccin.nixosModules.catppuccin
     self.inputs.nixvim.nixosModules.nixvim
+    self.inputs.nixos-facter-modules.nixosModules.facter
     self.outputs.modules.default
   ];
 }
