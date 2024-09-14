@@ -158,11 +158,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1726218497,
-        "narHash": "sha256-DJs3tdgFukOHdoGdEAm6iQJXZCV4vdDudqNVqShKezQ=",
+        "lastModified": 1726302818,
+        "narHash": "sha256-HtVQyTPNMAfF/IK/KQtZ7R1r8HRmuczowGA5ZqdJPHc=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "595f8cf9bda4b7858866be10385bf201d54bd72d",
+        "rev": "14942c540b1592c5c79d25e5bfab4df47799cef6",
         "type": "gitlab"
       },
       "original": {
@@ -459,11 +459,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726222338,
-        "narHash": "sha256-KuA8ciNR8qCF3dQaCaeh0JWyQUgEwkwDHr/f49Q5/e8=",
+        "lastModified": 1726308872,
+        "narHash": "sha256-d4vwO5N4RsLnCY7k5tY9xbdYDWQsY3RDMeUoIa4ms2A=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "503af483e1b328691ea3a434d331995595fb2e3d",
+        "rev": "6c1a461a444e6ccb3f3e42bb627b510c3a722a57",
         "type": "github"
       },
       "original": {
@@ -705,6 +705,21 @@
         "type": "github"
       }
     },
+    "nixos-facter-modules_2": {
+      "locked": {
+        "lastModified": 1726241088,
+        "narHash": "sha256-WX3zghV8praMXUOMf8Jy9NGh8KU8p/ETgI3Ukvh/O50=",
+        "owner": "numtide",
+        "repo": "nixos-facter-modules",
+        "rev": "d78cd60464df85279cbdddaba0e3d8d8ee6ab00c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nixos-facter-modules",
+        "type": "github"
+      }
+    },
     "nixos-generators": {
       "inputs": {
         "nixlib": "nixlib",
@@ -830,11 +845,11 @@
         "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
-        "lastModified": 1726244717,
-        "narHash": "sha256-MXLk8j+fCLpMU0S9iOFdsvhoebz/k69VbmL/cmgCfhM=",
+        "lastModified": 1726281510,
+        "narHash": "sha256-KJkzmVHjZsDyE5rE/4kwzkBWn3Sb4F/O5DRUXmEldpk=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "f47e8f8f79f2095aeb60c2c8ac8681206b16753b",
+        "rev": "8fd162d9513b0d1acc8ce58848febf2dbe2e7733",
         "type": "github"
       },
       "original": {
@@ -875,11 +890,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725983829,
-        "narHash": "sha256-OJzLrOKiKaGISq01mCNtipxdyjbYxicZmip4MwRh4Sc=",
+        "lastModified": 1726254630,
+        "narHash": "sha256-8+e7bEsaQUBtGWTHt0nvO7D6S47Tlk+dGiz287uBh/s=",
         "owner": "PrismLauncher",
         "repo": "PrismLauncher",
-        "rev": "fa68428a90f9d5e743390114ef6e8c9f5fd5e095",
+        "rev": "f46b73acb512a907d5edd758c7c725c12f481b50",
         "type": "github"
       },
       "original": {
@@ -899,6 +914,7 @@
         "nether": "nether",
         "nixified-ai": "nixified-ai",
         "nixos-anywhere": "nixos-anywhere",
+        "nixos-facter-modules": "nixos-facter-modules_2",
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
