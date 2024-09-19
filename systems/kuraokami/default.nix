@@ -21,6 +21,8 @@
     self.inputs.srvos.nixosModules.desktop
   ];
 
+  facter.reportPath = ./facter.json;
+
   jopejoe1 = {
     audio = {
       enable = true;
