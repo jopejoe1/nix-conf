@@ -69,6 +69,7 @@ in
             protocol = "ssh-ng";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
+            speedFactor = 5;
             maxJobs = 12;
           }
           {
@@ -89,6 +90,7 @@ in
             protocol = "ssh-ng";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
+            speedFactor = 10;
             maxJobs = 24;
           }
         ];
