@@ -134,6 +134,10 @@
     ))
     jitsi-meet-electron
     thunderbird
+    (ffmpeg-full.override {
+        withTensorflow = true;
+        withUnfree = true;
+    })
   ];
 
   programs = {
