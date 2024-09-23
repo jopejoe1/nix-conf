@@ -111,7 +111,8 @@
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   environment.systemPackages = with pkgs; [
-    localPkgs.prismlauncher-withExtraStuff
+    #localPkgs.prismlauncher-withExtraStuff
+    prismlauncher
     picard
     mixxx
     goverlay
