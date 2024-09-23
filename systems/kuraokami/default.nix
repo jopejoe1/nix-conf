@@ -116,23 +116,7 @@
     picard
     mixxx
     goverlay
-    (strawberry-qt6.overrideAttrs (
-      finalAttrs: previousAttrs: {
-        version = "1.1.0-rc3";
-        src = fetchFromGitHub {
-          owner = "strawberrymusicplayer";
-          repo = "strawberry";
-          rev = "1.1.0-rc3";
-          hash = "sha256-4LhFxCi0ixMAjVaNVrQrLc0Vf1Z2dhnw6DTfTqtpiC4=";
-        };
-        buildInputs = previousAttrs.buildInputs ++ [
-          kdsingleapplication
-          gst_all_1.gst-plugins-rs
-          kdePackages.qtsvg
-          kdePackages.qtimageformats
-        ];
-      }
-    ))
+    strawberry-qt6
     jitsi-meet-electron
     thunderbird
     (ffmpeg-full.override {
