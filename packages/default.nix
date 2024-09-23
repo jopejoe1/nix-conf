@@ -13,10 +13,12 @@
   });
 
   prismlauncher-withExtraStuff =
-    inputs.prismlauncher.packages.${system}.prismlauncher.overrideAttrs
-      (old: {
-        patches = (old.patches or [ ]) ++ [ ./prism-ftb.patch ];
-      });
+    inputs.prismlauncher.packages.${system}.prismlauncher.override
+      {
+        prismlauncher-unwrapped = inputs.prismlauncher.packages.${system}.prismlauncher-unwrapped.overrideAttrs (old: {
+          patches = (old.patches or [ ]) ++ [ ./prism-ftb.patch ];
+        });
+      };
 
   nixos-anywhere = inputs.nixos-anywhere.packages.${system}.nixos-anywhere;
 
