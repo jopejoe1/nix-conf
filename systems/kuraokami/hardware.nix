@@ -13,9 +13,18 @@
 
   hardware.nvidia = {
     open = true;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    powerManagement = {
+      enable = true;
+      finegrained = true;
+    };
     prime = {
-      offload.enable = false;
+      reverseSync.enable = true;
+      offload.enable = true;
       sync.enable = false;
+      allowExternalGpu = true;
 
       # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
       intelBusId = "PCI:0:2:0";
