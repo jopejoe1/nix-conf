@@ -9,8 +9,6 @@
 }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
   hardware.nvidia = {
     open = true;
     modesetting.enable = true;
@@ -22,7 +20,10 @@
     };
     prime = {
       reverseSync.enable = true;
-      offload.enable = true;
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
       sync.enable = false;
       allowExternalGpu = true;
 
@@ -33,22 +34,6 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-
-  boot.initrd.availableKernelModules = [
-    "vmd"
-    "xhci_pci"
-    "ahci"
-    "nvme"
-    "usbhid"
-    "sd_mod"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [
-    "kvm-intel"
-    "nouveau"
-  ];
-  boot.extraModulePackages = [ ];
 
   fileSystems = {
     "/" = {
@@ -70,9 +55,5 @@
     };
   };
 
-  swapDevices = [ ];
-
-  #nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

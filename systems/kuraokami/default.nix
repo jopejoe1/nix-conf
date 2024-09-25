@@ -11,7 +11,6 @@
   imports = [
     ./hardware.nix
     nixos-hardware.nixosModules.common-cpu-intel
-    #nixos-hardware.nixosModules.common-gpu-intel
     nixos-hardware.nixosModules.common-gpu-nvidia
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-hidpi
@@ -57,7 +56,6 @@
   services = {
     hardware.openrgb = {
       enable = true;
-      motherboard = "intel";
     };
     postgresql = {
       enable = true;
@@ -99,10 +97,6 @@
       enable = true;
       enable32Bit = true;
     };
-    nvidia = {
-      #package = config.boot.kernelPackages.nvidiaPackages.stable;
-      #modesetting.enable = true;
-    };
     gpgSmartcards.enable = true;
   };
 
@@ -110,7 +104,6 @@
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
 
   environment.systemPackages = with pkgs; [
-    #localPkgs.prismlauncher-withExtraStuff
     prismlauncher
     picard
     mixxx
@@ -132,10 +125,6 @@
     kdeconnect.enable = true;
     gamemode.enable = true;
     tmux.enable = true;
-    appimage = {
-      enable = true;
-      package = pkgs.appimage-run.override { extraPkgs = pkgs: [ pkgs.brotli ]; };
-    };
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
