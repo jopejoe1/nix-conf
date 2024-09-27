@@ -21,21 +21,14 @@
     gui.enable = false;
   };
 
+  facter.reportPath = ./facter.json;
+
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     self.inputs.srvos.nixosModules.server
     self.inputs.srvos.nixosModules.mixins-cloud-init
     self.inputs.srvos.nixosModules.mixins-nginx
     ./wp-test.nix
-  ];
-
-  boot.initrd.availableKernelModules = [
-    "ata_piix"
-    "uhci_hcd"
-    "virtio_pci"
-    "virtio_scsi"
-    "sd_mod"
-    "sr_mod"
   ];
 
   networking.useDHCP = false;
