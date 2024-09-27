@@ -19,6 +19,8 @@
     ./radicale.nix
   ];
 
+  facter.reportPath = ./facter.json;
+
   jopejoe1 = {
     local.enable = true;
     nix.enable = true;
@@ -31,13 +33,6 @@
     ssh.enable = true;
   };
 
-  boot.initrd.availableKernelModules = [
-    "ahci"
-    "nvme"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
   boot.loader = {
     grub = {
       enable = true;
