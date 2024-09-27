@@ -28,7 +28,6 @@
       enable = true;
       sennheiser-hd-660s = true;
     };
-    bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
     plasma.enable = true;

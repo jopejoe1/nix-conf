@@ -9,20 +9,6 @@
 }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "xhci_pci"
-    "thunderbolt"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
-
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6842a9de-c5fd-4648-b3b8-f76e56633825";
     fsType = "ext4";
@@ -45,8 +31,5 @@
     options = [ "compression=zstd" ];
   };
 
-  swapDevices = [ ];
-
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

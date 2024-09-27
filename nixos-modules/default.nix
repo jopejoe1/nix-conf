@@ -5,7 +5,6 @@
     ./asf
     ./audio
     ./auto-update
-    ./bluetooth
     ./boot
     ./doc
     ./events
