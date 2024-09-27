@@ -68,6 +68,7 @@
 
   services.forgejo = {
     enable = true;
+    package = pkgs.forgejo;
     settings = {
       server = {
         HTTP_PORT = 8085;
