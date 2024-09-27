@@ -64,7 +64,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    localPkgs.prismlauncher-withExtraStuff
+    prismlauncher
     goverlay
     thunderbird
     strawberry-qt6
