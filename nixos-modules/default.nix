@@ -22,7 +22,6 @@
     ./sway
     ./users
     ./zerotierone
-    ../upstream
     self.inputs.disko.nixosModules.disko
     self.inputs.home-manager.nixosModules.home-manager
     self.inputs.nixos-generators.nixosModules.all-formats
