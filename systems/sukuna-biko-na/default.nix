@@ -29,7 +29,6 @@
 
   jopejoe1 = {
     audio.enable = true;
-    bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
     kodi.enable = true;

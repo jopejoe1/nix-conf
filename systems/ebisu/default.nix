@@ -6,7 +6,6 @@
     audio = {
       enable = true;
     };
-    bluetooth.enable = true;
     local.enable = true;
     nix.enable = true;
     user = {

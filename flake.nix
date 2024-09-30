@@ -5,11 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
-    nixified-ai = {
-      url = "github:nixified-ai/flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Outputs
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -56,14 +51,6 @@
     };
 
     # Packages
-    tela-icon-theme = {
-      url = "github:vinceliuice/Tela-icon-theme";
-      flake = false;
-    };
-    prismlauncher = {
-      url = "github:PrismLauncher/PrismLauncher";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
