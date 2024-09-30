@@ -25,6 +25,7 @@ in
         "pipewire"
         "audio"
         "adbusers"
+        "dialout"
       ];
       uid = 1000;
       openssh.authorizedKeys.keys = [
