@@ -69,6 +69,7 @@
     strawberry-qt6
     picard
     gh
+    python3
   ];
 
   programs = {
