@@ -25,7 +25,7 @@
           "joens.digital"
           "joens.blog"
           "net0loggy.net"
-          "clan-war.net"
+          #"clan-war.net"
           "net0loggy.de"
           "dtg-c.de"
         ];
