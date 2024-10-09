@@ -54,6 +54,9 @@
         enableACME = true;
         locations."/".proxyPass = "http://localhost:8080";
       };
+      "cache.missing.ninja" = {
+        locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+      };
     };
   };
 
