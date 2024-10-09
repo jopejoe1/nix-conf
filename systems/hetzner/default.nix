@@ -41,8 +41,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 21 ];
-    allowedUDPPorts = [ 21 ];
+    allowedTCPPorts = [ 21 80 ];
+    allowedUDPPorts = [ 21 80 ];
   };
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:a0:31e5::/64";
