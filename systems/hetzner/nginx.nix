@@ -71,6 +71,11 @@
     };
   };
 
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = "/var/cache-priv-key.pem";
+  };
+
   services.wordpress.webserver = "nginx";
   services.phpfpm.phpOptions = ''
     post_max_size = "64M"
