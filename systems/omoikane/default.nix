@@ -16,6 +16,20 @@
 
   facter.reportPath = ./facter.json;
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libcxx
+      SDL
+      openal
+      libcaca
+      xorg.libXext
+      xorg.libX11
+      libpulseaudio
+      alsa-lib
+    ];
+  };
+
   jopejoe1 = {
     audio = {
       enable = true;
