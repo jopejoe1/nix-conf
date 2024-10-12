@@ -33,7 +33,6 @@
     printing.enable = true;
     steam.enable = true;
     ssh.enable = true;
-    asf.enable = true;
     sway.enable = true;
     zerotierone.enable = true;
     gui.enable = true;
