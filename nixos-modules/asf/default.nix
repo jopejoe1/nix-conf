@@ -13,16 +13,16 @@ in
       enable = true;
       web-ui.enable = true;
       settings = {
-        LicenseID = "@asfLicenseID@";
+        LicenseID = null;
         SteamProtocols = 7;
-        AutoSteamSaleEvent = true;
+        #AutoSteamSaleEvent = true;
       };
       bots.jopejoe1 = {
         username = "jopejoe1";
         enabled = true;
         passwordFile = null;
         settings = {
-          AutoSteamSaleEvent = true;
+          #AutoSteamSaleEvent = true;
           FarmingOrders = 9;
           OnlineStatus = 0;
           RemoteCommunication = 0;
