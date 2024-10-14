@@ -15,6 +15,7 @@ in
       settings = {
         LicenseID = null;
         SteamProtocols = 7;
+        IPCPassword = "Test";
         #AutoSteamSaleEvent = true;
       };
       bots.jopejoe1 = {
