@@ -14,6 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    programs.dconf.enable = true;
     users.users.jopejoe1 = {
       isNormalUser = true;
       shell = pkgs.nushell;
