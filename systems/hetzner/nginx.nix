@@ -59,6 +59,11 @@
         enableACME = true;
         locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
       };
+      "hetzner" = {
+        forceSSL = false;
+        enableACME = false;
+        locations."/".proxyPass = "http://127.0.0.1:1242";
+      };
     };
   };
 

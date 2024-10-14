@@ -20,7 +20,7 @@ in
       bots.jopejoe1 = {
         username = "jopejoe1";
         enabled = true;
-        passwordFile = "/var/lib/asf/pw";
+        passwordFile = null;
         settings = {
           AutoSteamSaleEvent = true;
           FarmingOrders = 9;
