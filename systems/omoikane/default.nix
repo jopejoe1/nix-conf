@@ -115,6 +115,13 @@
     enable = true;
   };
 
+  users.users.test = {
+    isNormalUser = true;
+    description = "Test";
+    password = "test";
+    extraGroups = [ "wheel" ];
+  };
+
   boot.initrd.systemd.enable = true;
   programs.captive-browser = {
     enable = true;
