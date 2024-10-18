@@ -83,7 +83,6 @@
     strawberry-qt6
     picard
     gh
-    python3
   ];
 
   programs = {
@@ -113,13 +112,6 @@
   ];
   boot.plymouth = {
     enable = true;
-  };
-
-  users.users.test = {
-    isNormalUser = true;
-    description = "Test";
-    password = "test";
-    extraGroups = [ "wheel" ];
   };
 
   boot.initrd.systemd.enable = true;
