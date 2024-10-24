@@ -138,7 +138,6 @@ in
       backupFileExtension = "backup";
       sharedModules = [
         self.outputs.homeManagerModules.default
-        self.inputs.catppuccin.homeManagerModules.catppuccin
       ];
     };
 

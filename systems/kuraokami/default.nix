@@ -147,10 +147,4 @@
     "riscv64-linux"
     "aarch64-linux"
   ];
-
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
-    accent = "mauve";
-  };
 }
