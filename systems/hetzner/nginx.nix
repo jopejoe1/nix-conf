@@ -59,6 +59,51 @@
         enableACME = true;
         locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
       };
+      "nix.missing.ninja" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".root = self.inputs.nuschtos.packages.${pkgs.stdenv.system}.mkMultiSearch {
+          scopes = [
+            {
+              modules = [ self.inputs.disko.nixosModules.default ];
+              name = "disko";
+              specialArgs.modulesPath = pkgs.path + "/nixos/modules";
+              urlPrefix = "https://github.com/nix-community/disko/blob/master/";
+            }
+            {
+              modules = lib.attrValues self.inputs.nixos-hardware.nixosModules;
+              name = "nixos-hardware";
+              specialArgs = {
+                modulesPath = pkgs.path + "/nixos/modules";
+                inherit pkgs;
+              };
+              urlPrefix = "https://github.com/NixOS/nixos-hardware/blob/master/";
+            }
+            {
+              modules = [
+                self.inputs.snm.nixosModules.default
+                {
+                  mailserver = {
+                    fqdn = "mx.example.com";
+                    domains = [ "example.com" ];
+                    dmarcReporting = {
+                      organizationName = "Example Corp";
+                      domain = "example.com";
+                    };
+                  };
+                }
+              ];
+              name = "simple-nixos-mailserver";
+              urlPrefix = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/blob/master/";
+            }
+            {
+              optionsJSON = (import "${self.inputs.nixos}/nixos/release.nix" { }).options + /share/doc/nixos/options.json;
+              name = "NixOS";
+              urlPrefix = "https://github.com/NixOS/nixpkgs/tree/master/";
+            }
+          ];
+        };
+      };
       "hetzner" = {
         forceSSL = false;
         enableACME = false;

@@ -44,6 +44,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nuschtos = {
+      url = "github:NuschtOS/search";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Packages
     firefox-addons = {
