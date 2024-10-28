@@ -71,7 +71,6 @@
               proxy_set_header X-Forwarded-Host $host:$server_port;
               proxy_set_header X-Forwarded-Proto $scheme;
               proxy_set_header X-Forwarded-Server $host;
-              proxy_http_version 1.1;
               proxy_set_header Connection "Upgrade";
               proxy_set_header Upgrade $http_upgrade;
             '';
