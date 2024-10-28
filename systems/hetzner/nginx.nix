@@ -98,7 +98,7 @@
               urlPrefix = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/blob/master/";
             }
             {
-              optionsJSON = (import "${self.inputs.nixos}/nixos/release.nix" { }).options + /share/doc/nixos/options.json;
+              optionsJSON = (import "${self.inputs.nixpkgs}/nixos/release.nix" { }).options + /share/doc/nixos/options.json;
               name = "NixOS";
               urlPrefix = "https://github.com/NixOS/nixpkgs/tree/master/";
             }
