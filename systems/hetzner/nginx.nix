@@ -103,18 +103,18 @@
               urlPrefix = "https://github.com/NixOS/nixpkgs/tree/master/";
             }
             {
-              optionsJSON = self.inputs.home-manager.packages.${system}.docs-html.passthru.home-manager-options.nixos + /share/doc/nixos/options.json;
+              optionsJSON = self.inputs.home-manager.packages.${pkgs.stdenv.system}.docs-html.passthru.home-manager-options.nixos + /share/doc/nixos/options.json;
               name = "Home Manager NixOS";
               urlPrefix = "https://github.com/nix-community/home-manager/tree/master/";
             }
             {
-              optionsJSON = self.inputs.home-manager.packages.${system}.docs-json + /share/doc/home-manager/options.json;
+              optionsJSON = self.inputs.home-manager.packages.${pkgs.stdenv.system}.docs-json + /share/doc/home-manager/options.json;
               optionsPrefix = "home-manager.users.<name>";
               name = "Home Manager";
               urlPrefix = "https://github.com/nix-community/home-manager/tree/master/";
             }
             {
-              optionsJSON = self.inputs.nixvim.packages.${system}.options-json + /share/doc/nixos/options.json;
+              optionsJSON = self.inputs.nixvim.packages.${pkgs.stdenv.system}.options-json + /share/doc/nixos/options.json;
               optionsPrefix = "programs.nixvim";
               name = "NixVim";
               urlPrefix = "https://github.com/nix-community/nixvim/tree/main/";
