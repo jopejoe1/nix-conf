@@ -40,7 +40,17 @@ in
         experimental-features = [
           "nix-command"
           "flakes"
+          "auto-allocate-uids"
+          "ca-derivations"
+          "cgroups"
+          "dynamic-derivations"
+          "fetch-closure"
+          "impure-derivations"
+          "no-url-literals"
+          "recursive-nix"
         ];
+        auto-allocate-uids = true;
+        use-cgroups = true;
         warn-dirty = true;
         allow-dirty = false;
         use-xdg-base-directories = true;
