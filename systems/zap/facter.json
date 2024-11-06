@@ -25,6 +25,10 @@
       {
         "index": 11,
         "attached_to": 0,
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -83,6 +87,10 @@
       {
         "index": 12,
         "attached_to": 0,
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -128,6 +136,10 @@
       {
         "index": 13,
         "attached_to": 0,
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -186,6 +198,10 @@
       {
         "index": 14,
         "attached_to": 0,
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -234,6 +250,10 @@
       {
         "index": 15,
         "attached_to": 0,
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -298,6 +318,10 @@
       {
         "index": 20,
         "attached_to": 0,
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -358,6 +382,11 @@
       {
         "index": 27,
         "attached_to": 18,
+        "class_list": [
+          "cdrom",
+          "scsi",
+          "block_device"
+        ],
         "bus_type": {
           "name": "SCSI",
           "value": 132
@@ -548,6 +577,11 @@
       {
         "index": 28,
         "attached_to": 24,
+        "class_list": [
+          "disk",
+          "scsi",
+          "block_device"
+        ],
         "bus_type": {
           "name": "SCSI",
           "value": 132
@@ -633,6 +667,10 @@
       {
         "index": 19,
         "attached_to": 0,
+        "class_list": [
+          "graphics_card",
+          "pci"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -720,6 +758,10 @@
       {
         "index": 29,
         "attached_to": 10,
+        "class_list": [
+          "usb",
+          "hub"
+        ],
         "bus_type": {
           "name": "USB",
           "value": 134
@@ -792,6 +834,9 @@
       {
         "index": 7,
         "attached_to": 0,
+        "class_list": [
+          "memory"
+        ],
         "base_class": {
           "name": "Internally Used Class",
           "value": 257
@@ -821,6 +866,9 @@
       {
         "index": 25,
         "attached_to": 19,
+        "class_list": [
+          "monitor"
+        ],
         "base_class": {
           "name": "Monitor",
           "value": 256
@@ -962,6 +1010,10 @@
       {
         "index": 30,
         "attached_to": 29,
+        "class_list": [
+          "mouse",
+          "usb"
+        ],
         "bus_type": {
           "name": "USB",
           "value": 134
@@ -1068,6 +1120,9 @@
       {
         "index": 22,
         "attached_to": 16,
+        "class_list": [
+          "network_controller"
+        ],
         "bus_type": {
           "name": "Virtio",
           "value": 143
@@ -1118,6 +1173,9 @@
       {
         "index": 31,
         "attached_to": 22,
+        "class_list": [
+          "network_interface"
+        ],
         "base_class": {
           "name": "Network Interface",
           "value": 263
@@ -1155,6 +1213,9 @@
       {
         "index": 32,
         "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
         "base_class": {
           "name": "Network Interface",
           "value": 263
@@ -1171,10 +1232,276 @@
         ]
       }
     ],
+    "pci": [
+      {
+        "index": 9,
+        "attached_to": 0,
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "bus_type": {
+          "name": "PCI",
+          "value": 4
+        },
+        "slot": {
+          "bus": 0,
+          "number": 8
+        },
+        "base_class": {
+          "name": "Communication controller",
+          "value": 7
+        },
+        "sub_class": {
+          "name": "Communication controller",
+          "value": 128
+        },
+        "vendor": {
+          "value": 6900
+        },
+        "sub_vendor": {
+          "value": 6900
+        },
+        "device": {
+          "value": 4099
+        },
+        "sub_device": {
+          "value": 3
+        },
+        "model": "Communication controller",
+        "sysfs_id": "/devices/pci0000:00/0000:00:08.0",
+        "sysfs_bus_id": "0000:00:08.0",
+        "resources": [
+          {
+            "type": "io",
+            "base": 61504,
+            "range": 64,
+            "enabled": true,
+            "access": "read_write"
+          },
+          {
+            "type": "irq",
+            "base": 11,
+            "triggered": 0,
+            "enabled": true
+          },
+          {
+            "type": "mem",
+            "base": 4272230400,
+            "range": 4096,
+            "enabled": true,
+            "access": "read_write",
+            "prefetch": "no"
+          },
+          {
+            "type": "mem",
+            "base": 61710090125312,
+            "range": 16384,
+            "enabled": true,
+            "access": "read_only",
+            "prefetch": "no"
+          }
+        ],
+        "detail": {
+          "function": 0,
+          "command": 1287,
+          "header_type": 0,
+          "secondary_bus": 0,
+          "irq": 11,
+          "prog_if": 0
+        },
+        "driver": "virtio-pci",
+        "driver_module": "virtio_pci",
+        "drivers": [
+          "virtio-pci"
+        ],
+        "driver_modules": [
+          "virtio_pci"
+        ],
+        "module_alias": "pci:v00001AF4d00001003sv00001AF4sd00000003bc07sc80i00"
+      },
+      {
+        "index": 16,
+        "attached_to": 0,
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "bus_type": {
+          "name": "PCI",
+          "value": 4
+        },
+        "slot": {
+          "bus": 0,
+          "number": 18
+        },
+        "base_class": {
+          "name": "Network controller",
+          "value": 2
+        },
+        "sub_class": {
+          "name": "Ethernet controller",
+          "value": 0
+        },
+        "vendor": {
+          "value": 6900
+        },
+        "sub_vendor": {
+          "value": 6900
+        },
+        "device": {
+          "value": 4096
+        },
+        "sub_device": {
+          "value": 1
+        },
+        "model": "Ethernet controller",
+        "sysfs_id": "/devices/pci0000:00/0000:00:12.0",
+        "sysfs_bus_id": "0000:00:12.0",
+        "resources": [
+          {
+            "type": "io",
+            "base": 61600,
+            "range": 32,
+            "enabled": true,
+            "access": "read_write"
+          },
+          {
+            "type": "irq",
+            "base": 10,
+            "triggered": 0,
+            "enabled": true
+          },
+          {
+            "type": "mem",
+            "base": 4271898624,
+            "range": 262144,
+            "enabled": false,
+            "access": "read_only",
+            "prefetch": "no"
+          },
+          {
+            "type": "mem",
+            "base": 4272234496,
+            "range": 4096,
+            "enabled": true,
+            "access": "read_write",
+            "prefetch": "no"
+          },
+          {
+            "type": "mem",
+            "base": 61710090141696,
+            "range": 16384,
+            "enabled": true,
+            "access": "read_only",
+            "prefetch": "no"
+          }
+        ],
+        "detail": {
+          "function": 0,
+          "command": 1287,
+          "header_type": 0,
+          "secondary_bus": 0,
+          "irq": 10,
+          "prog_if": 0
+        },
+        "driver": "virtio-pci",
+        "driver_module": "virtio_pci",
+        "drivers": [
+          "virtio-pci"
+        ],
+        "driver_modules": [
+          "virtio_pci"
+        ],
+        "module_alias": "pci:v00001AF4d00001000sv00001AF4sd00000001bc02sc00i00"
+      },
+      {
+        "index": 17,
+        "attached_to": 0,
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "bus_type": {
+          "name": "PCI",
+          "value": 4
+        },
+        "slot": {
+          "bus": 0,
+          "number": 3
+        },
+        "base_class": {
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sub_class": {
+          "value": 255
+        },
+        "vendor": {
+          "value": 6900
+        },
+        "sub_vendor": {
+          "value": 6900
+        },
+        "device": {
+          "value": 4098
+        },
+        "sub_device": {
+          "value": 5
+        },
+        "model": "Unclassified device",
+        "sysfs_id": "/devices/pci0000:00/0000:00:03.0",
+        "sysfs_bus_id": "0000:00:03.0",
+        "resources": [
+          {
+            "type": "io",
+            "base": 61440,
+            "range": 64,
+            "enabled": true,
+            "access": "read_write"
+          },
+          {
+            "type": "irq",
+            "base": 10,
+            "triggered": 0,
+            "enabled": true
+          },
+          {
+            "type": "mem",
+            "base": 61710090108928,
+            "range": 16384,
+            "enabled": true,
+            "access": "read_only",
+            "prefetch": "no"
+          }
+        ],
+        "detail": {
+          "function": 0,
+          "command": 263,
+          "header_type": 0,
+          "secondary_bus": 0,
+          "irq": 10,
+          "prog_if": 0
+        },
+        "driver": "virtio-pci",
+        "driver_module": "virtio_pci",
+        "drivers": [
+          "virtio-pci"
+        ],
+        "driver_modules": [
+          "virtio_pci"
+        ],
+        "module_alias": "pci:v00001AF4d00001002sv00001AF4sd00000005bc00scFFi00"
+      }
+    ],
     "storage_controller": [
       {
         "index": 8,
         "attached_to": 20,
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -1258,6 +1585,10 @@
       {
         "index": 18,
         "attached_to": 0,
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
@@ -1354,256 +1685,11 @@
     },
     "unknown": [
       {
-        "index": 9,
-        "attached_to": 0,
-        "bus_type": {
-          "name": "PCI",
-          "value": 4
-        },
-        "slot": {
-          "bus": 0,
-          "number": 8
-        },
-        "base_class": {
-          "name": "Communication controller",
-          "value": 7
-        },
-        "sub_class": {
-          "name": "Communication controller",
-          "value": 128
-        },
-        "vendor": {
-          "value": 6900
-        },
-        "sub_vendor": {
-          "value": 6900
-        },
-        "device": {
-          "value": 4099
-        },
-        "sub_device": {
-          "value": 3
-        },
-        "model": "Communication controller",
-        "sysfs_id": "/devices/pci0000:00/0000:00:08.0",
-        "sysfs_bus_id": "0000:00:08.0",
-        "resources": [
-          {
-            "type": "io",
-            "base": 61504,
-            "range": 64,
-            "enabled": true,
-            "access": "read_write"
-          },
-          {
-            "type": "irq",
-            "base": 11,
-            "triggered": 0,
-            "enabled": true
-          },
-          {
-            "type": "mem",
-            "base": 4272230400,
-            "range": 4096,
-            "enabled": true,
-            "access": "read_write",
-            "prefetch": "no"
-          },
-          {
-            "type": "mem",
-            "base": 61710090125312,
-            "range": 16384,
-            "enabled": true,
-            "access": "read_only",
-            "prefetch": "no"
-          }
-        ],
-        "detail": {
-          "function": 0,
-          "command": 1287,
-          "header_type": 0,
-          "secondary_bus": 0,
-          "irq": 11,
-          "prog_if": 0
-        },
-        "driver": "virtio-pci",
-        "driver_module": "virtio_pci",
-        "drivers": [
-          "virtio-pci"
-        ],
-        "driver_modules": [
-          "virtio_pci"
-        ],
-        "module_alias": "pci:v00001AF4d00001003sv00001AF4sd00000003bc07sc80i00"
-      },
-      {
-        "index": 16,
-        "attached_to": 0,
-        "bus_type": {
-          "name": "PCI",
-          "value": 4
-        },
-        "slot": {
-          "bus": 0,
-          "number": 18
-        },
-        "base_class": {
-          "name": "Network controller",
-          "value": 2
-        },
-        "sub_class": {
-          "name": "Ethernet controller",
-          "value": 0
-        },
-        "vendor": {
-          "value": 6900
-        },
-        "sub_vendor": {
-          "value": 6900
-        },
-        "device": {
-          "value": 4096
-        },
-        "sub_device": {
-          "value": 1
-        },
-        "model": "Ethernet controller",
-        "sysfs_id": "/devices/pci0000:00/0000:00:12.0",
-        "sysfs_bus_id": "0000:00:12.0",
-        "resources": [
-          {
-            "type": "io",
-            "base": 61600,
-            "range": 32,
-            "enabled": true,
-            "access": "read_write"
-          },
-          {
-            "type": "irq",
-            "base": 10,
-            "triggered": 0,
-            "enabled": true
-          },
-          {
-            "type": "mem",
-            "base": 4271898624,
-            "range": 262144,
-            "enabled": false,
-            "access": "read_only",
-            "prefetch": "no"
-          },
-          {
-            "type": "mem",
-            "base": 4272234496,
-            "range": 4096,
-            "enabled": true,
-            "access": "read_write",
-            "prefetch": "no"
-          },
-          {
-            "type": "mem",
-            "base": 61710090141696,
-            "range": 16384,
-            "enabled": true,
-            "access": "read_only",
-            "prefetch": "no"
-          }
-        ],
-        "detail": {
-          "function": 0,
-          "command": 1287,
-          "header_type": 0,
-          "secondary_bus": 0,
-          "irq": 10,
-          "prog_if": 0
-        },
-        "driver": "virtio-pci",
-        "driver_module": "virtio_pci",
-        "drivers": [
-          "virtio-pci"
-        ],
-        "driver_modules": [
-          "virtio_pci"
-        ],
-        "module_alias": "pci:v00001AF4d00001000sv00001AF4sd00000001bc02sc00i00"
-      },
-      {
-        "index": 17,
-        "attached_to": 0,
-        "bus_type": {
-          "name": "PCI",
-          "value": 4
-        },
-        "slot": {
-          "bus": 0,
-          "number": 3
-        },
-        "base_class": {
-          "name": "Unclassified device",
-          "value": 0
-        },
-        "sub_class": {
-          "value": 255
-        },
-        "vendor": {
-          "value": 6900
-        },
-        "sub_vendor": {
-          "value": 6900
-        },
-        "device": {
-          "value": 4098
-        },
-        "sub_device": {
-          "value": 5
-        },
-        "model": "Unclassified device",
-        "sysfs_id": "/devices/pci0000:00/0000:00:03.0",
-        "sysfs_bus_id": "0000:00:03.0",
-        "resources": [
-          {
-            "type": "io",
-            "base": 61440,
-            "range": 64,
-            "enabled": true,
-            "access": "read_write"
-          },
-          {
-            "type": "irq",
-            "base": 10,
-            "triggered": 0,
-            "enabled": true
-          },
-          {
-            "type": "mem",
-            "base": 61710090108928,
-            "range": 16384,
-            "enabled": true,
-            "access": "read_only",
-            "prefetch": "no"
-          }
-        ],
-        "detail": {
-          "function": 0,
-          "command": 263,
-          "header_type": 0,
-          "secondary_bus": 0,
-          "irq": 10,
-          "prog_if": 0
-        },
-        "driver": "virtio-pci",
-        "driver_module": "virtio_pci",
-        "drivers": [
-          "virtio-pci"
-        ],
-        "driver_modules": [
-          "virtio_pci"
-        ],
-        "module_alias": "pci:v00001AF4d00001002sv00001AF4sd00000005bc00scFFi00"
-      },
-      {
         "index": 21,
         "attached_to": 9,
+        "class_list": [
+          "unknown"
+        ],
         "base_class": {
           "name": "Unclassified device",
           "value": 0
@@ -1630,6 +1716,9 @@
       {
         "index": 23,
         "attached_to": 17,
+        "class_list": [
+          "unknown"
+        ],
         "base_class": {
           "name": "Unclassified device",
           "value": 0
@@ -1656,6 +1745,9 @@
       {
         "index": 24,
         "attached_to": 8,
+        "class_list": [
+          "unknown"
+        ],
         "base_class": {
           "name": "Unclassified device",
           "value": 0
@@ -1682,6 +1774,9 @@
       {
         "index": 26,
         "attached_to": 0,
+        "class_list": [
+          "unknown"
+        ],
         "base_class": {
           "name": "Communication controller",
           "value": 7
@@ -1724,6 +1819,10 @@
       {
         "index": 10,
         "attached_to": 0,
+        "class_list": [
+          "usb_controller",
+          "pci"
+        ],
         "bus_type": {
           "name": "PCI",
           "value": 4
