@@ -100,8 +100,6 @@
     ipv6 = true;
   };
 
-  services.ivpn.enable = true;
-
   programs.kclock.enable = true;
 
   networking.hosts = {
