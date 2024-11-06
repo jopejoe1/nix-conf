@@ -14,6 +14,8 @@
     nixos-hardware.nixosModules.common-pc-laptop-hdd
   ];
 
+  facter.reportPath = ./facter.json;
+
   jopejoe1 = {
     audio = {
       enable = true;
