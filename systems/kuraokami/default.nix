@@ -110,6 +110,7 @@
     strawberry-qt6
     jitsi-meet-electron
     thunderbird
+    (pkgs.wrapFirefox (pkgs.librewolf-unwrapped.override { pipewireSupport = true; }) { })
     (ffmpeg-full.override {
       #withTensorflow = true;
       withUnfree = true;
