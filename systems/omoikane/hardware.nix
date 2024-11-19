@@ -9,27 +9,11 @@
 }:
 
 {
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6842a9de-c5fd-4648-b3b8-f76e56633825";
-    fsType = "ext4";
-  };
-
-  boot.initrd.luks.devices."luks-eaed8652-a306-4434-a187-71e6fcb13e71".device = "/dev/disk/by-uuid/eaed8652-a306-4434-a187-71e6fcb13e71";
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7C5A-EE45";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
-  };
-
-  fileSystems."/home/jopejoe1/Public/games" = {
-    device = "/dev/sda";
-    fsType = "bcachefs";
-    options = [ "compression=zstd" ];
-  };
+ # fileSystems."/home/jopejoe1/Public/games" = {
+ #   device = "/dev/sda";
+ #   fsType = "bcachefs";
+ #   options = [ "compression=zstd" ];
+ # };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
