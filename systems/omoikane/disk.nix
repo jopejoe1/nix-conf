@@ -3,13 +3,13 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/nvme0n1";
         type = "disk";
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
-              end = "500M";
+              size = "500M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -18,18 +18,16 @@
                 mountOptions = [ "umask=0077" ];
               };
             };
-            root = {
-              name = "root";
-              end = "-0";
+            luks = {
+              size = "100%";
               content = {
                 type = "luks";
-                name = "crypto";
-                settings = {
-                  allowDiscards = true;
-                };
+                name = "crypted";
+                settings.allowDiscards = true;
+                passwordFile = "/tmp/secret.key";
                 content = {
                   type = "filesystem";
-                  format = "bcachefs";
+                  format = "ext4";
                   mountpoint = "/";
                 };
               };
