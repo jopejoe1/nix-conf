@@ -9,11 +9,11 @@
 }:
 
 {
- # fileSystems."/home/jopejoe1/Public/games" = {
- #   device = "/dev/sda";
- #   fsType = "bcachefs";
- #   options = [ "compression=zstd" ];
- # };
+  fileSystems."/home/jopejoe1/Public/games" = {
+    device = "/dev/sda";
+    fsType = "bcachefs";
+    options = [ "compression=zstd" ];
+  };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
