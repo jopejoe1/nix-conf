@@ -86,6 +86,8 @@
     gh
   ];
 
+  fonts.packages = [ pkgs.google-fonts ];
+
   programs = {
     adb.enable = true;
     dconf.enable = true;
