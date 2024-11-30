@@ -661,18 +661,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1732014248,
-        "narHash": "sha256-y/MEyuJ5oBWrWAic/14LaIr/u5E0wRVzyYsouYY3W6w=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "23e89b7da85c3640bbc2173fe04f4bd114342367",
-        "type": "github"
+        "lastModified": 1732992164,
+        "narHash": "sha256-ZpFerMSS731FNmGPkZecbq2Ck3GpOYowuGe+bouBfA0=",
+        "ref": "refs/heads/repology",
+        "rev": "fbbf93a6b4c50ad51f5f2173d0cb6eb7dc9f3eda",
+        "revCount": 714686,
+        "type": "git",
+        "url": "file:///home/jopejoe1/Documents/nixpkgs"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/jopejoe1/Documents/nixpkgs"
       }
     },
     "nixpkgs-24_05": {
