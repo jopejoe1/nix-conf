@@ -17,7 +17,7 @@ in
     services.printing = {
       enable = true;
       webInterface = true;
-      drivers = with pkgs; [ ];
+      drivers = with pkgs; [ hplip ];
     };
 
     hardware = {
@@ -30,6 +30,7 @@ in
     services.avahi = {
       enable = true;
       nssmdns4 = true;
+      nssmdns6 = true;
       openFirewall = true;
     };
   };
