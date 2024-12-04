@@ -58,7 +58,7 @@
     };
     postgresql = {
       enable = true;
-      extraPlugins = ps: with ps; [ pg_libversion ];
+      extensions = ps: with ps; [ pg_libversion ];
       enableTCPIP = true;
       initialScript = pkgs.writeText "backend-initScript" ''
         CREATE DATABASE repology
