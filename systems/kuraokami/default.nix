@@ -105,7 +105,7 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     picard
-    mixxx
+    #mixxx
     goverlay
     strawberry-qt6
     jitsi-meet-electron
