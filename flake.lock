@@ -496,11 +496,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733351379,
-        "narHash": "sha256-MTMsAhXxMMVHVN99jT8E0afOAOtt3JQWjYpTja94PAU=",
+        "lastModified": 1733570843,
+        "narHash": "sha256-sQJAxY1TYWD1UyibN/FnN97paTFuwBw3Vp3DNCyKsMk=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "55d07816a0944f06a9df5ef174999a72fa4060c7",
+        "rev": "a35b08d09efda83625bef267eb24347b446c80b8",
         "type": "github"
       },
       "original": {
@@ -661,10 +661,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1733584530,
-        "narHash": "sha256-jaj3zAxrKSoJM4c+k46cS7luEPN+81RrzyVIAFtn0F0=",
+        "lastModified": 1733597833,
+        "narHash": "sha256-R9KDyKQo9VfaV5JKr/KHwTBv/Laipzr+L2pTW9KbmbU=",
         "ref": "refs/heads/repology",
-        "rev": "19c5c7d061a6f4fa43bf8b6f0293941b819ca242",
+        "rev": "9aa93171a30d381c4e98c50ff5d9f9cc5a4906f8",
         "revCount": 718297,
         "type": "git",
         "url": "file:///home/jopejoe1/Documents/nixpkgs"
@@ -706,11 +706,11 @@
         "treefmt-nix": "treefmt-nix_4"
       },
       "locked": {
-        "lastModified": 1733498727,
-        "narHash": "sha256-R+n4JfXjGrJG2gbhJPsZPTwdDsHoJvwxxpWcRY4KjyQ=",
+        "lastModified": 1733574898,
+        "narHash": "sha256-8Meoqfk61EsMB3x/HQcttkgJqUm45kjtOyQGrtHP/H4=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "ae78face8d6a09abe2504d41c035b6460c15a17b",
+        "rev": "08be20270d62e31f215f4592867d53576af15001",
         "type": "github"
       },
       "original": {
