@@ -65,7 +65,7 @@
     udev.packages = [ pkgs.yubikey-personalization ];
     fwupd.enable = true;
     libinput.enable = true;
-    #repology.enable = true;
+    repology.enable = true;
   };
 
   time.timeZone = "Europe/Berlin";
