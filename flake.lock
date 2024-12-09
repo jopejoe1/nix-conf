@@ -661,11 +661,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1733597833,
-        "narHash": "sha256-R9KDyKQo9VfaV5JKr/KHwTBv/Laipzr+L2pTW9KbmbU=",
-        "ref": "refs/heads/repology",
-        "rev": "9aa93171a30d381c4e98c50ff5d9f9cc5a4906f8",
-        "revCount": 718297,
+        "lastModified": 1733780082,
+        "narHash": "sha256-Y6UzC+ZqoeBaIQQkVLEQn8bbcoYfbt6H6VAMvNkKuvE=",
+        "ref": "refs/heads/shairport-sync-conf",
+        "rev": "7837a25f8579028e967f5d39e18268458bf481a7",
+        "revCount": 719714,
         "type": "git",
         "url": "file:///home/jopejoe1/Documents/nixpkgs"
       },

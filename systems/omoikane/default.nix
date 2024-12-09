@@ -65,7 +65,31 @@
     udev.packages = [ pkgs.yubikey-personalization ];
     fwupd.enable = true;
     libinput.enable = true;
-    repology.enable = true;
+    #repology.enable = true;
+    shairport-sync = {
+      enable = true;
+      package = pkgs.shairport-sync-airplay2;
+      arguments = "-o pw -v";
+      settings = {
+        general = {
+          name = "NixOS Shairport";
+        };
+        metadata = {
+          enabled = "yes";
+          include_cover_art = "yes";
+          cover_art_cache_directory = "/tmp/shairport-sync/.cache/coverart";
+          pipe_name = "/tmp/shairport-sync-metadata";
+          pipe_timeout = 5000;
+        };
+        mqtt = {
+          enabled = "yes";
+          hostname = "mqtt.server.domain.example";
+          port = 1883;
+          publish_parsed = "yes";
+          publish_cover = "yes";
+        };
+      };
+    };
   };
 
   time.timeZone = "Europe/Berlin";
