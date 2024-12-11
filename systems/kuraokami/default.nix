@@ -77,6 +77,10 @@
       openFirewall = true;
       secretKeyFile = "/var/cache-priv-key.pem";
     };
+    shairport-sync = {
+      enable = true;
+      package = pkgs.shairport-sync-airplay2;
+    };
   };
 
   nixpkgs = {
