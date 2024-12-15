@@ -18,7 +18,7 @@ in
     users.users.jopejoe1 = {
       isNormalUser = true;
       shell = pkgs.nushell;
-      description = "Johannes Jöns";
+      description = "jopejoe1";
       hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
       extraGroups = [
         "wheel"
