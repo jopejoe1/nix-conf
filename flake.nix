@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "/home/jopejoe1/Documents/nixpkgs/";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
     # Outputs
