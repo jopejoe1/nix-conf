@@ -66,6 +66,7 @@
     fwupd.enable = true;
     libinput.enable = true;
     #repology.enable = true;
+    shairport-sync.enable =true;
   };
 
   time.timeZone = "Europe/Berlin";
