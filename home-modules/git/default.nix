@@ -18,7 +18,7 @@ in
     programs.git = {
       enable = true;
       package = pkgs.git;
-      userEmail = "johannes@joens.email";
+      userEmail = "jopejoe1@missing.ninja";
       userName = "jopejoe1";
       extraConfig = {
         core = {
