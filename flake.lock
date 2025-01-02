@@ -669,8 +669,10 @@
         "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/jopejoe1/Documents/nixpkgs"
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-24_11": {
