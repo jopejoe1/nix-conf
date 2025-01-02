@@ -112,7 +112,6 @@
     #mixxx
     goverlay
     strawberry-qt6
-    jitsi-meet-electron
     thunderbird
     (ffmpeg-full.override {
       #withTensorflow = true;
