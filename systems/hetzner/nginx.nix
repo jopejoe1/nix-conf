@@ -58,7 +58,8 @@
       "cache.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+        locations."/".proxyPass =
+          "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
       };
       "nix.missing.ninja" = {
         forceSSL = true;
@@ -98,23 +99,29 @@
               urlPrefix = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/blob/master/";
             }
             {
-              optionsJSON = (import "${self.inputs.nixpkgs}/nixos/release.nix" { }).options + /share/doc/nixos/options.json;
+              optionsJSON =
+                (import "${self.inputs.nixpkgs}/nixos/release.nix" { }).options + /share/doc/nixos/options.json;
               name = "NixOS";
               urlPrefix = "https://github.com/NixOS/nixpkgs/tree/master/";
             }
             {
-              optionsJSON = self.inputs.home-manager.packages.${pkgs.stdenv.system}.docs-html.passthru.home-manager-options.nixos + /share/doc/nixos/options.json;
+              optionsJSON =
+                self.inputs.home-manager.packages.${pkgs.stdenv.system}.docs-html.passthru.home-manager-options.nixos
+                + /share/doc/nixos/options.json;
               name = "Home Manager NixOS";
               urlPrefix = "https://github.com/nix-community/home-manager/tree/master/";
             }
             {
-              optionsJSON = self.inputs.home-manager.packages.${pkgs.stdenv.system}.docs-json + /share/doc/home-manager/options.json;
+              optionsJSON =
+                self.inputs.home-manager.packages.${pkgs.stdenv.system}.docs-json
+                + /share/doc/home-manager/options.json;
               optionsPrefix = "home-manager.users.<name>";
               name = "Home Manager";
               urlPrefix = "https://github.com/nix-community/home-manager/tree/master/";
             }
             {
-              optionsJSON = self.inputs.nixvim.packages.${pkgs.stdenv.system}.options-json + /share/doc/nixos/options.json;
+              optionsJSON =
+                self.inputs.nixvim.packages.${pkgs.stdenv.system}.options-json + /share/doc/nixos/options.json;
               optionsPrefix = "programs.nixvim";
               name = "NixVim";
               urlPrefix = "https://github.com/nix-community/nixvim/tree/main/";

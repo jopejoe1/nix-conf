@@ -11,7 +11,9 @@ let
 in
 {
   options.jopejoe1.sops = {
-    enable = (lib.mkEnableOption "Enable sops") // { default = true;};
+    enable = (lib.mkEnableOption "Enable sops") // {
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {

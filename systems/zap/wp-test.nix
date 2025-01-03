@@ -121,11 +121,9 @@
         if ! test -e "${hostStateDir}/secret-keys.php"; then
           umask 0177
           echo "<?php" >> "${hostStateDir}/secret-keys.php"
-          ${
-            lib.concatMapStringsSep "\n" (var: ''
-              echo "define('${var}', '`tr -dc a-zA-Z0-9 </dev/urandom | head -c 64`');" >> "${hostStateDir}/secret-keys.php"
-            '') secretsVars
-          }
+          ${lib.concatMapStringsSep "\n" (var: ''
+            echo "define('${var}', '`tr -dc a-zA-Z0-9 </dev/urandom | head -c 64`');" >> "${hostStateDir}/secret-keys.php"
+          '') secretsVars}
           echo "?>" >> "${hostStateDir}/secret-keys.php"
           chmod 440 "${hostStateDir}/secret-keys.php"
         fi
