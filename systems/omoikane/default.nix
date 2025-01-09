@@ -66,8 +66,6 @@
     fwupd.enable = true;
     libinput.enable = true;
     #repology.enable = true;
-    shairport-sync.enable = true;
-    shairport-sync.arguments = "-v -o pw";
   };
 
   time.timeZone = "Europe/Berlin";
@@ -82,14 +80,11 @@
 
   environment.systemPackages = with pkgs; [
     prismlauncher
-    goverlay
     thunderbird
     strawberry-qt6
     picard
     gh
   ];
-
-  fonts.packages = [ pkgs.google-fonts ];
 
   programs = {
     adb.enable = true;
@@ -116,9 +111,6 @@
     "aarch64-linux"
     "armv6l-linux"
   ];
-  boot.plymouth = {
-    enable = true;
-  };
 
   boot.initrd.systemd.enable = true;
   programs.captive-browser = {
