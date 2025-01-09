@@ -73,15 +73,6 @@
               urlPrefix = "https://github.com/nix-community/disko/blob/master/";
             }
             {
-              modules = lib.attrValues self.inputs.nixos-hardware.nixosModules;
-              name = "NixOS Hardware";
-              specialArgs = {
-                modulesPath = pkgs.path + "/nixos/modules";
-                inherit pkgs;
-              };
-              urlPrefix = "https://github.com/NixOS/nixos-hardware/blob/master/";
-            }
-            {
               modules = [
                 self.inputs.snm.nixosModules.default
                 {
