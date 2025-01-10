@@ -6,6 +6,9 @@
   ...
 }:
 
+let
+  network_interface_name = (lib.elemAt config.facter.report.hardware.hardware.network_interface 0).unix_device_name;
+in
 {
 
   imports = [
@@ -52,7 +55,9 @@
         80
       ];
     };
-    bridges.br0.interfaces = [ "enp41s0" ];
+    bridges.br0.interfaces = [
+      network_interface_name
+    ];
     useDHCP = false;
     interfaces."br0" = {
       useDHCP = true;
@@ -65,7 +70,7 @@
     };
     defaultGateway = {
       address = "192.168.100.1";
-      interface = "enp41s0";
+      interface = network_interface_name;
     };
     nameservers = [ "192.168.100.1" ];
   };
