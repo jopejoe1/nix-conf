@@ -101,9 +101,11 @@
       hostBridge = "br0"; # Specify the bridge name
       localAddress = "192.168.100.5/24";
       config = {
+        system.stateVersion = "25.05";
         services.mastodon = {
           enable = true;
           streamingProcesses = (lib.elemAt config.facter.report.hardware.cpu 0).cores - 1;
+          localDomain = "nyan.social";
         };
       };
     };
