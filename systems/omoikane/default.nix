@@ -66,6 +66,9 @@
     fwupd.enable = true;
     libinput.enable = true;
     #repology.enable = true;
+    zerotierone.joinNetworks = [
+      "d5e5fb653774ee43"
+    ];
   };
 
   time.timeZone = "Europe/Berlin";
@@ -105,6 +108,11 @@
     "kvm"
     "nixos-test"
   ];
+
+  networking.firewall = {
+    allowedTCPPorts = [ 8080 ];
+    allowedUDPPorts = [ 8080 ];
+  };
 
   boot.binfmt.emulatedSystems = [
     "riscv64-linux"
