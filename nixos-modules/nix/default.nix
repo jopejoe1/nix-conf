@@ -134,7 +134,7 @@ in
                 sha256 = "sha256-VDn3kQy23+QC2WKhWfe0FrUOnLuI1YwH5GxdTTVWt+A=";
               })
             ];
-            postPatch = oldAttrs.postPatch ++ ''
+            postPatch = oldAttrs.postPatch + ''
               substituteInPlace tests/storage/databases/main/test_events_worker.py \
                 --replace-fail "def test_recovery" "def no_test_recovery"
             '';
