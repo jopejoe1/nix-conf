@@ -111,6 +111,7 @@ in
           enable = true;
           streamingProcesses = (lib.elemAt config.facter.report.hardware.cpu 0).cores - 1;
           localDomain = "nyan.social";
+          smtp.fromAddress = "mastodon@nyan.social"
         };
       };
     };

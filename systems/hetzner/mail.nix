@@ -25,6 +25,7 @@
       "net0loggy.de"
       "dtg-c.de"
       "joens.email"
+      "nyan.social"
     ];
 
     # A list of all login accounts. To create the password hashes, use
@@ -48,6 +49,7 @@
           "@net0loggy.de"
           "@dtg-c.de"
           "@joens.email"
+          "@nyan.social"
         ];
       };
     };
