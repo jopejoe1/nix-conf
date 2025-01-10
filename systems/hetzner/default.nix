@@ -63,7 +63,10 @@
         }
       ];
     };
-    defaultGateway = "192.168.100.1";
+    defaultGateway = {
+      address = "192.168.100.1";
+      interface = "enp41s0";
+    };
     nameservers = [ "192.168.100.1" ];
   };
 
