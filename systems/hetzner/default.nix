@@ -40,16 +40,31 @@
     };
   };
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [
-      21
-      80
-    ];
-    allowedUDPPorts = [
-      21
-      80
-    ];
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        21
+        80
+      ];
+      allowedUDPPorts = [
+        21
+        80
+      ];
+    };
+    bridges.br0.interfaces = [ "enp41s0" ];
+    useDHCP = false;
+    interfaces."br0" = {
+      useDHCP = true;
+      ipv4.addresses = [
+        {
+          address = "192.168.100.3";
+          prefixLength = 24;
+        }
+      ];
+    };
+    defaultGateway = "192.168.100.1";
+    nameservers = [ "192.168.100.1" ];
   };
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:a0:31e5::/64";
@@ -75,6 +90,17 @@
   users.users.backupftp = {
     isNormalUser = true;
     initialPassword = "backupPassword";
+  };
+
+  containers = {
+    nyan = {
+      privateNetwork = true;
+      hostBridge = "br0"; # Specify the bridge name
+      localAddress = "192.168.100.5/24";
+      config = {
+        services.mastodon.enable = true;
+      };
+    };
   };
 
   disko.devices = {
