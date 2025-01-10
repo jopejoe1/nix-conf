@@ -50,12 +50,19 @@
 
   networking = {
     hostId = "16c22faf";
+    firewall = {
+      allowedTCPPorts = [ 8080 ];
+      allowedUDPPorts = [ 8080 ];
+    };
   };
 
   services = {
     hardware.openrgb = {
       enable = true;
     };
+    zerotierone.joinNetworks = [
+      "d5e5fb653774ee43"
+    ];
     postgresql = {
       enable = true;
       extensions = ps: with ps; [ pg_libversion ];
