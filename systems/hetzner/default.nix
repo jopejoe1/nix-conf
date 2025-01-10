@@ -7,7 +7,7 @@
 }:
 
 let
-  network_interface_name = (lib.elemAt config.facter.report.hardware.hardware.network_interface 0).unix_device_name;
+  network_interface_name = (lib.elemAt config.facter.report.hardware.network_interface 0).unix_device_name;
 in
 {
 
