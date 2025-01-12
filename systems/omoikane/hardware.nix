@@ -12,7 +12,7 @@
   fileSystems."/home/jopejoe1/Public/games" = {
     device = "/dev/sda";
     fsType = "bcachefs";
-    options = [ "compression=zstd" ];
+    options = [ "compression=zstd" "nofail" ];
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
