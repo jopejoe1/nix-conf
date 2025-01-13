@@ -95,6 +95,14 @@ in
     chrootlocalUser = true;
   };
 
+  services.mastodon = {
+    enable = true;
+    streamingProcesses = (lib.elemAt config.facter.report.hardware.cpu 0).cores - 1;
+    localDomain = "nyan.social";
+    smtp.fromAddress = "mastodon@nyan.social";
+    configureNginx = true;
+  };
+
   users.users.backupftp = {
     isNormalUser = true;
     initialPassword = "backupPassword";
@@ -107,12 +115,6 @@ in
       localAddress = "192.168.100.5/24";
       config = {
         system.stateVersion = "25.05";
-        services.mastodon = {
-          enable = true;
-          streamingProcesses = (lib.elemAt config.facter.report.hardware.cpu 0).cores - 1;
-          localDomain = "nyan.social";
-          smtp.fromAddress = "mastodon@nyan.social";
-        };
       };
     };
   };

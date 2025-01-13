@@ -26,6 +26,8 @@
       "dtg-c.de"
       "joens.email"
       "nyan.social"
+      "miau.social"
+      "pumkin.social"
     ];
 
     # A list of all login accounts. To create the password hashes, use
@@ -50,6 +52,8 @@
           "@dtg-c.de"
           "@joens.email"
           "@nyan.social"
+          "@miau.social"
+          "@pumpkin.social"
         ];
       };
     };
