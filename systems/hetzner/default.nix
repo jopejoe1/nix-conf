@@ -99,9 +99,12 @@ in
     enable = true;
     streamingProcesses = (lib.elemAt config.facter.report.hardware.cpu 0).cores - 1;
     localDomain = "nyan.social";
+    elasticsearch.host = "127.0.0.1";
     smtp.fromAddress = "mastodon@nyan.social";
     configureNginx = true;
   };
+
+  services.opensearch.enable = true;
 
   users.users.backupftp = {
     isNormalUser = true;
