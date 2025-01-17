@@ -95,48 +95,31 @@ in
     chrootlocalUser = true;
   };
 
-  services.mastodon = {
+  services.akkoma = {
     enable = true;
-    streamingProcesses = (lib.elemAt config.facter.report.hardware.cpu 0).cores - 1;
-    localDomain = "nyan.social";
-    elasticsearch.host = "127.0.0.1";
-    smtp.fromAddress = "mastodon@nyan.social";
-    configureNginx = true;
-  };
+    nginx = {
+      enableACME = true;
+      forceSSL = true;
+    };
+    config = {
+      ":pleroma" = {
+        ":instance" = {
+          name = "Nyan Social";
+          description = "More detailed description";
+          email = "admin@nyan.social";
+          registration_open = false;
+        };
 
-  services.opensearch.enable = true;
+        "Pleroma.Web.Endpoint" = {
+          url.host = "nyan.social";
+        };
+      };
+    };
+  };
 
   users.users.backupftp = {
     isNormalUser = true;
     initialPassword = "backupPassword";
-  };
-
-  containers = {
-    nyan = {
-      privateNetwork = true;
-      hostBridge = "br0"; # Specify the bridge name
-      localAddress = "192.168.100.5/24";
-      config = {
-        system.stateVersion = "25.05";
-        services.nginx = {
-          virtualHosts."${config.containers.nyan.config.services.mastodon.localDomain}" = {
-            forceSSL = false;
-            enableACME = false;
-          };
-        };
-        networking = {
-          firewall = {
-            enable = true;
-            allowedTCPPorts = [
-              80
-            ];
-            allowedUDPPorts = [
-              80
-            ];
-          };
-        };
-      };
-    };
   };
 
   disko.devices = {
