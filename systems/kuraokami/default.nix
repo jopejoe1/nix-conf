@@ -120,6 +120,7 @@
     goverlay
     strawberry-qt6
     thunderbird
+    gh
     (ffmpeg-full.override {
       #withTensorflow = true;
       withUnfree = true;
