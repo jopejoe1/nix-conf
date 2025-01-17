@@ -127,18 +127,6 @@ in
         (_self: super: rec {
           firefox-addons = self.inputs.firefox-addons.packages.${config.nixpkgs.hostPlatform.system};
           localPkgs = self.outputs.packages.${config.nixpkgs.hostPlatform.system};
-          matrix-synapse-unwrapped = super.matrix-synapse-unwrapped.overrideAttrs (oldAttrs: {
-            patches = [
-              (super.fetchpatch2 {
-                url = "https://github.com/element-hq/synapse/commit/3eb92369ca14012a07da2fbf9250e66f66afb710.patch";
-                sha256 = "sha256-VDn3kQy23+QC2WKhWfe0FrUOnLuI1YwH5GxdTTVWt+A=";
-              })
-            ];
-            postPatch = oldAttrs.postPatch + ''
-              substituteInPlace tests/storage/databases/main/test_events_worker.py \
-                --replace-fail "def test_recovery" "def no_test_recovery"
-            '';
-          });
         })
       ];
     };
