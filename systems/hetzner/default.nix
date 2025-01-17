@@ -109,10 +109,10 @@ in
           email = "admin@nyan.social";
           registration_open = false;
         };
-
         "Pleroma.Web.Endpoint" = {
           url.host = "nyan.social";
         };
+        "Pleroma.Upload".base_url = "https://nyan.social/media/";
       };
     };
   };
