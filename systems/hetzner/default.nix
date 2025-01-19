@@ -97,6 +97,14 @@ in
 
   services.akkoma = {
     enable = true;
+    package = pkgs.akkoma.overrideAttrs (finalAttrs: previousAttrs: {
+      patches = [
+        (pkgs.fetchPatch2 {
+          url = "https://akkoma.dev/AkkomaGang/akkoma/pulls/846.patch";
+          hash = "";
+        })
+      ];
+    });
     nginx = {
       enableACME = true;
       forceSSL = true;
