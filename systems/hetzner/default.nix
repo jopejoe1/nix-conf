@@ -101,7 +101,7 @@ in
       patches = [
         (pkgs.fetchpatch2 {
           url = "https://akkoma.dev/AkkomaGang/akkoma/pulls/846.patch";
-          hash = "";
+          hash = "sha256-KTv7YKzSAzLqBnG22EIbIiX4B5D4WUYT9FzZCb4CYrU=";
         })
       ];
     });
