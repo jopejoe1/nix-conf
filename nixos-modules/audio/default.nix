@@ -90,6 +90,46 @@ in
             }
           ];
         };
+        "10-snapcast-discover" = {
+          "context.modules" = [
+            {
+              name = "libpipewire-module-snapcast-discover";
+              args = {
+                "stream.rules" = [
+                  {
+                    matches = [
+                      {
+                        "snapcast.ip" = "~.*";
+                      }
+                    ];
+                    actions = {
+                      create-stream = {
+                      };
+                    };
+                  }
+                ];
+              };
+            }
+          ];
+        };
+        "10-pulse-discover" = {
+          "context.modules" = [
+            {
+              name = "libpipewire-module-zeroconf-discover";
+              args = {
+              };
+            }
+          ];
+        };
+        "10-x11=bell" = {
+          "context.modules" = [
+            {
+              name = "libpipewire-module-x11-bell";
+              args = {
+              };
+            }
+          ];
+        };
       };
     };
   };
