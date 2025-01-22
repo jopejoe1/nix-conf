@@ -103,7 +103,7 @@ in
         owner = "AkkomaGang";
         repo = "akkoma";
         rev = "92e9ca0fafc94b84c618647d646efa11d29d9cfc";
-        hash = "";
+        hash = "sha256-Bi+ooGMxbPIZErTILckgwYcgmN8LMlX43MF39x+KKvs=";
       };
     });
     nginx = {
