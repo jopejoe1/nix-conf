@@ -11,7 +11,7 @@
   imports = [
     ./hardware.nix
     ./disk.nix
-    nixos-hardware.nixosModules.framework-16-7040-amd
+    #nixos-hardware.nixosModules.framework-16-7040-amd
     self.inputs.srvos.nixosModules.desktop
   ];
 
