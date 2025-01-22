@@ -66,6 +66,27 @@ in
             }
           ];
         };
+        "30-echo-cancel" = {
+          "context.modules" = [
+            {
+              name = "libpipewire-module-echo-cancel";
+              args = {
+                "capture.props" = {
+                  "node.name" = "Echo Cancellation Capture";
+                };
+                "source.props" = {
+                  "node.name" = "Echo Cancellation Source";
+                };
+                "sink.props" = {
+                  "node.name" = "Echo Cancellation Sink";
+                };
+                "playback.props" = {
+                  "node.name" = "Echo Cancellation Playback";
+                };
+              };
+            }
+          ];
+        };
         "10-raop-discover" = {
           "context.modules" = [
             {
