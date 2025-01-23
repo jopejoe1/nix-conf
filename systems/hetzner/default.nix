@@ -114,9 +114,22 @@ in
       ":pleroma" = {
         ":instance" = {
           name = "Nyan Social";
-          description = "More detailed description";
+          description = "A Nyantastic Fediverse instance!";
           email = "admin@nyan.social";
           registration_open = false;
+          federating = true;
+          federation_incoming_replies_max_depth = null;
+          max_remote_account_fields = 100;
+          external_user_synchronization = true;
+          local_bubble = [
+            "social.nekover.se"
+          ];
+        };
+        ":mrf_steal_emoji" = {
+          hosts = [
+            "social.nekover.se"
+          ];
+          download_unknown_size = true;
         };
         "Pleroma.Web.Endpoint" = {
           url.host = "nyan.social";
