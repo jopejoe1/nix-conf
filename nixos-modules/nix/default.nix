@@ -127,6 +127,9 @@ in
         (_self: super: rec {
           firefox-addons = self.inputs.firefox-addons.packages.${config.nixpkgs.hostPlatform.system};
           localPkgs = self.outputs.packages.${config.nixpkgs.hostPlatform.system};
+          tela-icon-theme = super.tela-icon-theme.overrideAttrs {
+            src = self.inputs.tela;
+          };
         })
       ];
     };
