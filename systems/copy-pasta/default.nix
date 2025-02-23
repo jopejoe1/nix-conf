@@ -20,7 +20,6 @@
   jopejoe1 = {
     audio = {
       enable = true;
-      sennheiser-hd-660s = true;
     };
     local.enable = true;
     nix.enable = true;
@@ -36,17 +35,11 @@
       jopejoe1.enable = true;
       root.enable = true;
     };
-    boot.systemd.enable = true;
   };
 
   time.timeZone = "Europe/Berlin";
 
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-  };
+  networking.wireless.enable = false;
 
   environment.systemPackages = with pkgs; [
     picard
