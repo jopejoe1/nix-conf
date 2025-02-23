@@ -778,7 +778,6 @@
         "snm": "snm",
         "sops-nix": "sops-nix_2",
         "srvos": "srvos",
-        "tela": "tela",
         "treefmt-nix": "treefmt-nix_5"
       }
     },
@@ -913,22 +912,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tela": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739165606,
-        "narHash": "sha256-ufjKFlKJnmNwD2m1w+7JSBQij6ltxXWCpUEvVxECS98=",
-        "owner": "vinceliuice",
-        "repo": "Tela-icon-theme",
-        "rev": "fea810d948a663f336060b97db556274af3fc7c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vinceliuice",
-        "repo": "Tela-icon-theme",
         "type": "github"
       }
     },

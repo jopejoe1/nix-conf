@@ -54,11 +54,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    tela = {
-      url = "github:vinceliuice/Tela-icon-theme";
-      flake = false;
-    };
-
     # Utility
     nixos-anywhere = {
       url = "github:nix-community/nixos-anywhere";
