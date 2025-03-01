@@ -16,13 +16,13 @@
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     powerManagement = {
       enable = true;
-      finegrained = true;
+      #finegrained = true;
     };
     prime = {
-      reverseSync.enable = true;
+      reverseSync.enable = false;
       offload = {
-        enable = true;
-        enableOffloadCmd = true;
+        enable = false;
+        #enableOffloadCmd = true;
       };
       sync.enable = false;
       allowExternalGpu = true;

@@ -84,10 +84,6 @@
       openFirewall = true;
       secretKeyFile = "/var/cache-priv-key.pem";
     };
-    shairport-sync = {
-      enable = true;
-      package = pkgs.shairport-sync-airplay2;
-    };
   };
 
   nixpkgs = {
@@ -118,6 +114,10 @@
     picard
     #mixxx
     goverlay
+    vkbasalt
+    vkbasalt-cli
+    mangohud
+    mangojuice
     strawberry-qt6
     thunderbird
     gh
