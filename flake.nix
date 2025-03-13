@@ -35,7 +35,7 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     snm = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      url = "gitlab:yu-re-ka/nixos-mailserver/dovecot2-modules";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
