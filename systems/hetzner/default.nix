@@ -116,11 +116,20 @@ in
           name = "Nyan Social";
           description = "A Nyantastic Fediverse instance!";
           email = "admin@nyan.social";
-          registration_open = false;
+          registrations_open = false;
+          account_activation_required = true;
+          account_approval_required = true;
+          external_user_synchronization = true;
+          show_reactions = true;
+          invites_enabled = true;
           federating = true;
           federation_incoming_replies_max_depth = null;
           max_remote_account_fields = 100;
-          external_user_synchronization = true;
+          federated_timeline_available =true;
+          languages = [
+            "en"
+            "de"
+          ];
           local_bubble = [
             "social.nekover.se"
           ];
