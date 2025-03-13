@@ -122,11 +122,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1741881636,
-        "narHash": "sha256-WKeVpiCd1IUc3nENd6/MpayNjZAskxqIRRrxFhtbXN8=",
+        "lastModified": 1741895547,
+        "narHash": "sha256-kSb+kLH23exgw0bBO0lycD7sxIqKoYSwNnFzrfMqRtM=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "7895ffa938472e966ee7b4956f7d0736e5458b41",
+        "rev": "ec50f84eca2f07eb07e9c8a5e61ee82a83930f53",
         "type": "gitlab"
       },
       "original": {
@@ -679,15 +679,16 @@
         "nixpkgs-24_11": "nixpkgs-24_11"
       },
       "locked": {
-        "lastModified": 1740437053,
-        "narHash": "sha256-exPTta4qI1ka9sk+jPcLogGffJ1OVXnAsTRqpeAXeNw=",
-        "owner": "simple-nixos-mailserver",
+        "lastModified": 1741822816,
+        "narHash": "sha256-up3i+d8ZFoKEWSMpG2CoBwIKEzSmRSycIEuOSKlNhtM=",
+        "owner": "yu-re-ka",
         "repo": "nixos-mailserver",
-        "rev": "c8ec4d5e432f5df4838eacd39c11828d23ce66ec",
+        "rev": "9eb0063bc2afaa00bd286623f3565fbec1103eba",
         "type": "gitlab"
       },
       "original": {
-        "owner": "simple-nixos-mailserver",
+        "owner": "yu-re-ka",
+        "ref": "dovecot2-modules",
         "repo": "nixos-mailserver",
         "type": "gitlab"
       }
