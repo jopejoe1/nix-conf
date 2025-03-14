@@ -52,7 +52,6 @@ in
         auto-allocate-uids = true;
         use-cgroups = true;
         warn-dirty = true;
-        allow-dirty = false;
         use-xdg-base-directories = true;
         keep-going = true;
         builders-use-substitutes = true;
