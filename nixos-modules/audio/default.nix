@@ -27,7 +27,7 @@ in
       neural-amp-modeler-lv2
       mda_lv2
       x42-plugins
-      tunefish
+      #tunefish
       mod-distortion
       infamousPlugins
       drumgizmo
