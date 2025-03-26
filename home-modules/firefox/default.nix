@@ -237,10 +237,11 @@ in
             isDefault = true;
             name = "default";
             search = {
-              default = "DuckDuckGo";
+              default = "ddg";
               force = true;
               engines = {
-                "Nix Packages" = {
+                "nixpkgs" = {
+                  name = "Nix Packages";
                   urls = [
                     {
                       template = "https://search.nixos.org/packages";
@@ -263,7 +264,8 @@ in
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "@np" ];
                 };
-                "NixOS Modules" = {
+                "nixos" = {
+                  name = "NixOS Modules";
                   urls = [
                     {
                       template = "https://search.nixos.org/options";
@@ -286,7 +288,8 @@ in
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "@nm" ];
                 };
-                "Noogle" = {
+                "noogle" = {
+                  name = "Noogle";
                   urls = [
                     {
                       template = "https://noogle.dev/q";
@@ -301,7 +304,8 @@ in
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "@noogle" ];
                 };
-                "Home Manager Modules" = {
+                "home-manager" = {
+                  name = "Home Manager Modules";
                   urls = [
                     {
                       template = "https://home-manager-options.extranix.com/";
@@ -320,7 +324,8 @@ in
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = [ "@hm" ];
                 };
-                "Repology" = {
+                "repology" = {
+                  name = "Repology";
                   urls = [
                     {
                       template = "https://repology.org/projects";
@@ -332,11 +337,12 @@ in
                       ];
                     }
                   ];
-                  iconUpdateURL = "https://raw.githubusercontent.com/repology/repology-webapp/master/repologyapp/static/repology40x40.v1.png";
+                  icon = "https://raw.githubusercontent.com/repology/repology-webapp/master/repologyapp/static/repology40x40.v1.png";
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@repo" ];
                 };
-                "NixOS Wiki" = {
+                "nixos-wiki" = {
+                  name = "NixOS Wiki";
                   urls = [
                     {
                       template = "https://wiki.nixos.org/w/index.php";
@@ -348,10 +354,11 @@ in
                       ];
                     }
                   ];
-                  icon = "${config.programs.firefox.profiles.default.search.engines."Nix Packages".icon}";
+                  icon = "${config.programs.firefox.profiles.default.search.engines.nixpkgs.icon}";
                   definedAliases = [ "@nw" ];
                 };
-                "Arch Wiki" = {
+                "arch-wiki" = {
+                  name = "Arch Wiki";
                   urls = [
                     {
                       template = "https://wiki.archlinux.org/index.php";
@@ -363,11 +370,12 @@ in
                       ];
                     }
                   ];
-                  iconUpdateURL = "https://upload.wikimedia.org/wikipedia/commons/1/13/Arch_Linux_%22Crystal%22_icon.svg";
+                  icon = "https://upload.wikimedia.org/wikipedia/commons/1/13/Arch_Linux_%22Crystal%22_icon.svg";
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@arch" ];
                 };
-                "Minecraft Wiki" = {
+                "minecraft-wiki" = {
+                  name = "Minecraft Wiki";
                   urls = [
                     {
                       template = "https://minecraft.wiki/";
@@ -379,11 +387,12 @@ in
                       ];
                     }
                   ];
-                  iconUpdateURL = "https://minecraft.wiki/images/Wiki.png";
+                  icon = "https://minecraft.wiki/images/Wiki.png";
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@mc" ];
                 };
-                "Warframe Wiki" = {
+                "warframe-wiki" = {
+                  name = "Warframe Wiki";
                   urls = [
                     {
                       template = "https://warframe.fandom.com/wiki/Special:Search";
@@ -395,11 +404,12 @@ in
                       ];
                     }
                   ];
-                  iconUpdateURL = "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
+                  icon = "https://static.wikia.nocookie.net/warframe/images/e/e6/Site-logo.png";
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@wf" ];
                 };
-                "MusicBrainz Artis" = {
+                "musicbrainz-artist" = {
+                  name = "MusicBrainz Artist";
                   urls = [
                     {
                       template = "https://musicbrainz.org/search";
@@ -415,11 +425,12 @@ in
                       ];
                     }
                   ];
-                  iconUpdateURL = "https://musicbrainz.org/static/images/favicons/apple-touch-icon-180x180.png";
+                  icon = "https://musicbrainz.org/static/images/favicons/apple-touch-icon-180x180.png";
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "@mb" ];
                 };
-                "DuckDuckGo" = {
+                "ddg" = {
+                  name = "DuckDuckGo";
                   urls = [
                     {
                       template = "https://duckduckgo.com";
@@ -431,17 +442,14 @@ in
                       ];
                     }
                   ];
-                  iconUpdateURL = "https://duckduckgo.com/assets/logo_header.v109.svg";
+                  icon = "https://duckduckgo.com/assets/logo_header.v109.svg";
                   updateInterval = 24 * 60 * 60 * 1000;
                   definedAliases = [ "ddg" ];
                 };
-                "Bing".metaData.hidden = true;
-                "Google".metaData.hidden = true;
-                "eBay".metaData.hidden = true;
-                "Amazon.de".metaData.hidden = true;
-                "ToS;DR Search".metaData.hidden = true;
-                "LibRedirect".metaData.hidden = true;
-                "Wikipedia (en)".metaData.alias = "@wiki";
+                "bing".metaData.hidden = true;
+                "google".metaData.hidden = true;
+                "ebay".metaData.hidden = true;
+                "wikipedia".metaData.alias = "@wiki";
               };
             };
           };
