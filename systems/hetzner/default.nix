@@ -7,7 +7,8 @@
 }:
 
 let
-  network_interface_name = (lib.elemAt config.facter.report.hardware.network_interface 0).unix_device_name;
+  network_interface_name =
+    (lib.elemAt config.facter.report.hardware.network_interface 0).unix_device_name;
 in
 {
 
@@ -116,7 +117,7 @@ in
           federating = true;
           federation_incoming_replies_max_depth = null;
           max_remote_account_fields = 100;
-          federated_timeline_available =true;
+          federated_timeline_available = true;
           languages = [
             "en"
             "de"

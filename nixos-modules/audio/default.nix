@@ -65,13 +65,13 @@ in
     environment.sessionVariables =
       let
         makePluginPath =
-        format:
-          "$HOME/.${format}:" +
-          (lib.makeSearchPath format [
+          format:
+          "$HOME/.${format}:"
+          + (lib.makeSearchPath format [
             "$HOME/.nix-profile/lib"
             "/run/current-system/sw/lib"
             "/etc/profiles/per-user/$USER/lib"
-            ]);
+          ]);
       in
       {
         CLAP_PATH = lib.mkDefault (makePluginPath "clap");
