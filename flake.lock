@@ -665,8 +665,7 @@
         "nuschtos": "nuschtos",
         "snm": "snm",
         "sops-nix": "sops-nix_2",
-        "srvos": "srvos",
-        "treefmt-nix": "treefmt-nix_4"
+        "srvos": "srvos"
       }
     },
     "snm": {
@@ -860,26 +859,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "rev": "adc195eef5da3606891cedf80c0d9ce2d3190808",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "treefmt-nix_4": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1743081648,
-        "narHash": "sha256-WRAylyYptt6OX5eCEBWyTwOEqEtD6zt33rlUkr6u3cE=",
-        "owner": "numtide",
-        "repo": "treefmt-nix",
-        "rev": "29a3d7b768c70addce17af0869f6e2bd8f5be4b7",
         "type": "github"
       },
       "original": {
