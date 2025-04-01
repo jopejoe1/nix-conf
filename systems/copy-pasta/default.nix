@@ -15,6 +15,8 @@
     self.inputs.srvos.nixosModules.desktop
   ];
 
+  boot.loader.grub.devices = [ "/dev/sda" ];
+
   #facter.reportPath = ./facter.json;
 
   jopejoe1 = {
