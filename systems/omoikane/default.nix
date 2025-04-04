@@ -9,7 +9,6 @@
 
 {
   imports = [
-    ./hardware.nix
     ./disk.nix
     #nixos-hardware.nixosModules.framework-16-7040-amd
     self.inputs.srvos.nixosModules.desktop
@@ -118,4 +117,15 @@
     enable = true;
     interface = "wlp5s0";
   };
+
+  fileSystems."/home/jopejoe1/Public/games" = {
+    device = "/dev/sda";
+    fsType = "bcachefs";
+    options = [
+      "compression=zstd"
+      "nofail"
+    ];
+  };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
