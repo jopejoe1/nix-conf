@@ -30,20 +30,6 @@
     };
   };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      libcxx
-      SDL
-      openal
-      libcaca
-      xorg.libXext
-      xorg.libX11
-      libpulseaudio
-      alsa-lib
-    ];
-  };
-
   jopejoe1 = {
     audio = {
       enable = true;
@@ -126,12 +112,6 @@
     allowedTCPPorts = [ 8080 ];
     allowedUDPPorts = [ 8080 ];
   };
-
-  boot.binfmt.emulatedSystems = [
-    "riscv64-linux"
-    "aarch64-linux"
-    "armv6l-linux"
-  ];
 
   boot.initrd.systemd.enable = true;
   programs.captive-browser = {
