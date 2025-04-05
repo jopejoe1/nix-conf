@@ -125,6 +125,7 @@
       #withTensorflow = true;
       withUnfree = true;
     })
+    vulkan-hdr-layer-kwin6
   ];
 
   programs = {
