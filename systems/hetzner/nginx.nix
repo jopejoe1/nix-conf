@@ -55,6 +55,11 @@
         enableACME = true;
         locations."/".proxyPass = "http://localhost:8080";
       };
+      "ci.missing.ninja" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://localhost:8000";
+      };
       "cache.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
