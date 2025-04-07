@@ -150,6 +150,16 @@ in
     };
   };
 
+  services.woodpecker-agents.agents = {
+    hetzner = {
+      enable = true;
+      environment = {
+        WOODPECKER_SERVER = "localhost:9000";
+        WOODPECKER_MAX_WORKFLOWS = 6;
+      };
+    };
+  };
+
   users.users.backupftp = {
     isNormalUser = true;
     initialPassword = "backupPassword";
