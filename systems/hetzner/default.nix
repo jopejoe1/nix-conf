@@ -140,6 +140,16 @@ in
     };
   };
 
+  services.woodpecker-server = {
+    enable = true;
+    environment = {
+      WOODPECKER_HOST = "https://ci.missing.ninja";
+      WOODPECKER_OPEN = "true";
+      WOODPECKER_GITEA = "true";
+      WOODPECKER_GITEA_URL = "https://git.mixel.cloud";
+    };
+  };
+
   users.users.backupftp = {
     isNormalUser = true;
     initialPassword = "backupPassword";
