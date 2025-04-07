@@ -155,7 +155,7 @@ in
       enable = true;
       environment = {
         WOODPECKER_SERVER = "localhost:9000";
-        WOODPECKER_MAX_WORKFLOWS = 6;
+        WOODPECKER_MAX_WORKFLOWS = "6";
       };
     };
   };
