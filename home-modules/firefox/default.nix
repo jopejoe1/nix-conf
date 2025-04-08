@@ -395,11 +395,15 @@ in
                   name = "Warframe Wiki";
                   urls = [
                     {
-                      template = "https://warframe.fandom.com/wiki/Special:Search";
+                      template = "https://wiki.warframe.com/";
                       params = [
                         {
-                          name = "query";
+                          name = "search";
                           value = "{searchTerms}";
+                        }
+                        {
+                          name = "fulltext";
+                          value = "1";
                         }
                       ];
                     }
