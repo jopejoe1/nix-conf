@@ -85,6 +85,7 @@
     strawberry-qt6
     picard
     gh
+    kdePackages.wallpaper-engine-plugin
   ];
 
   programs = {
