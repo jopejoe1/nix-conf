@@ -5,12 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
-    # Outputs
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Modules
     disko = {
       url = "github:nix-community/disko";
