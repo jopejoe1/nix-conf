@@ -41,6 +41,7 @@
     ssh.enable = true;
     sway.enable = true;
     zerotierone.enable = true;
+    doc.enable = true;
     gui.enable = true;
     keyboard = {
       enable = true;
