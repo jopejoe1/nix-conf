@@ -32,10 +32,6 @@
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nuschtos = {
       url = "github:NuschtOS/search";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +62,6 @@
       pkgs' = system: nixpkgs.legacyPackages.${system};
     in
     {
-      modules.default = import ./modules;
       nixosModules.default = import ./nixos-modules;
       homeManagerModules.default = import ./home-modules;
       nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };

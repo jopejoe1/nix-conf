@@ -25,8 +25,6 @@
     self.inputs.disko.nixosModules.disko
     self.inputs.home-manager.nixosModules.home-manager
     self.inputs.sops-nix.nixosModules.sops
-    self.inputs.nixvim.nixosModules.nixvim
     self.inputs.nixos-facter-modules.nixosModules.facter
-    self.outputs.modules.default
   ];
 }

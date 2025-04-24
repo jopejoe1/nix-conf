@@ -47,7 +47,6 @@
       enable = true;
       layout = "us";
     };
-    neovim.enable = true;
     user = {
       jopejoe1.enable = true;
       root.enable = true;
