@@ -27,7 +27,7 @@ in
       };
       man = {
         enable = true;
-        generateCaches = true;
+        generateCaches = false;
       };
     };
     environment.systemPackages = with pkgs; [
