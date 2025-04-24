@@ -14,7 +14,7 @@ in
     layout = lib.mkOption {
       type = lib.types.str;
       default = "us";
-      description = lib.mdDoc "Keyboard Layout.";
+      description = "Keyboard Layout.";
     };
   };
 
