@@ -120,7 +120,7 @@
   };
 
   fileSystems."/home/jopejoe1/Public/games" = {
-    device = "/dev/sda";
+    device = "/dev/disk/by-label/gaming";
     fsType = "bcachefs";
     options = [
       "compression=zstd"
@@ -130,6 +130,7 @@
 
   zramSwap = {
     enable = true;
+    writebackDevice = "/dev/disk/by-partlabel/zram-writeback";
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
