@@ -128,5 +128,9 @@
     ];
   };
 
+  zramSwap = {
+    enable = true;
+  };
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
