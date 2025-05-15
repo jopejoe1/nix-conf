@@ -86,6 +86,7 @@
     picard
     gh
     kdePackages.wallpaper-engine-plugin
+    nix-output-monitor
   ];
 
   programs = {
