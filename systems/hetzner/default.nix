@@ -145,8 +145,12 @@ in
     environment = {
       WOODPECKER_HOST = "https://ci.missing.ninja";
       WOODPECKER_OPEN = "true";
-      WOODPECKER_GITEA = "true";
-      WOODPECKER_GITEA_URL = "https://git.mixel.cloud";
+      WOODPECKER_FORGEJO = "true";
+      WOODPECKER_ADMIN = "irgendwas";
+      WOODPECKER_FORGEJO_URL = "https://git.missing.ninja";
+      WOODPECKER_FORGEJO_CLIENT = "";
+      WOODPECKER_FORGEJO_SECRET = "";
+      WOODPECKER_AGENT_SECRET = "";
     };
   };
 
@@ -155,10 +159,24 @@ in
       enable = true;
       environment = {
         WOODPECKER_SERVER = "localhost:9000";
-        WOODPECKER_MAX_WORKFLOWS = "6";
+        WOODPECKER_MAX_WORKFLOWS = "8";
+        WOODPECKER_AGENT_SECRET = "";
+        WOODPECKER_BACKEND= "docker";
+        DOCKER_HOST = "unix:///run/podman/podman.sock";
       };
+      extraGroups = [ "podman" ];
     };
   };
+
+  virtualisation.podman.defaultNetwork.settings.dns_enable = true;
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
+
+  networking.firewall.interfaces."podman+" = {
+    allowedUDPPorts = [ 53 ];
+    allowedTCPPorts = [ 53 ];
+  };
+
 
   users.users.backupftp = {
     isNormalUser = true;
