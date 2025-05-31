@@ -31,5 +31,6 @@ in
     };
 
     networking.networkmanager.enable = true;
+    services.xserver.enable = true;
   };
 }
