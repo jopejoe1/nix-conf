@@ -25,6 +25,7 @@ in
         "networkmanager"
         "pipewire"
         "audio"
+        "video"
         "adbusers"
         "dialout"
       ];
