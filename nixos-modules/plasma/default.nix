@@ -10,10 +10,6 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
-      xserver = {
-        enable = true;
-      };
-
       libinput.enable = true;
 
       displayManager.sddm = {
@@ -31,6 +27,5 @@ in
     };
 
     networking.networkmanager.enable = true;
-    services.xserver.enable = true;
   };
 }
