@@ -199,15 +199,6 @@ in
             }
           ];
         };
-        "10-x11=bell" = {
-          "context.modules" = [
-            {
-              name = "libpipewire-module-x11-bell";
-              args = {
-              };
-            }
-          ];
-        };
       };
     };
   };
