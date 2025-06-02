@@ -161,7 +161,7 @@ in
         WOODPECKER_SERVER = "localhost:9000";
         WOODPECKER_MAX_WORKFLOWS = "8";
         WOODPECKER_AGENT_SECRET = "";
-        WOODPECKER_BACKEND= "docker";
+        WOODPECKER_BACKEND = "docker";
         DOCKER_HOST = "unix:///run/podman/podman.sock";
       };
       extraGroups = [ "podman" ];
@@ -176,7 +176,6 @@ in
     allowedUDPPorts = [ 53 ];
     allowedTCPPorts = [ 53 ];
   };
-
 
   users.users.backupftp = {
     isNormalUser = true;
