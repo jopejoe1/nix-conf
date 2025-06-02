@@ -70,7 +70,15 @@ in
             [ (getMainArch name) ]
             ++ self.nixosConfigurations.${name}.config.nix.settings.extra-platforms or [ ];
         in
+        lib.filter (builder: builder.hostName != config.networking.hostName)
         [
+          {
+            hostName = "localhost";
+            protocol = null;
+            systems = getArchs config.networking.hostName;
+            supportedFeatures = config.nix.settings.system-features;
+            maxJobs = (lib.elemAt config.facter.report.hardware.cpu 0).cores;
+          }
           {
             systems = getArchs "hetzner";
             supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
@@ -80,7 +88,7 @@ in
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 5;
-            maxJobs = 12;
+            maxJobs = (lib.elemAt self.nixosConfigurations.hetzner.config.facter.report.hardware.cpu 0).cores;
           }
           {
             systems = getArchs "zap";
@@ -90,7 +98,7 @@ in
             protocol = "ssh-ng";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
-            maxJobs = 4;
+            maxJobs = (lib.elemAt self.nixosConfigurations.zap.config.facter.report.hardware.cpu 0).cores;
           }
           {
             systems = getArchs "kuraokami";
@@ -101,7 +109,7 @@ in
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 10;
-            maxJobs = 24;
+            maxJobs = (lib.elemAt self.nixosConfigurations.kuraokami.config.facter.report.hardware.cpu 0).cores;
           }
         ];
       distributedBuilds = true;
