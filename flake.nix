@@ -88,5 +88,9 @@
           };
         }
       );
+      hydraJobs = {
+        inherit (self)
+          packages formatter nixosConfigurations;
+      };
     };
 }

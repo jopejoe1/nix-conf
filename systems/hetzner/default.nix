@@ -182,6 +182,15 @@ in
     initialPassword = "backupPassword";
   };
 
+  services.hydra = {
+    enable = true;
+    hydraURL = "https://hydra.missing.ninja";
+    notificationSender = "hydra@missing.ninja";
+    buildMachinesFiles = [];
+    useSubstitutes = true;
+  };
+
+
   disko.devices = {
     disk = {
       vdb = {

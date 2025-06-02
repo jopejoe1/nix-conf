@@ -41,13 +41,10 @@ in
           "nix-command"
           "flakes"
           "auto-allocate-uids"
-          "ca-derivations"
           "cgroups"
-          "dynamic-derivations"
           "fetch-closure"
           "impure-derivations"
           "no-url-literals"
-          "recursive-nix"
         ];
         auto-allocate-uids = true;
         use-cgroups = true;
@@ -57,6 +54,10 @@ in
         builders-use-substitutes = true;
         download-attempts = 1;
         fallback = true;
+        allowed-uris = [
+          "github:"
+          "gitlab:"
+        ];
       };
       buildMachines =
         let

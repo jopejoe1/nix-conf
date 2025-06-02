@@ -55,6 +55,11 @@
         enableACME = true;
         locations."/".proxyPass = "http://localhost:8080";
       };
+      "hydra.missing.ninja" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://localhost:3000";
+      };
       "ci.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
