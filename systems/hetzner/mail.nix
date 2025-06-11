@@ -71,7 +71,7 @@
   };
 
   services.roundcube = {
-    enable = true;
+    enable = false;
     # this is the url of the vhost, not necessarily the same as the fqdn of
     # the mailserver
     hostName = "webmail.missing.ninja";
