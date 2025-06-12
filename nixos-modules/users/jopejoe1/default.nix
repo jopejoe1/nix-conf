@@ -41,8 +41,6 @@ in
         with pkgs;
         [ ]
         ++ lib.optionals config.jopejoe1.gui.enable [
-          libsForQt5.kate
-          libsForQt5.ark
           element-desktop
           mumble
 
