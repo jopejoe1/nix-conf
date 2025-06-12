@@ -16,10 +16,10 @@ in
   config = lib.mkIf cfg.enable {
     programs.dconf.enable = true;
     users.users.jopejoe1 = {
-      isNormalUser = true;
+      isSystemUser = true;
       shell = pkgs.nushell;
       description = "jopejoe1";
-      hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
+      initialHashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
       extraGroups = [
         "wheel"
         "networkmanager"
@@ -30,6 +30,10 @@ in
         "dialout"
       ];
       uid = 1000;
+      group = "users";
+      createHome = true;
+      homeMode = "700";
+      home = "${config.users.defaultUserHome}/${config.users.users.jopejoe1.name}";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8oyMpS2hK3gQXyHIIVS6oilgMpemLmfhKKJ6RBMwUh johannes@joens.email"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP3pKtvhOOjG1pGJq7cVHS5uWy5IP8y1Ra/ENpmJcqOe root@zap"
