@@ -164,6 +164,8 @@ in
       enable = true;
     };
 
+    systemd.sysusers.enable = true;
+
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
 
     networking.hosts = {
