@@ -87,6 +87,7 @@
     gh
     kdePackages.wallpaper-engine-plugin
     nix-output-monitor
+    ciscoPacketTracer8
   ];
 
   programs = {
