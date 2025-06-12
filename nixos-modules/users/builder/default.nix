@@ -20,6 +20,7 @@ in
       hashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGvmivSRjYMSo6+mxChJ7n6k4no4Vkxb6r0In9ZjcqFY root@omoikane"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILVR16DtqrdgMq+3Gj1N6XNAjJhHyuG5a4wn7xQ8c49i root@omoikane"
       ];
     };
   };
