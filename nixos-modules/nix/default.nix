@@ -159,12 +159,14 @@ in
       ];
     };
 
-    system.etc.overlay = {
-      mutable = false;
-      enable = true;
-    };
+    #system.etc.overlay = {
+    #  mutable = false;
+    #  enable = true;
+    #};
 
-    systemd.sysusers.enable = true;
+    #systemd.sysusers.enable = true;
+
+    sops.defaultSopsFile = ../../secrets/main.yaml;
 
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
 

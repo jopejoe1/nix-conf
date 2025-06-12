@@ -1,7 +1,7 @@
 keys:
-  - &kuraokami age1q7tr77fyygpvlwenrj4zw9d4e59p66pz3vckelecgepectt9jvrq4qd6ll
+  - &main F22F4D554E1CD01D0BA66AE565EDFB9549D0A481
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
-      - *kuraokami
+    - pgp:
+      - *main
