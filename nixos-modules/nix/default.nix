@@ -159,6 +159,11 @@ in
       ];
     };
 
+    system.etc.overlay = {
+      mutable = false;
+      enable = true;
+    };
+
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
 
     networking.hosts = {
