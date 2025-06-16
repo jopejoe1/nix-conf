@@ -73,13 +73,6 @@ in
         lib.filter (builder: builder.hostName != config.networking.hostName)
         [
           {
-            hostName = "localhost";
-            protocol = null;
-            systems = getArchs config.networking.hostName;
-            supportedFeatures = config.nix.settings.system-features;
-            maxJobs = (lib.elemAt config.facter.report.hardware.cpu 0).cores;
-          }
-          {
             systems = getArchs "hetzner";
             supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
             hostName = "hetzner";
