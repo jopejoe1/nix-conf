@@ -29,6 +29,13 @@
     };
   };
 
+  services.gns3-server = {
+    enable = true;
+    vpcs.enable = true;
+    ubridge.enable = true;
+    dynamips.enable = true;
+  };
+
   jopejoe1 = {
     audio = {
       enable = true;
