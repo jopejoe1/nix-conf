@@ -95,6 +95,7 @@
     kdePackages.wallpaper-engine-plugin
     nix-output-monitor
     ciscoPacketTracer8
+    gns3-gui
   ];
 
   programs = {
