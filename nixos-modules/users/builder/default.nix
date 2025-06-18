@@ -16,6 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     users.users.builder = {
       isSystemUser = true;
+      group = "builder";
       description = "Build User";
       initialHashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
       openssh.authorizedKeys.keys = [
@@ -23,5 +24,6 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILVR16DtqrdgMq+3Gj1N6XNAjJhHyuG5a4wn7xQ8c49i root@omoikane"
       ];
     };
+    users.groups.builder = {};
   };
 }
