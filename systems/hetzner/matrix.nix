@@ -46,8 +46,8 @@ in
     settings.global = {
       unix_socket_path = "/run/continuwuity/continuwuity.sock";
       server_name = "miau.social";
-      registration_token = "NyanNyan";
-      allow_registration = true;
+      #registration_token = "NyanNyan";
+      #allow_registration = true;
     };
   };
 }
