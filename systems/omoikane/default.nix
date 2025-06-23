@@ -96,6 +96,7 @@
     nix-output-monitor
     ciscoPacketTracer8
     gns3-gui
+    libreoffice-qt6-fresh
   ];
 
   programs = {
