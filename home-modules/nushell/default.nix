@@ -18,7 +18,7 @@ in
       nushell = {
         enable = true;
         settings = {
-          show_banner: false;
+          show_banner = false;
         };
       };
 
