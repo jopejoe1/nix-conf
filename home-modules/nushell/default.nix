@@ -17,19 +17,13 @@ in
     programs = {
       nushell = {
         enable = true;
-        extraConfig = ''
-          $env.config = {
-            show_banner: false,
-          }
-        '';
+        settings = {
+          show_banner: false;
+        };
       };
 
       carapace.enable = true;
       carapace.enableNushellIntegration = true;
-      # carapace.package = pkgs.carapace.overrideAttrs {
-      #   src = /home/jopejoe1/dev/carapace-bin/././././.;
-      #   vendorHash = "sha256-z2sxm+qxSCU60kJqI6Rg9KQRizqgJlZWjvb0zxwSL2o=";
-      # };
 
       starship = {
         enable = true;
