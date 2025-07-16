@@ -86,6 +86,8 @@
     gpgSmartcards.enable = true;
   };
 
+  services.suwayomi-server.enable = true;
+
   environment.systemPackages = with pkgs; [
     prismlauncher
     thunderbird
@@ -94,7 +96,6 @@
     gh
     kdePackages.wallpaper-engine-plugin
     nix-output-monitor
-    ciscoPacketTracer8
     gns3-gui
     libreoffice-qt6-fresh
   ];
