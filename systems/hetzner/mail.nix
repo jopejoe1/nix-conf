@@ -9,7 +9,7 @@
   mailserver = {
     enable = true;
     dmarcReporting.enable = true;
-    stateVersion = 1;
+    stateVersion = 3;
     fqdn = "mail.missing.ninja";
     domains = [
       "missing.ninja"
