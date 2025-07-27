@@ -131,13 +131,22 @@
     interface = "wlp5s0";
   };
 
-  fileSystems."/home/jopejoe1/Public/games" = {
-    device = "/dev/disk/by-label/gaming";
-    fsType = "bcachefs";
-    options = [
-      "compression=zstd"
-      "nofail"
-    ];
+  fileSystems = {
+    "/home/jopejoe1/Public/games" = {
+      device = "/dev/disk/by-label/gaming";
+      fsType = "bcachefs";
+      options = [
+        "compression=zstd"
+        "nofail"
+      ];
+    };
+    "/home/jopejoe1/Music" = {
+      device = "/dev/disk/by-label/music";
+      fsType = "ext4";
+      options = [
+        "nofail"
+      ];
+    };
   };
 
   zramSwap = {
