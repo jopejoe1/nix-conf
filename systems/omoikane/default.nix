@@ -91,7 +91,7 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     thunderbird
-    strawberry-qt6
+    strawberry
     picard
     gh
     kdePackages.wallpaper-engine-plugin

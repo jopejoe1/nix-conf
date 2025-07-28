@@ -118,7 +118,7 @@
     vkbasalt-cli
     mangohud
     mangojuice
-    strawberry-qt6
+    strawberry
     thunderbird
     gh
     (ffmpeg-full.override {
