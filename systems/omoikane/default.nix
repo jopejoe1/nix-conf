@@ -106,6 +106,7 @@
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
+    niri.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
