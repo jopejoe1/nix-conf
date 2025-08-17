@@ -170,5 +170,6 @@ in
       "192.168.194.232" = [ "omoikane" ];
     };
     users.mutableUsers = false;
+    networking.useNetworkd = true;
   };
 }
