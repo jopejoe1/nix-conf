@@ -43,7 +43,6 @@ in
           "auto-allocate-uids"
           "cgroups"
           "fetch-closure"
-          "impure-derivations"
           "no-url-literals"
         ];
         auto-allocate-uids = true;
