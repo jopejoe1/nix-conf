@@ -123,6 +123,7 @@ in
       config = {
         allowUnfree = true;
         nvidia.acceptLicense = true;
+        allowAliases = false;
       };
       overlays = [
         (_self: super: rec {
