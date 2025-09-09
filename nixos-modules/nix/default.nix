@@ -76,7 +76,6 @@ in
             supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
             hostName = "hetzner";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZYQzNPVGRPd0w4V1NDaHhFRENiNS9WbUZYcDZmWUZEM21MMFhFdzFFTDAgcm9vdEBoZXR6bmVyCg==";
-            protocol = "ssh";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 5;
@@ -87,7 +86,6 @@ in
             supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
             hostName = "zap";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSU5Xb056T0QrM0UzT20xbGpkRUNxWUhaQkZteHA3bTNsS1MxSHBkQnZkZjYgcm9vdEB6YXAK";
-            protocol = "ssh";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             maxJobs = (lib.elemAt self.nixosConfigurations.zap.config.facter.report.hardware.cpu 0).cores;
@@ -97,7 +95,6 @@ in
             supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
             hostName = "kuraokami";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUtJbFZhWTZ0aTJkVFVGUks0eFVoRitxa1kwbUhiT3pNSWpjTjZpMFNiTW0gcm9vdEBrdXJhb2thbWkK";
-            protocol = "ssh";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 10;
