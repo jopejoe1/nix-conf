@@ -63,7 +63,6 @@
     udev.packages = [ pkgs.yubikey-personalization ];
     fwupd.enable = true;
     libinput.enable = true;
-    #repology.enable = true;
     zerotierone.joinNetworks = [
       "d5e5fb653774ee43"
     ];
@@ -79,22 +78,16 @@
     gpgSmartcards.enable = true;
   };
 
-  services.suwayomi-server.enable = true;
-
   environment.systemPackages = with pkgs; [
     prismlauncher
     thunderbird
     strawberry
     picard
     gh
-    kdePackages.wallpaper-engine-plugin
     nix-output-monitor
-    gns3-gui
   ];
 
   programs = {
-    adb.enable = true;
-    dconf.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
