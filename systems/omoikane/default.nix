@@ -90,7 +90,6 @@
     kdePackages.wallpaper-engine-plugin
     nix-output-monitor
     gns3-gui
-    libreoffice-qt6-fresh
   ];
 
   programs = {
