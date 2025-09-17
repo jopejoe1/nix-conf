@@ -33,6 +33,18 @@
 
   networking.useDHCP = false;
 
+  systemd.network.networks."10-uplink" = {
+    address = [
+      "134.255.219.135/24"
+    ];
+    gateway = [
+      "134.255.219.1"
+    ];
+    matchConfig = {
+      Name = "eth0";
+    };
+  };
+
   boot.loader = {
     grub = {
       enable = true;
