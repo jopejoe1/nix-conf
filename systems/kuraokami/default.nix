@@ -153,7 +153,8 @@
     "big-parallel"
     "kvm"
     "nixos-test"
-  ] ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
+  ]
+  ++ map (x: "gccarch-${x}") (lib.systems.architectures.inferiors.alderlake or [ ]);
 
   boot.binfmt.emulatedSystems = [
     "riscv64-linux"

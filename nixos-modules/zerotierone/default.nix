@@ -17,7 +17,8 @@ in
     services.zerotierone.enable = true;
     services.zerotierone.joinNetworks = [
       "9e1948db638e9f93"
-    ] ++ lib.optional (config.networking.hostName == "kuraokami") "7c31a21e86f9a75c";
+    ]
+    ++ lib.optional (config.networking.hostName == "kuraokami") "7c31a21e86f9a75c";
     services.zerotierone.port = 9993;
     environment.systemPackages = with pkgs; lib.optional config.jopejoe1.gui.enable moonlight-qt;
   };

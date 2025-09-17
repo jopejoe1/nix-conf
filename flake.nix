@@ -90,7 +90,10 @@
       );
       hydraJobs = {
         inherit (self)
-          packages formatter nixosConfigurations;
+          packages
+          formatter
+          nixosConfigurations
+          ;
       };
     };
 }

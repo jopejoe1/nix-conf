@@ -69,8 +69,7 @@ in
             [ (getMainArch name) ]
             ++ self.nixosConfigurations.${name}.config.nix.settings.extra-platforms or [ ];
         in
-        lib.filter (builder: builder.hostName != config.networking.hostName)
-        [
+        lib.filter (builder: builder.hostName != config.networking.hostName) [
           {
             systems = getArchs "hetzner";
             supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;

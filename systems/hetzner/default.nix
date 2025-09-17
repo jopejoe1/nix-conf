@@ -188,10 +188,9 @@ in
     enable = true;
     hydraURL = "https://hydra.missing.ninja";
     notificationSender = "hydra@missing.ninja";
-    buildMachinesFiles = [];
+    buildMachinesFiles = [ ];
     useSubstitutes = true;
   };
-
 
   disko.devices = {
     disk = {

@@ -23,7 +23,8 @@ in
       "matrix.miau.social" = {
         enableACME = true;
         forceSSL = true;
-        locations."/".proxyPass = "http://unix:${config.services.matrix-continuwuity.settings.global.unix_socket_path}";
+        locations."/".proxyPass =
+          "http://unix:${config.services.matrix-continuwuity.settings.global.unix_socket_path}";
       };
       "element.miau.social" = {
         enableACME = true;
