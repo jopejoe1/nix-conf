@@ -29,7 +29,6 @@ in
         "adbusers"
         "dialout"
       ];
-      uid = 1000;
       group = "users";
       createHome = true;
       homeMode = "700";
