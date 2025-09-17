@@ -25,6 +25,8 @@ in
 
   facter.reportPath = ./facter.json;
 
+  boot.initrd.systemd.enable = true;
+
   jopejoe1 = {
     local.enable = true;
     nix.enable = true;
