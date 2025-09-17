@@ -17,42 +17,6 @@ in
   config = lib.mkIf cfg.enable {
     security.rtkit.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      mod-arpeggiator-lv2
-      bolliedelayxt-lv2
-      airwindows-lv2
-      aether-lv2
-      swh_lv2
-      neural-amp-modeler-lv2
-      mda_lv2
-      mod-distortion
-      infamousPlugins
-      drumgizmo
-      bshapr
-      bchoppr
-      gxplugins-lv2
-      talentedhack
-      plujain-ramp
-      mooSpace
-      boops
-      metersLv2
-      bs2b-lv2
-      ninjas2
-      bespokesynth
-      zam-plugins
-      lsp-plugins
-      ladspaPlugins
-      AMB-plugins
-      nova-filters
-      caps
-      kapitonov-plugins-pack
-      csa
-      zam-plugins
-      autotalent
-      tap-plugins
-      xsynth_dssi
-    ];
-
     environment.sessionVariables =
       let
         makePluginPath =
