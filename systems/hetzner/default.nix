@@ -122,7 +122,7 @@
   };
 
   services.woodpecker-server = {
-    enable = true;
+    enable = false;
     environment = {
       WOODPECKER_HOST = "https://ci.missing.ninja";
       WOODPECKER_OPEN = "true";
@@ -137,7 +137,7 @@
 
   services.woodpecker-agents.agents = {
     hetzner = {
-      enable = true;
+      enable = false;
       environment = {
         WOODPECKER_SERVER = "localhost:9000";
         WOODPECKER_MAX_WORKFLOWS = "8";
