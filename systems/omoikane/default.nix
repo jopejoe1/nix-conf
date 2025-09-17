@@ -85,6 +85,7 @@
     picard
     gh
     nix-output-monitor
+    jetbrains.webstorm
   ];
 
   programs = {
