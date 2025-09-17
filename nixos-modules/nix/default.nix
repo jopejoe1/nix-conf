@@ -102,7 +102,7 @@ in
           }
         ];
       distributedBuilds = true;
-      package = pkgs.lix;
+      package = pkgs.lixPackageSets.git.lix;
       registry = lib.mkForce (
         (lib.mapAttrs (_: flake: { inherit flake; })) (
           (lib.filterAttrs (_: lib.isType "flake")) self.inputs
