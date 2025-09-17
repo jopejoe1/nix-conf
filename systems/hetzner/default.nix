@@ -47,6 +47,7 @@ in
   };
 
   networking = {
+    dhcpcd.enable = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -61,7 +62,7 @@ in
     bridges.br0.interfaces = [
       network_interface_name
     ];
-    useDHCP = false;
+    useDHCP = true;
     interfaces."br0" = {
       useDHCP = true;
       ipv4.addresses = [
