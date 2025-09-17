@@ -16,7 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.dconf.enable = true;
     users.users.jopejoe1 = {
-      isSystemUser = true;
+      isNormalUser = true;
       shell = pkgs.nushell;
       description = "jopejoe1";
       initialHashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";

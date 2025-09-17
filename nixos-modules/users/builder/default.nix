@@ -15,7 +15,7 @@ in
 
   config = lib.mkIf cfg.enable {
     users.users.builder = {
-      isSystemUser = true;
+      isNormalUser = true;
       group = "builder";
       description = "Build User";
       initialHashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
