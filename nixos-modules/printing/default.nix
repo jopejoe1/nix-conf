@@ -28,7 +28,7 @@ in
     };
 
     services.avahi = {
-      enable = true;
+      enable = false; # TODO: fix with immutable etc
       nssmdns4 = true;
       nssmdns6 = true;
       openFirewall = true;
