@@ -68,15 +68,6 @@
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "security@missing.ninja";
 
-  services.vsftpd = {
-    enable = true;
-    writeEnable = true;
-    userlistEnable = true;
-    userlist = [ "backupftp" ];
-    localUsers = true;
-    chrootlocalUser = true;
-  };
-
   services.akkoma = {
     enable = true;
     nginx = {
