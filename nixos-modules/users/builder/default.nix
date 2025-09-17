@@ -17,6 +17,7 @@ in
     users.users.builder = {
       isNormalUser = true;
       group = "builder";
+      uid = 1001;
       description = "Build User";
       initialHashedPassword = "$2b$05$Uk84TY/RHlH8DIigUlFYjeorjTlCMEY9wN2pAcw5BLaPoc7dKiSsC";
       openssh.authorizedKeys.keys = [
