@@ -180,11 +180,6 @@ in
     allowedTCPPorts = [ 53 ];
   };
 
-  users.users.backupftp = {
-    isNormalUser = true;
-    initialPassword = "backupPassword";
-  };
-
   services.hydra = {
     enable = true;
     hydraURL = "https://hydra.missing.ninja";
