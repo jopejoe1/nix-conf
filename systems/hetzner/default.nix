@@ -6,10 +6,6 @@
   ...
 }:
 
-let
-  network_interface_name =
-    (lib.elemAt config.facter.report.hardware.network_interface 0).unix_device_name;
-in
 {
 
   imports = [
@@ -59,24 +55,6 @@ in
         80
       ];
     };
-    bridges.br0.interfaces = [
-      network_interface_name
-    ];
-    useDHCP = true;
-    interfaces."br0" = {
-      useDHCP = true;
-      ipv4.addresses = [
-        {
-          address = "192.168.100.3";
-          prefixLength = 24;
-        }
-      ];
-    };
-    defaultGateway = {
-      address = "192.168.100.1";
-      interface = network_interface_name;
-    };
-    nameservers = [ "192.168.100.1" ];
   };
 
   systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:a0:31e5::/64";
