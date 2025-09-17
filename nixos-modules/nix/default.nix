@@ -148,12 +148,12 @@ in
       ];
     };
 
-    #system.etc.overlay = {
-    #  mutable = false;
-    #  enable = true;
-    #};
+    system.etc.overlay = {
+      mutable = false;
+      enable = true;
+    };
 
-    #systemd.sysusers.enable = true;
+    services.userborn.enable = true;
 
     sops.defaultSopsFile = ../../secrets/main.yaml;
 
