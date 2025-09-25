@@ -8,6 +8,30 @@
 
 let
   cfg = config.jopejoe1.nix;
+  # Based on https://github.com/nix-community/srvos/blob/30e6b4c2e5e7b235c7d0a266994a0c93e86bcf69/nixos/common/serial.nix#L8-L30
+  # Based on https://unix.stackexchange.com/questions/16578/resizable-serial-console-window
+  resize = pkgs.writeShellScriptBin "resize" ''
+    export PATH=${pkgs.coreutils}/bin
+    if [ ! -t 0 ]; then
+      # not a interactive...
+      exit 0
+    fi
+    TTY="$(tty)"
+    if [[ "$TTY" != /dev/ttyS* ]] && [[ "$TTY" != /dev/ttyAMA* ]] && [[ "$TTY" != /dev/ttySIF* ]]; then
+      # probably not a known serial console, we could make this check more
+      # precise by using `setserial` but this would require some additional
+      # dependency
+      exit 0
+    fi
+    old=$(stty -g)
+    stty raw -echo min 0 time 5
+
+    printf '\0337\033[r\033[999;999H\033[6n\0338' > /dev/tty
+    IFS='[;R' read -r _ rows cols _ < /dev/tty
+
+    stty "$old"
+    stty cols "$cols" rows "$rows"
+  '';
 in
 {
   options.jopejoe1.nix = {
@@ -148,16 +172,39 @@ in
       ];
     };
 
+    environment.loginShellInit = lib.getExe resize;
+
     system.etc.overlay = {
       mutable = false;
       enable = true;
     };
+
+    security.sudo.execWheelOnly = true;
+
+    system.preSwitchChecks.update-diff = ''
+      incoming="''${1-}"
+      if [[ -e /run/current-system && -e "''${incoming-}" ]]; then
+        echo "--- diff to current-system"
+        ${lib.getExe pkgs.nvd} --nix-bin-dir=${config.nix.package}/bin diff /run/current-system "''${incoming-}"
+        echo "---"
+      fi
+    '';
 
     services.userborn.enable = true;
 
     sops.defaultSopsFile = ../../secrets/main.yaml;
 
     systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
+    systemd.services."serial-getty@".environment.TERM = "xterm-256color";
+
+    boot.kernelParams = map (c: "console=${c}") (
+      [
+        "ttyS0,115200"
+      ]
+      ++ (lib.optional (pkgs.stdenv.hostPlatform.isAarch) "ttyAMA0,115200")
+      ++ (lib.optional (pkgs.stdenv.hostPlatform.isRiscV64) "ttySIF0,115200")
+      ++ [ "tty0" ]
+    );
 
     networking.hosts = {
       "192.168.194.46" = [ "zap" ];
@@ -167,5 +214,23 @@ in
     };
     users.mutableUsers = false;
     networking.useNetworkd = true;
+    systemd.services.NetworkManager-wait-online.enable = false;
+    systemd.network.wait-online.enable = false;
+    systemd.services.systemd-networkd.stopIfChanged = false;
+    systemd.services.systemd-resolved.stopIfChanged = false;
+    boot.tmp.cleanOnBoot = true;
+    programs.ssh.knownHosts = {
+      "github.com".hostNames = [ "github.com" ];
+      "github.com".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+
+      "gitlab.com".hostNames = [ "gitlab.com" ];
+      "gitlab.com".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfuCHKVTjquxvt6CM6tdG4SLp1Btn/nOeHHE5UOzRdf";
+
+      "git.sr.ht".hostNames = [ "git.sr.ht" ];
+      "git.sr.ht".publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZvRd4EtM7R+IHVMWmDkVU3VLQTSwQDSAvW0t2Tkj60";
+    };
   };
 }

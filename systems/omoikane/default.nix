@@ -11,7 +11,6 @@
   imports = [
     ./disk.nix
     #nixos-hardware.nixosModules.framework-16-7040-amd
-    self.inputs.srvos.nixosModules.desktop
   ];
 
   facter.reportPath = ./facter.json;
