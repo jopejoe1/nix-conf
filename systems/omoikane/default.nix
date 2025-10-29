@@ -95,6 +95,7 @@
     gh
     nix-output-monitor
     jetbrains.webstorm
+    neovim
   ];
 
 
