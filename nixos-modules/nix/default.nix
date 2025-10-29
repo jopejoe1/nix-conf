@@ -181,7 +181,7 @@ in
 
     security.sudo.execWheelOnly = true;
 
-    system.preSwitchChecks.update-diff = ''
+    system.preSwitchChecks.update-diff = lib.mkForce ''
       incoming="''${1-}"
       if [[ -e /run/current-system && -e "''${incoming-}" ]]; then
         echo "--- diff to current-system"
