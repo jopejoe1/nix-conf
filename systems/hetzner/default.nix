@@ -150,7 +150,7 @@
   };
 
   services.hydra = {
-    enable = true;
+    enable = false;
     hydraURL = "https://hydra.missing.ninja";
     notificationSender = "hydra@missing.ninja";
     buildMachinesFiles = [ ];
