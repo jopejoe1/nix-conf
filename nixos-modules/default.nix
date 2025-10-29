@@ -27,5 +27,6 @@
     self.inputs.sops-nix.nixosModules.sops
     self.inputs.nixos-facter-modules.nixosModules.facter
     self.inputs.niri.nixosModules.niri
+    self.inputs.nixvim.nixosModules.nixvim
   ];
 }
