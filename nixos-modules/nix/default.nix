@@ -137,7 +137,7 @@ in
       nixPath = lib.mkForce [ "/etc/nix/path" ];
 
     };
-
+    niri-flake.cache.enable = false;
     nixpkgs = {
       config = {
         allowUnfree = true;
