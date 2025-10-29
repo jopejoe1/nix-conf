@@ -2,7 +2,7 @@
   description = "jopejoe1 NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
     # Modules
@@ -30,6 +30,14 @@
     impermanence.url = "github:nix-community/impermanence";
     snm = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
