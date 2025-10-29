@@ -98,7 +98,7 @@ in
             systems = getArchs "hetzner";
             supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
             hostName = "hetzner";
-            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZYQzNPVGRPd0w4V1NDaHhFRENiNS9WbUZYcDZmWUZEM21MMFhFdzFFTDAgcm9vdEBoZXR6bmVyCg==";
+            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUxPNndNaFU1dndSdFV6ZytPVjJjdHF1K3FvaGVpQnlTbkp5alUwT1kwN0wgcm9vdEBoZXR6bmVyCg==";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 5;
