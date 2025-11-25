@@ -22,6 +22,9 @@ in
           email = "jopejoe1@missing.ninja";
           name = "jopejoe1";
         };
+        aliases = {
+          tug = [ "bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-" ];
+        };
       };
     };
     programs.git = {
