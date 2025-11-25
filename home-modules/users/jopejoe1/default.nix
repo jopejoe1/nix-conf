@@ -24,7 +24,7 @@ in
       nushell.enable = true;
       git.enable = true;
       direnv.enable = true;
-      sway.enable = true;
+      sway.enable = false;
       firefox.enable = config.jopejoe1.common.gui;
     };
   };
