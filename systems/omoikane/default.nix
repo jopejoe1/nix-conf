@@ -104,33 +104,38 @@
    ];
 
   home-manager.users.jopejoe1 = {
-   programs.alacritty.enable = true;
-   programs.fuzzel.enable = true;
-   programs.waybar = {
-     enable = true;
-     systemd.enable = true;
-   };
-   programs.swaylock.enable = true;
-   programs.niri.settings = {
-    binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
-      "Super+D".action.spawn = "fuzzel";
-      "Super+Shift+E".action = quit;
-      "Super+Q".action = close-window;
-      "Super+T".action.spawn = "alacritty";
-      "Super+Alt+L".action.spawn = "swaylock";
-      "Super+Plus".action = set-column-width "+10%";
-      "Super+Minus".action = set-column-width "-10%";
-      "Super+Left".action = focus-column-left;
-      "Super+Right".action = focus-column-right;
-      "Super+Up".action = focus-window-up;
-      "Super+Down".action = focus-window-down;
-      "Mod5+Up".action = focus-workspace-up;
-      "Mod5+Down".action = focus-workspace-down;
+    programs.alacritty.enable = true;
+    programs.fuzzel.enable = true;
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
     };
-    input.keyboard.xkb = {
-      inherit (config.services.xserver.xkb) variant options model layout;
+    programs.swaylock.enable = true;
+    programs.niri.settings = {
+      binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
+        "Super+D".action.spawn = "fuzzel";
+        "Super+Shift+E".action = quit;
+        "Super+Q".action = close-window;
+        "Super+T".action.spawn = "alacritty";
+        "Super+Alt+L".action.spawn = "swaylock";
+        "Super+Plus".action = set-column-width "+10%";
+        "Super+Minus".action = set-column-width "-10%";
+        "Super+Left".action = focus-column-left;
+        "Super+Right".action = focus-column-right;
+        "Super+Up".action = focus-window-up;
+        "Super+Down".action = focus-window-down;
+        "Mod5+Up".action = focus-workspace-up;
+        "Mod5+Down".action = focus-workspace-down;
+      };
+      input.keyboard.xkb = {
+        inherit (config.services.xserver.xkb)
+          variant
+          options
+          model
+          layout
+          ;
+      };
     };
-   };
   };
 
   programs = {
