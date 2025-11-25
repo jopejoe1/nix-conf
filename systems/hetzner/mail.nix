@@ -86,6 +86,36 @@
     '';
   };
 
+  services.radicale = {
+    rights = {
+      root = {
+        user = ".+";
+        collection = "";
+        permissions = "R";
+      };
+      principal = {
+        user = ".+";
+        collection = "{user}";
+        permissions = "RW";
+      };
+      calendars = {
+        user = ".+";
+        collection = "{user}/[^/]+";
+        permissions = "rw";
+      };
+      shared = {
+        user = ".+";
+        collection = "shared";
+        permissions = "RW";
+      };
+      shared-items = {
+        user = ".+";
+        collection = "shared/[^/]+";
+        permissions = "rw";
+      };
+    };
+  };
+
   networking.firewall.allowedTCPPorts = [
     80
     443
