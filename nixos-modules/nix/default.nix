@@ -67,7 +67,6 @@ in
           "auto-allocate-uids"
           "cgroups"
           "fetch-closure"
-          "no-url-literals"
         ];
         auto-allocate-uids = true;
         use-cgroups = true;
