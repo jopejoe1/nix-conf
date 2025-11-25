@@ -15,6 +15,15 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.lazygit.enable = true;
+    programs.jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          email = "jopejoe1@missing.ninja";
+          name = "jopejoe1";
+        };
+      };
+    };
     programs.git = {
       enable = true;
       package = pkgs.git;
