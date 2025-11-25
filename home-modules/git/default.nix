@@ -27,6 +27,10 @@ in
         };
       };
     };
+    programs.helix = {
+      enable = true;
+      defaultEditor = true;
+    };
     programs.git = {
       enable = true;
       package = pkgs.git;
