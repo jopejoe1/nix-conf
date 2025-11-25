@@ -96,6 +96,7 @@
     nix-output-monitor
     jetbrains.webstorm
     neovim
+    helix
   ];
 
 
