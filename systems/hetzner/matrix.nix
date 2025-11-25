@@ -26,15 +26,15 @@ in
         locations."/".proxyPass =
           "http://unix:${config.services.matrix-continuwuity.settings.global.unix_socket_path}";
       };
-      "element.miau.social" = {
-        enableACME = true;
-        forceSSL = true;
-        root = pkgs.element-web.override {
-          conf = {
-            default_server_config = clientConfig;
-          };
-        };
-      };
+      #      "element.miau.social" = {
+      #        enableACME = true;
+      #        forceSSL = true;
+      #        root = pkgs.element-web.override {
+      #          conf = {
+      #            default_server_config = clientConfig;
+      #          };
+      #        };
+      #      };
     };
   };
 
