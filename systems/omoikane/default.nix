@@ -27,16 +27,15 @@
       maxVCPUs = 8; # Allows the Domain 0 to use, at most, two CPU cores.
     };
   };
-  
+
   networking.networkmanager = {
-      enable = true;
-      settings = {
-        keyfile = {
-          path = "/var/lib/NetworkManager-system-connections/";
-        };
+    enable = true;
+    settings = {
+      keyfile = {
+        path = "/var/lib/NetworkManager-system-connections/";
       };
     };
-  
+  };
 
   jopejoe1 = {
     audio = {
@@ -99,10 +98,9 @@
     helix
   ];
 
-
   fonts.packages = [
     pkgs.nerd-fonts.symbols-only
-   ];
+  ];
 
   home-manager.users.jopejoe1 = {
     programs.alacritty.enable = true;
