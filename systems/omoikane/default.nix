@@ -116,16 +116,18 @@
         "Super+Q".action = close-window;
         "Super+T".action.spawn = "alacritty";
         "Super+Alt+L".action.spawn = "swaylock";
-        "Super+Plus".action = set-column-width "+10%";
+        "Super+Equal".action = set-column-width "+10%";
         "Super+Minus".action = set-column-width "-10%";
-        "Super+Left".action = focus-column-left;
-        "Super+Right".action = focus-column-right;
-        "Super+Up".action = focus-window-up;
-        "Super+Down".action = focus-window-down;
-        "Alt+Up".action = focus-workspace-up;
-        "Alt+Down".action = focus-workspace-down;
-        "Alt+Left".action = focus-monitor-left;
-        "Alt+Right".action = focus-monitor-right;
+        "Super+H".action = focus-column-left;
+        "Super+L".action = focus-column-right;
+        "Super+K".action = focus-window-up;
+        "Super+J".action = focus-window-down;
+        "Super+I".action = focus-workspace-up;
+        "Super+U".action = focus-workspace-down;
+        "Super+Shift+H".action = focus-monitor-left;
+        "Super+Shift+L".action = focus-monitor-right;
+        "Super+Shift+K".action = focus-monitor-up;
+        "Super+Shift+J".action = focus-monitor-down;
       };
       input.keyboard.xkb = {
         inherit (config.services.xserver.xkb)
