@@ -128,6 +128,8 @@
         "Super+Shift+L".action = focus-monitor-right;
         "Super+Shift+K".action = focus-monitor-up;
         "Super+Shift+J".action = focus-monitor-down;
+        "Super+Shift+I".action = move-workspace-up;
+        "Super+Shift+U".action = move-workspace-down;
       };
       input.keyboard.xkb = {
         inherit (config.services.xserver.xkb)
