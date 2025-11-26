@@ -122,10 +122,10 @@
         "Super+Right".action = focus-column-right;
         "Super+Up".action = focus-window-up;
         "Super+Down".action = focus-window-down;
-        "Mod5+Up".action = focus-workspace-up;
-        "Mod5+Down".action = focus-workspace-down;
-        "Mod5+Left".action = focus-monitor-left;
-        "Mod5+Right".action = focus-monitor-right;
+        "Alt+Up".action = focus-workspace-up;
+        "Alt+Down".action = focus-workspace-down;
+        "Alt+Left".action = focus-monitor-left;
+        "Alt+Right".action = focus-monitor-right;
       };
       input.keyboard.xkb = {
         inherit (config.services.xserver.xkb)
