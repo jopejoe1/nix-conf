@@ -13,6 +13,8 @@
     #nixos-hardware.nixosModules.framework-16-7040-amd
   ];
 
+  nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
+
   facter.reportPath = ./facter.json;
 
   virtualisation.xen = {
@@ -112,7 +114,7 @@
     programs.niri.settings = {
       xwayland-satellite = {
         enable = true;
-        package = pkgs.xwayland-satellite;
+        package = pkgs.xwayland-satellite-unstable;
       };
       binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
         "Super+D".action.spawn = "fuzzel";
@@ -152,7 +154,7 @@
     gamemode.enable = true;
     niri = {
       enable = true;
-      package = pkgs.niri;
+      package = pkgs.niri-unstable;
     };
     gnupg.agent = {
       enable = true;
