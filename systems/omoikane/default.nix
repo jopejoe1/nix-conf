@@ -110,6 +110,10 @@
     };
     programs.swaylock.enable = true;
     programs.niri.settings = {
+      xwayland-satellite = {
+        enable = true;
+        package = pkgs.xwayland-satellite;
+      };
       binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
         "Super+D".action.spawn = "fuzzel";
         "Super+Shift+E".action = quit;
