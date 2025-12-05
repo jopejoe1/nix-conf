@@ -30,6 +30,28 @@ in
     programs.helix = {
       enable = true;
       defaultEditor = true;
+      languages = {
+        language-server = {
+          vuels = {
+            command = lib.getExe pkgs.vue-language-server;
+          };
+          typescript-language-server = {
+            command = lib.getExe pkgs.typescript-language-server;
+          };
+          rust-analyzer = {
+            command = lib.getExe pkgs.rust-analyzer;
+          };
+          vscode-json-language-server = {
+            command = lib.getExe pkgs.vscode-json-languageserver;
+          };
+          vscode-css-language-server = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-css-language-server";
+          };
+          vscode-html-language-server = {
+            command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-html-language-server";
+          };
+        };
+      };
     };
     programs.git = {
       enable = true;
