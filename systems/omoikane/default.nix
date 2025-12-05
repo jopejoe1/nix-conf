@@ -114,7 +114,7 @@
     programs.niri.settings = {
       xwayland-satellite = {
         enable = true;
-        package = pkgs.xwayland-satellite-unstable;
+        path = lib.getExe pkgs.xwayland-satellite-unstable;
       };
       binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
         "Super+D".action.spawn = "fuzzel";
