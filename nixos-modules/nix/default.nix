@@ -162,6 +162,10 @@ in
       nixpkgs-review
     ];
 
+    environment.shellAliases = {
+      "jj-watch" = "watch -c -t jj log --no-pager --color=always";
+    };
+
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
