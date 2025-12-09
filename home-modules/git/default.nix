@@ -24,6 +24,7 @@ in
         };
         aliases = {
           tug = [ "bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-" ];
+          llog = [ "log" "--revisions" "@ | ancestors(trunk()..(visible_heads()), 2) | trunk()" ];
         };
       };
     };
