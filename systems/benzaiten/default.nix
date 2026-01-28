@@ -14,7 +14,7 @@
     #nixos-hardware.nixosModules.common-pc-laptop-hdd
   ];
 
-  facter.reportPath = ./facter.json;
+  hardware.facter.reportPath = ./facter.json;
 
   jopejoe1 = {
     audio = {

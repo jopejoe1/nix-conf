@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
     flake-compat = {
       url = "github:NixOS/flake-compat";

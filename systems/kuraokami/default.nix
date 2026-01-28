@@ -20,7 +20,7 @@
     self.inputs.srvos.nixosModules.desktop
   ];
 
-  facter.reportPath = ./facter.json;
+  hardware.facter.reportPath = ./facter.json;
 
   jopejoe1 = {
     audio = {

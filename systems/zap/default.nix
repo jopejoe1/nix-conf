@@ -21,7 +21,7 @@
     gui.enable = false;
   };
 
-  facter.reportPath = ./facter.json;
+  hardware.facter.reportPath = ./facter.json;
 
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")

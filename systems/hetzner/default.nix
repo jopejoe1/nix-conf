@@ -19,7 +19,7 @@
     ./radicale.nix
   ];
 
-  facter.reportPath = ./facter.json;
+  hardware.facter.reportPath = ./facter.json;
 
   boot.initrd.systemd.enable = true;
 
