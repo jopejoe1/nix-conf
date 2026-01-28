@@ -28,6 +28,9 @@ in
         "video"
         "adbusers"
         "dialout"
+        "podman"
+        "docker"
+        "wpa_supplicant"
       ];
       group = "users";
       createHome = true;
