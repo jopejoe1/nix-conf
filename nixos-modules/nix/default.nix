@@ -217,6 +217,7 @@ in
     };
     users.mutableUsers = false;
     networking.useNetworkd = true;
+    networking.wireless.userControlled = true;
     systemd.services.NetworkManager-wait-online.enable = false;
     systemd.network.wait-online.enable = false;
     systemd.services.systemd-networkd.stopIfChanged = false;
