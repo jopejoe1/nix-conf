@@ -108,7 +108,7 @@ in
             systems = getArchs "zap";
             supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
             hostName = "zap";
-            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSU5Xb056T0QrM0UzT20xbGpkRUNxWUhaQkZteHA3bTNsS1MxSHBkQnZkZjYgcm9vdEB6YXAK";
+            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUo3NGsyb0ZNcjNGbTI2ZFRmZ2VZUklKdEhLNnN4clJ4ZnY4dkU0QXJKZVMgcm9vdEB6YXAK";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             maxJobs =
