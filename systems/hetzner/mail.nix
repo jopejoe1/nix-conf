@@ -11,6 +11,7 @@
     dmarcReporting.enable = true;
     stateVersion = 3;
     fqdn = "mail.missing.ninja";
+    x509.useACMEHost = config.mailserver.fqdn;
     domains = [
       "missing.ninja"
       "joens.zone"
@@ -66,11 +67,10 @@
       autoIndex = true;
       enforced = "body";
     };
-
-    # Use Let's Encrypt certificates. Note that this needs to set up a stripped
-    # down nginx and opens port 80.
-    certificateScheme = "acme-nginx";
   };
+
+  security.acme.certs."mail.missing.ninja".webroot =
+    config.security.acme.certs."missing.ninja".webroot;
 
   services.roundcube = {
     enable = true;
