@@ -101,7 +101,8 @@ in
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 5;
-            maxJobs = (lib.elemAt self.nixosConfigurations.hetzner.config.hardware.facter.report.hardware.cpu 0).cores;
+            maxJobs =
+              (lib.elemAt self.nixosConfigurations.hetzner.config.hardware.facter.report.hardware.cpu 0).cores;
           }
           {
             systems = getArchs "zap";
@@ -110,7 +111,8 @@ in
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSU5Xb056T0QrM0UzT20xbGpkRUNxWUhaQkZteHA3bTNsS1MxSHBkQnZkZjYgcm9vdEB6YXAK";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
-            maxJobs = (lib.elemAt self.nixosConfigurations.zap.config.hardware.facter.report.hardware.cpu 0).cores;
+            maxJobs =
+              (lib.elemAt self.nixosConfigurations.zap.config.hardware.facter.report.hardware.cpu 0).cores;
           }
           {
             systems = getArchs "kuraokami";
@@ -120,7 +122,8 @@ in
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 10;
-            maxJobs = (lib.elemAt self.nixosConfigurations.kuraokami.config.hardware.facter.report.hardware.cpu 0).cores;
+            maxJobs =
+              (lib.elemAt self.nixosConfigurations.kuraokami.config.hardware.facter.report.hardware.cpu 0).cores;
           }
         ];
       distributedBuilds = true;

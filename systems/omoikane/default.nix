@@ -15,7 +15,7 @@
   nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
 
   hardware.facter.reportPath = ./facter.json;
-  
+
   virtualisation.xen = {
     enable = false;
     efi.bootBuilderVerbosity = "info"; # Adds a handy report that lets you know which Xen boot entries were created.

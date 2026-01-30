@@ -23,8 +23,19 @@ in
           name = "jopejoe1";
         };
         aliases = {
-          tug = [ "bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-" ];
-          llog = [ "log" "--revisions" "@ | ancestors(trunk()..(visible_heads()), 2) | trunk()" ];
+          tug = [
+            "bookmark"
+            "move"
+            "--from"
+            "heads(::@- & bookmarks())"
+            "--to"
+            "@-"
+          ];
+          llog = [
+            "log"
+            "--revisions"
+            "@ | ancestors(trunk()..(visible_heads()), 2) | trunk()"
+          ];
         };
       };
     };
@@ -55,7 +66,7 @@ in
             command = lib.getExe pkgs.nixd;
           };
           bash-language-server = {
-            command = lib.getExe pkgs.bash-language-server; 
+            command = lib.getExe pkgs.bash-language-server;
           };
           texlab = {
             command = lib.getExe pkgs.texlab;
