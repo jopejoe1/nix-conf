@@ -150,9 +150,11 @@ in
     programs.git = {
       enable = true;
       package = pkgs.git;
-      userEmail = "jopejoe1@missing.ninja";
-      userName = "jopejoe1";
-      extraConfig = {
+      settings = {
+        user = {
+          email = "jopejoe1";
+          name = "jopejoe1";
+        };
         core = {
           whitespace = [
             "blank-at-eol"
