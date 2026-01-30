@@ -437,7 +437,7 @@ in
                   name = "DuckDuckGo";
                   urls = [
                     {
-                      template = "https://duckduckgo.com";
+                      template = "https://noai.duckduckgo.com";
                       params = [
                         {
                           name = "q";
