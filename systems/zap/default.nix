@@ -22,11 +22,13 @@
   };
 
   hardware.facter.reportPath = ./facter.json;
+  hardware.facter.detected.dhcp.enable = false;
+
+  boot.initrd.systemd.enable = true;
 
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     self.inputs.srvos.nixosModules.server
-    self.inputs.srvos.nixosModules.mixins-cloud-init
     self.inputs.srvos.nixosModules.mixins-nginx
     ./wp-test.nix
   ];
@@ -40,8 +42,16 @@
     gateway = [
       "134.255.219.1"
     ];
+    dns = [
+      "9.9.9.9"
+      "149.112.112.112"
+    ];
     matchConfig = {
       Name = "eth0";
+    };
+    networkConfig = lib.mkForce {
+      DHCP = false;
+      IPv6AcceptRA = "no";
     };
   };
 
