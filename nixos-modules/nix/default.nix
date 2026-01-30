@@ -221,10 +221,10 @@ in
     users.mutableUsers = false;
     networking.useNetworkd = true;
     networking.wireless.userControlled = true;
-    # systemd.services.NetworkManager-wait-online.enable = false;
-    #  systemd.network.wait-online.enable = false;
-    #   systemd.services.systemd-networkd.stopIfChanged = false;
-    #    systemd.services.systemd-resolved.stopIfChanged = false;
+    systemd.services.NetworkManager-wait-online.enable = false;
+    systemd.network.wait-online.enable = false;
+    systemd.services.systemd-networkd.stopIfChanged = false;
+    systemd.services.systemd-resolved.stopIfChanged = false;
     boot.tmp.cleanOnBoot = true;
     programs.ssh.knownHosts = {
       "github.com".hostNames = [ "github.com" ];
