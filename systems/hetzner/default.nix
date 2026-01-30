@@ -19,7 +19,8 @@
     ./radicale.nix
   ];
 
-  hardware.facter.reportPath = ./facter.json;
+  #hardware.facter.reportPath = ./facter.json;
+  hardware.facter.detected.dhcp.enable = false;
 
   boot.initrd.systemd.enable = true;
 
@@ -43,7 +44,6 @@
   };
 
   networking = {
-    dhcpcd.enable = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -57,7 +57,29 @@
     };
   };
 
-  systemd.network.networks."10-uplink".networkConfig.Address = "2a01:4f8:a0:31e5::/64";
+  systemd.network.networks."10-uplink" = {
+    matchConfig.Name = "en*";
+    address = [
+      "85.10.200.204/27"
+    ];
+    gateway = [
+      "fe80::1"
+      "85.10.200.193"
+    ];
+    dns = [
+      "9.9.9.9"
+      "149.112.112.112"
+      "2620:fe::fe"
+      "2620:fe::9"
+    ];
+    networkConfig = lib.mkForce {
+      Address = "2a01:4f8:a0:31e5::/64";
+      DHCP = false;
+      IPv6AcceptRA = "no";
+    };
+  };
+
+  boot.initrd.network.udhcpc.enable = lib.mkForce false;
 
   time.timeZone = "Europe/Berlin";
 
@@ -138,15 +160,6 @@
       };
       extraGroups = [ "podman" ];
     };
-  };
-
-  virtualisation.podman.defaultNetwork.settings.dns_enable = true;
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerCompat = true;
-
-  networking.firewall.interfaces."podman+" = {
-    allowedUDPPorts = [ 53 ];
-    allowedTCPPorts = [ 53 ];
   };
 
   services.hydra = {
