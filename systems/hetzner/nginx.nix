@@ -130,7 +130,7 @@
 
   services.searx = {
     enable = true;
-    runInUwsgi = false;
+    configureUwsgi = false;
     settings = {
       server.secret_key = "NotASecret";
     };
