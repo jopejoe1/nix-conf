@@ -114,29 +114,4 @@
       protocolUseSSL = true;
     };
   };
-
-  services.nix-serve = {
-    enable = true;
-    secretKeyFile = "/var/cache-priv-key.pem";
-  };
-
-  services.wordpress.webserver = "nginx";
-  services.phpfpm.phpOptions = ''
-    post_max_size = "64M"
-    upload_max_filesize = "64M"
-    max_execution_time = 300
-    max_input_time = 300
-  '';
-
-  services.searx = {
-    enable = true;
-    configureUwsgi = false;
-    settings = {
-      server.secret_key = "NotASecret";
-    };
-    uwsgiConfig = {
-      socket = "/run/searx/searx.sock";
-      chmod-socket = "660";
-    };
-  };
 }

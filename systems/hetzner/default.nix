@@ -19,7 +19,7 @@
     ./radicale.nix
   ];
 
-  #hardware.facter.reportPath = ./facter.json;
+  hardware.facter.reportPath = ./facter.json;
   hardware.facter.detected.dhcp.enable = false;
 
   boot.initrd.systemd.enable = true;
@@ -132,42 +132,6 @@
         "Pleroma.Upload".base_url = "https://nyan.social/media/";
       };
     };
-  };
-
-  services.woodpecker-server = {
-    enable = false;
-    environment = {
-      WOODPECKER_HOST = "https://ci.missing.ninja";
-      WOODPECKER_OPEN = "true";
-      WOODPECKER_FORGEJO = "true";
-      WOODPECKER_ADMIN = "irgendwas";
-      WOODPECKER_FORGEJO_URL = "https://git.missing.ninja";
-      WOODPECKER_FORGEJO_CLIENT = "";
-      WOODPECKER_FORGEJO_SECRET = "";
-      WOODPECKER_AGENT_SECRET = "";
-    };
-  };
-
-  services.woodpecker-agents.agents = {
-    hetzner = {
-      enable = false;
-      environment = {
-        WOODPECKER_SERVER = "localhost:9000";
-        WOODPECKER_MAX_WORKFLOWS = "8";
-        WOODPECKER_AGENT_SECRET = "";
-        WOODPECKER_BACKEND = "docker";
-        DOCKER_HOST = "unix:///run/podman/podman.sock";
-      };
-      extraGroups = [ "podman" ];
-    };
-  };
-
-  services.hydra = {
-    enable = false;
-    hydraURL = "https://hydra.missing.ninja";
-    notificationSender = "hydra@missing.ninja";
-    buildMachinesFiles = [ ];
-    useSubstitutes = true;
   };
 
   disko.devices = {
