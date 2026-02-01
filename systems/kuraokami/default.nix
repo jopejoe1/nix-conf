@@ -15,12 +15,23 @@
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-ssd
-    self.inputs.nether.nixosModules.hosts
-    self.inputs.nether.nixosModules.zerotier
+#    self.inputs.nether.nixosModules.hosts
+#    self.inputs.nether.nixosModules.zerotier
     self.inputs.srvos.nixosModules.desktop
   ];
 
   hardware.facter.reportPath = ./facter.json;
+
+  nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
+
+  networking.networkmanager = {
+    enable = true;
+    settings = {
+      keyfile = {
+        path = "/var/lib/NetworkManager-system-connections/";
+      };
+    };
+  };
 
   jopejoe1 = {
     audio = {
@@ -29,7 +40,7 @@
     };
     local.enable = true;
     nix.enable = true;
-    plasma.enable = true;
+    plasma.enable = false;
     printing.enable = true;
     steam.enable = true;
     ssh.enable = true;
@@ -55,6 +66,8 @@
       allowedUDPPorts = [ 8080 ];
     };
   };
+
+  boot.initrd.systemd.enable = true;
 
   services = {
     hardware.openrgb = {
@@ -96,6 +109,55 @@
     };
   };
 
+  fonts.packages = [
+    pkgs.nerd-fonts.symbols-only
+  ];
+
+  home-manager.users.jopejoe1 = {
+    programs.alacritty.enable = true;
+    programs.fuzzel.enable = true;
+    programs.waybar = {
+      enable = true;
+      systemd.enable = true;
+    };
+    programs.swaylock.enable = true;
+    programs.niri.settings = {
+      xwayland-satellite = {
+        enable = true;
+        path = lib.getExe pkgs.xwayland-satellite-unstable;
+      };
+      binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
+        "Super+D".action.spawn = "fuzzel";
+        "Super+Shift+E".action = quit;
+        "Super+Q".action = close-window;
+        "Super+T".action.spawn = "alacritty";
+        "Super+Alt+L".action.spawn = "swaylock";
+        "Super+Equal".action = set-column-width "+10%";
+        "Super+Minus".action = set-column-width "-10%";
+        "Super+H".action = focus-column-left;
+        "Super+L".action = focus-column-right;
+        "Super+K".action = focus-window-up;
+        "Super+J".action = focus-window-down;
+        "Super+I".action = focus-workspace-up;
+        "Super+U".action = focus-workspace-down;
+        "Super+Shift+H".action = focus-monitor-left;
+        "Super+Shift+L".action = focus-monitor-right;
+        "Super+Shift+K".action = focus-monitor-up;
+        "Super+Shift+J".action = focus-monitor-down;
+        "Super+Shift+I".action = move-workspace-up;
+        "Super+Shift+U".action = move-workspace-down;
+      };
+      input.keyboard.xkb = {
+        inherit (config.services.xserver.xkb)
+          variant
+          options
+          model
+          layout
+          ;
+      };
+    };
+  };
+
   time.timeZone = "Europe/Berlin";
 
   hardware = {
@@ -129,13 +191,13 @@
   ];
 
   programs = {
-    adb.enable = true;
     dconf.enable = true;
     droidcam.enable = true;
     xwayland.enable = true;
     kdeconnect.enable = true;
     gamemode.enable = true;
     tmux.enable = true;
+    niri.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
