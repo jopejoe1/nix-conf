@@ -118,7 +118,7 @@ in
             systems = getArchs "kuraokami";
             supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
             hostName = "kuraokami";
-            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUtJbFZhWTZ0aTJkVFVGUks0eFVoRitxa1kwbUhiT3pNSWpjTjZpMFNiTW0gcm9vdEBrdXJhb2thbWkK";
+            publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSVB6T0NJZkp4RHRoTUVxZWxreGxSYnIrSEFFTTRCZWE3YnlDTEhYbTdpYS8gcm9vdEBrdXJhb2thbWkK";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 10;
