@@ -22,7 +22,7 @@ in
       info.enable = true;
       nixos = {
         enable = true;
-        #includeAllModules = true;
+        includeAllModules = true;
         options.warningsAreErrors = false;
       };
       man = {
