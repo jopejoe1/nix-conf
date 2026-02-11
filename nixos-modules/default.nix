@@ -26,6 +26,5 @@
     self.inputs.home-manager.nixosModules.home-manager
     self.inputs.sops-nix.nixosModules.sops
     self.inputs.niri.nixosModules.niri
-    self.inputs.nixvim.nixosModules.nixvim
   ];
 }
