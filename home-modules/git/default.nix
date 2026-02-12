@@ -163,7 +163,7 @@ in
       package = pkgs.git;
       settings = {
         user = {
-          email = "jopejoe1";
+          email = "jopejoe1@missing.ninja";
           name = "jopejoe1";
         };
         core = {
