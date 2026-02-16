@@ -102,51 +102,6 @@
     pkgs.nerd-fonts.symbols-only
   ];
 
-  home-manager.users.jopejoe1 = {
-    programs.alacritty.enable = true;
-    programs.fuzzel.enable = true;
-    programs.waybar = {
-      enable = true;
-      systemd.enable = true;
-    };
-    programs.swaylock.enable = true;
-    programs.niri.settings = {
-      xwayland-satellite = {
-        enable = true;
-        path = lib.getExe pkgs.xwayland-satellite-unstable;
-      };
-      binds = with config.home-manager.users.jopejoe1.lib.niri.actions; {
-        "Super+D".action.spawn = "fuzzel";
-        "Super+Shift+E".action = quit;
-        "Super+Q".action = close-window;
-        "Super+T".action.spawn = "alacritty";
-        "Super+Alt+L".action.spawn = "swaylock";
-        "Super+Equal".action = set-column-width "+10%";
-        "Super+Minus".action = set-column-width "-10%";
-        "Super+H".action = focus-column-left;
-        "Super+L".action = focus-column-right;
-        "Super+K".action = focus-window-up;
-        "Super+J".action = focus-window-down;
-        "Super+I".action = focus-workspace-up;
-        "Super+U".action = focus-workspace-down;
-        "Super+Shift+H".action = focus-monitor-left;
-        "Super+Shift+L".action = focus-monitor-right;
-        "Super+Shift+K".action = focus-monitor-up;
-        "Super+Shift+J".action = focus-monitor-down;
-        "Super+Shift+I".action = move-workspace-up;
-        "Super+Shift+U".action = move-workspace-down;
-      };
-      input.keyboard.xkb = {
-        inherit (config.services.xserver.xkb)
-          variant
-          options
-          model
-          layout
-          ;
-      };
-    };
-  };
-
   programs = {
     xwayland.enable = true;
     kdeconnect.enable = true;

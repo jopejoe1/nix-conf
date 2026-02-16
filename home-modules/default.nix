@@ -1,4 +1,4 @@
-{ self, ... }:
+{ ... }:
 
 {
   imports = [
@@ -10,5 +10,6 @@
     ./nushell
     ./sway
     ./users
+    ./niri
   ];
 }

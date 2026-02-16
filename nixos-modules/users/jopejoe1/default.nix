@@ -68,6 +68,7 @@ in
         enable = true;
       };
       jopejoe1 = {
+        niri.enable = config.jopejoe1.gui.enable;
         common = {
           enable = true;
           gui = config.jopejoe1.gui.enable;

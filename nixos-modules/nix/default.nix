@@ -173,9 +173,13 @@ in
       useGlobalPkgs = true;
       useUserPackages = true;
       backupFileExtension = "backup";
+      overwriteBackup = true;
       sharedModules = [
         self.outputs.homeManagerModules.default
       ];
+      extraSpecialArgs = {
+        systemConfig = config;
+      };
     };
 
     environment.loginShellInit = lib.getExe resize;
