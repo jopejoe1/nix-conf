@@ -4,10 +4,11 @@
 }:
 
 let
-  inherit (nixpkgs.lib.systems.parse) doubleFromSystem mkSystemFromString;
+  inherit (nixpkgs) lib;
+  inherit (lib.systems.parse) doubleFromSystem mkSystemFromString;
   mkSystem =
     systemConfig: name:
-    nixpkgs.lib.nixosSystem {
+    lib.nixosSystem {
       specialArgs = {
         inherit systems;
         inherit (self.inputs) nixos-hardware srvos;
@@ -24,6 +25,16 @@ let
             };
           };
           networking.hostName = name;
+          nix = {
+            registry = lib.mkForce (
+              (lib.mapAttrs (_: flake: { inherit flake; })) (
+                (lib.filterAttrs (_: lib.isType "flake")) self.inputs
+              )
+              // {
+                self.flake = self;
+              }
+            );
+          };
         }
       ];
     };
