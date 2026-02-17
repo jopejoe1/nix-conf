@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  self,
   ...
 }:
 
@@ -10,8 +9,6 @@
     ./disk.nix
     #nixos-hardware.nixosModules.framework-16-7040-amd
   ];
-
-  nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
 
   hardware.facter.reportPath = ./facter.json;
 

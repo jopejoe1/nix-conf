@@ -48,38 +48,37 @@
   };
 
   outputs =
-    inputs@{
+    {
       self,
       nixpkgs,
       ...
     }:
     let
       forSystems = f: nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system: f system);
-      pkgs' = system: nixpkgs.legacyPackages.${system};
+      pkgs' =
+        f:
+        (nixpkgs.lib.nixosSystem {
+          modules = [
+            self.outputs.nixosModules.default
+            {
+              nixpkgs = {
+                system = f;
+              };
+            }
+          ];
+        }).pkgs;
     in
     {
-      nixosModules.default = import ./nixos-modules;
+      nixosModules.default = import ./nixos-modules self;
       homeManagerModules.default = import ./home-modules;
-      nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };
+      overlays.default = import ./overlays;
+      nixosConfigurations = import ./systems { inherit self nixpkgs; };
       formatter = forSystems (
         system:
         let
           pkgs = pkgs' system;
         in
-        pkgs.treefmt.withConfig {
-          runtimeInputs = with pkgs; [
-            nixfmt-rfc-style
-          ];
-          settings = {
-            tree-root-file = ".git/index";
-            formatter = {
-              nixfmt = {
-                command = "nixfmt";
-                includes = [ "*.nix" ];
-              };
-            };
-          };
-        }
+        pkgs.jopejoe1.fmt
       );
     };
 }

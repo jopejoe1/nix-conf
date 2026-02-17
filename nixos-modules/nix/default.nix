@@ -2,36 +2,12 @@
   config,
   lib,
   pkgs,
-  self,
+  systems,
   ...
 }:
 
 let
   cfg = config.jopejoe1.nix;
-  # Based on https://github.com/nix-community/srvos/blob/30e6b4c2e5e7b235c7d0a266994a0c93e86bcf69/nixos/common/serial.nix#L8-L30
-  # Based on https://unix.stackexchange.com/questions/16578/resizable-serial-console-window
-  resize = pkgs.writeShellScriptBin "resize" ''
-    export PATH=${pkgs.coreutils}/bin
-    if [ ! -t 0 ]; then
-      # not a interactive...
-      exit 0
-    fi
-    TTY="$(tty)"
-    if [[ "$TTY" != /dev/ttyS* ]] && [[ "$TTY" != /dev/ttyAMA* ]] && [[ "$TTY" != /dev/ttySIF* ]]; then
-      # probably not a known serial console, we could make this check more
-      # precise by using `setserial` but this would require some additional
-      # dependency
-      exit 0
-    fi
-    old=$(stty -g)
-    stty raw -echo min 0 time 5
-
-    printf '\0337\033[r\033[999;999H\033[6n\0338' > /dev/tty
-    IFS='[;R' read -r _ rows cols _ < /dev/tty
-
-    stty "$old"
-    stty cols "$cols" rows "$rows"
-  '';
 in
 {
   options.jopejoe1.nix = {
@@ -84,58 +60,43 @@ in
       buildMachines =
         let
           getMainArch =
-            name:
-            self.nixosConfigurations.${name}.config.nixpkgs.hostPlatform.system
-              or self.nixosConfigurations.${name}.config.nixpkgs.system;
+            name: systems.${name}.config.nixpkgs.hostPlatform.system or systems.${name}.config.nixpkgs.system;
           getArchs =
-            name:
-            [ (getMainArch name) ]
-            ++ self.nixosConfigurations.${name}.config.nix.settings.extra-platforms or [ ];
+            name: [ (getMainArch name) ] ++ systems.${name}.config.nix.settings.extra-platforms or [ ];
         in
         lib.filter (builder: builder.hostName != config.networking.hostName) [
           {
             systems = getArchs "hetzner";
-            supportedFeatures = self.nixosConfigurations.hetzner.config.nix.settings.system-features;
+            supportedFeatures = systems.hetzner.config.nix.settings.system-features;
             hostName = "hetzner";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUxPNndNaFU1dndSdFV6ZytPVjJjdHF1K3FvaGVpQnlTbkp5alUwT1kwN0wgcm9vdEBoZXR6bmVyCg==";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 5;
-            maxJobs =
-              (lib.elemAt self.nixosConfigurations.hetzner.config.hardware.facter.report.hardware.cpu 0).cores;
+            maxJobs = (lib.elemAt systems.hetzner.config.hardware.facter.report.hardware.cpu 0).cores;
           }
           {
             systems = getArchs "zap";
-            supportedFeatures = self.nixosConfigurations.zap.config.nix.settings.system-features;
+            supportedFeatures = systems.zap.config.nix.settings.system-features;
             hostName = "zap";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUo3NGsyb0ZNcjNGbTI2ZFRmZ2VZUklKdEhLNnN4clJ4ZnY4dkU0QXJKZVMgcm9vdEB6YXAK";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
-            maxJobs =
-              (lib.elemAt self.nixosConfigurations.zap.config.hardware.facter.report.hardware.cpu 0).cores;
+            maxJobs = (lib.elemAt systems.zap.config.hardware.facter.report.hardware.cpu 0).cores;
           }
           {
             systems = getArchs "kuraokami";
-            supportedFeatures = self.nixosConfigurations.kuraokami.config.nix.settings.system-features;
+            supportedFeatures = systems.kuraokami.config.nix.settings.system-features;
             hostName = "kuraokami";
             publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSVB6T0NJZkp4RHRoTUVxZWxreGxSYnIrSEFFTTRCZWE3YnlDTEhYbTdpYS8gcm9vdEBrdXJhb2thbWkK";
             sshUser = "builder";
             sshKey = "/root/.ssh/builder";
             speedFactor = 10;
-            maxJobs =
-              (lib.elemAt self.nixosConfigurations.kuraokami.config.hardware.facter.report.hardware.cpu 0).cores;
+            maxJobs = (lib.elemAt systems.kuraokami.config.hardware.facter.report.hardware.cpu 0).cores;
           }
         ];
       distributedBuilds = true;
       package = pkgs.lixPackageSets.latest.lix;
-      registry = lib.mkForce (
-        (lib.mapAttrs (_: flake: { inherit flake; })) (
-          (lib.filterAttrs (_: lib.isType "flake")) self.inputs
-        )
-        // {
-          self.flake = self;
-        }
-      );
       nixPath = lib.mkForce [ "/etc/nix/path" ];
 
     };
@@ -146,12 +107,6 @@ in
         nvidia.acceptLicense = true;
         allowAliases = false;
       };
-      overlays = [
-        (_self: super: rec {
-          firefox-addons = self.inputs.firefox-addons.packages.${config.nixpkgs.hostPlatform.system};
-          localPkgs = self.outputs.packages.${config.nixpkgs.hostPlatform.system};
-        })
-      ];
     };
 
     environment.etc = lib.mapAttrs' (name: value: {
@@ -174,15 +129,12 @@ in
       useUserPackages = true;
       backupFileExtension = "backup";
       overwriteBackup = true;
-      sharedModules = [
-        self.outputs.homeManagerModules.default
-      ];
       extraSpecialArgs = {
         systemConfig = config;
       };
     };
 
-    environment.loginShellInit = lib.getExe resize;
+    environment.loginShellInit = lib.getExe pkgs.jopejoe1.resize;
 
     system.etc.overlay = {
       mutable = false;

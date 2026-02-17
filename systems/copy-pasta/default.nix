@@ -1,9 +1,7 @@
 {
-  config,
   pkgs,
-  lib,
   nixos-hardware,
-  self,
+  srvos,
   ...
 }:
 
@@ -12,7 +10,7 @@
     nixos-hardware.nixosModules.common-cpu-intel
     #nixos-hardware.nixosModules.common-gpu-nvidia
     nixos-hardware.nixosModules.common-pc
-    self.inputs.srvos.nixosModules.desktop
+    srvos.nixosModules.desktop
   ];
 
   boot.loader.grub.devices = [ "/dev/sda" ];

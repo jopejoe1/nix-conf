@@ -1,18 +1,15 @@
 {
-  config,
-  pkgs,
   lib,
-  self,
+  srvos,
   ...
 }:
 
 {
 
   imports = [
-    self.inputs.srvos.nixosModules.server
-    self.inputs.srvos.nixosModules.hardware-hetzner-online-amd
-    self.inputs.srvos.nixosModules.mixins-nginx
-    self.inputs.snm.nixosModules.mailserver
+    srvos.nixosModules.server
+    srvos.nixosModules.hardware-hetzner-online-amd
+    srvos.nixosModules.mixins-nginx
     ./mail.nix
     ./matrix.nix
     ./nginx.nix

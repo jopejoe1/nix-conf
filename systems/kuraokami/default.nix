@@ -1,9 +1,8 @@
 {
-  config,
   pkgs,
   lib,
   nixos-hardware,
-  self,
+  srvos,
   ...
 }:
 
@@ -15,14 +14,12 @@
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-ssd
-#    self.inputs.nether.nixosModules.hosts
-#    self.inputs.nether.nixosModules.zerotier
-    self.inputs.srvos.nixosModules.desktop
+    #    self.inputs.nether.nixosModules.hosts
+    #    self.inputs.nether.nixosModules.zerotier
+    srvos.nixosModules.desktop
   ];
 
   hardware.facter.reportPath = ./facter.json;
-
-  nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
 
   networking.networkmanager = {
     enable = true;

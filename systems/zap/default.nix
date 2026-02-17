@@ -1,9 +1,8 @@
 {
-  config,
   pkgs,
   lib,
   modulesPath,
-  self,
+  srvos,
   ...
 }:
 
@@ -28,8 +27,8 @@
 
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    self.inputs.srvos.nixosModules.server
-    self.inputs.srvos.nixosModules.mixins-nginx
+    srvos.nixosModules.server
+    srvos.nixosModules.mixins-nginx
     ./wp-test.nix
   ];
 
