@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -10,7 +9,7 @@ let
 in
 {
   options.jopejoe1.gpg = {
-    enable = lib.mkEnableOption "Enable Nushell";
+    enable = lib.mkEnableOption "setup gpg";
   };
 
   config = lib.mkIf cfg.enable {

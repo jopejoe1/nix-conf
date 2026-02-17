@@ -11,5 +11,7 @@
     ./sway
     ./users
     ./niri
+    ./jj
+    ./helix
   ];
 }

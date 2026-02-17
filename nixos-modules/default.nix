@@ -16,7 +16,6 @@
     ./nix
     ./plasma
     ./printing
-    ./repo-sync
     ./ssh
     ./steam
     ./sway

@@ -50,7 +50,7 @@ in
     };
     xdg = {
       enable = true;
-      mime.enable = true;
+      mime.enable = cfg.gui;
       cacheHome = "${config.home.homeDirectory}/.cache";
       configHome = "${config.home.homeDirectory}/.config";
       dataHome = "${config.home.homeDirectory}/.local/share";
@@ -69,11 +69,11 @@ in
       };
     };
     qt = {
-      enable = true;
+      enable = cfg.gui;
       style.name = "kvantum";
       platformTheme.name = "kvantum";
     };
-    gtk.enable = true;
+    gtk.enable = cfg.gui;
     gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
     gtk.iconTheme.package = pkgs.tela-icon-theme;
     gtk.iconTheme.name = "Tela-purple-dark";

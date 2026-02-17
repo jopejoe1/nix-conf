@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
@@ -14,9 +13,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.nushell = {
-      enable = true;
-    };
     jopejoe1 = {
       common = {
         enable = true;
@@ -24,7 +20,8 @@ in
       nushell.enable = true;
       git.enable = true;
       direnv.enable = true;
-      sway.enable = false;
+      helix.enable = true;
+      jj.enable = true;
       firefox.enable = config.jopejoe1.common.gui;
     };
   };

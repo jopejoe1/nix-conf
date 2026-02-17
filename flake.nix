@@ -45,13 +45,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Utility
-    nixos-anywhere = {
-      url = "github:nix-community/nixos-anywhere";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.disko.follows = "disko";
-    };
   };
 
   outputs =
@@ -68,13 +61,6 @@
       nixosModules.default = import ./nixos-modules;
       homeManagerModules.default = import ./home-modules;
       nixosConfigurations = import ./systems { inherit self inputs nixpkgs; };
-      packages = forSystems (
-        system:
-        import ./packages {
-          inherit system inputs;
-          pkgs = pkgs' system;
-        }
-      );
       formatter = forSystems (
         system:
         let
@@ -95,12 +81,5 @@
           };
         }
       );
-      hydraJobs = {
-        inherit (self)
-          packages
-          formatter
-          nixosConfigurations
-          ;
-      };
     };
 }

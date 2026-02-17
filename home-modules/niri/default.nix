@@ -16,7 +16,15 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.alacritty.enable = true;
-    programs.fuzzel.enable = true;
+    programs.fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          terminal = lib.getExe pkgs.alacritty;
+          layer = "overlay";
+        };
+      };
+    };
     programs.waybar = {
       enable = true;
       systemd.enable = true;
