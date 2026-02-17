@@ -8,8 +8,7 @@ let
   inherit (nixpkgs.lib.systems.parse) doubleFromSystem mkSystemFromString;
   mkSystem =
     systemConfig: name:
-    nixpkgs.lib.nixosSystem rec {
-      system = doubleFromSystem (mkSystemFromString systemConfig);
+    nixpkgs.lib.nixosSystem {
       specialArgs = inputs;
       modules = [
         ./${name}
@@ -17,7 +16,7 @@ let
         {
           system.stateVersion = "24.05";
           nixpkgs.hostPlatform = {
-            system = system;
+            system = doubleFromSystem (mkSystemFromString systemConfig);
             config = systemConfig;
           };
           networking.hostName = name;
