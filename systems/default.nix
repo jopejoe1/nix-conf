@@ -47,7 +47,6 @@ let
     ebisu = mkSystem "x86_64-unknown-linux-gnu" "ebisu";
     hetzner = mkSystem "x86_64-unknown-linux-gnu" "hetzner";
     zap = mkSystem "x86_64-unknown-linux-gnu" "zap";
-    copy-pasta = mkSystem "x86_64-unknown-linux-gnu" "copy-pasta";
   };
 in
 systems

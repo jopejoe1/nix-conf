@@ -131,6 +131,10 @@
     };
   };
 
+  boot.swraid.mdadmConf = ''
+    MAILADDR report@missing.ninja
+  '';  
+
   disko.devices = {
     disk = {
       vdb = {
