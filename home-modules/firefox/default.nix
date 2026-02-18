@@ -45,7 +45,6 @@ in
           ManualAppUpdateOnly = true;
           NoDefaultBookmarks = true;
           OfferToSaveLogins = false;
-          OfferToSaveLoginsDefault = false;
           PasswordManagerEnabled = false;
           PrimaryPassword = false;
           SearchBar = "unified";
@@ -95,20 +94,13 @@ in
             Locked = true;
           };
           Preferences = {
-            "privacy.resistFingerprinting" = lock true;
-            "privacy.trackingprotection.fingerprinting.enabled" = lock true;
-            "privacy.trackingprotection.cryptomining.enabled" = lock true;
             "dom.event.clipboardevents.enabled" = lock false;
             "dom.battery.enabled" = lock false;
             "browser.safebrowsing.phishing.enabled" = lock false;
             "browser.safebrowsing.malware.enabled" = lock false;
             "browser.zoom.siteSpecific" = lock true;
-            "config.trim_on_minimize" = lock true;
             "pdfjs.annotationEditorMode" = lock 0;
             "pdfjs.annotationMode" = lock 2;
-            "font.name-list.emoji" = lock (
-              lib.strings.concatStringsSep ", " config.jopejoe1.common.fonts.emoji
-            );
 
             # Theming
             "widget.gtk.overlay-scrollbars.enabled" = lock false;
@@ -122,29 +114,12 @@ in
             "browser.discovery.enabled" = lock false;
             "browser.shopping.experience2023.enabled" = lock false;
             "datareporting.policy.dataSubmissionEnabled" = lock false;
-            "datareporting.healthreport.uploadEnabled" = lock false;
-            "toolkit.telemetry.unified" = lock false;
-            "toolkit.telemetry.enabled" = lock false;
-            "toolkit.telemetry.server" = lock "data:,";
-            "toolkit.telemetry.archive.enabled" = lock false;
-            "toolkit.telemetry.newProfilePing.enabled" = lock false;
-            "toolkit.telemetry.shutdownPingSender.enabled" = lock false;
-            "toolkit.telemetry.updatePing.enabled" = lock false;
-            "toolkit.telemetry.bhrPing.enabled" = lock false;
-            "toolkit.telemetry.firstShutdownPing.enabled" = lock false;
-            "toolkit.telemetry.coverage.opt-out" = lock true;
-            "toolkit.coverage.opt-out" = lock true;
             "toolkit.coverage.endpoint.base" = lock "";
             "browser.ping-centre.telemetry" = lock false;
             "browser.newtabpage.activity-stream.feeds.telemetry" = lock false;
             "browser.newtabpage.activity-stream.telemetry" = lock false;
-            "app.shield.optoutstudies.enabled" = lock false;
-            "app.normandy.enabled" = lock false;
-            "app.normandy.api_url" = lock "";
-            "breakpad.reportURL" = lock "";
             "browser.tabs.crashReporting.sendReport" = lock false;
             "browser.crashReports.unsubmittedCheck.autoSubmit2" = lock false;
-            "captivedetect.canonicalURL" = lock "";
             "network.captive-portal-service.enabled" = lock false;
             "network.connectivity-service.enabled" = lock false;
             "network.prefetch-next" = lock false;
