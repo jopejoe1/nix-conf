@@ -127,6 +127,11 @@ in
       };
     };
 
-    systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 1048576000;
+    systemd.services.nix-daemon = {
+      serviceConfig = {
+        EnvironmentFile = "/var/nixenv";
+        LimitNOFILE = lib.mkForce 1048576000;
+      };
+    };
   };
 }
