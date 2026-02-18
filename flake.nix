@@ -55,24 +55,26 @@
     }:
     let
       forSystems = f: nixpkgs.lib.attrsets.genAttrs nixpkgs.lib.systems.flakeExposed (system: f system);
-      pkgs' = f: (nixpkgs.lib.nixosSystem {
-        modules = [
-          self.outputs.nixosModules.default
-          {
-            nixpkgs = {
-              system = f;
-            };
-          }
-        ];
-      }).pkgs;
-      mkForSystems = data: forSystems (system: data (pkgs' system)); 
+      pkgs' =
+        f:
+        (nixpkgs.lib.nixosSystem {
+          modules = [
+            self.outputs.nixosModules.default
+            {
+              nixpkgs = {
+                system = f;
+              };
+            }
+          ];
+        }).pkgs;
+      mkForSystems = data: forSystems (system: data (pkgs' system));
     in
     {
       nixosModules.default = import ./nixos-modules self;
       homeManagerModules.default = import ./home-modules;
       overlays.default = import ./overlays;
       nixosConfigurations = import ./systems { inherit self nixpkgs; };
-      formatter = mkForSystems (pkgs:  pkgs.jopejoe1.fmt);
+      formatter = mkForSystems (pkgs: pkgs.jopejoe1.fmt);
       legacyPackages = mkForSystems (pkgs: pkgs);
     };
 }

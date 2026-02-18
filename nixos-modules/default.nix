@@ -24,6 +24,7 @@ self:
     ./sway
     ./users
     ./zerotierone
+    ./common
     # External modules
     self.inputs.disko.nixosModules.disko
     self.inputs.home-manager.nixosModules.home-manager
