@@ -15,6 +15,15 @@
 
   hardware.facter.reportPath = ./facter.json;
 
+  networking.networkmanager = {
+    enable = true;
+    settings = {
+      keyfile = {
+        path = "/var/lib/NetworkManager-system-connections/";
+      };
+    };
+  };
+
   jopejoe1 = {
     audio = {
       enable = true;
@@ -92,13 +101,6 @@
         };
       };
     };
-  };
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    nssmdns6 = true;
-    ipv6 = true;
   };
 
   programs.kclock.enable = true;

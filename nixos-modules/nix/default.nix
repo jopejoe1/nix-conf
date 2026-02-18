@@ -141,6 +141,8 @@ in
       enable = true;
     };
 
+    boot.initrd.systemd.enable = true;
+
     security.sudo.execWheelOnly = true;
 
     system.preSwitchChecks.update-diff = lib.mkForce ''
