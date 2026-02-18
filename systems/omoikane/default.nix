@@ -7,7 +7,6 @@
 {
   imports = [
     ./disk.nix
-    #nixos-hardware.nixosModules.framework-16-7040-amd
   ];
 
   hardware.facter.reportPath = ./facter.json;

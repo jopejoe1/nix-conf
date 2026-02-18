@@ -1,16 +1,11 @@
 {
   pkgs,
-  nixos-hardware,
   ...
 }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    nixos-hardware.nixosModules.common-cpu-intel
-    #nixos-hardware.nixosModules.common-gpu-nvidia
-    #nixos-hardware.nixosModules.common-pc-laptop
-    #nixos-hardware.nixosModules.common-pc-laptop-hdd
   ];
 
   hardware.facter.reportPath = ./facter.json;

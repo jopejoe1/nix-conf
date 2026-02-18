@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  nixos-hardware,
   srvos,
   ...
 }:
@@ -9,11 +8,6 @@
 {
   imports = [
     ./hardware.nix
-    nixos-hardware.nixosModules.common-cpu-intel
-    nixos-hardware.nixosModules.common-gpu-nvidia
-    nixos-hardware.nixosModules.common-pc
-    nixos-hardware.nixosModules.common-hidpi
-    nixos-hardware.nixosModules.common-pc-ssd
     #    self.inputs.nether.nixosModules.hosts
     #    self.inputs.nether.nixosModules.zerotier
     srvos.nixosModules.desktop
