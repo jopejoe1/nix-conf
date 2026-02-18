@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 
@@ -11,7 +12,7 @@
 
   config = lib.mkIf config.jopejoe1.jj.enable {
     home.shellAliases = {
-      "jj-watch" = "watch -c -t jj log --no-pager --color=always";
+      "jj-watch" = "${lib.getExe pkgs.unixtools.watch} -c -t jj log --no-pager --color=always";
     };
 
     programs.jujutsu = {
