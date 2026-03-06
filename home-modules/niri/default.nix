@@ -36,12 +36,6 @@ in
         path = lib.getExe pkgs.xwayland-satellite-unstable;
       };
       prefer-no-csd = true;
-      window-rules = [
-        {
-          open-floating = false;
-          open-focused = false;
-        }
-      ];
       outputs = {
         "Acer Technologies Acer AL1717 0x70201097" = {
           mode = {
