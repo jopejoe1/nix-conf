@@ -53,6 +53,7 @@
     {
       self,
       nixpkgs,
+      home-manager,
       ...
     }:
     let
@@ -78,5 +79,11 @@
       nixosConfigurations = import ./systems { inherit self nixpkgs; };
       formatter = mkForSystems (pkgs: pkgs.jopejoe1.fmt);
       legacyPackages = mkForSystems (pkgs: pkgs);
+      homeConfigurations.jopejoe1 = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgs' "aarch64-darwin";
+        modules = [
+          self.homeManagerModules.default
+        ];
+      };
     };
 }
