@@ -115,6 +115,7 @@ in
       nix-index
       nix-prefetch-git
       nixpkgs-review
+      npins
     ];
 
     home-manager = {
