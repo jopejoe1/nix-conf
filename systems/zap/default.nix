@@ -2,10 +2,14 @@
   pkgs,
   lib,
   modulesPath,
-  srvos,
+  npins,
+  fpkgs,
   ...
 }:
 
+let
+  srvos = import (npins.srvos { pkgs = fpkgs; });
+in
 {
   jopejoe1 = {
     local.enable = true;

@@ -1,10 +1,14 @@
 {
   pkgs,
   lib,
-  srvos,
+  npins,
+  fpkgs,
   ...
 }:
 
+let
+  srvos = import (npins.srvos { pkgs = fpkgs; });
+in
 {
   imports = [
     ./hardware.nix

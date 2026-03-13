@@ -1,21 +1,18 @@
-{
-  self,
-  nixpkgs,
-}:
-
 let
-  inherit (nixpkgs) lib;
+  npins = import ../npins;
+  fpkgs = import npins.nixpkgs { };
+  nixpkgs = npins.nixpkgs { pkgs = fpkgs; };
+  lib = import "${nixpkgs}/lib" { };
   inherit (lib.systems.parse) doubleFromSystem mkSystemFromString;
   mkSystem =
     systemConfig: name:
-    lib.nixosSystem {
+    import "${nixpkgs}/nixos" {
       specialArgs = {
-        inherit systems;
-        inherit (self.inputs) nixos-hardware srvos;
+        inherit systems npins fpkgs;
       };
-      modules = [
+      configuration.imports = [
         ./${name}
-        self.outputs.nixosModules.default
+        ../nixos-modules
         {
           system.stateVersion = "24.05";
           nixpkgs = {
@@ -25,16 +22,6 @@ let
             };
           };
           networking.hostName = name;
-          nix = {
-            registry = lib.mkForce (
-              (lib.mapAttrs (_: flake: { inherit flake; })) (
-                (lib.filterAttrs (_: lib.isType "flake")) self.inputs
-              )
-              // {
-                self.flake = self;
-              }
-            );
-          };
         }
       ];
     };

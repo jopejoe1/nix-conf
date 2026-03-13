@@ -1,9 +1,13 @@
 {
   lib,
-  srvos,
+  npins,
+  fpkgs,
   ...
 }:
 
+let
+  srvos = import (npins.srvos { pkgs = fpkgs; });
+in
 {
 
   imports = [
@@ -133,7 +137,7 @@
 
   boot.swraid.mdadmConf = ''
     MAILADDR report@missing.ninja
-  '';  
+  '';
 
   disko.devices = {
     disk = {
