@@ -6,7 +6,15 @@
 {
   imports =
     let
-      niri = (builtins.getFlake (npins.niri { }).url);
+      niri = fpkgs.applyPatches {
+        src = (npins.niri { pkgs = fpkgs; });
+        patches = [
+          (fpkgs.fetchpatch {
+            url = "https://github.com/jopejoe1/niri-flake/commit/706697d932f737483d39bd70ffcc52c3ab7d4021.patch";
+            hash = "sha256-2v1sXl3+5rdS0aiF1/npiA/GvlMsDnIPfgnpGkIhG70=";
+          })
+        ];
+      };
     in
     [
       # Internel modules
@@ -35,7 +43,7 @@
       (npins.home-manager { pkgs = fpkgs; } + "/nixos")
       (npins.sops-nix { pkgs = fpkgs; } + "/modules/sops")
       (npins.disko { pkgs = fpkgs; } + "/module.nix")
-      niri.nixosModules.niri
+      (niri + "/modules/nixos.nix")
       (npins.snm { pkgs = fpkgs; } + "/")
 
       # pkgs extensions
@@ -43,7 +51,6 @@
         nixpkgs.overlays = [
           (import ../overlays)
           (import (npins.firefox-addons { pkgs = fpkgs; } + "/overlay.nix"))
-          niri.overlays.niri
         ];
         home-manager.sharedModules = [
           ../home-modules
