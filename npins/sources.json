@@ -26,19 +26,6 @@
       "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=cc0fa04294fb230b831e0b0d0d842d6ddb40806f",
       "hash": "sha256-ub9lQJZOgj9351Rv7YrmrimlocUj45AmWi5/vxOkrug="
     },
-    "flake-compat": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "NixOS",
-        "repo": "flake-compat"
-      },
-      "branch": "master",
-      "submodules": false,
-      "revision": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
-      "url": "https://github.com/NixOS/flake-compat/archive/5edf11c44bc78a0d334f6334cdaf7d60d732daab.tar.gz",
-      "hash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns="
-    },
     "home-manager": {
       "type": "Git",
       "repository": {
@@ -105,17 +92,10 @@
       "hash": "sha256-mUJxsNOrBMNOUJzN0pfdVJ1r2pxeqm9gI/yIKXzVVbk="
     },
     "nixpkgs": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "rnhmjoj",
-        "repo": "nixpkgs"
-      },
-      "branch": "pr-system-nix",
-      "submodules": false,
-      "revision": "1416d3ed2b1684379d8936e51e0d595b8d694276",
-      "url": "https://github.com/rnhmjoj/nixpkgs/archive/1416d3ed2b1684379d8936e51e0d595b8d694276.tar.gz",
-      "hash": "sha256-8g6diTZeyWh+GLT+iIbiRBGGEuHusj+xyQB4mdCGmRw="
+      "type": "Channel",
+      "name": "nixos-unstable",
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre962836.c06b4ae3d659/nixexprs.tar.xz",
+      "hash": "sha256-wLdaFm1T0uzQya3eG/5+LPbmyB92jE/AnMtVY6re818="
     },
     "snm": {
       "type": "Git",

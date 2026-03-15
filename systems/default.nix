@@ -1,7 +1,15 @@
 let
   npins = import ../npins;
   fpkgs = import npins.nixpkgs { };
-  nixpkgs = npins.nixpkgs { pkgs = fpkgs; };
+  nixpkgs = fpkgs.applyPatches {
+    src = npins.nixpkgs { pkgs = fpkgs; };
+    patches = [
+      (fpkgs.fetchpatch {
+        url = "https://github.com/NixOS/nixpkgs/pull/493229.patch";
+        hash = "sha256-XbeNEkmilAo1BEAKVGpeIRHuqvYSURQ9qKByb0pSesY=";
+      })
+    ];
+  };
   lib = import "${nixpkgs}/lib" { };
   inherit (lib.systems.parse) doubleFromSystem mkSystemFromString;
   mkSystem =
