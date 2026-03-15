@@ -2,7 +2,7 @@
   lib,
   pkgs,
   config,
-  systemConfig,
+  nixosConfig,
   ...
 }:
 
@@ -107,7 +107,7 @@ in
         "Super+Alt+Shift+J".action = move-column-to-monitor-down;
       };
       input.keyboard.xkb = {
-        inherit (systemConfig.services.xserver.xkb)
+        inherit (nixosConfig.services.xserver.xkb)
           variant
           options
           model

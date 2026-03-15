@@ -123,9 +123,6 @@ in
       useUserPackages = true;
       backupFileExtension = "backup";
       overwriteBackup = true;
-      extraSpecialArgs = {
-        systemConfig = config;
-      };
     };
 
     systemd.services.nix-daemon = {
