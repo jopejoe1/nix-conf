@@ -3,6 +3,7 @@
   lib,
   pkgs,
   systems,
+  npins,
   ...
 }:
 
@@ -94,8 +95,17 @@ in
         ];
       distributedBuilds = true;
       package = pkgs.lixPackageSets.latest.lix;
-      nixPath = lib.mkForce [ "/etc/nix/path" ];
-
+      nixPath = lib.mkForce [ (pkgs.linkFarm "nix-path" npins).outPath ];
+      registry = lib.mapAttrs (name: value: {
+        from = {
+          type = "indirect";
+          id = name;
+        };
+        to = {
+          type = "path";
+          path = value;
+        };
+      }) (lib.filterAttrs (name: value: lib.pathIsRegularFile (value + "/flake.nix")) npins);
     };
     niri-flake.cache.enable = false;
     nixpkgs = {
@@ -106,16 +116,11 @@ in
       };
     };
 
-    environment.etc = lib.mapAttrs' (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    }) config.nix.registry;
-
     environment.systemPackages = with pkgs; [
       nix-index
       nix-prefetch-git
       nixpkgs-review
-      npins
+      pkgs.npins
     ];
 
     home-manager = {
