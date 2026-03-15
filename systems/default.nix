@@ -1,22 +1,13 @@
 let
-  npins = import ../npins;
-  fpkgs = import npins.nixpkgs { };
-  nixpkgs = fpkgs.applyPatches {
-    src = npins.nixpkgs { pkgs = fpkgs; };
-    patches = [
-      (fpkgs.fetchpatch {
-        url = "https://github.com/NixOS/nixpkgs/pull/493229.patch";
-        hash = "sha256-XbeNEkmilAo1BEAKVGpeIRHuqvYSURQ9qKByb0pSesY=";
-      })
-    ];
-  };
+  npins = import ../inputs.nix;
+  nixpkgs = npins.nixpkgs;
   lib = import "${nixpkgs}/lib" { };
   inherit (lib.systems.parse) doubleFromSystem mkSystemFromString;
   mkSystem =
     systemConfig: name:
     import "${nixpkgs}/nixos" {
       specialArgs = {
-        inherit systems npins fpkgs;
+        inherit systems npins;
       };
       configuration.imports = [
         ./${name}

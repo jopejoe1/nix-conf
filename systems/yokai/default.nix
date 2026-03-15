@@ -1,14 +1,13 @@
 {
   pkgs,
   npins,
-  fpkgs,
   ...
 }:
 
 {
   imports = [
     ./hardware.nix
-    (npins.nixos-hardware { pkgs = fpkgs; } + "/pine64/pinebook-pro")
+    (npins.nixos-hardware + "/pine64/pinebook-pro")
   ];
 
   jopejoe1 = {

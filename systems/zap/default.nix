@@ -3,12 +3,11 @@
   lib,
   modulesPath,
   npins,
-  fpkgs,
   ...
 }:
 
 let
-  srvos = import (npins.srvos { pkgs = fpkgs; });
+  srvos = import npins.srvos;
 in
 {
   jopejoe1 = {

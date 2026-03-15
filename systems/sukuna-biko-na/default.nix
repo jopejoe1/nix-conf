@@ -1,16 +1,14 @@
 {
   modulesPath,
   lib,
-  pkgs,
   npins,
-  fpkgs,
   ...
 }:
 
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    (npins.nixos-hardware { pkgs = fpkgs; } + "/raspberry-pi/4")
+    (npins.nixos-hardware + "/raspberry-pi/4")
   ];
 
   boot = {

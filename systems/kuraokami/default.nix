@@ -2,12 +2,11 @@
   pkgs,
   lib,
   npins,
-  fpkgs,
   ...
 }:
 
 let
-  srvos = import (npins.srvos { pkgs = fpkgs; });
+  srvos = import npins.srvos;
 in
 {
   imports = [
