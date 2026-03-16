@@ -91,6 +91,8 @@
     nix-output-monitor
     jetbrains.webstorm
     neovim
+    celestegame
+    factorio
   ];
 
   fonts.packages = [
