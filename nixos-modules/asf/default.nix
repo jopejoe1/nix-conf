@@ -16,6 +16,7 @@ in
     services.archisteamfarm = {
       enable = true;
       web-ui.enable = true;
+      ipcPasswordFile = "/var/lib/archisteamfarm/icppw";
       settings = {
         LicenseID = null;
         SteamProtocols = 7;
@@ -24,10 +25,10 @@ in
       bots.jopejoe1 = {
         username = "jopejoe1";
         enabled = true;
-        passwordFile = null;
+        passwordFile = "/var/lib/archisteamfarm/jopejoe1PW";
         settings = {
           #AutoSteamSaleEvent = true;
-          FarmingOrders = 9;
+          FarmingOrders = [9];
           OnlineStatus = 0;
           RemoteCommunication = 0;
         };
