@@ -40,7 +40,6 @@ in
           "flakes"
           "auto-allocate-uids"
           "cgroups"
-          "fetch-closure"
         ];
         auto-allocate-uids = true;
         use-cgroups = true;
