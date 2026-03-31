@@ -16,7 +16,7 @@
 
   config = lib.mkIf config.jopejoe1.common.enable {
     system.etc.overlay = {
-      mutable = false;
+      mutable = true; # TODO set to false avahi currently need this
       enable = true;
     };
 
