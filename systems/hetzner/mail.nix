@@ -20,6 +20,7 @@
       "joens.international"
       "joens.family"
       "joens.digital"
+      "joens.email"
       "joens.blog"
       "net0loggy.net"
       "clan-war.net"
@@ -38,6 +39,7 @@
         hashedPassword = "$2b$05$ZZk/X.gQqjRc08ej9XTuaO0aVnWjPGWUqo/xYGxHGsMEyDL.Hr8AS";
         aliases = [
           "@missing.ninja"
+          "@joens.email"
           "@joens.zone"
           "@joens.website"
           "@joens.site"
