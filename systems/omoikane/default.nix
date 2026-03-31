@@ -90,6 +90,7 @@
     strawberry
     picard
     gh
+    intiface-central
     nix-output-monitor
     jetbrains.webstorm
     neovim
