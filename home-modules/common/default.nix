@@ -58,6 +58,7 @@ in
       userDirs = {
         enable = true;
         createDirectories = true;
+        setSessionVariables = true;
         desktop = "${config.home.homeDirectory}/Desktop";
         documents = "${config.home.homeDirectory}/Documents";
         download = "${config.home.homeDirectory}/Downloads";
@@ -77,5 +78,6 @@ in
     gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
     gtk.iconTheme.package = pkgs.tela-icon-theme;
     gtk.iconTheme.name = "Tela-purple-dark";
+    gtk.gtk4.theme = null;
   };
 }
