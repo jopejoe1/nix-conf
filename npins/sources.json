@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "878ec37d6a8f52c6c801d0e2a2ad554c75b9353c",
-      "url": "https://github.com/nix-community/disko/archive/878ec37d6a8f52c6c801d0e2a2ad554c75b9353c.tar.gz",
-      "hash": "sha256-qWKbLUJpavIpvOdX1fhHYm0WGerytFHRoh9lVck6Bh0="
+      "revision": "5ad85c82cc52264f4beddc934ba57f3789f28347",
+      "url": "https://github.com/nix-community/disko/archive/5ad85c82cc52264f4beddc934ba57f3789f28347.tar.gz",
+      "hash": "sha256-PAqwnsBSI9SVC2QugvQ3xeYCB0otOwCacB1ueQj2tgw="
     },
     "firefox-addons": {
       "type": "Git",
@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "cc0fa04294fb230b831e0b0d0d842d6ddb40806f",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=cc0fa04294fb230b831e0b0d0d842d6ddb40806f",
-      "hash": "sha256-ub9lQJZOgj9351Rv7YrmrimlocUj45AmWi5/vxOkrug="
+      "revision": "11af6f465a038233b8123022dcb7e293f3229f11",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=11af6f465a038233b8123022dcb7e293f3229f11",
+      "hash": "sha256-tzgxKaCEMcU6XT0fjV/vEqDCM9yij6wBgPPBKiK8Dfk="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "ef12a9a2b0f77c8fa3dda1e7e494fca668909056",
-      "url": "https://github.com/nix-community/home-manager/archive/ef12a9a2b0f77c8fa3dda1e7e494fca668909056.tar.gz",
-      "hash": "sha256-MPjR48roW7CUMU6lu0+qQGqj92Kuh3paIulMWFZy+NQ="
+      "revision": "7622882af88598b882436416bd74154826fcf742",
+      "url": "https://github.com/nix-community/home-manager/archive/7622882af88598b882436416bd74154826fcf742.tar.gz",
+      "hash": "sha256-cLcm8jXyhEDRHTCN1fym6+5L6Z264kj2QBpL+/yT3WI="
     },
     "impermanence": {
       "type": "Git",
@@ -74,9 +74,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "39ac039250a4a32bf8691405cac04864fc66a70d",
-      "url": "https://github.com/sodiboo/niri-flake/archive/39ac039250a4a32bf8691405cac04864fc66a70d.tar.gz",
-      "hash": "sha256-+0LBAEm8F5h9Nm+hdS07aoS1W4oTtW6c8lltb66oOYQ="
+      "revision": "975e9c55001333df0ddab36d938372c14917998a",
+      "url": "https://github.com/sodiboo/niri-flake/archive/975e9c55001333df0ddab36d938372c14917998a.tar.gz",
+      "hash": "sha256-kRKybUNiXTivTZSUnqwXHCY4GRD3e+Nu+1Mb8jf2HCI="
     },
     "nixos-hardware": {
       "type": "Git",
@@ -87,15 +87,22 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "3966ce987e1a9a164205ac8259a5fe8a64528f72",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/3966ce987e1a9a164205ac8259a5fe8a64528f72.tar.gz",
-      "hash": "sha256-mUJxsNOrBMNOUJzN0pfdVJ1r2pxeqm9gI/yIKXzVVbk="
+      "revision": "de895be946ad1d8aafa0bb6dfc7e7e0e9e466a29",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/de895be946ad1d8aafa0bb6dfc7e7e0e9e466a29.tar.gz",
+      "hash": "sha256-4v7HPm63Q90nNn4fgkgKsjW1AH2Klw7XzPtHJr562nM="
     },
     "nixpkgs": {
-      "type": "Channel",
-      "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre962836.c06b4ae3d659/nixexprs.tar.xz",
-      "hash": "sha256-wLdaFm1T0uzQya3eG/5+LPbmyB92jE/AnMtVY6re818="
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "nixpkgs"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "2862328adcbe2d4c7963c2c72cf48bf95753a381",
+      "url": "https://github.com/NixOS/nixpkgs/archive/2862328adcbe2d4c7963c2c72cf48bf95753a381.tar.gz",
+      "hash": "sha256-nBFiIC2UHKn0CZwpT4MgoJ8yF5Uv3lI66vPXk7V8n40="
     },
     "snm": {
       "type": "Git",
@@ -106,9 +113,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "58587e09bdd1fe7ad21ae27bd2660b8c6f5423d4",
-      "url": "https://gitlab.com/api/v4/projects/simple-nixos-mailserver%2Fnixos-mailserver/repository/archive.tar.gz?sha=58587e09bdd1fe7ad21ae27bd2660b8c6f5423d4",
-      "hash": "sha256-QRBONI9dXUUrjGGzVosivLC+EP4JUp96BxTT+IBIJds="
+      "revision": "0e176193a249023ac48494dcfe879ee64b23a30d",
+      "url": "https://gitlab.com/api/v4/projects/simple-nixos-mailserver%2Fnixos-mailserver/repository/archive.tar.gz?sha=0e176193a249023ac48494dcfe879ee64b23a30d",
+      "hash": "sha256-kBurUjRtZ3L9w/hKqEU/7uE3E71/jkeVp4gbzkarg8Q="
     },
     "sops-nix": {
       "type": "Git",
@@ -119,9 +126,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d1ff3b1034d5bab5d7d8086a7803c5a5968cd784",
-      "url": "https://github.com/Mic92/sops-nix/archive/d1ff3b1034d5bab5d7d8086a7803c5a5968cd784.tar.gz",
-      "hash": "sha256-M3zEnq9OElB7zqc+mjgPlByPm1O5t2fbUrH3t/Hm5Ag="
+      "revision": "614e256310e0a4f8a9ccae3fa80c11844fba7042",
+      "url": "https://github.com/Mic92/sops-nix/archive/614e256310e0a4f8a9ccae3fa80c11844fba7042.tar.gz",
+      "hash": "sha256-fhG4JAcLgjKwt+XHbjs8brpWnyKUfU4LikLm3s0Q/ic="
     },
     "srvos": {
       "type": "Git",
@@ -132,9 +139,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "f3f0277b1dee1bfd058c5b8b98cb25558d95f03f",
-      "url": "https://github.com/nix-community/srvos/archive/f3f0277b1dee1bfd058c5b8b98cb25558d95f03f.tar.gz",
-      "hash": "sha256-6UwMEAi6X3oMjKQm51i0+3i10DrsrSdXi/4YgmJxfhE="
+      "revision": "0ddba2fbd72bb60f8b35b7de1ad67590f454d402",
+      "url": "https://github.com/nix-community/srvos/archive/0ddba2fbd72bb60f8b35b7de1ad67590f454d402.tar.gz",
+      "hash": "sha256-oPIVzGlMmfWuJlRbr87yU3cnV8NxtwTG92GqpQczlkw="
     }
   },
   "version": 7
