@@ -11,6 +11,8 @@
 
   hardware.facter.reportPath = ./facter.json;
 
+  xdg.portal.xdgOpenUsePortal = true;
+
   virtualisation.xen = {
     enable = false;
     boot.builderVerbosity = "info"; # Adds a handy report that lets you know which Xen boot entries were created.
@@ -93,6 +95,7 @@
     neovim
     celestegame
     factorio
+    nautilus
   ];
 
   fonts.packages = [

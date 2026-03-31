@@ -36,6 +36,17 @@ in
         path = lib.getExe pkgs.xwayland-satellite-unstable;
       };
       prefer-no-csd = true;
+      window-rules = [
+        {
+          matches = [
+            {
+              app-id = "org.gnome.Nautilus";
+            }
+          ];
+          default-column-width.fixed = 360;
+          open-focused = true;
+        }
+      ];
       outputs = {
         "Acer Technologies Acer AL1717 0x70201097" = {
           mode = {
