@@ -97,6 +97,7 @@
     celestegame
     factorio
     nautilus
+    fluffychat
   ];
 
   fonts.packages = [
