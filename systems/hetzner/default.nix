@@ -19,6 +19,8 @@ in
     ./radicale.nix
   ];
 
+  programs.command-not-found.enable = lib.mkForce false;
+
   hardware.facter.reportPath = ./facter.json;
   hardware.facter.detected.dhcp.enable = false;
 

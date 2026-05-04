@@ -23,6 +23,8 @@ in
     gui.enable = false;
   };
 
+  programs.command-not-found.enable = lib.mkForce true;
+
   hardware.facter.reportPath = ./facter.json;
   hardware.facter.detected.dhcp.enable = false;
 
