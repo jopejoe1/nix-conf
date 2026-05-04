@@ -17,13 +17,20 @@ in
     services.printing = {
       enable = true;
       webInterface = true;
-      drivers = with pkgs; [ hplip epson-escpr2 epson-escpr ];
+      drivers = with pkgs; [
+        hplip
+        epson-escpr2
+        epson-escpr
+      ];
     };
 
     hardware = {
       sane = {
         enable = true;
-        extraBackends = [ pkgs.sane-airscan pkgs.epsonscan2 ];
+        extraBackends = [
+          pkgs.sane-airscan
+          pkgs.epsonscan2
+        ];
       };
     };
 

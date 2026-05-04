@@ -16,7 +16,7 @@ in
     services.openssh = {
       enable = true;
       settings = {
-#        Banner = "Hackers are in Your System!!!\n";
+        #        Banner = "Hackers are in Your System!!!\n";
         PasswordAuthentication = false;
         PermitRootLogin = "prohibit-password";
       };

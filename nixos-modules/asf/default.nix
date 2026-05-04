@@ -28,7 +28,7 @@ in
         passwordFile = "/var/lib/archisteamfarm/jopejoe1PW";
         settings = {
           #AutoSteamSaleEvent = true;
-          FarmingOrders = [9];
+          FarmingOrders = [ 9 ];
           OnlineStatus = 0;
           RemoteCommunication = 0;
         };
