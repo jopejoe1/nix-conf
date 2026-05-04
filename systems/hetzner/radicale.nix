@@ -8,7 +8,7 @@
 with lib;
 
 let
-  mailAccounts = config.mailserver.loginAccounts // {
+  mailAccounts = config.mailserver.accounts // {
     isa.hashedPassword = "$2b$05$Mzr0MwkCOHUwMl8rM9FKs.Q/9H/sNI8ddC6PdIBCzWBTYweVYgPDO";
   };
   htpasswd = pkgs.writeText "radicale.users" (
