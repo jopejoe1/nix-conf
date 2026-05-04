@@ -1,0 +1,3 @@
+{
+  systems = import ./system.nix;
+}
