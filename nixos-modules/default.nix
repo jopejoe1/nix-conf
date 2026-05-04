@@ -30,7 +30,6 @@
     (npins.home-manager + "/nixos")
     (npins.sops-nix + "/modules/sops")
     (npins.disko + "/module.nix")
-    (npins.niri + "/modules/nixos.nix")
     (npins.snm + "/")
 
     # pkgs extensions
@@ -38,6 +37,9 @@
       nixpkgs.overlays = [
         (import ../overlays)
         (import (npins.firefox-addons + "/overlay.nix"))
+        (x: y: {
+          wrappers = import (npins.wrappers + "/") { inherit (y) lib pkgs; };
+        })
       ];
       home-manager.sharedModules = [
         ../home-modules

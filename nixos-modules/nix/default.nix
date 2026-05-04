@@ -106,7 +106,6 @@ in
         };
       }) (lib.filterAttrs (name: value: lib.pathIsRegularFile (value + "/flake.nix")) npins);
     };
-    niri-flake.cache.enable = false;
     nixpkgs = {
       config = {
         allowUnfree = true;

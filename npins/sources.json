@@ -135,6 +135,19 @@
       "revision": "1131c2898d718b2c35cbee54056db3df24abdb74",
       "url": "https://github.com/nix-community/srvos/archive/1131c2898d718b2c35cbee54056db3df24abdb74.tar.gz",
       "hash": "sha256-W6g53anJ2XSZWeysVBiKzk9kMyWlB2lknUYpTA2SiQY="
+    },
+    "wrappers": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Lassulus",
+        "repo": "wrappers"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "cac6a55af3e4ebcabec478348ddd0fe032650834",
+      "url": "https://github.com/Lassulus/wrappers/archive/cac6a55af3e4ebcabec478348ddd0fe032650834.tar.gz",
+      "hash": "sha256-aFlRAeukwsJXd4b/0uLUTQaKo5wroOfVnoxTxi9sPVA="
     }
   },
   "version": 7
