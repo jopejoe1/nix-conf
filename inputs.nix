@@ -8,12 +8,6 @@ let
         hash = "sha256-/jXnO8V++p3D+aafCMqPBSpaUFbdeed11YoKq6ceJpU=";
       })
     ];
-    niri = [
-      (pkgs.fetchpatch {
-        url = "https://github.com/jopejoe1/niri-flake/commit/706697d932f737483d39bd70ffcc52c3ab7d4021.patch";
-        hash = "sha256-2v1sXl3+5rdS0aiF1/npiA/GvlMsDnIPfgnpGkIhG70=";
-      })
-    ];
   };
   inputs = builtins.mapAttrs (
     name: value:

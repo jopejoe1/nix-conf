@@ -65,19 +65,6 @@
       "url": "https://github.com/Lassulus/nether/archive/fbdb3e43c8e5068ffb50b5027092f178f4778a2f.tar.gz",
       "hash": "sha256-qvuGfRjiF8btMo21ng5yoyjTGxN8twZmzJqSbOOUg2I="
     },
-    "niri": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "sodiboo",
-        "repo": "niri-flake"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "945748d71d3422d4f1dada2cd10222e34ed9d767",
-      "url": "https://github.com/sodiboo/niri-flake/archive/945748d71d3422d4f1dada2cd10222e34ed9d767.tar.gz",
-      "hash": "sha256-jQnoHmnFgUWYDNosplgd5eFnUTT0MtEj2w9HCA4g1C0="
-    },
     "nixos-hardware": {
       "type": "Git",
       "repository": {
