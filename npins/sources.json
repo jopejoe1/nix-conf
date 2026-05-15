@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "c63195f23846be639805fb8fc5bcb579e249b8e0",
-      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=c63195f23846be639805fb8fc5bcb579e249b8e0",
-      "hash": "sha256-Pv7/nyFVi6ZMjInw3UYG9a6yjKxh6ORs2+GqnM0pH8I="
+      "revision": "79f3bc61602665e639010a47c46eb1aec73775a1",
+      "url": "https://gitlab.com/api/v4/projects/rycee%2Fnur-expressions/repository/archive.tar.gz?sha=79f3bc61602665e639010a47c46eb1aec73775a1",
+      "hash": "sha256-n71jQbTEy8qy23+t0Zml5viY+UZB6KzRC8WLieewERk="
     },
     "home-manager": {
       "type": "Git",
@@ -35,9 +35,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "c909892de502b4de9e92838a503c09a9c8ebe4aa",
-      "url": "https://github.com/nix-community/home-manager/archive/c909892de502b4de9e92838a503c09a9c8ebe4aa.tar.gz",
-      "hash": "sha256-XdbGWnFlX4McOEG5NioVsp35Ic6XL/rXnp8as71cu6o="
+      "revision": "ca77575d39c908de876c10f93704532689df546f",
+      "url": "https://github.com/nix-community/home-manager/archive/ca77575d39c908de876c10f93704532689df546f.tar.gz",
+      "hash": "sha256-uOh5fCoxOgdFa50WymuhCwJKuEVv/Eo4VYjK0SgzlPs="
     },
     "impermanence": {
       "type": "Git",
@@ -74,15 +74,15 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "eeb02f6e29fc8139c0b15af5ff0fdfdc6d0d3d90",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/eeb02f6e29fc8139c0b15af5ff0fdfdc6d0d3d90.tar.gz",
-      "hash": "sha256-bEJp/zaQApzynGRaAO62BZSz9tFikKtIHCn2yIA/s7Q="
+      "revision": "9bd7c80d43e258aaa607d83b43661df11444d808",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/9bd7c80d43e258aaa607d83b43661df11444d808.tar.gz",
+      "hash": "sha256-xYGrSg6354UK2K4WSQd4+TfyvfqmvFbSY+ZtGQUXK0c="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-unstable",
-      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre990025.15f4ee454b1d/nixexprs.tar.xz",
-      "hash": "sha256-fN6ynMvcdwPDB09LpWJNO5ogu+HFydrBWXJywoI/NNg="
+      "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre995699.da5ad661ba4e/nixexprs.tar.xz",
+      "hash": "sha256-rNDJzV2JTV5SUTwv1cgKZYMdyoUYU9/YfegSaUf3QfY="
     },
     "snm": {
       "type": "Git",
@@ -106,9 +106,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "8eaee5c45428b28b8c47a83e4c09dccec5f279b5",
-      "url": "https://github.com/Mic92/sops-nix/archive/8eaee5c45428b28b8c47a83e4c09dccec5f279b5.tar.gz",
-      "hash": "sha256-bc+ZZCmOTNq86/svGnw0tVpH7vJaLYvGLLKFYP08Q8E="
+      "revision": "c591bf665727040c6cc5cb409079acb22dcce33c",
+      "url": "https://github.com/Mic92/sops-nix/archive/c591bf665727040c6cc5cb409079acb22dcce33c.tar.gz",
+      "hash": "sha256-VfGRo1qTBKOe3s2gOv8LSoA6Fk19PvBlwQ1ECN0Evn8="
     },
     "srvos": {
       "type": "Git",
@@ -119,9 +119,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "1131c2898d718b2c35cbee54056db3df24abdb74",
-      "url": "https://github.com/nix-community/srvos/archive/1131c2898d718b2c35cbee54056db3df24abdb74.tar.gz",
-      "hash": "sha256-W6g53anJ2XSZWeysVBiKzk9kMyWlB2lknUYpTA2SiQY="
+      "revision": "931725e68eb35c3f6a3cbf51d2d3c69dfb4615e5",
+      "url": "https://github.com/nix-community/srvos/archive/931725e68eb35c3f6a3cbf51d2d3c69dfb4615e5.tar.gz",
+      "hash": "sha256-QoSYMop4blWAe1Nfc+RWjClfZUM/S6v553Uwlkj/na4="
     },
     "wrappers": {
       "type": "Git",
@@ -132,9 +132,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "cac6a55af3e4ebcabec478348ddd0fe032650834",
-      "url": "https://github.com/Lassulus/wrappers/archive/cac6a55af3e4ebcabec478348ddd0fe032650834.tar.gz",
-      "hash": "sha256-aFlRAeukwsJXd4b/0uLUTQaKo5wroOfVnoxTxi9sPVA="
+      "revision": "786d6c826bde22e6623066e6dfc0a21850b68546",
+      "url": "https://github.com/Lassulus/wrappers/archive/786d6c826bde22e6623066e6dfc0a21850b68546.tar.gz",
+      "hash": "sha256-h7fRM71sbdjTWVRxYHyI6EiVeKJAlHU18Gn2sscCmoQ="
     }
   },
   "version": 7
