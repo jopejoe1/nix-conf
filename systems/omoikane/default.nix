@@ -94,8 +94,8 @@
     nix-output-monitor
     jetbrains.webstorm
     neovim
-    celestegame
-    factorio
+    #celestegame
+    #factorio
     nautilus
     fluffychat
   ];
