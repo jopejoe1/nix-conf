@@ -98,6 +98,7 @@
     #factorio
     nautilus
     fluffychat
+    libreoffice
   ];
 
   fonts.packages = [
