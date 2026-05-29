@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -20,6 +21,7 @@ in
       settings = {
         LicenseID = null;
         SteamProtocols = 7;
+        SteamTokenDumperPluginEnabled = true;
         #AutoSteamSaleEvent = true;
       };
       bots.jopejoe1 = {
@@ -31,6 +33,14 @@ in
           FarmingOrders = [ 9 ];
           OnlineStatus = 0;
           RemoteCommunication = 0;
+          EnableFreePackages = true;
+          FreePackagesLimit = 30;
+          FreePackagesFilters = [
+            {
+             IgnoredTypes = [ ];
+             PlaytestMode = 3;
+            }
+          ];
         };
       };
     };
