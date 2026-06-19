@@ -74,13 +74,6 @@ in
         proxyPass = "http://localhost:8085/";
       };
     };
-    #"db.missing.ninja" = {
-    #  enableACME = true;
-    #  forceSSL = true;
-    #   locations."/" = {
-    #    proxyPass = "http://134.255.219.135:8000/";
-    #   };
-    # };
   };
 
   services.nginx.enable = true;
@@ -133,9 +126,6 @@ in
     8081
     22
   ];
-
-  services.surrealdb.enable = false;
-  services.surrealdb.host = "134.255.219.135";
 
   console = {
     enable = true;
