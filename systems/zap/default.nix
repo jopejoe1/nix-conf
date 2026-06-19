@@ -1,14 +1,9 @@
 {
   pkgs,
   lib,
-  modulesPath,
-  npins,
   ...
 }:
 
-let
-  srvos = import npins.srvos;
-in
 {
   jopejoe1 = {
     local.enable = true;
@@ -29,13 +24,6 @@ in
   hardware.facter.detected.dhcp.enable = false;
 
   boot.initrd.systemd.enable = true;
-
-  imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
-    srvos.nixosModules.server
-    srvos.nixosModules.mixins-nginx
-    ./wp-test.nix
-  ];
 
   networking.useDHCP = false;
 
@@ -76,7 +64,10 @@ in
     };
   };
 
-  services.nginx.enable = true;
+  services.nginx = {
+    enable = true;
+    commonHttpConfig = "access_log syslog:server=unix:/dev/log;";
+  };
   security.acme = {
     acceptTerms = true;
     defaults.email = "admin@missing.ninja";

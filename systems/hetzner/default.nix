@@ -12,7 +12,6 @@ in
   imports = [
     srvos.nixosModules.server
     srvos.nixosModules.hardware-hetzner-online-amd
-    srvos.nixosModules.mixins-nginx
     ./mail.nix
     ./matrix.nix
     ./nginx.nix

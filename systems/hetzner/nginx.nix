@@ -10,6 +10,7 @@
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
+    commonHttpConfig = "access_log syslog:server=unix:/dev/log;";
     virtualHosts = {
       "missing.ninja" = {
         serverAliases = [
