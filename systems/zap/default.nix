@@ -125,16 +125,6 @@ in
     ];
   };
 
-  users.users.fp = {
-    isNormalUser = true;
-    initialPassword = "fp";
-    description = "felix";
-    openssh.authorizedKeys.keys = [
-      "ssh.ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMBFp5TEsP0rdhkDpMfuMkCuLrDPoXBVu8EpRyLwuAMs fp@IAP-597"
-      "ssh-ed25519 AAAAC3NzaC11ZDI1NTE5AAAAIMBFp5TEsPOrdhkDpMfuMkCuLrDP0XBVu8EpRyLWUAMs Fp@IAP-597"
-    ];
-  };
-
   time.timeZone = "Europe/Berlin";
 
   services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
