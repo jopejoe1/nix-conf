@@ -79,66 +79,67 @@
     };
     programs.niri = {
       enable = config.jopejoe1.gui.enable;
-      package = (pkgs.wrappers.wrapperModules.niri.apply {
-        inherit pkgs;
-        settings = {
-          xwayland-satellite = {
-            path = lib.getExe pkgs.xwayland-satellite;
+      package =
+        (pkgs.wrappers.wrapperModules.niri.apply {
+          inherit pkgs;
+          settings = {
+            xwayland-satellite = {
+              path = lib.getExe pkgs.xwayland-satellite;
+            };
+            prefer-no-csd = true;
+            window-rules = [
+              {
+                matches = [
+                  {
+                    app-id = "org.gnome.Nautilus";
+                  }
+                ];
+                default-column-width.fixed = 360;
+                open-focused = true;
+              }
+            ];
+            binds = {
+              "Super+D".spawn = [ "fuzzel" ];
+              "Super+Shift+E".quit = null;
+              "Super+Q".close-window = null;
+              "Super+T".spawn = [ "alacritty" ];
+              "Alt+L".spawn = [ "swaylock" ];
+              "Super+Equal".set-column-width = "+10%";
+              "Super+Minus".set-column-width = "-10%";
+              "Super+F".maximize-column = null;
+              "Super+H".focus-column-left = null;
+              "Super+L".focus-column-right = null;
+              "Super+K".focus-window-up = null;
+              "Super+J".focus-window-down = null;
+              "Super+I".focus-workspace-up = null;
+              "Super+U".focus-workspace-down = null;
+              "Super+Shift+H".focus-monitor-left = null;
+              "Super+Shift+L".focus-monitor-right = null;
+              "Super+Shift+K".focus-monitor-up = null;
+              "Super+Shift+J".focus-monitor-down = null;
+              "Super+Shift+I".move-workspace-up = null;
+              "Super+Shift+U".move-workspace-down = null;
+              "Super+Alt+H".move-column-left = null;
+              "Super+Alt+L".move-column-right = null;
+              "Super+Alt+K".move-window-up = null;
+              "Super+Alt+J".move-window-down = null;
+              "Super+Alt+I".move-column-to-workspace-up = null;
+              "Super+Alt+U".move-column-to-workspace-down = null;
+              "Super+Alt+Shift+H".move-column-to-monitor-left = null;
+              "Super+Alt+Shift+L".move-column-to-monitor-right = null;
+              "Super+Alt+Shift+K".move-column-to-monitor-up = null;
+              "Super+Alt+Shift+J".move-column-to-monitor-down = null;
+            };
+            input.keyboard.xkb = {
+              inherit (config.services.xserver.xkb)
+                variant
+                options
+                model
+                layout
+                ;
+            };
           };
-          prefer-no-csd = true;
-          window-rules = [
-            {
-              matches = [
-                {
-                  app-id = "org.gnome.Nautilus";
-                }
-              ];
-              default-column-width.fixed = 360;
-              open-focused = true;
-            }
-          ];
-          binds = {
-            "Super+D".spawn = [ "fuzzel" ];
-            "Super+Shift+E".quit = null;
-            "Super+Q".close-window = null;
-            "Super+T".spawn = [ "alacritty" ];
-            "Alt+L".spawn = [ "swaylock" ];
-            "Super+Equal".set-column-width = "+10%";
-            "Super+Minus".set-column-width = "-10%";
-            "Super+F".maximize-column = null;
-            "Super+H".focus-column-left = null;
-            "Super+L".focus-column-right = null;
-            "Super+K".focus-window-up = null;
-            "Super+J".focus-window-down = null;
-            "Super+I".focus-workspace-up = null;
-            "Super+U".focus-workspace-down = null;
-            "Super+Shift+H".focus-monitor-left = null;
-            "Super+Shift+L".focus-monitor-right = null;
-            "Super+Shift+K".focus-monitor-up = null;
-            "Super+Shift+J".focus-monitor-down = null;
-            "Super+Shift+I".move-workspace-up = null;
-            "Super+Shift+U".move-workspace-down = null;
-            "Super+Alt+H".move-column-left = null;
-            "Super+Alt+L".move-column-right = null;
-            "Super+Alt+K".move-window-up = null;
-            "Super+Alt+J".move-window-down = null;
-            "Super+Alt+I".move-column-to-workspace-up = null;
-            "Super+Alt+U".move-column-to-workspace-down = null;
-            "Super+Alt+Shift+H".move-column-to-monitor-left = null;
-            "Super+Alt+Shift+L".move-column-to-monitor-right = null;
-            "Super+Alt+Shift+K".move-column-to-monitor-up = null;
-            "Super+Alt+Shift+J".move-column-to-monitor-down = null;
-          };
-          input.keyboard.xkb = {
-            inherit (config.services.xserver.xkb)
-              variant
-              options
-              model
-              layout
-              ;
-          };
-        };
-      }).wrapper;
+        }).wrapper;
     };
   };
 }

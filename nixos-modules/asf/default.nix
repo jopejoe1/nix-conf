@@ -37,8 +37,8 @@ in
           FreePackagesLimit = 30;
           FreePackagesFilters = [
             {
-             IgnoredTypes = [ ];
-             PlaytestMode = 3;
+              IgnoredTypes = [ ];
+              PlaytestMode = 3;
             }
           ];
         };
