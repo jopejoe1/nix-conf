@@ -13,6 +13,8 @@
 
   xdg.portal.xdgOpenUsePortal = true;
 
+  services.displayManager.ly.enable = true;
+
   virtualisation.xen = {
     enable = false;
     boot.builderVerbosity = "info"; # Adds a handy report that lets you know which Xen boot entries were created.
