@@ -99,6 +99,7 @@
     nautilus
     fluffychat
     libreoffice
+    (typst.withPackages (ps: [ ps.clickworthy-resume ]))
   ];
 
   fonts.packages = [
