@@ -19,6 +19,8 @@
     };
   };
 
+  hardware.facter.reportPath = ./facter.json;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "console=tty" ];
@@ -35,8 +37,14 @@
     ssh = {
       enable = true;
       authorizedKeys = config.users.users.jopejoe1.openssh.authorizedKeys.keys;
+      hostKeys = [
+        "/var/lib/ssh_key"
+      ];
     };
   };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 80 443 ];
 
   boot.initrd.systemd.network = {
     enable = true;
