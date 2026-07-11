@@ -14,9 +14,6 @@
       defaultEditor = true;
       languages = {
         language-server = {
-          vuels = {
-            command = lib.getExe pkgs.vue-language-server;
-          };
           typescript-language-server = {
             command = lib.getExe pkgs.typescript-language-server;
           };
