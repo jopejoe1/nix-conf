@@ -31,6 +31,7 @@ in
         "podman"
         "docker"
         "wpa_supplicant"
+        "wireshark"
       ];
       group = "users";
       createHome = true;
