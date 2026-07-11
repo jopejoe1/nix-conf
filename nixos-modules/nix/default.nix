@@ -117,7 +117,7 @@ in
     environment.systemPackages = with pkgs; [
       nix-index
       nix-prefetch-git
-      nixpkgs-review
+      lixPackageSets.latest.nixpkgs-reviewFull
       pkgs.npins
     ];
 
