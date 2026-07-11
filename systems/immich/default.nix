@@ -24,12 +24,68 @@
   networking.useDHCP = false;
   services.qemuGuest.enable = lib.mkDefault true;
   systemd.services.qemu-guest-agent.path = [ pkgs.shadow ];
-  services.cloud-init = {
+
+  boot.initrd.network.udhcpc.enable = lib.mkForce false;
+
+  boot.initrd.network = {
     enable = true;
-    network.enable = true;
-    settings.ssh_deletekeys = lib.mkDefault false;
+    ssh = {
+      enable = true;
+      authorizedKeys = config.users.users.jopejoe1.openssh.authorizedKeys.keys;
+    };
   };
-  
+
+  boot.initrd.systemd.network = {
+    enable = true;
+    networks."30-wan" = {
+      matchConfig.Name = "enp1s0";
+      networkConfig.DHCP = "no";
+      address = [
+        "49.13.232.169/32"
+        "2a01:4f8:c2c:3900::/64"
+      ];
+      dns = [
+        "9.9.9.9"
+        "149.112.112.112"
+        "2620:fe::fe"
+        "2620:fe::9"
+      ];
+      routes = [
+        {
+          Gateway = "172.31.1.1";
+          GatewayOnLink = true;
+        }
+        {
+          Gateway = "fe80::1";
+        }
+      ];
+    };
+  };
+
+  systemd.network.networks."30-wan" = {
+    matchConfig.Name = "enp1s0";
+    networkConfig.DHCP = "no";
+    address = [
+      "49.13.232.169/32"
+      "2a01:4f8:c2c:3900::/64"
+    ];
+    dns = [
+      "9.9.9.9"
+      "149.112.112.112"
+      "2620:fe::fe"
+      "2620:fe::9"
+    ];
+    routes = [
+      {
+        Gateway = "172.31.1.1";
+        GatewayOnLink = true;
+      }
+      {
+        Gateway = "fe80::1";
+      }
+    ];
+  };
+
   services.immich = {
     enable = true;
     host = "photos.joens.family";
@@ -67,7 +123,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/vdb";
         content = {
           type = "gpt";
           partitions = {
