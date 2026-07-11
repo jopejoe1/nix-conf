@@ -101,6 +101,7 @@
     nautilus
     fluffychat
     libreoffice
+    signal-desktop
     (typst.withPackages (ps: [ ps.clickworthy-resume ]))
   ];
 
