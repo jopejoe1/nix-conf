@@ -11,6 +11,8 @@
 
   hardware.facter.reportPath = ./facter.json;
 
+  programs.wireshark.enable = true;
+
   xdg.portal.xdgOpenUsePortal = true;
 
   services.displayManager.ly.enable = true;
