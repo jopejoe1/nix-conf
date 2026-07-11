@@ -99,12 +99,12 @@
 
   services.immich = {
     enable = true;
-    host = "photos.joens.family";
+    settings.server.externalDomain = "https://photos.joens.family";
   };
 
   services.nginx = {
     enable = true;
-    virtualHosts."${config.services.immich.host}" = {
+    virtualHosts."${config.services.immich.settings.server.externalDomain}" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
