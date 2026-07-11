@@ -165,4 +165,15 @@
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+
+  services.sonarr = {
+    enable = true;
+  };
+  services.prowlarr = {
+    enable = true;
+  };
+  services.bazarr.enable = true;
+  services.nzbget.enable = true;
+  users.users.sonarr.extraGroups = [ "jellyfin" ];
+  services.jellyfin.enable = true;
 }
