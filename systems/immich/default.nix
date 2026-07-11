@@ -1,5 +1,7 @@
 {
   config,
+  lib,
+  pkgs,
   ...
 }:
 
@@ -7,11 +9,25 @@
   jopejoe1 = {
     ssh.enable = true;
     nix.enable = true;
-    zerotierone.enable = true;
+    #zerotierone.enable = true;
     user = {
       jopejoe1.enable = true;
       root.enable = true;
     };
+  };
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "console=tty" ];
+  boot.initrd.kernelModules = [ "virtio_gpu" ];
+  networking.useNetworkd = true;
+  networking.useDHCP = false;
+  services.qemuGuest.enable = lib.mkDefault true;
+  systemd.services.qemu-guest-agent.path = [ pkgs.shadow ];
+  services.cloud-init = {
+    enable = true;
+    network.enable = true;
+    settings.ssh_deletekeys = lib.mkDefault false;
   };
   
   services.immich = {
