@@ -99,7 +99,10 @@
 
   services.immich = {
     enable = true;
-    settings.server.externalDomain = "https://photos.joens.family";
+    settings = {
+      server.externalDomain = "https://photos.joens.family";
+      metadata.faces.import = true;
+    };
   };
 
   services.nginx = {
