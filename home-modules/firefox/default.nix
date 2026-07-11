@@ -21,7 +21,7 @@ in
     programs = {
       firefox = {
         enable = true;
-        package = pkgs.firefox-devedition;
+        package = pkgs.firefox;
         policies = {
           AppAutoUpdate = false;
           BackgroundAppUpdate = false;
