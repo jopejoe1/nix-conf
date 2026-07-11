@@ -104,7 +104,7 @@
 
   services.nginx = {
     enable = true;
-    virtualHosts."${config.services.immich.settings.server.externalDomain}" = {
+    virtualHosts."photos.joens.family" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
