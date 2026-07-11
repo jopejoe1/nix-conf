@@ -105,6 +105,7 @@
     libreoffice
     signal-desktop
     (typst.withPackages (ps: [ ps.clickworthy-resume ]))
+    pwvucontrol
   ];
 
   fonts.packages = [
