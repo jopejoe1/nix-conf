@@ -63,16 +63,6 @@
 
   time.timeZone = "Europe/Berlin";
 
-  fileSystems."/" = lib.mkDefault {
-    device = "/dev/sda3";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = lib.mkDefault {
-    device = "/dev/sda2";
-    fsType = "vfat";
-  };
-
   disko.devices = {
     disk = {
       main = {
