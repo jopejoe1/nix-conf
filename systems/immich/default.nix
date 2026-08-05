@@ -106,6 +106,9 @@
     settings = {
       server.externalDomain = "https://photos.joens.family";
       metadata.faces.import = true;
+      image = {
+        fullsize.enabled = true;
+      };
     };
   };
 
