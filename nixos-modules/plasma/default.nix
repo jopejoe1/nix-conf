@@ -17,7 +17,7 @@ in
       libinput.enable = true;
 
       displayManager.sddm = {
-        enable = true;
+        enable = false;
         enableHidpi = true;
       };
       desktopManager.plasma6 = {
