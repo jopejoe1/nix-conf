@@ -22,18 +22,16 @@ in
       enable = true;
       web-ui.enable = true;
       ipcPasswordFile = "/var/lib/archisteamfarm/icppw";
+      licenseFile = "/var/lib/archisteamfarm/licenseID";
       settings = {
-        LicenseID = null;
         SteamProtocols = 7;
         SteamTokenDumperPluginEnabled = true;
-        #AutoSteamSaleEvent = true;
       };
       bots.jopejoe1 = {
         username = "jopejoe1";
         enabled = true;
         passwordFile = "/var/lib/archisteamfarm/jopejoe1PW";
         settings = {
-          #AutoSteamSaleEvent = true;
           FarmingOrders = [ 9 ];
           OnlineStatus = 0;
           RemoteCommunication = 0;
