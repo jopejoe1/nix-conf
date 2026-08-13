@@ -136,10 +136,18 @@ in
       overwriteBackup = true;
     };
 
-    systemd.services.nix-daemon = {
-      serviceConfig = {
-        EnvironmentFile = "/var/nixenv";
-        LimitNOFILE = lib.mkForce 1048576000;
+    systemd.services = {
+      nix-daemon = {
+        serviceConfig = {
+          EnvironmentFile = "/var/nixenv";
+          LimitNOFILE = lib.mkForce 1048576000;
+        };
+      };
+      "nix-daemon@" = {
+         serviceConfig = {
+          EnvironmentFile = "/var/nixenv";
+          LimitNOFILE = lib.mkForce 1048576000;
+        };
       };
     };
   };
