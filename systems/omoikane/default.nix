@@ -21,6 +21,8 @@
 
   services.displayManager.ly.enable = true;
 
+  services.displayManager.defaultSession = lib.mkForce "niri";
+
   virtualisation.xen = {
     enable = false;
     boot.builderVerbosity = "info"; # Adds a handy report that lets you know which Xen boot entries were created.
@@ -49,7 +51,7 @@
     };
     local.enable = true;
     nix.enable = true;
-    plasma.enable = false;
+    plasma.enable = true;
     printing.enable = true;
     steam.enable = true;
     ssh.enable = true;
