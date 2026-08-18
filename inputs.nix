@@ -7,10 +7,6 @@ let
   pkgs = import npins.nixpkgs { };
   patches = {
     nixpkgs = [
-      (pkgs.fetchpatch {
-        url = "https://github.com/jopejoe1/nixpkgs/commit/fc2b06c28c5aa785965648fdc2bedd0d384f7130.patch";
-        hash = "sha256-/jXnO8V++p3D+aafCMqPBSpaUFbdeed11YoKq6ceJpU=";
-      })
     ];
   };
   inputs = builtins.mapAttrs (
