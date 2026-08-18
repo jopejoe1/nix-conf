@@ -47,8 +47,14 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+  networking.firewall.allowedUDPPorts = [
+    80
+    443
+  ];
 
   boot.initrd.systemd.network = {
     enable = true;
@@ -136,7 +142,9 @@
     defaults.email = "acme@joens.family";
   };
 
-  nixpkgs.hostPlatform = { system = "aarch64-linux"; };
+  nixpkgs.hostPlatform = {
+    system = "aarch64-linux";
+  };
 
   time.timeZone = "Europe/Berlin";
 }

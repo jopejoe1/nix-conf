@@ -144,7 +144,7 @@ in
         };
       };
       "nix-daemon@" = {
-         serviceConfig = {
+        serviceConfig = {
           EnvironmentFile = "/var/nixenv";
           LimitNOFILE = lib.mkForce 1048576000;
         };
