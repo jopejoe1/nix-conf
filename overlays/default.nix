@@ -15,4 +15,13 @@ in
   # fix random flakes that make use of this
   xcb-util-cursor = final.libxcb-cursor;
   xorg.lndir = final.lndir;
+
+  nixos-anywhere = prev.nixos-anywhere.overrideAttrs (finalAttrs: {
+    src = prev.fetchFromGitHub {
+      owner = "nix-community";
+      repo = "nixos-anywhere";
+      rev = "230edbb60ce3d47d71a283e492bd444afd634935";
+      hash = "sha256-AO54aUSnnVGk1jrGWa7iI75xrRo17RAcMfchrbLtZ2A=";
+    };
+  });
 }

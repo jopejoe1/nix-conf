@@ -125,6 +125,7 @@
     signal-desktop
     (typst.withPackages (ps: [ ps.clickworthy-resume ]))
     pwvucontrol
+    nixos-anywhere
   ];
 
   fonts.packages = [
