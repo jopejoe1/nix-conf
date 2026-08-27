@@ -24,6 +24,16 @@
       enable = true;
     };
 
+    security.run0 = {
+      enable = true;
+      sudo-shim.enable = true;
+      persistentAuth.enable = true;
+    };
+
+    security.polkit.settings.Polkitd.ExpirationSeconds = 60;
+
+    security.sudo.enable = false;
+
     boot.initrd.systemd.enable = true;
 
     security.sudo.execWheelOnly = true;
