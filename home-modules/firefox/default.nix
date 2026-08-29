@@ -140,77 +140,76 @@ in
             "browser.uitour.enabled" = lock false;
             "browser.tabs.inTitlebar" = lock 0;
           };
-          "3rdparty" = {
-            Extensions = {
-              "uBlock0@raymondhill.net".adminSettings = {
-                userSettings = {
+        };
+        profiles = {
+          default = {
+            extensions = {
+              packages = with pkgs.firefox-addons; [
+                ublock-origin
+                bitwarden
+                clearurls
+                libredirect
+                #languagetool
+                return-youtube-dislikes
+                sponsorblock
+                augmented-steam
+                steam-database
+                refined-github
+                plasma-integration
+                #bypass-paywalls-clean
+                skip-redirect
+                terms-of-service-didnt-read
+                unpaywall
+                modrinthify
+                stylus
+                multi-account-containers
+              ];
+              force = true;
+              settings = {
+                "uBlock0@raymondhill.net".settings = {
                   uiTheme = "dark";
                   uiAccentCustom = true;
                   uiAccentCustom0 = "#b4befe";
                   cloudStorageEnabled = false;
+                  advancedUserEnabled = true;
+                  selectedFilterLists = [
+                    "adguard-generic"
+                    "adguard-annoyance"
+                    "adguard-cookies"
+                    "adguard-social"
+                    "adguard-spyware"
+                    "adguard-spyware-url"
+                    "adguard-popup-overlays"
+                    "adguard-other-annoyances"
+                    "adguard-widgets"
+                    "block-lan"
+                    "curben-phishing"
+                    "dpollock-0"
+                    "easylist"
+                    "easylist-chat"
+                    "easylist-newsletters"
+                    "easylist-notifications"
+                    "easylist-annoyances"
+                    "easyprivacy"
+                    "fanboy-cookiemonster"
+                    "fanboy-social"
+                    "fanboy-thirdparty_social"
+                    "FIN-0"
+                    "plowe-0"
+                    "ublock-abuse"
+                    "ublock-badware"
+                    "ublock-cookies-adguard"
+                    "ublock-cookies-easylist"
+                    "ublock-filters"
+                    "ublock-privacy"
+                    "ublock-quick-fixes"
+                    "ublock-unbreak"
+                    "ublock-annoyances"
+                    "urlhaus-1"
+                  ];
                 };
-                selectedFilterLists = [
-                  "adguard-generic"
-                  "adguard-annoyance"
-                  "adguard-cookies"
-                  "adguard-social"
-                  "adguard-spyware"
-                  "adguard-spyware-url"
-                  "adguard-popup-overlays"
-                  "adguard-other-annoyances"
-                  "adguard-widgets"
-                  "block-lan"
-                  "curben-phishing"
-                  "dpollock-0"
-                  "easylist"
-                  "easylist-chat"
-                  "easylist-newsletters"
-                  "easylist-notifications"
-                  "easylist-annoyances"
-                  "easyprivacy"
-                  "fanboy-cookiemonster"
-                  "fanboy-social"
-                  "fanboy-thirdparty_social"
-                  "FIN-0"
-                  "plowe-0"
-                  "ublock-abuse"
-                  "ublock-badware"
-                  "ublock-cookies-adguard"
-                  "ublock-cookies-easylist"
-                  "ublock-filters"
-                  "ublock-privacy"
-                  "ublock-quick-fixes"
-                  "ublock-unbreak"
-                  "ublock-annoyances"
-                  "urlhaus-1"
-                ];
               };
-              filters = [ ''stackoverflow.com##.sm\:fd-column.flex__allitems6.d-flex.mx-auto.wmx9'' ];
             };
-          };
-        };
-        profiles = {
-          default = {
-            extensions.packages = with pkgs.firefox-addons; [
-              ublock-origin
-              bitwarden
-              clearurls
-              libredirect
-              #languagetool
-              return-youtube-dislikes
-              sponsorblock
-              augmented-steam
-              steam-database
-              refined-github
-              plasma-integration
-              #bypass-paywalls-clean
-              skip-redirect
-              terms-of-service-didnt-read
-              unpaywall
-              modrinthify
-              stylus
-              multi-account-containers
-            ];
             id = 0;
             isDefault = true;
             name = "default";
