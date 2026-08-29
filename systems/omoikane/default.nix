@@ -53,7 +53,7 @@
     };
     local.enable = true;
     nix.enable = true;
-    plasma.enable = true;
+    plasma.enable = false;
     printing.enable = true;
     steam.enable = true;
     ssh.enable = true;
