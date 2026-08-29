@@ -20,12 +20,14 @@ in
     virtualHosts = {
       "miau.social" = {
         enableACME = true;
+        acmeRoot = null;
         forceSSL = true;
         locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
         locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
       };
       "matrix.miau.social" = {
         enableACME = true;
+        acmeRoot = null;
         forceSSL = true;
         locations."/".proxyPass =
           "http://unix:${config.services.matrix-continuwuity.settings.global.unix_socket_path}";

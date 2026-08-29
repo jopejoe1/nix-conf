@@ -4,6 +4,8 @@
 
 {
   config,
+  lib,
+  pkgs,
   ...
 }:
 
@@ -28,18 +30,23 @@
           "joens.digital"
           "joens.blog"
           "net0loggy.net"
-          #"clan-war.net"
+          "clan-war.net"
           "net0loggy.de"
           "dtg-c.de"
         ];
         enableACME = true;
+        acmeRoot = null;
         forceSSL = true;
       };
       "webmail.missing.ninja" = {
+        enableACME = true;
+        forceSSL = true;
+        acmeRoot = null;
         serverAliases = [ "joens.email" ];
       };
       "pad.missing.ninja" = {
         forceSSL = true;
+        acmeRoot = null;
         enableACME = true;
         locations."/".proxyPass = "http://localhost:3333";
         locations."/socket.io/" = {
@@ -51,27 +58,46 @@
       "test.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
+        acmeRoot = null;
       };
       "search.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
+        acmeRoot = null;
         locations."/".proxyPass = "http://localhost:8080";
       };
       "hydra.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
+        acmeRoot = null;
         locations."/".proxyPass = "http://localhost:3000";
       };
       "ci.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
+        acmeRoot = null;
         locations."/".proxyPass = "http://localhost:8000";
       };
       "cache.missing.ninja" = {
         forceSSL = true;
         enableACME = true;
+        acmeRoot = null;
         locations."/".proxyPass =
           "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+      };
+      "mta-sts.missing.ninja" = {
+        forceSSL = true;
+        enableACME = true;
+        acmeRoot = null;
+        serverAliases = lib.map (x: "mta-sts.${x}") config.mailserver.domains; 
+        locations."/" = {
+          root = pkgs.writeTextDir ".well-known/mta-sts.txt" ''
+            version: STSv1
+            mode: enforce
+            mx: mail.missing.ninja
+            max_age: 86400
+          '';
+        };
       };
       "hetzner" = {
         forceSSL = false;
