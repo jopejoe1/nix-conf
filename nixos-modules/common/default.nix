@@ -30,8 +30,6 @@
       persistentAuth.enable = true;
     };
 
-    security.polkit.settings.Polkitd.ExpirationSeconds = 60;
-
     security.sudo.enable = false;
 
     boot.initrd.systemd.enable = true;
