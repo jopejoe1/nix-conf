@@ -5,6 +5,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
@@ -20,6 +21,29 @@
     };
     ssh.enable = true;
     gui.enable = false;
+  };
+
+  networking.domains = {
+    enable = true;
+    baseDomains = {
+      "missing.ninja" = { };
+    };
+    subDomains = lib.concatMapAttrs (
+      name: val:
+      {
+        ${name} = {
+          a.data = "134.255.219.135";
+        };
+      }
+      // lib.listToAttrs (
+        lib.map (x: {
+          name = x;
+          value = {
+            a.data = "134.255.219.135";
+          };
+        }) val.extraDomainNames
+      )
+    ) config.security.acme.certs;
   };
 
   programs.command-not-found.enable = lib.mkForce true;

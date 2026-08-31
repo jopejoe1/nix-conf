@@ -25,6 +25,31 @@
 
   hardware.facter.reportPath = ./facter.json;
 
+  networking.domains = {
+    enable = true;
+    baseDomains = {
+      "joens.family" = { };
+    };
+    subDomains = lib.concatMapAttrs (
+      name: val:
+      {
+        ${name} = {
+          a.data = "49.13.232.169";
+          aaaa.data = "2a01:4f8:c2c:3900::";
+        };
+      }
+      // lib.listToAttrs (
+        lib.map (x: {
+          name = x;
+          value = {
+            a.data = "49.13.232.169";
+            aaaa.data = "2a01:4f8:c2c:3900::";
+          };
+        }) val.extraDomainNames
+      )
+    ) config.security.acme.certs;
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "console=tty" ];

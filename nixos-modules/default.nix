@@ -4,8 +4,13 @@
 
 {
   npins,
+  lib,
   ...
 }:
+
+let
+  utils = import (npins.dns + "/utils") { inherit lib; };
+in
 {
   imports = [
     # Internel modules
@@ -35,6 +40,9 @@
     (npins.sops-nix + "/modules/sops")
     (npins.disko + "/module.nix")
     (npins.snm + "/")
+    (import (npins.dns + "/modules/nixos.nix") {
+      inherit utils;
+    })
 
     # pkgs extensions
     {
