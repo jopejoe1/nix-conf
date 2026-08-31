@@ -1,6 +1,6 @@
 {
   hardware.facter.reportPath = ./facter.json;
-  
+
   jopejoe1 = {
     ssh.enable = true;
     user.jopejoe1.enable = true;

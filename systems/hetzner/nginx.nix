@@ -89,7 +89,7 @@
         forceSSL = true;
         enableACME = true;
         acmeRoot = null;
-        serverAliases = lib.map (x: "mta-sts.${x}") config.mailserver.domains; 
+        serverAliases = lib.map (x: "mta-sts.${x}") config.mailserver.domains;
         locations."/" = {
           root = pkgs.writeTextDir ".well-known/mta-sts.txt" ''
             version: STSv1

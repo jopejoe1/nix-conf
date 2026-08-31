@@ -101,24 +101,25 @@ in
         "DESEC_TOKEN_FILE" = "/var/secrets/desc_io";
       };
     };
-    certs = let
-      porkbun = {
-        credentialFiles = {
-          "PORKBUN_API_KEY_FILE" = "/var/secrets/porkbun";
-          "PORKBUN_SECRET_API_KEY_FILE" = "/var/secrets/porkbun_secret";
+    certs =
+      let
+        porkbun = {
+          credentialFiles = {
+            "PORKBUN_API_KEY_FILE" = "/var/secrets/porkbun";
+            "PORKBUN_SECRET_API_KEY_FILE" = "/var/secrets/porkbun_secret";
+          };
+          dnsProvider = "porkbun";
         };
-        dnsProvider = "porkbun";
+      in
+      {
+        "nyan.social" = porkbun;
+        "miau.social" = porkbun;
+        "pumpkin.social" = porkbun;
+        "matrix.miau.social" = porkbun;
+        "mta-sts.nyan.social" = porkbun;
+        "mta-sts.miau.social" = porkbun;
+        "mta-sts.pumpkin.social" = porkbun;
       };
-    in
-    {
-      "nyan.social" = porkbun;
-      "miau.social" = porkbun;
-      "pumpkin.social" = porkbun;
-      "matrix.miau.social" = porkbun;
-      "mta-sts.nyan.social" = porkbun;
-      "mta-sts.miau.social" = porkbun;
-      "mta-sts.pumpkin.social" = porkbun;
-    };
   };
 
   services.akkoma = {
